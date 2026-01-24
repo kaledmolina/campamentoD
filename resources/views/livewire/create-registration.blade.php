@@ -1,5 +1,5 @@
 <div class="max-w-3xl mx-auto">
-    <div class="glass-card p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+    <div class="glass-card p-4 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
         <!-- Glow Effect -->
         <div
             class="absolute top-0 right-0 w-64 h-64 bg-gold-500/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2">

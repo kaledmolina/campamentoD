@@ -142,10 +142,35 @@
         </a>
 
         <!-- Mobile Menu Button -->
-        <button class="md:hidden text-2xl text-white">
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-black/95 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <a href="/#inicio"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Inicio</a>
+        <a href="/#invitados"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Invitados</a>
+        <a href="/#cronograma"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Programa</a>
+        <a href="/#inversion"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Inversión</a>
+        <a href="{{ route('consultation') }}"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Consulta
+            / Pagos</a>
+
+        <a href="{{ route('registration') }}"
+            class="mt-4 bg-gold-500 text-black font-bold py-3 px-8 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+            REGISTRARME
+        </a>
+    </div>
 
     <main class="container mx-auto py-12 px-4 flex-grow">
         {{ $slot }}
@@ -162,6 +187,32 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        // Close menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    </script>
 </body>
 
 </html>

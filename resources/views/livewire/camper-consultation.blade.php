@@ -6,7 +6,7 @@
     </div>
 
     <!-- Search Section -->
-    <div class="glass-card rounded-2xl p-8 mb-8 relative overflow-hidden">
+    <div class="glass-card rounded-2xl p-4 md:p-8 mb-8 relative overflow-hidden">
         <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         
         <form wire:submit="search" class="flex flex-col md:flex-row gap-4 items-end relative z-10">
@@ -27,7 +27,7 @@
     @if ($camper)
         <div class="grid md:grid-cols-2 gap-8" data-aos="fade-up">
             <!-- Camper Info & Status -->
-            <div class="glass-card rounded-2xl p-6 h-full border-l-4 border-gold-500">
+            <div class="glass-card rounded-2xl p-4 md:p-6 h-full border-l-4 border-gold-500">
                 <h3 class="text-xl font-bold mb-6 text-white flex items-center gap-2">
                     <i class="fas fa-id-card text-gold-500"></i> Información del Campista
                 </h3>
@@ -92,7 +92,7 @@
             </div>
 
             <!-- New Payment Form -->
-            <div class="glass-card rounded-2xl p-6 border-t-4 border-green-500 relative overflow-hidden">
+            <div class="glass-card rounded-2xl p-4 md:p-6 border-t-4 border-green-500 relative overflow-hidden">
                 <!-- Background Glow -->
                 <div class="absolute top-0 right-0 w-48 h-48 bg-green-500/5 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
