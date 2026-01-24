@@ -19,6 +19,10 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Auth;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
 
 class PaymentResource extends Resource
 {
@@ -103,7 +107,7 @@ class PaymentResource extends Resource
                     ->label('Estado'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
                 Action::make('approve')
                     ->label('Aprobar')
                     ->icon('heroicon-o-check')
@@ -137,6 +141,30 @@ class PaymentResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->recordUrl(fn(Payment $record): string => PaymentResource::getUrl('view', ['record' => $record]));
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make('Detalles del Abono')
+                    ->schema([
+                        TextEntry::make('user.name')->label('Campista'),
+                        TextEntry::make('amount')->money('COP')->label('Monto'),
+                        TextEntry::make('status')
+                            ->badge()
+                            ->color(fn(string $state): string => match ($state) {
+                                'pending' => 'warning',
+                                'approved' => 'success',
+                                'rejected' => 'danger',
+                            })
+                            ->label('Estado'),
+                        TextEntry::make('created_at')->dateTime()->label('Fecha'),
+                        ImageEntry::make('proof_path')->label('Comprobante')->columnSpanFull(),
+                        TextEntry::make('notes')->label('Notas')->columnSpanFull(),
+                    ])->columns(2),
             ]);
     }
 
@@ -152,7 +180,7 @@ class PaymentResource extends Resource
         return [
             'index' => Pages\ListPayments::route('/'),
             'create' => Pages\CreatePayment::route('/create'),
-            'edit' => Pages\EditPayment::route('/{record}/edit'),
+            'view' => Pages\ViewPayment::route('/{record}'),
         ];
     }
 }
