@@ -100,10 +100,35 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Zona *</label>
-                        <input wire:model="zone" type="text"
-                            class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600">
+                        <select wire:model.live="zone"
+                            class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all">
+                            <option value="">Elige</option>
+                            <option value="Zona Monteria">Zona Monteria</option>
+                            <option value="Zona Alto San Jorge">Zona Alto San Jorge</option>
+                            <option value="Zona Planeta Rica">Zona Planeta Rica</option>
+                            <option value="Zona La Mojana">Zona La Mojana</option>
+                            <option value="Zona Alto Sinu">Zona Alto Sinu</option>
+                            <option value="Zona Bajo Sinu">Zona Bajo Sinu</option>
+                            <option value="Zona Medio Sinu">Zona Medio Sinu</option>
+                            <option value="Zona San Marcos">Zona San Marcos</option>
+                            <option value="Zona Sahagun">Zona Sahagun</option>
+                            <option value="Zona Franja del Mar">Zona Franja del Mar</option>
+                            <option value="Otro">Otro</option>
+                        </select>
                         @error('zone') <span class="text-red-500 text-xs mt-1 block"><i
                         class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+
+                        @if($zone === 'Otro')
+                            <div class="mt-3 animate-pulse-slow">
+                                <label
+                                    class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Cuál?</label>
+                                <input wire:model="other_zone" type="text"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 border-gold-500"
+                                    placeholder="Escribe tu zona">
+                                @error('other_zone') <span class="text-red-500 text-xs mt-1 block"><i
+                                class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                            </div>
+                        @endif
                     </div>
                     <div>
                         <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Congregación
@@ -123,7 +148,8 @@
                 </h3>
                 <div class="bg-white/5 p-4 rounded-lg border border-gold-500/20 mb-4">
                     <p class="text-sm text-gray-300 mb-2">Para asegurar tu cupo debes realizar un abono mínimo del
-                        <strong>10% ($30.000)</strong>.</p>
+                        <strong>10% ($30.000)</strong>.
+                    </p>
                     <p class="text-xs text-gold-500 italic">Formatos permitidos: JPG, PNG, PDF (Máx 10MB)</p>
                 </div>
 

@@ -28,6 +28,8 @@ class CreateRegistration extends Component
     #[Validate('required')]
     public $zone = '';
 
+    public $other_zone = '';
+
     #[Validate('required')]
     public $congregacion = '';
 
@@ -48,6 +50,15 @@ class CreateRegistration extends Component
 
         $proofPath = $this->payment_proof->store('payments', 'public');
 
+        if ($this->zone === 'Otro') {
+            $this->validate([
+                'other_zone' => 'required|min:3',
+            ]);
+            $finalZone = $this->other_zone;
+        } else {
+            $finalZone = $this->zone;
+        }
+
         // Create Camper User
         $user = User::create([
             'name' => $this->name,
@@ -55,7 +66,7 @@ class CreateRegistration extends Component
             'password' => null, // No password for campers
             'document_type' => $this->document_type,
             'document_number' => $this->document_number,
-            'zone' => $this->zone,
+            'zone' => $finalZone,
             'congregacion' => $this->congregacion,
             'phone' => $this->phone,
             'age' => $this->age,
@@ -71,7 +82,7 @@ class CreateRegistration extends Component
         ]);
 
         $this->registration_success = true;
-        $this->reset(['name', 'email', 'document_type', 'document_number', 'zone', 'congregacion', 'phone', 'age', 'payment_proof']);
+        $this->reset(['name', 'email', 'document_type', 'document_number', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof']);
     }
 
     public function render()
