@@ -107,9 +107,9 @@
     <!-- NAVIGATION -->
     <nav id="navbar"
         class="fixed w-full z-50 transition-all duration-300 py-6 px-4 md:px-8 flex justify-between items-center">
-        <div class="w-12 md:w-16">
+        <div class="w-24 md:w-32">
             <!-- Logo Pequeño Nav -->
-            <img src="{{ asset('images/Investido Blanco.png') }}" alt="Logo" class="w-full drop-shadow-lg">
+            <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo" class="w-full drop-shadow-lg">
         </div>
 
         <div class="hidden md:flex gap-8 text-sm font-bold tracking-widest uppercase">
@@ -277,7 +277,7 @@
 
     <!-- BANNER PARALLAX -->
     <div class="relative py-32 bg-fixed bg-center bg-cover"
-        style="background-image: url('{{ asset('images/investido banner.png') }}');">
+        style="background-image: url('{{ asset('images/investidobanner.png') }}');">
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="relative container mx-auto text-center px-4">
             <h2 class="text-3xl md:text-5xl font-black uppercase text-white mb-6 drop-shadow-lg" data-aos="zoom-in">
