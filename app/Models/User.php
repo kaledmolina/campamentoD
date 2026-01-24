@@ -21,7 +21,29 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'document_type',
+        'document_number',
+        'zone',
+        'congregacion',
+        'phone',
+        'age',
+        'is_admin',
     ];
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function getTotalPaidAttribute()
+    {
+        return $this->payments()->where('status', 'approved')->sum('amount');
+    }
+
+    public function getBalanceAttribute()
+    {
+        return 300000 - $this->total_paid;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
