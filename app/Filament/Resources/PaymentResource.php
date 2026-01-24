@@ -105,6 +105,28 @@ class PaymentResource extends Resource
                         'rejected' => 'Rechazado',
                     ])
                     ->label('Estado'),
+                Tables\Filters\Filter::make('created_at')
+                    ->form([
+                        Forms\Components\DatePicker::make('created_from')->label('Desde'),
+                        Forms\Components\DatePicker::make('created_until')->label('Hasta'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['created_until'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    })
+                    ->label('Fecha de Abono'),
+                Tables\Filters\SelectFilter::make('user_zone')
+                    ->relationship('user', 'zone')
+                    ->label('Zona del Campista')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

@@ -28,6 +28,7 @@ class User extends Authenticatable
         'phone',
         'age',
         'is_admin',
+        'consent_proof_path',
     ];
 
     public function payments()

@@ -141,6 +141,39 @@
                 </div>
             </div>
 
+            <!-- Sección Menores de Edad -->
+            @if ($age && $age < 18)
+                <div class="border border-red-500/50 bg-red-900/10 p-4 rounded-lg mb-6 animate-pulse-slow">
+                    <h3 class="text-lg font-bold text-red-500 mb-2 flex items-center gap-2">
+                        <i class="fas fa-exclamation-triangle"></i> Requisito para Menores de Edad
+                    </h3>
+                    <p class="text-sm text-gray-300 mb-4">
+                        Al ser menor de edad, es <strong>obligatorio</strong> adjuntar el consentimiento firmado por tus
+                        padres o acudiente legal.
+                    </p>
+
+                    <a href="/pdf/FormularioMenordeEdad -.pdf" download
+                        class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition mb-4 text-xs uppercase tracking-wide">
+                        <i class="fas fa-file-pdf"></i> Descargar Consentimiento PDF
+                    </a>
+
+                    <div>
+                        <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Subir
+                            Consentimiento Firmado *</label>
+                        <input wire:model="consent_proof" type="file"
+                            class="w-full py-2 px-4 rounded-lg border border-dashed border-gray-600 bg-black/20 text-gray-400 cursor-pointer hover:border-red-500 transition">
+
+                        @error('consent_proof') <span class="text-red-500 text-xs mt-1 block"><i
+                        class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+
+                        <div wire:loading wire:target="consent_proof"
+                            class="text-sm text-red-500 mt-2 flex items-center gap-2">
+                            <i class="fas fa-spinner fa-spin"></i> Cargando archivo...
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <!-- Sección Pago -->
             <div>
                 <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">

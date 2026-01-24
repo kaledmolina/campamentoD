@@ -18,6 +18,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Infolists;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Section;
 use Filament\Tables\Filters\SelectFilter;
 use App\Filament\Resources\UserResource\RelationManagers;
@@ -75,6 +76,11 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name')->searchable()->label('Nombre'),
                 TextColumn::make('document_number')->searchable()->label('Documento'),
+                TextColumn::make('age')
+                    ->label('Edad')
+                    ->badge()
+                    ->color(fn(string $state): string => $state < 18 ? 'danger' : 'success')
+                    ->formatStateUsing(fn(string $state) => $state . ($state < 18 ? ' (Menor)' : '')),
                 TextColumn::make('zone')->sortable()->label('Zona'),
                 TextColumn::make('congregacion')->searchable()->label('Congregación'),
                 TextColumn::make('total_paid')
@@ -100,6 +106,20 @@ class UserResource extends Resource
                         'Zona Franja del Mar' => 'Zona Franja del Mar',
                     ])
                     ->label('Zona'),
+                SelectFilter::make('document_type')
+                    ->options([
+                        'CC' => 'Cédula de Ciudadanía',
+                        'TI' => 'Tarjeta de Identidad',
+                        'PA' => 'Pasaporte',
+                        'Otro' => 'Otro',
+                    ])
+                    ->label('Tipo de Documento'),
+                Tables\Filters\Filter::make('minors')
+                    ->label('Solo Menores de Edad')
+                    ->query(fn(Builder $query): Builder => $query->where('age', '<', 18)),
+                Tables\Filters\Filter::make('has_payments')
+                    ->label('Con Abonos Realizados')
+                    ->query(fn(Builder $query): Builder => $query->has('payments')),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -125,7 +145,16 @@ class UserResource extends Resource
                         TextEntry::make('document_type')->label('Tipo Doc'),
                         TextEntry::make('document_number')->label('Número Doc'),
                         TextEntry::make('phone')->label('Celular'),
-                        TextEntry::make('age')->label('Edad'),
+                        TextEntry::make('age')
+                            ->label('Edad')
+                            ->badge()
+                            ->color(fn(int $state): string => $state < 18 ? 'danger' : 'success')
+                            ->formatStateUsing(fn(int $state) => $state . ($state < 18 ? ' (Menor)' : '')),
+                        ImageEntry::make('consent_proof_path')
+                            ->label('Consentimiento Firmado')
+                            ->columnSpan(2)
+                            ->visible(fn($record) => $record->age < 18)
+                            ->disk('public'),
                     ]),
                 Section::make('Información Eclesiástica')
                     ->columns(2)

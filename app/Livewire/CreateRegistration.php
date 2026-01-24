@@ -42,13 +42,27 @@ class CreateRegistration extends Component
     #[Validate('required|image|max:10240')] // 10MB max
     public $payment_proof;
 
+    #[Validate('nullable|image|max:10240')] // 10MB max
+    public $consent_proof;
+
     public $registration_success = false;
 
     public function save()
     {
         $this->validate();
 
+        // Custom validation for minors
+        if ($this->age < 18 && !$this->consent_proof) {
+            $this->addError('consent_proof', 'El consentimiento de padres es obligatorio para menores de edad.');
+            return;
+        }
+
         $proofPath = $this->payment_proof->store('payments', 'public');
+
+        $consentPath = null;
+        if ($this->consent_proof) {
+            $consentPath = $this->consent_proof->store('consents', 'public');
+        }
 
         if ($this->zone === 'Otro') {
             $this->validate([
@@ -70,6 +84,7 @@ class CreateRegistration extends Component
             'congregacion' => $this->congregacion,
             'phone' => $this->phone,
             'age' => $this->age,
+            'consent_proof_path' => $consentPath,
         ]);
 
         // Create Initial Payment
@@ -82,7 +97,7 @@ class CreateRegistration extends Component
         ]);
 
         $this->registration_success = true;
-        $this->reset(['name', 'email', 'document_type', 'document_number', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof']);
+        $this->reset(['name', 'email', 'document_type', 'document_number', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof']);
     }
 
     public function render()
