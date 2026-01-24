@@ -473,9 +473,8 @@
             }
         });
 
-        // Countdown Logic
-        // Countdown Logic - Target Date: May 16, 2026
-        const targetDate = new Date("2026-05-16T00:00:00").getTime();
+        // Countdown Logic - Target Date: May 16, 2026 (Colombia Time)
+        const targetDate = new Date("2026-05-16T00:00:00-05:00").getTime();
 
         const countdownInterval = setInterval(function () {
             const now = new Date().getTime();
