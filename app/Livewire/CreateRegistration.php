@@ -45,7 +45,24 @@ class CreateRegistration extends Component
     #[Validate('nullable|image|max:10240')] // 10MB max
     public $consent_proof;
 
+    public $registration_step = 0; // 0: Check, 1: Minor Warning, 2: Form
+
     public $registration_success = false;
+
+    public function selectMinor()
+    {
+        $this->registration_step = 1;
+    }
+
+    public function selectAdult()
+    {
+        $this->registration_step = 2;
+    }
+
+    public function proceedToForm()
+    {
+        $this->registration_step = 2;
+    }
 
     public function save()
     {
