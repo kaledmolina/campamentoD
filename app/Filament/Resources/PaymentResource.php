@@ -66,6 +66,13 @@ class PaymentResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->whereHas('user', function (Builder $query) {
+            $query->where('is_admin', false);
+        });
+    }
+
     public static function table(Table $table): Table
     {
         return $table
