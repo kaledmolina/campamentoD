@@ -149,6 +149,7 @@
                         <div>
                             <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Edad *</label>
                             <input wire:model="age" type="number"
+                                x-on:input="if($el.value == 666) { document.getElementById('demon-game-modal').classList.remove('hidden'); initDemonGame(); }"
                                 class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600">
                             @error('age') <span class="text-red-500 text-xs mt-1 block"><i
                             class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
@@ -283,4 +284,163 @@
             </form>
         @endif
     </div>
+
+    <!-- EASTER EGG: DEMON PONG -->
+    <div id="demon-game-modal" class="fixed inset-0 z-[100] bg-black hidden flex items-center justify-center">
+        <div class="relative w-full h-full max-w-4xl max-h-[80vh] flex flex-col items-center justify-center p-4">
+            <h2 class="text-4xl font-cinzel text-red-600 mb-4 animate-pulse">¡RESISTE AL DIABLO!</h2>
+            <p class="text-gold-500 mb-4 uppercase tracking-widest text-sm">Usa el mouse para controlar la barra</p>
+
+            <canvas id="pongCanvas" width="800" height="600"
+                class="bg-black border-4 border-red-900 shadow-[0_0_50px_rgba(255,0,0,0.5)] rounded-lg cursor-none"></canvas>
+
+            <button onclick="closeDemonGame()"
+                class="mt-8 px-6 py-2 border border-gray-600 text-gray-400 hover:text-white hover:border-white rounded uppercase tracking-widest transition">
+                Huir de la tentación (Salir)
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let gameRunning = false;
+        let animationId;
+        const canvas = document.getElementById('pongCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Game Objects
+        const ball = { x: 400, y: 300, radius: 10, speed: 7, dx: 5, dy: 5, color: '#D4AF37' };
+        const paddlePlayer = { x: 350, y: 580, width: 100, height: 10, color: '#fff', score: 0 };
+        const paddleAI = { x: 350, y: 10, width: 100, height: 10, color: '#ef4444', score: 0, speed: 4 }; // Red for Enemy
+
+        function initDemonGame() {
+            if (gameRunning) return;
+            gameRunning = true;
+            resizeCanvas();
+            resetBall();
+            animationId = requestAnimationFrame(gameLoop);
+
+            // Mouse listener
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                paddlePlayer.x = e.clientX - rect.left - paddlePlayer.width / 2;
+            });
+        }
+
+        function closeDemonGame() {
+            gameRunning = false;
+            cancelAnimationFrame(animationId);
+            document.getElementById('demon-game-modal').classList.add('hidden');
+        }
+
+        function resizeCanvas() {
+            // Simple responsive fix if needed, but keeping fixed for now to avoid logic mess
+        }
+
+        function resetBall() {
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.dx = -ball.dx;
+            ball.speed = 7;
+        }
+
+        function update() {
+            // Move Ball
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            // Wall Collision
+            if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
+                ball.dx = -ball.dx;
+            }
+
+            // Paddle Collision (Player)
+            if (ball.y + ball.radius > paddlePlayer.y &&
+                ball.x > paddlePlayer.x && ball.x < paddlePlayer.x + paddlePlayer.width) {
+                ball.dy = -ball.speed;
+                ball.y = paddlePlayer.y - ball.radius; // snap
+                ball.speed += 0.5; // Increase difficulty
+            }
+
+            // Paddle Collision (AI)
+            if (ball.y - ball.radius < paddleAI.y + paddleAI.height &&
+                ball.x > paddleAI.x && ball.x < paddleAI.x + paddleAI.width) {
+                ball.dy = ball.speed;
+                ball.y = paddleAI.y + paddleAI.height + ball.radius; // snap
+            }
+
+            // Scoring
+            if (ball.y + ball.radius > canvas.height) {
+                paddleAI.score++;
+                resetBall();
+            } else if (ball.y - ball.radius < 0) {
+                paddlePlayer.score++;
+                resetBall();
+            }
+
+            // AI Movement
+            // AI tries to follow ball
+            let targetX = ball.x - (paddleAI.width / 2);
+            // Add some randomness/error or speed limit
+            if (paddleAI.x < targetX) {
+                paddleAI.x += paddleAI.speed;
+            } else {
+                paddleAI.x -= paddleAI.speed;
+            }
+
+            // Keep AI in bounds
+            if (paddleAI.x < 0) paddleAI.x = 0;
+            if (paddleAI.x + paddleAI.width > canvas.width) paddleAI.x = canvas.width - paddleAI.width;
+
+            // Check Win Condition (First to 5)
+            if (paddlePlayer.score >= 5) {
+                alert("¡Has vencido al 666!");
+                closeDemonGame();
+                paddlePlayer.score = 0;
+                paddleAI.score = 0;
+            }
+        }
+
+        function draw() {
+            // Background
+            ctx.fillStyle = '#111';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Net
+            ctx.strokeStyle = '#333';
+            ctx.setLineDash([10, 15]);
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height / 2);
+            ctx.lineTo(canvas.width, canvas.height / 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Ball
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fillStyle = ball.color;
+            ctx.fill();
+            ctx.closePath();
+
+            // Player Paddle
+            ctx.fillStyle = paddlePlayer.color;
+            ctx.fillRect(paddlePlayer.x, paddlePlayer.y, paddlePlayer.width, paddlePlayer.height);
+
+            // AI Paddle
+            ctx.fillStyle = paddleAI.color;
+            ctx.fillRect(paddleAI.x, paddleAI.y, paddleAI.width, paddleAI.height);
+
+            // Scores
+            ctx.font = "50px monospace";
+            ctx.fillStyle = "#333";
+            ctx.fillText(paddleAI.score, 50, canvas.height / 2 - 50);
+            ctx.fillText(paddlePlayer.score, 50, canvas.height / 2 + 80);
+        }
+
+        function gameLoop() {
+            if (!gameRunning) return;
+            update();
+            draw();
+            animationId = requestAnimationFrame(gameLoop);
+        }
+    </script>
 </div>
