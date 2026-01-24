@@ -119,7 +119,7 @@
     <!-- NAVIGATION -->
     <nav
         class="w-full z-50 py-6 px-4 md:px-8 flex justify-between items-center bg-black/80 border-b border-gold-500/20 backdrop-blur-md">
-        <div class="w-12 md:w-16">
+        <div class="w-24 md:w-32">
             <a href="/">
                 <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
                     class="w-full drop-shadow-lg has-tooltip" title="Volver al Inicio">
