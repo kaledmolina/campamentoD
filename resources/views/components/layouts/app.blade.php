@@ -121,7 +121,7 @@
         class="w-full z-50 py-6 px-4 md:px-8 flex justify-between items-center bg-black/80 border-b border-gold-500/20 backdrop-blur-md">
         <div class="w-12 md:w-16">
             <a href="/">
-                <img src="{{ asset('images/Investido Blanco.png') }}" alt="Logo"
+                <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
                     class="w-full drop-shadow-lg has-tooltip" title="Volver al Inicio">
             </a>
         </div>
