@@ -55,6 +55,7 @@ class PaymentResource extends Resource
                 FileUpload::make('proof_path')
                     ->image()
                     ->directory('payments')
+                    ->required()
                     ->label('Comprobante'),
                 Textarea::make('notes')
                     ->label('Notas'),
