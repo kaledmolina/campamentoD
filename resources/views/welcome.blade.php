@@ -136,7 +136,7 @@
     <header id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="b8cc5394-9e3e-4c9c-ba54-0344c5f7bcf4.jpg"
+            <img src="{{ asset('images/investidobanner.png') }}"
                 class="w-full h-full object-cover opacity-40 scale-105 animate-pulse-slow" alt="Fondo">
             <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-black/80"></div>
         </div>
@@ -145,7 +145,7 @@
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-12">
 
             <div data-aos="zoom-in" data-aos-duration="1500">
-                <img src="{{ asset('images/INVESTIDOSCOLOR.png') }}" alt="Investi2 Logo"
+                <img src="{{ asset('images/investidobanner.png') }}" alt="Investi2 Logo"
                     class="w-full max-w-md mx-auto mb-4 drop-shadow-[0_0_30px_rgba(255,140,0,0.6)] animate-float">
             </div>
 
