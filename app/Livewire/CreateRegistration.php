@@ -46,17 +46,20 @@ class CreateRegistration extends Component
     public $consent_proof;
 
     public $registration_step = 0; // 0: Check, 1: Minor Warning, 2: Form
+    public $is_minor_flow = false;
 
     public $registration_success = false;
 
     public function selectMinor()
     {
         $this->registration_step = 1;
+        $this->is_minor_flow = true;
     }
 
     public function selectAdult()
     {
         $this->registration_step = 2;
+        $this->is_minor_flow = false;
     }
 
     public function proceedToForm()

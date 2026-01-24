@@ -216,7 +216,7 @@
                 </div>
 
                 <!-- Sección Menores de Edad -->
-                @if ($age && $age < 18)
+                @if (($age && $age < 18) || $is_minor_flow)
                     <div class="border border-red-500/50 bg-red-900/10 p-4 rounded-lg mb-6 animate-pulse-slow">
                         <h3 class="text-lg font-bold text-red-500 mb-2 flex items-center gap-2">
                             <i class="fas fa-exclamation-triangle"></i> Requisito para Menores de Edad
