@@ -411,8 +411,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
 
                 <div data-aos="fade-up">
-                    <img src="Investido Blanco.png" alt="Logo Blanco" class="h-20 mx-auto md:mx-0 mb-4 opacity-80">
-                    <p class="text-gray-500 text-sm">Distrito 27 - Sincelejo, Sucre.<br>Iglesia Pentecostal Unida de
+                    <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco"
+                        class="h-20 mx-auto md:mx-0 mb-4 opacity-80">
+                    <p class="text-gray-500 text-sm">Distrito 27 - Montería, Córdoba.<br>Iglesia Pentecostal Unida de
                         Colombia.</p>
                 </div>
 
