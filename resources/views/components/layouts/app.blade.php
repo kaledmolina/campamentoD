@@ -153,7 +153,7 @@
 
     <footer class="bg-black pt-10 pb-10 border-t border-gray-900 mt-auto">
         <div class="container mx-auto px-4 text-center">
-            <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco" class="h-16 mx-auto mb-4 opacity-80">
+            <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco" class="h-32 mx-auto mb-4 opacity-80">
             <p class="text-gray-500 text-sm mb-4">Distrito 27 - Montería, Córdoba.</p>
             <p class="text-gray-600 text-xs">
                 &copy; 2026 Misión Juvenil. Todos los derechos reservados.

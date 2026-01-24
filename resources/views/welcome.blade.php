@@ -300,7 +300,7 @@
                         class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
                     </div>
 
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition"
+                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
                         data-aos="fade-left">
                         <span class="text-orange-500 font-bold text-sm">Sábado 16 Mayo - 2:00 PM</span>
                         <h3 class="text-xl font-bold text-white mt-1">Apertura y Registro</h3>
@@ -316,7 +316,7 @@
                         class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
                     </div>
 
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition"
+                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
                         data-aos="fade-right">
                         <span class="text-orange-500 font-bold text-sm">Domingo 17 Mayo - 8:00 AM</span>
                         <h3 class="text-xl font-bold text-white mt-1">Mañana de Gloria</h3>
@@ -335,7 +335,7 @@
                         class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-orange-600 border-4 border-black z-10">
                     </div>
 
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition border-orange-500/30"
+                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition border-orange-500/30 text-center"
                         data-aos="fade-left">
                         <span class="text-orange-500 font-bold text-sm">Lunes 18 Mayo - 10:00 AM</span>
                         <h3 class="text-xl font-bold text-white mt-1">Gran Cierre: La Investidura</h3>
