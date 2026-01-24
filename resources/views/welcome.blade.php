@@ -127,10 +127,35 @@
         </a>
 
         <!-- Mobile Menu Button -->
-        <button class="md:hidden text-2xl text-white">
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-black/95 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <a href="#inicio"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Inicio</a>
+        <a href="#invitados"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Invitados</a>
+        <a href="#cronograma"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Programa</a>
+        <a href="#inversion"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Inversión</a>
+        <a href="{{ route('consultation') }}"
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Consulta
+            / Pagos</a>
+
+        <a href="{{ route('registration') }}"
+            class="mt-4 bg-gold-500 text-black font-bold py-3 px-8 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+            REGISTRARME
+        </a>
+    </div>
 
     <!-- HERO SECTION -->
     <header id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -145,12 +170,12 @@
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-12">
 
             <p data-aos="fade-up" data-aos-delay="300"
-                class="text-gold-500 font-cinzel text-xl md:text-2xl tracking-[0.2em] mb-2">
+                class="text-gold-500 font-cinzel text-lg md:text-2xl tracking-[0.2em] mb-2">
                 CAMPAMENTO JUVENIL 2026
             </p>
 
             <h1 data-aos="fade-up" data-aos-delay="500"
-                class="text-4xl md:text-7xl font-black text-white uppercase mb-6 leading-tight">
+                class="text-3xl md:text-7xl font-black text-white uppercase mb-6 leading-tight">
                 Por un mismo <br><span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-400">Espíritu</span>
             </h1>
@@ -491,9 +516,9 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            const timeBoxClass = "bg-white/10 backdrop-blur-md border border-gold-500/30 rounded-lg p-3 md:p-4 text-center min-w-[80px] md:min-w-[100px]";
-            const numberClass = "block text-2xl md:text-4xl font-bold text-white";
-            const labelClass = "text-xs text-gold-500 uppercase tracking-widest";
+            const timeBoxClass = "bg-white/10 backdrop-blur-md border border-gold-500/30 rounded-lg p-2 md:p-4 text-center min-w-[70px] md:min-w-[100px]";
+            const numberClass = "block text-xl md:text-4xl font-bold text-white";
+            const labelClass = "text-[10px] md:text-xs text-gold-500 uppercase tracking-widest";
 
             document.getElementById("countdown").innerHTML = `
                 <div class="${timeBoxClass}">
@@ -514,6 +539,25 @@
                 </div>
             `;
         }, 1000);
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
     </script>
 </body>
 
