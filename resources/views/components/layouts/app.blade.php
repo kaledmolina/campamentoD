@@ -156,7 +156,9 @@
             <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco" class="h-32 mx-auto mb-4 opacity-80">
             <p class="text-gray-500 text-sm mb-4">Distrito 27 - Montería, Córdoba.</p>
             <p class="text-gray-600 text-xs">
-                &copy; 2026 Misión Juvenil. Todos los derechos reservados.
+                &copy; 2026 Misión Juvenil. Todos los derechos reservados. <br>
+                Desarrollado por <a href="https://wa.me/573004200048" target="_blank"
+                    class="text-gold-500 hover:text-white transition">Kaled Molina</a>
             </p>
         </div>
     </footer>

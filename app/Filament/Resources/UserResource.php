@@ -15,6 +15,13 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\Section;
+use Filament\Tables\Filters\SelectFilter;
+use App\Filament\Resources\UserResource\RelationManagers;
+
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
@@ -79,22 +86,68 @@ class UserResource extends Resource
                     ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
             ])
             ->filters([
-                //
+                SelectFilter::make('zone')
+                    ->options([
+                        'Zona Monteria' => 'Zona Monteria',
+                        'Zona Alto San Jorge' => 'Zona Alto San Jorge',
+                        'Zona Planeta Rica' => 'Zona Planeta Rica',
+                        'Zona La Mojana' => 'Zona La Mojana',
+                        'Zona Alto Sinu' => 'Zona Alto Sinu',
+                        'Zona Bajo Sinu' => 'Zona Bajo Sinu',
+                        'Zona Medio Sinu' => 'Zona Medio Sinu',
+                        'Zona San Marcos' => 'Zona San Marcos',
+                        'Zona Sahagun' => 'Zona Sahagun',
+                        'Zona Franja del Mar' => 'Zona Franja del Mar',
+                    ])
+                    ->label('Zona'),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->recordUrl(fn(User $record): string => UserResource::getUrl('view', ['record' => $record]));
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make('Información Personal')
+                    ->columns(2)
+                    ->schema([
+                        TextEntry::make('name')->label('Nombre'),
+                        TextEntry::make('email')->label('Correo'),
+                        TextEntry::make('document_type')->label('Tipo Doc'),
+                        TextEntry::make('document_number')->label('Número Doc'),
+                        TextEntry::make('phone')->label('Celular'),
+                        TextEntry::make('age')->label('Edad'),
+                    ]),
+                Section::make('Información Eclesiástica')
+                    ->columns(2)
+                    ->schema([
+                        TextEntry::make('zone')->label('Zona'),
+                        TextEntry::make('congregacion')->label('Congregación'),
+                    ]),
+                Section::make('Estado de Cuenta')
+                    ->columns(3)
+                    ->schema([
+                        TextEntry::make('total_paid')->money('COP')->label('Total Abonado'),
+                        TextEntry::make('balance')->money('COP')->label('Saldo Pendiente')
+                            ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
+                        TextEntry::make('participation_cost')->money('COP')->state(300000)->label('Costo Total'),
+                    ]),
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\PaymentsRelationManager::class,
         ];
     }
 
@@ -103,6 +156,7 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
+            'view' => Pages\ViewUser::route('/{record}'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
