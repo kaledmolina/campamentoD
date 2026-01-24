@@ -145,7 +145,7 @@
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-12">
 
             <div data-aos="zoom-in" data-aos-duration="1500">
-                <img src="INVESTIDOS COLOR.png" alt="Investi2 Logo"
+                <img src="INVESTIDOSCOLOR.png" alt="Investi2 Logo"
                     class="w-full max-w-md mx-auto mb-4 drop-shadow-[0_0_30px_rgba(255,140,0,0.6)] animate-float">
             </div>
 
