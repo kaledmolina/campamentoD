@@ -123,10 +123,26 @@ class PaymentResource extends Resource
                     })
                     ->label('Fecha de Abono'),
                 Tables\Filters\SelectFilter::make('user_zone')
-                    ->relationship('user', 'zone')
+                    ->options([
+                        'Zona Monteria' => 'Zona Monteria',
+                        'Zona Alto San Jorge' => 'Zona Alto San Jorge',
+                        'Zona Planeta Rica' => 'Zona Planeta Rica',
+                        'Zona La Mojana' => 'Zona La Mojana',
+                        'Zona Alto Sinu' => 'Zona Alto Sinu',
+                        'Zona Bajo Sinu' => 'Zona Bajo Sinu',
+                        'Zona Medio Sinu' => 'Zona Medio Sinu',
+                        'Zona San Marcos' => 'Zona San Marcos',
+                        'Zona Sahagun' => 'Zona Sahagun',
+                        'Zona Franja del Mar' => 'Zona Franja del Mar',
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query->when(
+                            $data['value'],
+                            fn(Builder $query, $value): Builder => $query->whereHas('user', fn(Builder $query) => $query->where('zone', $value))
+                        );
+                    })
                     ->label('Zona del Campista')
-                    ->searchable()
-                    ->preload(),
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
