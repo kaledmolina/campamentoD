@@ -22,6 +22,8 @@ class GlobalSettingResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Configuraciones';
 
+    protected static ?string $navigationGroup = 'Gestión';
+
     public static function form(Form $form): Form
     {
         return $form

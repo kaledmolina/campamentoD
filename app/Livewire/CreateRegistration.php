@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use App\Models\GlobalSetting;
 use Livewire\WithFileUploads;
 
 class CreateRegistration extends Component
