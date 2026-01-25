@@ -8,19 +8,9 @@
 
 <div x-data="{ 
     open: false, 
-    scale: 1,
     imageUrl: '{{ $imageUrl }}',
     
-    zoomIn() {
-        this.scale = this.scale + 0.5;
-    },
-    
-    zoomOut() {
-        this.scale = Math.max(0.5, this.scale - 0.5);
-    },
-    
     reset() {
-        this.scale = 1;
         this.open = false;
     }
 }">
@@ -48,46 +38,24 @@
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @keydown.escape.window="reset()">
 
         <!-- Toolbar -->
-        <div class="absolute top-4 right-4 flex items-center gap-3 z-[101]">
-            <!-- Download -->
+        <div class="absolute top-4 right-4 flex items-center gap-4 z-[101]">
+            <!-- Download Button (High Visibility) -->
             <a :href="imageUrl" download
-                class="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition backdrop-blur-sm group"
-                title="Descargar">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
+                class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg transition transform hover:scale-105"
+                title="Descargar Original">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M12 12.75l-3-3m3 3l3-3m-3 3V3" />
                 </svg>
+                <span>Descargar</span>
             </a>
 
-            <!-- Divider -->
-            <div class="h-6 w-px bg-white/20"></div>
-
-            <!-- Zoom In -->
-            <button @click="zoomIn()"
-                class="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition backdrop-blur-sm"
-                title="Zoom In">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-
-            <!-- Zoom Out -->
-            <button @click="zoomOut()"
-                class="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition backdrop-blur-sm"
-                title="Zoom Out">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
-                </svg>
-            </button>
-
-            <!-- Close -->
+            <!-- Close Button -->
             <button @click="reset()"
-                class="ml-4 p-3 bg-red-600 hover:bg-red-700 text-white rounded-full transition shadow-lg hover:shadow-red-600/50"
+                class="p-2 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition shadow-lg border border-gray-600"
                 title="Cerrar">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -96,18 +64,10 @@
 
         <!-- Image Container -->
         <div class="h-full w-full flex items-center justify-center p-8 overflow-hidden" @click.self="reset()">
-            <div class="relative transition-transform duration-200 ease-out" :style="`transform: scale(${scale})`"
-                @click.stop>
-                <!-- Stop prop to allow dragging if we added it, but here it prevents close on image click -->
+            <div class="relative max-h-full max-w-full flex items-center justify-center" @click.stop>
                 <img :src="imageUrl" class="max-w-full max-h-[90vh] object-contain rounded shadow-2xl"
                     alt="Comprobante Full">
             </div>
-        </div>
-
-        <!-- Zoom Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-black/60 backdrop-blur text-white rounded-full text-sm font-mono pointer-events-none"
-            x-show="scale !== 1" x-transition.opacity>
-            <span x-text="`${Math.round(scale * 100)}%`"></span>
         </div>
     </div>
 </div>
