@@ -1,5 +1,5 @@
 @php
-    $imageUrl = \Illuminate\Support\Facades\Storage::disk('public')->url($infoList->getRecord()->proof_path);
+    $imageUrl = \Illuminate\Support\Facades\Storage::disk('public')->url($record->proof_path);
 @endphp
 
 <div x-data="{ 
