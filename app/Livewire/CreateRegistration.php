@@ -57,10 +57,35 @@ class CreateRegistration extends Component
         $this->is_minor_flow = true;
     }
 
+    public $discountCode = '';
+    public $discountMessage = '';
+    public $appliedDiscount = null; // Stores percentage
+
     public function selectAdult()
     {
         $this->registration_step = 2;
         $this->is_minor_flow = false;
+    }
+
+    public function applyDiscount()
+    {
+        $this->discountMessage = '';
+        $this->appliedDiscount = null;
+
+        if (empty($this->discountCode)) {
+            $this->addError('discountCode', 'Ingrese un código');
+            return;
+        }
+
+        $coupon = \App\Models\Coupon::where('code', $this->discountCode)->first();
+
+        if (!$coupon || !$coupon->isValid()) {
+            $this->addError('discountCode', 'Código inválido o expirado');
+            return;
+        }
+
+        $this->appliedDiscount = $coupon->percentage;
+        $this->discountMessage = "¡Código aplicado! Descuento del {$coupon->percentage}%";
     }
 
     public function proceedToForm()
@@ -94,6 +119,20 @@ class CreateRegistration extends Component
             $finalZone = $this->zone;
         }
 
+        // Calculate Custom Cost if Discount Applied
+        $participationCost = null;
+        if ($this->appliedDiscount) {
+            $baseCost = GlobalSetting::get('default_total_cost', 300000);
+            $discountAmount = ($baseCost * $this->appliedDiscount) / 100;
+            $participationCost = $baseCost - $discountAmount;
+
+            // Increment Coupon Usage
+            $coupon = \App\Models\Coupon::where('code', $this->discountCode)->first();
+            if ($coupon) {
+                $coupon->increment('used_count');
+            }
+        }
+
         // Create Camper User
         $user = User::create([
             'name' => $this->name,
@@ -106,6 +145,7 @@ class CreateRegistration extends Component
             'phone' => $this->phone,
             'age' => $this->age,
             'consent_proof_path' => $consentPath,
+            'participation_cost' => $participationCost,
         ]);
 
         // Create Initial Payment

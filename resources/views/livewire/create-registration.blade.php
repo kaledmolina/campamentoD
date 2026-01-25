@@ -294,6 +294,38 @@
                         </div>
                     @endif
 
+                    <!-- Sección Descuentos -->
+                    <div class="border-b border-gray-700 pb-6 mb-6">
+                        <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
+                            <i class="fas fa-tag text-gold-500"></i> Código de Promoción
+                        </h3>
+                        <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                            <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Tienes un código?</label>
+                            <div class="flex gap-2">
+                                <input wire:model="discountCode" type="text" 
+                                    class="w-full py-2 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 bg-black/20 text-white uppercase"
+                                    placeholder="INGRESA TU CÓDIGO">
+                                <button type="button" wire:click="applyDiscount"
+                                    class="bg-gold-500 hover:bg-gold-400 text-black font-bold py-2 px-4 rounded-lg transition uppercase text-xs">
+                                    Aplicar
+                                </button>
+                            </div>
+                            
+                            @error('discountCode') 
+                                <span class="text-red-500 text-xs mt-2 block"><i class="fas fa-times-circle"></i> {{ $message }}</span> 
+                            @enderror
+
+                            @if($discountMessage)
+                                <div class="mt-2 text-green-400 text-sm font-bold flex items-center gap-2 animate-fade-in">
+                                    <i class="fas fa-check-circle"></i> {{ $discountMessage }}
+                                </div>
+                                <div class="mt-1 text-gray-300 text-xs">
+                                    El descuento se aplicará al costo total del campamento.
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
                     <!-- Sección Pago -->
                     <div>
                         <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
