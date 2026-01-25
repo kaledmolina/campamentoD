@@ -208,10 +208,19 @@ class PaymentResource extends Resource
                             })
                             ->label('Estado'),
                         TextEntry::make('created_at')->dateTime()->label('Fecha'),
-                        \Filament\Infolists\Components\ViewEntry::make('proof_path')
-                            ->view('filament.infolists.image-viewer')
+                        ImageEntry::make('proof_path')
                             ->label('Comprobante')
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->url(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->url($record->proof_path))
+                            ->openUrlInNewTab(),
+                        \Filament\Infolists\Components\Actions::make([
+                            \Filament\Infolists\Components\Actions\Action::make('download')
+                                ->label('Descargar Comprobante')
+                                ->icon('heroicon-o-arrow-down-tray')
+                                ->color('primary')
+                                ->url(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->url($record->proof_path))
+                                ->openUrlInNewTab(),
+                        ])->columnSpanFull(),
                         TextEntry::make('notes')->label('Notas')->columnSpanFull(),
                     ])->columns(2),
             ]);
