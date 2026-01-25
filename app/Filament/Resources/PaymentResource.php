@@ -63,6 +63,8 @@ class PaymentResource extends Resource
                     ->label('Comprobante'),
                 Textarea::make('notes')
                     ->label('Notas'),
+                \Filament\Forms\Components\Hidden::make('type')
+                    ->default('installment'),
             ]);
     }
 

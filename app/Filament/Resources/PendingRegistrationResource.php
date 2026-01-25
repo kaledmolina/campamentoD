@@ -43,7 +43,9 @@ class PendingRegistrationResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->where('status', 'pending');
+        return parent::getEloquentQuery()
+            ->where('status', 'pending')
+            ->where('type', 'registration');
     }
 
     public static function form(Form $form): Form

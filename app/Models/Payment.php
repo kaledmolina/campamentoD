@@ -15,6 +15,7 @@ class Payment extends Model
         'amount',
         'proof_path',
         'status',
+        'type',
         'reviewed_by',
         'notes',
     ];

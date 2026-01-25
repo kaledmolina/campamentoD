@@ -116,6 +116,7 @@ class CreateRegistration extends Component
             'amount' => $registrationFee,
             'proof_path' => $proofPath,
             'status' => 'pending',
+            'type' => 'registration',
             'notes' => 'Inscripción inicial (Tarifa Global)',
         ]);
 
