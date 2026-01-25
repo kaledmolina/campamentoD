@@ -384,8 +384,8 @@
                 <div class="glass-card p-8 rounded-2xl flex-1 text-center transform hover:-translate-y-2 transition duration-300 relative overflow-hidden"
                     data-aos="zoom-in-right">
                     <h3 class="text-xl font-bold text-gray-300 uppercase tracking-widest mb-4">Estadía Parcial</h3>
-                    <div class="text-4xl font-black text-white mb-2">$150.000</div>
-                    <p class="text-sm text-gray-500 mb-6">Por persona</p>
+                    <div class="text-4xl font-black text-white mb-2">$100.000</div>
+                    <p class="text-sm text-gray-500 mb-6">Por día</p>
 
                     <ul class="text-left space-y-3 mb-8 text-gray-300 text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Entrada a
