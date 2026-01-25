@@ -136,6 +136,7 @@ class PendingRegistrationResource extends Resource
                         \Filament\Infolists\Components\ImageEntry::make('proof_path')
                             ->label('Comprobante')
                             ->columnSpanFull()
+                            ->url(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->url($record->proof_path))
                             ->openUrlInNewTab(),
                         \Filament\Infolists\Components\TextEntry::make('notes')->label('Notas')->columnSpanFull(),
                     ])->columns(2),

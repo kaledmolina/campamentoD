@@ -211,6 +211,7 @@ class PaymentResource extends Resource
                         ImageEntry::make('proof_path')
                             ->label('Comprobante')
                             ->columnSpanFull()
+                            ->url(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->url($record->proof_path))
                             ->openUrlInNewTab(),
                         TextEntry::make('notes')->label('Notas')->columnSpanFull(),
                     ])->columns(2),
