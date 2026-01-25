@@ -70,9 +70,55 @@ class UserResource extends Resource
                         'Zona San Marcos' => 'Zona San Marcos',
                         'Zona Sahagun' => 'Zona Sahagun',
                         'Zona Franja del Mar' => 'Zona Franja del Mar',
+                        'Otro' => 'Otro',
                     ])
                     ->searchable()
+                    ->live()
+                    ->afterStateHydrated(function (Select $component, $state) {
+                        $standardZones = [
+                            'Zona Monteria',
+                            'Zona Alto San Jorge',
+                            'Zona Planeta Rica',
+                            'Zona La Mojana',
+                            'Zona Alto Sinu',
+                            'Zona Bajo Sinu',
+                            'Zona Medio Sinu',
+                            'Zona San Marcos',
+                            'Zona Sahagun',
+                            'Zona Franja del Mar',
+                        ];
+
+                        if ($state && !in_array($state, $standardZones)) {
+                            $component->state('Otro');
+                        }
+                    })
+                    ->mutateDehydratedStateUsing(fn($state, Forms\Get $get) => $state === 'Otro' ? $get('other_zone') : $state)
                     ->label('Zona'),
+                TextInput::make('other_zone')
+                    ->label('¿Cuál Zona?')
+                    ->visible(fn(Forms\Get $get) => $get('zone') === 'Otro')
+                    ->required(fn(Forms\Get $get) => $get('zone') === 'Otro')
+                    ->dehydrated(false) // Do not save this field directly
+                    ->afterStateHydrated(function (TextInput $component, $record) {
+                        if ($record) {
+                            $standardZones = [
+                                'Zona Monteria',
+                                'Zona Alto San Jorge',
+                                'Zona Planeta Rica',
+                                'Zona La Mojana',
+                                'Zona Alto Sinu',
+                                'Zona Bajo Sinu',
+                                'Zona Medio Sinu',
+                                'Zona San Marcos',
+                                'Zona Sahagun',
+                                'Zona Franja del Mar',
+                            ];
+
+                            if ($record->zone && !in_array($record->zone, $standardZones)) {
+                                $component->state($record->zone);
+                            }
+                        }
+                    }),
                 TextInput::make('congregacion')
                     ->label('Congregación'),
                 TextInput::make('age')
