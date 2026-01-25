@@ -235,6 +235,19 @@ class PaymentResource extends Resource
                         ])->columnSpanFull(),
                         TextEntry::make('notes')->label('Notas')->columnSpanFull(),
                     ])->columns(2),
+                Section::make('Estado de Cuenta del Campista')
+                    ->schema([
+                        TextEntry::make('user.total_paid')
+                            ->money('COP')
+                            ->label('Total Pagado (Aprobado)'),
+                        TextEntry::make('user.balance')
+                            ->money('COP')
+                            ->label('Saldo Pendiente')
+                            ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
+                        TextEntry::make('user.target_cost')
+                            ->money('COP')
+                            ->label('Costo Total'),
+                    ])->columns(3),
             ]);
     }
 

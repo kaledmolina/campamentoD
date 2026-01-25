@@ -150,6 +150,19 @@ class PendingRegistrationResource extends Resource
                         ])->columnSpanFull(),
                         \Filament\Infolists\Components\TextEntry::make('notes')->label('Notas')->columnSpanFull(),
                     ])->columns(2),
+                \Filament\Infolists\Components\Section::make('Estado de Cuenta del Campista')
+                    ->schema([
+                        \Filament\Infolists\Components\TextEntry::make('user.total_paid')
+                            ->money('COP')
+                            ->label('Total Pagado (Aprobado)'),
+                        \Filament\Infolists\Components\TextEntry::make('user.balance')
+                            ->money('COP')
+                            ->label('Saldo Pendiente')
+                            ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
+                        \Filament\Infolists\Components\TextEntry::make('user.target_cost')
+                            ->money('COP')
+                            ->label('Costo Total'),
+                    ])->columns(3),
             ]);
     }
 
