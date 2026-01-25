@@ -26,16 +26,28 @@ class GlobalSettingResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('key')
+                Forms\Components\Select::make('key')
                     ->required()
                     ->unique(ignoreRecord: true)
-                    ->label('Clave (Interna)')
-                    ->disabled(fn($record) => $record !== null), // Lock key after creation to prevent breaking code references
-                Forms\Components\TextInput::make('label')
+                    ->label('Tipo de Configuración')
+                    ->options([
+                        'registration_fee' => 'Costo de Inscripción',
+                        'default_total_cost' => 'Costo Total por Defecto',
+                    ])
+                    ->live()
+                    ->afterStateUpdated(function ($state, Forms\Set $set) {
+                        $labels = [
+                            'registration_fee' => 'Costo de Inscripción',
+                            'default_total_cost' => 'Costo Total por Defecto',
+                        ];
+                        $set('label', $labels[$state] ?? $state);
+                    })
+                    ->disabled(fn($record) => $record !== null), // Lock key after creation
+                Forms\Components\Hidden::make('label'),
+                Forms\Components\TextInput::make('value')
                     ->required()
-                    ->label('Nombre Visible'),
-                Forms\Components\Textarea::make('value')
-                    ->required()
+                    ->numeric()
+                    ->prefix('$')
                     ->label('Valor'),
             ]);
     }
