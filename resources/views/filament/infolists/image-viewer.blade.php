@@ -95,11 +95,12 @@
         </div>
 
         <!-- Image Container -->
-        <div class="h-full w-full flex items-center justify-center p-8 overflow-hidden" @click.self="reset()">
-            <div class="relative transition-transform duration-200 ease-out" :style="`transform: scale(${scale})`"
-                @click.stop>
+        <div class="h-full w-full flex items-center justify-center p-0 overflow-hidden" @click.self="reset()">
+            <div class="relative transition-transform duration-200 ease-out h-full w-full flex items-center justify-center p-4"
+                :style="`transform: scale(${scale})`" @click.stop>
                 <!-- Stop prop to allow dragging if we added it, but here it prevents close on image click -->
-                <img :src="imageUrl" class="max-w-full max-h-[90vh] object-contain rounded shadow-2xl"
+                <img :src="imageUrl"
+                    class="max-w-none w-auto h-auto max-h-full max-w-full object-contain rounded shadow-2xl"
                     alt="Comprobante Full">
             </div>
         </div>
