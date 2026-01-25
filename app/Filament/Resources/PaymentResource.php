@@ -34,6 +34,16 @@ class PaymentResource extends Resource
 
     protected static ?string $modelLabel = 'Abono';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('status', 'pending')->where('type', 'installment')->count();
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::where('status', 'pending')->where('type', 'installment')->count() > 0 ? 'warning' : 'gray';
+    }
+
     public static function form(Form $form): Form
     {
         return $form

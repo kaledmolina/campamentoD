@@ -33,12 +33,12 @@ class PendingRegistrationResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::where('status', 'pending')->count();
+        return static::getModel()::where('status', 'pending')->where('type', 'registration')->count();
     }
 
     public static function getNavigationBadgeColor(): ?string
     {
-        return static::getModel()::where('status', 'pending')->count() > 0 ? 'danger' : 'success';
+        return static::getModel()::where('status', 'pending')->where('type', 'registration')->count() > 0 ? 'danger' : 'success';
     }
 
     public static function getEloquentQuery(): Builder
