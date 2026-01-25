@@ -1,6 +1,9 @@
 @php
-    $imagePath = $state ?? null;
-    $imageUrl = $imagePath ? \Illuminate\Support\Facades\Storage::disk('public')->url($imagePath) : null;
+    $record = $getRecord();
+    $imagePath = $record->proof_path ?? null;
+    $imageUrl = (is_string($imagePath) && !empty($imagePath))
+        ? \Illuminate\Support\Facades\Storage::disk('public')->url($imagePath)
+        : null;
 @endphp
 
 <div x-data="{ 
