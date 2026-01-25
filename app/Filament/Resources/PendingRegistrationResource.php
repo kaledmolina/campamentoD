@@ -116,6 +116,32 @@ class PendingRegistrationResource extends Resource
             ]);
     }
 
+    public static function infolist(\Filament\Infolists\Infolist $infolist): \Filament\Infolists\Infolist
+    {
+        return $infolist
+            ->schema([
+                \Filament\Infolists\Components\Section::make('Detalles del Abono')
+                    ->schema([
+                        \Filament\Infolists\Components\TextEntry::make('user.name')->label('Campista'),
+                        \Filament\Infolists\Components\TextEntry::make('amount')->money('COP')->label('Monto'),
+                        \Filament\Infolists\Components\TextEntry::make('status')
+                            ->badge()
+                            ->color(fn(string $state): string => match ($state) {
+                                'pending' => 'warning',
+                                'approved' => 'success',
+                                'rejected' => 'danger',
+                            })
+                            ->label('Estado'),
+                        \Filament\Infolists\Components\TextEntry::make('created_at')->dateTime()->label('Fecha'),
+                        \Filament\Infolists\Components\ImageEntry::make('proof_path')
+                            ->label('Comprobante')
+                            ->columnSpanFull()
+                            ->openUrlInNewTab(),
+                        \Filament\Infolists\Components\TextEntry::make('notes')->label('Notas')->columnSpanFull(),
+                    ])->columns(2),
+            ]);
+    }
+
     public static function getPages(): array
     {
         return [

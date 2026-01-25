@@ -208,7 +208,10 @@ class PaymentResource extends Resource
                             })
                             ->label('Estado'),
                         TextEntry::make('created_at')->dateTime()->label('Fecha'),
-                        ImageEntry::make('proof_path')->label('Comprobante')->columnSpanFull(),
+                        ImageEntry::make('proof_path')
+                            ->label('Comprobante')
+                            ->columnSpanFull()
+                            ->openUrlInNewTab(),
                         TextEntry::make('notes')->label('Notas')->columnSpanFull(),
                     ])->columns(2),
             ]);
