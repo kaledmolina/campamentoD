@@ -72,7 +72,8 @@ class PendingRegistrationResource extends Resource
                 ImageColumn::make('proof_path')
                     ->label('Comprobante')
                     ->disk('public')
-                    ->height(100),
+                    ->height(100)
+                    ->openUrlInNewTab(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

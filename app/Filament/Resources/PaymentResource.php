@@ -98,7 +98,8 @@ class PaymentResource extends Resource
                     ->label('Estado'),
                 ImageColumn::make('proof_path')
                     ->label('Comprobante')
-                    ->disk('public'),
+                    ->disk('public')
+                    ->openUrlInNewTab(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
