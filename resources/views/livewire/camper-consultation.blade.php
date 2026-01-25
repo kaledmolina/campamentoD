@@ -52,7 +52,7 @@
                 <div class="bg-black/40 rounded-xl p-4 space-y-3">
                     <div class="flex justify-between items-center text-sm">
                         <span class="text-gray-400">Costo Total:</span>
-                        <span class="font-bold text-white text-lg">$300,000</span>
+                        <span class="font-bold text-white text-lg">${{ number_format($camper->target_cost, 0) }}</span>
                     </div>
                     <div class="flex justify-between items-center text-sm">
                         <span class="text-green-500">Total Abonado (Aprobado):</span>

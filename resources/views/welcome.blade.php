@@ -383,8 +383,11 @@
                 <!-- Plan 1 -->
                 <div class="glass-card p-8 rounded-2xl flex-1 text-center transform hover:-translate-y-2 transition duration-300 relative overflow-hidden"
                     data-aos="zoom-in-right">
+                    @use('App\Models\GlobalSetting')
+
                     <h3 class="text-xl font-bold text-gray-300 uppercase tracking-widest mb-4">Estadía Parcial</h3>
-                    <div class="text-4xl font-black text-white mb-2">$100.000</div>
+                    <div class="text-4xl font-black text-white mb-2">
+                        ${{ number_format(GlobalSetting::get('partial_stay_cost', 100000), 0) }}</div>
                     <p class="text-sm text-gray-500 mb-6">Por día</p>
 
                     <ul class="text-left space-y-3 mb-8 text-gray-300 text-sm">
@@ -408,7 +411,8 @@
                         RECOMENDADO</div>
 
                     <h3 class="text-xl font-bold text-gold-500 uppercase tracking-widest mb-4">Investidura Total</h3>
-                    <div class="text-5xl font-black text-white mb-2">$300.000</div>
+                    <div class="text-5xl font-black text-white mb-2">
+                        ${{ number_format(GlobalSetting::get('default_total_cost', 300000), 0) }}</div>
                     <p class="text-sm text-gray-500 mb-6">Todo incluido</p>
 
                     <ul class="text-left space-y-3 mb-8 text-gray-300 text-sm">
