@@ -121,6 +121,11 @@ class UserResource extends Resource
                     }),
                 TextInput::make('congregacion')
                     ->label('Congregación'),
+                TextInput::make('participation_cost')
+                    ->numeric()
+                    ->prefix('$')
+                    ->label('Costo Personalizado')
+                    ->helperText('Dejar vacío para usar costo global ($300.000)'),
                 TextInput::make('age')
                     ->numeric()
                     ->label('Edad'),
@@ -232,7 +237,7 @@ class UserResource extends Resource
                         TextEntry::make('total_paid')->money('COP')->label('Total Abonado'),
                         TextEntry::make('balance')->money('COP')->label('Saldo Pendiente')
                             ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
-                        TextEntry::make('participation_cost')->money('COP')->state(300000)->label('Costo Total'),
+                        TextEntry::make('target_cost')->money('COP')->label('Costo Total'),
                     ]),
             ]);
     }

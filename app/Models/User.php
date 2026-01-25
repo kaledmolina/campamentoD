@@ -29,6 +29,7 @@ class User extends Authenticatable
         'age',
         'is_admin',
         'consent_proof_path',
+        'participation_cost',
     ];
 
     public function payments()
@@ -41,9 +42,19 @@ class User extends Authenticatable
         return $this->payments()->where('status', 'approved')->sum('amount');
     }
 
+    public function getTargetCostAttribute()
+    {
+        // Return personal cost override if set, otherwise global default
+        if ($this->participation_cost !== null) {
+            return $this->participation_cost;
+        }
+
+        return GlobalSetting::get('default_total_cost', 300000);
+    }
+
     public function getBalanceAttribute()
     {
-        return 300000 - $this->total_paid;
+        return $this->target_cost - $this->total_paid;
     }
 
     /**

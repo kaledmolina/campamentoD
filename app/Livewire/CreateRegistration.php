@@ -108,12 +108,14 @@ class CreateRegistration extends Component
         ]);
 
         // Create Initial Payment
+        $registrationFee = GlobalSetting::get('registration_fee', 30000); // Default 30k
+
         Payment::create([
             'user_id' => $user->id,
-            'amount' => 30000, // 10% of 300,000
+            'amount' => $registrationFee,
             'proof_path' => $proofPath,
             'status' => 'pending',
-            'notes' => 'Inscripción inicial (10%)',
+            'notes' => 'Inscripción inicial (Tarifa Global)',
         ]);
 
         $this->registration_success = true;
