@@ -58,7 +58,20 @@ class UserResource extends Resource
                 TextInput::make('phone')
                     ->tel()
                     ->label('Celular'),
-                TextInput::make('zone')
+                Select::make('zone')
+                    ->options([
+                        'Zona Monteria' => 'Zona Monteria',
+                        'Zona Alto San Jorge' => 'Zona Alto San Jorge',
+                        'Zona Planeta Rica' => 'Zona Planeta Rica',
+                        'Zona La Mojana' => 'Zona La Mojana',
+                        'Zona Alto Sinu' => 'Zona Alto Sinu',
+                        'Zona Bajo Sinu' => 'Zona Bajo Sinu',
+                        'Zona Medio Sinu' => 'Zona Medio Sinu',
+                        'Zona San Marcos' => 'Zona San Marcos',
+                        'Zona Sahagun' => 'Zona Sahagun',
+                        'Zona Franja del Mar' => 'Zona Franja del Mar',
+                    ])
+                    ->searchable()
                     ->label('Zona'),
                 TextInput::make('congregacion')
                     ->label('Congregación'),
