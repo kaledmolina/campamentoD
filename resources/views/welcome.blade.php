@@ -216,9 +216,11 @@
             <h2 class="text-3xl md:text-5xl font-cinzel text-white mb-8" data-aos="fade-up">¿Qué es <span
                     class="text-gold-500">INVESTIDOS</span>?</h2>
             <p class="text-lg text-gray-300 leading-relaxed mb-8" data-aos="fade-up" data-aos-delay="200">
-                No es solo un evento, es una <strong>convocatoria divina</strong>. INVESTIDOS 2026 es el tiempo donde la
-                juventud del Distrito 27 se reúne para recibir el manto de poder que transforma generaciones. Prepárate
-                para 3 días de inmersión espiritual, adoración profética y palabra revelada.
+                No es solo un evento, es una <strong>convocatoria divina</strong>. INVESTIDOS 2026 es el tiempo en el
+                que
+                la juventud del Distrito 27 se reúne para recibir el poder y la investidura de Dios, que transforma
+                vidas y
+                generaciones. Prepárate para tres días únicos que marcarán tu vida para siempre. ¡Bienvenido!
             </p>
             <div class="h-1 w-24 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto"
                 data-aos="scale-x"></div>
@@ -301,9 +303,9 @@
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="relative container mx-auto text-center px-4">
             <h2 class="text-3xl md:text-5xl font-black uppercase text-white mb-6 drop-shadow-lg" data-aos="zoom-in">
-                "Y recibiréis poder"
+                "Hasta que seáis investidos de poder"
             </h2>
-            <p class="text-gold-500 text-xl font-cinzel" data-aos="fade-up">Hechos 1:8</p>
+            <p class="text-gold-500 text-xl font-cinzel" data-aos="fade-up">Lucas 24:49</p>
         </div>
     </div>
 
