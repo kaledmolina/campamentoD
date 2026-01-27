@@ -67,7 +67,22 @@ class CreateRegistration extends Component
     #[Validate('required|in:partial,total')]
     public $registration_type = 'total'; // Default to total
 
+    public $congregations = [];
+
     public $registration_step = 0; // 0: Check, 1: Minor Warning, 2: Form
+
+    public function updatedZone($value)
+    {
+        $zonesData = \App\Filament\Resources\UserResource::getZonesData();
+
+        if (array_key_exists($value, $zonesData)) {
+            $this->congregations = $zonesData[$value];
+        } else {
+            $this->congregations = [];
+        }
+
+        $this->congregacion = '';
+    }
     public $is_minor_flow = false;
 
     public $registration_success = false;
