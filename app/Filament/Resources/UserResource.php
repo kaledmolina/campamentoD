@@ -33,6 +33,182 @@ class UserResource extends Resource
 
     protected static ?string $modelLabel = 'Campista';
 
+    public static function getZonesData(): array
+    {
+        return [
+            'Zona Franja del Mar' => [
+                'El Zulia',
+                'Santa Clara',
+                'Marralu',
+                'El Pantano',
+                'Morindo',
+                'Puerto Escondido',
+                'Arizal',
+                'Aguas Vivas (Villa Claret)',
+                'Popayán',
+                'El Ébano',
+                'Canalete',
+                'Sabalito',
+            ],
+            'Zona San Marcos' => [
+                'Central',
+                'Segunda (Las Maravillas)',
+                'Tercera (La Candelaria)',
+                'Buena Vista',
+                'La Florida',
+                'Cuenca',
+                'Aguas Vivas',
+                'Palo Alto',
+            ],
+            'Zona Bajo Sinú' => [
+                'Barbacoas',
+                'Chima',
+                'Momil',
+                'Purísima',
+                'Segunda Lorica',
+                'Central Lorica',
+                'Tercera Lorica',
+                'San Antero',
+                'Porvenir',
+                'San Bernardo',
+                'Salado',
+                'La Doctrina',
+                'Moñitos',
+            ],
+            'Zona Alto Sinú' => [
+                'Central Tierralta',
+                'Segunda Tierralta',
+                'Tercera Tierralta',
+                'Cuarta Tierralta',
+                'Quinta Tierralta',
+                'Sexta Tierralta',
+                'Séptima Tierralta',
+                'Tres Palmas / Costa de Oro',
+                'El Rosario',
+                'Las Delicias',
+                'Mazamorra',
+                'Campo Bello',
+                'Crucito',
+                'Dossa',
+                'Batata',
+                'Santa Marta',
+            ],
+            'Zona Planeta Rica' => [
+                'Central Planeta Rica',
+                'Segunda Planeta Rica',
+                'Tercera Planeta Rica',
+                'Cuarta Planeta Rica',
+                'Puerto Santo',
+                'Campo Bello',
+                'Santiago del Sur',
+                'Neiva',
+                'Buenos Aires (La Manta)',
+                'Buenavista (Córdoba)',
+                'Pueblo Nuevo',
+            ],
+            'Zona Alto San Jorge' => [
+                'Ayapel Central',
+                'Ayapel Segunda',
+                'Ayapel Tercera',
+                'Playa Blanca',
+                'La Apartada',
+                'Central Montelíbano',
+                'Segunda Montelíbano',
+                'Tercera Montelíbano',
+                'Cuarta Montelíbano',
+                'Quinta Montelíbano',
+                'Sexta Montelíbano',
+                'Central Puerto Libertador',
+                'Segunda Puerto Libertador',
+                'Tercera Puerto Libertador',
+                'Tierradentro',
+                'Pica Pica',
+                'Juan José',
+                'San José de Ure',
+                'Torno Rojo',
+                'San Juan',
+            ],
+            'Zona Montería' => [
+                'Central Montería',
+                'Samaria',
+                'Policarpa',
+                'La Julia',
+                'Santa Fe',
+                'Alfonso López',
+                'Galilea',
+                'La Esperanza',
+                'Villa Melisa',
+                'Robinson Pitalua',
+                'El Alivio',
+                'Paraíso',
+                'Villa Jiménez',
+                'Villa Rosario',
+                'Nueva Jerusalén',
+                'Cantaclaro',
+                'Centro',
+                'Villa Cielo',
+                'El Sabanal',
+                'Mocarí',
+                'Garzones',
+                'La Castellana',
+                'Sucre',
+                'Nueva Esperanza',
+                'Juan XXIII',
+                'El Dorado',
+                'El Níspero',
+                'Rancho Grande',
+                'La Vid',
+                'Santa Teresa',
+                'San Anterito',
+                'Las Palomas',
+                'Jaraquiel',
+                'Leticia',
+                'Pueblo Búho',
+                'Carrizal',
+            ],
+            'Zona Medio Sinú' => [
+                'Central Cereté',
+                'Segunda Cereté',
+                'Tercera Cereté',
+                'Pelayo',
+                'Carrillo',
+                'Cotorra',
+                'Retiro de los Indios',
+                'Ciénaga de Oro',
+                'Berastigue',
+                'San Carlos',
+                'Bonga Mella',
+            ],
+            'Zona Sahagún' => [
+                'Central Sahagún',
+                'Segunda Sahagún (Corea)',
+                'Tercera Sahagún',
+                'Cuarta Sahagún (Los Laureles)',
+                'Quinta Sahagún (De las Américas)',
+                'Sexta Sahagún',
+                'Laguneta',
+                'Escobalito',
+            ],
+            'Zona Mojana' => [
+                'Campo Alegre',
+                'Travesía',
+                'Sucre, Sucre',
+                'Bajo Grande',
+                'El Naranjo',
+                'Mina 6',
+                'Montecristo',
+                'Guaranda',
+                'Majagual',
+                'Achí',
+                'Nueva Esperanza',
+                'Villa Gómez',
+                'San Jacinto',
+                'Boca de las Mujeres',
+                'San Matías',
+            ],
+        ];
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -59,35 +235,15 @@ class UserResource extends Resource
                     ->tel()
                     ->label('Celular'),
                 Select::make('zone')
-                    ->options([
-                        'Zona Monteria' => 'Zona Monteria',
-                        'Zona Alto San Jorge' => 'Zona Alto San Jorge',
-                        'Zona Planeta Rica' => 'Zona Planeta Rica',
-                        'Zona La Mojana' => 'Zona La Mojana',
-                        'Zona Alto Sinu' => 'Zona Alto Sinu',
-                        'Zona Bajo Sinu' => 'Zona Bajo Sinu',
-                        'Zona Medio Sinu' => 'Zona Medio Sinu',
-                        'Zona San Marcos' => 'Zona San Marcos',
-                        'Zona Sahagun' => 'Zona Sahagun',
-                        'Zona Franja del Mar' => 'Zona Franja del Mar',
-                        'Otro' => 'Otro',
-                    ])
+                    ->options(function () {
+                        $zones = array_keys(self::getZonesData());
+                        return array_combine($zones, $zones) + ['Otro' => 'Otro'];
+                    })
                     ->searchable()
                     ->live()
+                    ->afterStateUpdated(fn(Forms\Set $set) => $set('congregacion', null))
                     ->afterStateHydrated(function (Select $component, $state) {
-                        $standardZones = [
-                            'Zona Monteria',
-                            'Zona Alto San Jorge',
-                            'Zona Planeta Rica',
-                            'Zona La Mojana',
-                            'Zona Alto Sinu',
-                            'Zona Bajo Sinu',
-                            'Zona Medio Sinu',
-                            'Zona San Marcos',
-                            'Zona Sahagun',
-                            'Zona Franja del Mar',
-                        ];
-
+                        $standardZones = array_keys(self::getZonesData());
                         if ($state && !in_array($state, $standardZones)) {
                             $component->state('Otro');
                         }
@@ -101,26 +257,30 @@ class UserResource extends Resource
                     ->dehydrated(false) // Do not save this field directly
                     ->afterStateHydrated(function (TextInput $component, $record) {
                         if ($record) {
-                            $standardZones = [
-                                'Zona Monteria',
-                                'Zona Alto San Jorge',
-                                'Zona Planeta Rica',
-                                'Zona La Mojana',
-                                'Zona Alto Sinu',
-                                'Zona Bajo Sinu',
-                                'Zona Medio Sinu',
-                                'Zona San Marcos',
-                                'Zona Sahagun',
-                                'Zona Franja del Mar',
-                            ];
-
+                            $standardZones = array_keys(self::getZonesData());
                             if ($record->zone && !in_array($record->zone, $standardZones)) {
                                 $component->state($record->zone);
                             }
                         }
                     }),
+                Select::make('congregacion')
+                    ->label('Congregación')
+                    ->searchable()
+                    ->options(function (Forms\Get $get) {
+                        $zone = $get('zone');
+                        $zonesData = self::getZonesData();
+                        if ($zone && isset($zonesData[$zone])) {
+                            $congregations = $zonesData[$zone];
+                            return array_combine($congregations, $congregations);
+                        }
+                        return [];
+                    })
+                    ->visible(fn(Forms\Get $get) => $get('zone') !== 'Otro' && $get('zone') !== null)
+                    ->required(fn(Forms\Get $get) => $get('zone') !== 'Otro' && $get('zone') !== null),
                 TextInput::make('congregacion')
-                    ->label('Congregación'),
+                    ->label('Congregación')
+                    ->visible(fn(Forms\Get $get) => $get('zone') === 'Otro')
+                    ->required(fn(Forms\Get $get) => $get('zone') === 'Otro'),
                 TextInput::make('participation_cost')
                     ->numeric()
                     ->prefix('$')
@@ -162,18 +322,10 @@ class UserResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('zone')
-                    ->options([
-                        'Zona Monteria' => 'Zona Monteria',
-                        'Zona Alto San Jorge' => 'Zona Alto San Jorge',
-                        'Zona Planeta Rica' => 'Zona Planeta Rica',
-                        'Zona La Mojana' => 'Zona La Mojana',
-                        'Zona Alto Sinu' => 'Zona Alto Sinu',
-                        'Zona Bajo Sinu' => 'Zona Bajo Sinu',
-                        'Zona Medio Sinu' => 'Zona Medio Sinu',
-                        'Zona San Marcos' => 'Zona San Marcos',
-                        'Zona Sahagun' => 'Zona Sahagun',
-                        'Zona Franja del Mar' => 'Zona Franja del Mar',
-                    ])
+                    ->options(function () {
+                        $zones = array_keys(self::getZonesData());
+                        return array_combine($zones, $zones);
+                    })
                     ->label('Zona'),
                 SelectFilter::make('document_type')
                     ->options([
