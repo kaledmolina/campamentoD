@@ -176,15 +176,49 @@
         {{ $slot }}
     </main>
 
-    <footer class="bg-black pt-10 pb-10 border-t border-gray-900 mt-auto">
-        <div class="container mx-auto px-4 text-center">
-            <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco" class="h-32 mx-auto mb-4 opacity-80">
-            <p class="text-gray-500 text-sm mb-4">Distrito 27 - Montería, Córdoba.</p>
-            <p class="text-gray-600 text-xs">
+    <footer class="bg-black pt-20 pb-10 border-t border-gray-900 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
+
+                <div>
+                    <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco"
+                        class="h-20 mx-auto md:mx-0 mb-4 opacity-80">
+                    <p class="text-gray-500 text-sm">Conquistadores Pentecostales – Distrito 27<br>Iglesia Pentecostal
+                        Unida de Colombia</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-white mb-4">MAYOR INFORMACIÓN</h3>
+                    <p class="flex items-center justify-center md:justify-start gap-3 text-gray-300">
+                        <i class="fas fa-phone text-gold-500"></i> 311 330 03 89 – 313 277 74 77 – 312 213 85 97
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-3 text-gray-300">
+                        <i class="fas fa-envelope text-gold-500"></i> conquistadoresdt27@gmail.com
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Síguenos</h3>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-900 mt-12 pt-8 text-center text-gray-600 text-xs">
                 &copy; 2026 Misión Juvenil. Todos los derechos reservados. <br>
                 Desarrollado por <a href="https://wa.me/573004200048" target="_blank"
                     class="text-gold-500 hover:text-white transition">Kaled Molina</a>
-            </p>
+            </div>
         </div>
     </footer>
 
