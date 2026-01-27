@@ -61,6 +61,12 @@ class CreateRegistration extends Component
     #[Validate('nullable|image|max:10240')] // 10MB max
     public $consent_proof;
 
+    #[Validate('nullable|image|max:10240')] // 10MB max
+    public $pastor_letter;
+
+    #[Validate('required|in:partial,total')]
+    public $registration_type = 'total'; // Default to total
+
     public $registration_step = 0; // 0: Check, 1: Minor Warning, 2: Form
     public $is_minor_flow = false;
 
@@ -125,19 +131,29 @@ class CreateRegistration extends Component
             $consentPath = $this->consent_proof->store('consents', 'public');
         }
 
-        if ($this->zone === 'Otro') {
+        if ($this->zone === 'Otro Distrito') {
             $this->validate([
                 'other_zone' => 'required|min:3',
+                'pastor_letter' => 'required|image|max:10240',
+            ], [
+                'pastor_letter.required' => 'La carta de autorización pastoral es obligatoria para campistas de otros distritos.'
             ]);
             $finalZone = $this->other_zone;
         } else {
             $finalZone = $this->zone;
         }
 
-        // Calculate Custom Cost if Discount Applied
-        $participationCost = null;
+        $pastorLetterPath = null;
+        if ($this->pastor_letter) {
+            $pastorLetterPath = $this->pastor_letter->store('pastor_letters', 'public');
+        }
+
+        // Calculate Cost based on Plan
+        $baseCost = $this->registration_type === 'partial' ? 100000 : 300000;
+        $participationCost = $baseCost;
+
+        // Apply Discount if exists
         if ($this->appliedDiscount) {
-            $baseCost = GlobalSetting::get('default_total_cost', 300000);
             $discountAmount = ($baseCost * $this->appliedDiscount) / 100;
             $participationCost = $baseCost - $discountAmount;
 
@@ -165,6 +181,8 @@ class CreateRegistration extends Component
             'phone' => $this->phone,
             'age' => $this->age,
             'consent_proof_path' => $consentPath,
+            'pastor_letter_path' => $pastorLetterPath,
+            'registration_type' => $this->registration_type,
             'participation_cost' => $participationCost,
         ]);
 
@@ -181,7 +199,7 @@ class CreateRegistration extends Component
         ]);
 
         $this->registration_success = true;
-        $this->reset(['name', 'last_name', 'email', 'document_type', 'document_number', 'document_issue_date', 'gender', 'birth_date', 'eps', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof']);
+        $this->reset(['name', 'last_name', 'email', 'document_type', 'document_number', 'document_issue_date', 'gender', 'birth_date', 'eps', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof', 'pastor_letter', 'registration_type']);
     }
 
     public function render()

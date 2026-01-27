@@ -139,6 +139,61 @@
                         class="mb-4 text-xs text-gray-500 hover:text-gold-500 transition flex items-center gap-1">
                         <i class="fas fa-arrow-left"></i> Volver a selección de edad
                     </button>
+
+                    <!-- SELECCIÓN DE PLAN -->
+                    <div class="bg-gray-800/80 p-6 rounded-xl border border-gold-500/20 mb-8 backdrop-blur-sm shadow-lg">
+                        <h3 class="text-xl font-cinzel text-gold-500 mb-6 flex items-center gap-2 border-b border-gray-700 pb-3">
+                            <i class="fas fa-ticket-alt"></i> Elige tu Plan de Inscripción
+                        </h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <!-- Plan Total -->
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" wire:model.live="registration_type" value="total" class="peer sr-only">
+                                <div class="p-5 rounded-xl border-2 transition-all duration-300 h-full flex flex-col
+                                    peer-checked:border-gold-500 peer-checked:bg-gold-900/10 peer-checked:shadow-[0_0_20px_rgba(234,179,8,0.1)]
+                                    border-gray-700 hover:border-gray-500 bg-gray-900/50">
+                                    
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div class="text-gold-500 font-bold text-lg uppercase tracking-wide">Investidura Total</div>
+                                        <i class="fas fa-check-circle text-gold-500 text-xl opacity-0 peer-checked:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    
+                                    <div class="text-3xl font-bold text-white mb-4">$300.000 <span class="text-xs text-gray-400 font-normal">COP</span></div>
+                                    
+                                    <ul class="space-y-2 text-sm text-gray-400 mt-auto">
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> Acceso completo (3 días)</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> Alimentación completa</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> Hospedaje incluido</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> Kit de Bienvenida Premium</li>
+                                    </ul>
+                                </div>
+                            </label>
+
+                            <!-- Plan Parcial -->
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" wire:model.live="registration_type" value="partial" class="peer sr-only">
+                                <div class="p-5 rounded-xl border-2 transition-all duration-300 h-full flex flex-col
+                                    peer-checked:border-orange-500 peer-checked:bg-orange-900/10 peer-checked:shadow-[0_0_20px_rgba(249,115,22,0.1)]
+                                    border-gray-700 hover:border-gray-500 bg-gray-900/50">
+                                    
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div class="text-gray-300 peer-checked:text-orange-500 font-bold text-lg uppercase tracking-wide transition-colors">Estadía Parcial</div>
+                                        <i class="fas fa-check-circle text-orange-500 text-xl opacity-0 peer-checked:opacity-100 transition-opacity"></i>
+                                    </div>
+                                    
+                                    <div class="text-3xl font-bold text-white mb-4">$100.000 <span class="text-xs text-gray-400 font-normal">COP</span></div>
+                                    
+                                    <ul class="space-y-2 text-sm text-gray-400 mt-auto">
+                                        <li class="flex items-center gap-2"><i class="fas fa-clock text-orange-500 text-xs"></i> Acceso limitado (1 día)</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-utensils text-gray-500 text-xs"></i> Alimentación parcial</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-times text-red-500 text-xs"></i> Sin Hospedaje</li>
+                                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> Kit Básico</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
                     <!-- Sección Personal -->
                     <div class="border-b border-gray-700 pb-6 mb-6">
                         <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
@@ -283,20 +338,59 @@
                                     <option value="Zona San Marcos">Zona San Marcos</option>
                                     <option value="Zona Sahagun">Zona Sahagun</option>
                                     <option value="Zona Franja del Mar">Zona Franja del Mar</option>
-                                    <option value="Otro">Otro</option>
+                                    <option value="Otro Distrito">Otro Distrito</option>
                                 </select>
                                 @error('zone') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
 
-                                @if($zone === 'Otro')
-                                    <div class="mt-3 animate-pulse-slow">
-                                        <label
-                                            class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Cuál?</label>
-                                        <input wire:model="other_zone" type="text"
-                                            class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 border-gold-500"
-                                            placeholder="Escribe tu zona">
-                                        @error('other_zone') <span class="text-red-500 text-xs mt-1 block"><i
-                                        class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                                @if($zone === 'Otro Distrito')
+                                    <div class="mt-4 p-4 bg-gray-800 rounded-lg border border-gold-500/30">
+                                        
+                                        <div class="mb-4">
+                                            <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Cuál Zona?</label>
+                                            <input wire:model="other_zone" type="text"
+                                                class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 border-gold-500"
+                                                placeholder="Escribe tu zona">
+                                            @error('other_zone') <span class="text-red-500 text-xs mt-1 block"><i
+                                            class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                                        </div>
+
+                                        <h4 class="text-gold-500 font-bold mb-2 text-sm uppercase tracking-wide"><i class="fas fa-file-signature mr-2"></i>Autorización Pastoral Requerida</h4>
+                                        <p class="text-gray-400 text-xs mb-4">
+                                            Al pertenecer a otro distrito, es necesario que descargues la carta de aval, la hagas firmar por tu pastor y la subas aquí.
+                                        </p>
+                                        
+                                        <div class="mb-4">
+                                            <a href="/pdf/CartaAval.pdf" download class="bg-gold-500/10 hover:bg-gold-500/20 text-gold-500 border border-gold-500 font-bold py-2 px-4 rounded-lg transition-all inline-flex items-center text-sm w-full justification-center">
+                                                <i class="fas fa-download mr-2"></i> Descargar Carta Modelo
+                                            </a>
+                                        </div>
+
+                                        <div>
+                                            <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Adjuntar Carta Firmada *</label>
+                                            <div class="relative group cursor-pointer">
+                                                <input type="file" wire:model="pastor_letter" id="pastor_letter" class="hidden" accept="image/*">
+                                                <label for="pastor_letter"
+                                                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-600 rounded-lg hover:border-gold-500 hover:bg-gray-700 transition-all cursor-pointer">
+                                                    
+                                                    @if ($pastor_letter)
+                                                        <div class="relative w-full h-full p-2">
+                                                            <img src="{{ $pastor_letter->temporaryUrl() }}" class="w-full h-full object-contain rounded-lg">
+                                                            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
+                                                                <p class="text-white font-bold text-xs"><i class="fas fa-sync-alt mr-2"></i>Cambiar</p>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                                            <i class="fas fa-file-upload text-2xl text-gray-400 mb-2 group-hover:text-gold-500 transition-colors"></i>
+                                                            <p class="mb-1 text-xs text-gray-400"><span class="font-bold">Clic para subir</span></p>
+                                                            <p class="text-[10px] text-gray-500">IMG, PNG, JPG (MAX. 10MB)</p>
+                                                        </div>
+                                                    @endif
+                                                </label>
+                                            </div>
+                                            @error('pastor_letter') <span class="text-red-500 text-xs mt-1 block"><i class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                                        </div>
                                     </div>
                                 @endif
                             </div>

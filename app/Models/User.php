@@ -32,6 +32,8 @@ class User extends Authenticatable
         'gender',
         'birth_date',
         'eps',
+        'pastor_letter_path',
+        'registration_type',
         'is_admin',
         'consent_proof_path',
         'participation_cost',

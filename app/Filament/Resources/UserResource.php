@@ -232,6 +232,13 @@ class UserResource extends Resource
                         'Otro' => 'Otro',
                     ])
                     ->label('Tipo de Documento'),
+                Forms\Components\Select::make('registration_type')
+                    ->label('Tipo de Inscripción')
+                    ->options([
+                        'partial' => 'Estadía Parcial ($100.000)',
+                        'total' => 'Investidura Total ($300.000)',
+                    ])
+                    ->required(),
                 TextInput::make('document_number')
                     ->unique(ignoreRecord: true)
                     ->label('Número de Documento'),
@@ -257,7 +264,7 @@ class UserResource extends Resource
                 Select::make('zone')
                     ->options(function () {
                         $zones = array_keys(self::getZonesData());
-                        return array_combine($zones, $zones) + ['Otro' => 'Otro'];
+                        return array_combine($zones, $zones) + ['Otro Distrito' => 'Otro Distrito'];
                     })
                     ->searchable()
                     ->live()
@@ -265,15 +272,15 @@ class UserResource extends Resource
                     ->afterStateHydrated(function (Select $component, $state) {
                         $standardZones = array_keys(self::getZonesData());
                         if ($state && !in_array($state, $standardZones)) {
-                            $component->state('Otro');
+                            $component->state('Otro Distrito');
                         }
                     })
-                    ->mutateDehydratedStateUsing(fn($state, Forms\Get $get) => $state === 'Otro' ? $get('other_zone') : $state)
+                    ->mutateDehydratedStateUsing(fn($state, Forms\Get $get) => $state === 'Otro Distrito' ? $get('other_zone') : $state)
                     ->label('Zona'),
                 TextInput::make('other_zone')
                     ->label('¿Cuál Zona?')
-                    ->visible(fn(Forms\Get $get) => $get('zone') === 'Otro')
-                    ->required(fn(Forms\Get $get) => $get('zone') === 'Otro')
+                    ->visible(fn(Forms\Get $get) => $get('zone') === 'Otro Distrito')
+                    ->required(fn(Forms\Get $get) => $get('zone') === 'Otro Distrito')
                     ->dehydrated(false) // Do not save this field directly
                     ->afterStateHydrated(function (TextInput $component, $record) {
                         if ($record) {
@@ -283,6 +290,14 @@ class UserResource extends Resource
                             }
                         }
                     }),
+                Forms\Components\FileUpload::make('pastor_letter_path')
+                    ->label('Carta de Aval Pastoral')
+                    ->directory('pastor_letters')
+                    ->visibility('public')
+                    ->image()
+                    ->openable()
+                    ->downloadable()
+                    ->visible(fn(Forms\Get $get) => $get('zone') === 'Otro Distrito'),
                 Select::make('congregacion')
                     ->label('Congregación')
                     ->searchable()
@@ -295,12 +310,12 @@ class UserResource extends Resource
                         }
                         return [];
                     })
-                    ->visible(fn(Forms\Get $get) => $get('zone') !== 'Otro' && $get('zone') !== null)
-                    ->required(fn(Forms\Get $get) => $get('zone') !== 'Otro' && $get('zone') !== null),
+                    ->visible(fn(Forms\Get $get) => $get('zone') !== 'Otro Distrito' && $get('zone') !== null)
+                    ->required(fn(Forms\Get $get) => $get('zone') !== 'Otro Distrito' && $get('zone') !== null),
                 TextInput::make('congregacion')
                     ->label('Congregación')
-                    ->visible(fn(Forms\Get $get) => $get('zone') === 'Otro')
-                    ->required(fn(Forms\Get $get) => $get('zone') === 'Otro'),
+                    ->visible(fn(Forms\Get $get) => $get('zone') === 'Otro Distrito')
+                    ->required(fn(Forms\Get $get) => $get('zone') === 'Otro Distrito'),
                 TextInput::make('participation_cost')
                     ->numeric()
                     ->prefix('$')
@@ -326,6 +341,18 @@ class UserResource extends Resource
                 TextColumn::make('name')->searchable()->label('Nombres'),
                 TextColumn::make('last_name')->searchable()->label('Apellidos'),
                 TextColumn::make('document_number')->searchable()->label('Documento'),
+                TextColumn::make('registration_type')
+                    ->label('Plan')
+                    ->badge()
+                    ->colors([
+                        'warning' => 'partial',
+                        'success' => 'total',
+                    ])
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                        'partial' => 'Parcial',
+                        'total' => 'Total',
+                        default => $state,
+                    }),
                 TextColumn::make('gender')->label('Sexo')->sortable(),
                 TextColumn::make('eps')->label('EPS')->searchable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('age')
