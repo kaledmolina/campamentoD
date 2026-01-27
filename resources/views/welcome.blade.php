@@ -545,15 +545,18 @@
                 <div data-aos="fade-up" data-aos-delay="200">
                     <h3 class="text-xl font-bold text-white mb-4">Síguenos</h3>
                     <div class="flex justify-center md:justify-start gap-4">
-                        <a href="#"
+                        <a href="https://www.facebook.com/share/17yXzxdwEL/" target="_blank"
                             class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/conquistadoresd27?utm_source=qr&igsh=MWd5MmZzaXRibDZ0Ng==" target="_blank"
                             class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="#"
+                        <a href="https://youtube.com/@conquistadorespentecostawy8tm?si=8iXByAX8QITyIzEm" target="_blank"
                             class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition"><i
                                 class="fab fa-youtube"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb29KYMDDmFP0H0gWs2x" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition"><i
+                                class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
