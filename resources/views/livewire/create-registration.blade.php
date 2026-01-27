@@ -152,8 +152,8 @@
                             <label class="relative cursor-pointer group">
                                 <input type="radio" wire:model.live="registration_type" value="total" class="peer sr-only">
                                 <div class="p-5 rounded-xl border-2 transition-all duration-300 h-full flex flex-col
-                                                    peer-checked:border-gold-500 peer-checked:bg-gold-900/10 peer-checked:shadow-[0_0_20px_rgba(234,179,8,0.1)]
-                                                    border-gray-700 hover:border-gray-500 bg-gray-900/50">
+                                                                    peer-checked:border-gold-500 peer-checked:bg-gold-900/10 peer-checked:shadow-[0_0_20px_rgba(234,179,8,0.1)]
+                                                                    border-gray-700 hover:border-gray-500 bg-gray-900/50">
 
                                     <div class="flex justify-between items-start mb-2">
                                         <div class="text-gold-500 font-bold text-lg uppercase tracking-wide">Investidura Total
@@ -182,8 +182,8 @@
                             <label class="relative cursor-pointer group">
                                 <input type="radio" wire:model.live="registration_type" value="partial" class="peer sr-only">
                                 <div class="p-5 rounded-xl border-2 transition-all duration-300 h-full flex flex-col
-                                                    peer-checked:border-orange-500 peer-checked:bg-orange-900/10 peer-checked:shadow-[0_0_20px_rgba(249,115,22,0.1)]
-                                                    border-gray-700 hover:border-gray-500 bg-gray-900/50">
+                                                                    peer-checked:border-orange-500 peer-checked:bg-orange-900/10 peer-checked:shadow-[0_0_20px_rgba(249,115,22,0.1)]
+                                                                    border-gray-700 hover:border-gray-500 bg-gray-900/50">
 
                                     <div class="flex justify-between items-start mb-2">
                                         <div
@@ -352,13 +352,14 @@
                                     @foreach(array_keys(\App\Filament\Resources\UserResource::getZonesData()) as $zoneName)
                                         <option value="{{ $zoneName }}">{{ $zoneName }}</option>
                                     @endforeach
-                                    <option value="Otro Distrito">Otro Distrito</option>
+                                    {{-- <option value="Otro Distrito">Otro Distrito</option> --}}
                                 </select>
                                 @error('zone') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
 
                                 @if($zone === 'Otro Distrito')
-                                    <div class="mt-4 p-4 bg-gray-800 rounded-lg border border-gold-500/30">
+                                    <!-- Lógica de Otro Distrito Oculta Temporalmente -->
+                                    <div class="hidden mt-4 p-4 bg-gray-800 rounded-lg border border-gold-500/30">
 
                                         <div class="mb-4">
                                             <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Cuál
@@ -482,7 +483,8 @@
                         </div>
                     @endif
 
-                    <!-- Sección Descuentos -->
+                    <!-- Sección Descuentos (Oculta Temporalmente) -->
+                    {{--
                     <div class="border-b border-gray-700 pb-6 mb-6">
                         <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
                             <i class="fas fa-tag text-gold-500"></i> Código de Promoción
@@ -501,20 +503,21 @@
                             </div>
 
                             @error('discountCode')
-                                <span class="text-red-500 text-xs mt-2 block"><i class="fas fa-times-circle"></i>
-                                    {{ $message }}</span>
+                            <span class="text-red-500 text-xs mt-2 block"><i class="fas fa-times-circle"></i>
+                                {{ $message }}</span>
                             @enderror
 
                             @if($discountMessage)
-                                <div class="mt-2 text-green-400 text-sm font-bold flex items-center gap-2 animate-fade-in">
-                                    <i class="fas fa-check-circle"></i> {{ $discountMessage }}
-                                </div>
-                                <div class="mt-1 text-gray-300 text-xs">
-                                    El descuento se aplicará al costo total del campamento.
-                                </div>
+                            <div class="mt-2 text-green-400 text-sm font-bold flex items-center gap-2 animate-fade-in">
+                                <i class="fas fa-check-circle"></i> {{ $discountMessage }}
+                            </div>
+                            <div class="mt-1 text-gray-300 text-xs">
+                                El descuento se aplicará al costo total del campamento.
+                            </div>
                             @endif
                         </div>
                     </div>
+                    --}}
 
                     <!-- Sección Pago -->
                     <div>
