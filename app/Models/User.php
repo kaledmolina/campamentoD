@@ -19,14 +19,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',
         'email',
         'password',
         'document_type',
         'document_number',
+        'document_issue_date',
         'zone',
         'congregacion',
         'phone',
         'age',
+        'gender',
+        'birth_date',
+        'eps',
         'is_admin',
         'consent_proof_path',
         'participation_cost',
@@ -77,6 +82,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'document_issue_date' => 'date',
+            'birth_date' => 'date',
         ];
     }
 }

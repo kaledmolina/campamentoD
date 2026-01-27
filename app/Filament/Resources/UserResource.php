@@ -216,7 +216,11 @@ class UserResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->label('Nombre Completo'),
+                    ->label('Nombres'),
+                TextInput::make('last_name')
+                    ->required()
+                    ->maxLength(255)
+                    ->label('Apellidos'),
                 TextInput::make('email')
                     ->email()
                     ->maxLength(255),
@@ -231,6 +235,22 @@ class UserResource extends Resource
                 TextInput::make('document_number')
                     ->unique(ignoreRecord: true)
                     ->label('Número de Documento'),
+                Forms\Components\DatePicker::make('document_issue_date')
+                    ->label('Fecha de Expedición')
+                    ->required(),
+                Select::make('gender')
+                    ->options([
+                        'M' => 'Masculino',
+                        'F' => 'Femenino',
+                    ])
+                    ->label('Sexo')
+                    ->required(),
+                Forms\Components\DatePicker::make('birth_date')
+                    ->label('Fecha de Nacimiento')
+                    ->required(),
+                TextInput::make('eps')
+                    ->label('EPS')
+                    ->required(),
                 TextInput::make('phone')
                     ->tel()
                     ->label('Celular'),
@@ -303,8 +323,11 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->searchable()->label('Nombre'),
+                TextColumn::make('name')->searchable()->label('Nombres'),
+                TextColumn::make('last_name')->searchable()->label('Apellidos'),
                 TextColumn::make('document_number')->searchable()->label('Documento'),
+                TextColumn::make('gender')->label('Sexo')->sortable(),
+                TextColumn::make('eps')->label('EPS')->searchable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('age')
                     ->label('Edad')
                     ->badge()

@@ -146,13 +146,23 @@
                         </h3>
 
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div class="md:col-span-2">
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Nombres y
-                                    Apellidos *</label>
+                            <div class="md:col-span-1">
+                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Nombres
+                                    *</label>
                                 <input wire:model="name" type="text"
                                     class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
-                                    placeholder="Ingresa tu nombre completo">
+                                    placeholder="Tus nombres">
                                 @error('name') <span class="text-red-500 text-xs mt-1 block"><i
+                                class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                            </div>
+
+                            <div class="md:col-span-1">
+                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Apellidos
+                                    *</label>
+                                <input wire:model="last_name" type="text"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                    placeholder="Tus apellidos">
+                                @error('last_name') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
@@ -169,13 +179,16 @@
                             <div>
                                 <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Tipo de
                                     documento *</label>
-                                <select wire:model="document_type"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all">
-                                    <option value="">Seleccione...</option>
+                                @if(!$is_minor_flow)
                                     <option value="CC">Cédula de Ciudadanía</option>
+                                @endif
+
+                                @if($is_minor_flow)
                                     <option value="TI">Tarjeta de Identidad</option>
-                                    <option value="Pasaporte">Pasaporte</option>
-                                    <option value="Otro">Otro</option>
+                                @endif
+
+                                <option value="Pasaporte">Pasaporte</option>
+                                <option value="Otro">Otro</option>
                                 </select>
                                 @error('document_type') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
@@ -192,11 +205,48 @@
                             </div>
 
                             <div>
+                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Fecha de Expedición (Documento) *</label>
+                                <input wire:model="document_issue_date" type="date"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 block text-gray-400">
+                                @error('document_issue_date') <span class="text-red-500 text-xs mt-1 block"><i
+                                class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                            </div>
+
+                            <div>
+                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Sexo *</label>
+                                <select wire:model="gender"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all">
+                                    <option value="">Seleccione...</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select>
+                                @error('gender') <span class="text-red-500 text-xs mt-1 block"><i
+                                class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                            </div>
+
+                            <div>
+                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Fecha de Nacimiento *</label>
+                                <input wire:model="birth_date" type="date"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 text-gray-400">
+                                @error('birth_date') <span class="text-red-500 text-xs mt-1 block"><i
+                                class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                            </div>
+
+                            <div>
                                 <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Edad *</label>
                                 <input wire:model="age" type="number"
                                     x-on:input="if($el.value == 666) { document.getElementById('demon-game-modal').classList.remove('hidden'); initDemonGame(); }"
                                     class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600">
                                 @error('age') <span class="text-red-500 text-xs mt-1 block"><i
+                                class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                            </div>
+
+                            <div>
+                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">EPS *</label>
+                                <input wire:model="eps" type="text"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                    placeholder="Nombre EPS">
+                                @error('eps') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
@@ -300,9 +350,10 @@
                             <i class="fas fa-tag text-gold-500"></i> Código de Promoción
                         </h3>
                         <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                            <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Tienes un código?</label>
+                            <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Tienes un
+                                código?</label>
                             <div class="flex gap-2">
-                                <input wire:model="discountCode" type="text" 
+                                <input wire:model="discountCode" type="text"
                                     class="w-full py-2 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 bg-black/20 text-white uppercase"
                                     placeholder="INGRESA TU CÓDIGO">
                                 <button type="button" wire:click="applyDiscount"
@@ -310,9 +361,10 @@
                                     Aplicar
                                 </button>
                             </div>
-                            
-                            @error('discountCode') 
-                                <span class="text-red-500 text-xs mt-2 block"><i class="fas fa-times-circle"></i> {{ $message }}</span> 
+
+                            @error('discountCode')
+                                <span class="text-red-500 text-xs mt-2 block"><i class="fas fa-times-circle"></i>
+                                    {{ $message }}</span>
                             @enderror
 
                             @if($discountMessage)

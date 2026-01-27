@@ -17,6 +17,9 @@ class CreateRegistration extends Component
     #[Validate('required|min:3')]
     public $name = '';
 
+    #[Validate('required|min:3')]
+    public $last_name = '';
+
     #[Validate('required|email|unique:users,email')]
     public $email = '';
 
@@ -36,6 +39,18 @@ class CreateRegistration extends Component
 
     #[Validate('required')]
     public $phone = '';
+
+    #[Validate('required|date')]
+    public $document_issue_date = '';
+
+    #[Validate('required|in:M,F')]
+    public $gender = '';
+
+    #[Validate('required|date')]
+    public $birth_date = '';
+
+    #[Validate('required|min:3')]
+    public $eps = '';
 
     #[Validate('required|numeric|min:5|max:100')]
     public $age = '';
@@ -136,10 +151,15 @@ class CreateRegistration extends Component
         // Create Camper User
         $user = User::create([
             'name' => $this->name,
+            'last_name' => $this->last_name,
             'email' => $this->email,
             'password' => null, // No password for campers
             'document_type' => $this->document_type,
             'document_number' => $this->document_number,
+            'document_issue_date' => $this->document_issue_date,
+            'gender' => $this->gender,
+            'birth_date' => $this->birth_date,
+            'eps' => $this->eps,
             'zone' => $finalZone,
             'congregacion' => $this->congregacion,
             'phone' => $this->phone,
@@ -161,7 +181,7 @@ class CreateRegistration extends Component
         ]);
 
         $this->registration_success = true;
-        $this->reset(['name', 'email', 'document_type', 'document_number', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof']);
+        $this->reset(['name', 'last_name', 'email', 'document_type', 'document_number', 'document_issue_date', 'gender', 'birth_date', 'eps', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof']);
     }
 
     public function render()
