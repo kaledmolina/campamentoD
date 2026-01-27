@@ -227,6 +227,18 @@
         </div>
     </section>
 
+    <!-- BANNER PARALLAX -->
+    <div class="relative py-32 bg-fixed bg-center bg-cover"
+        style="background-image: url('{{ asset('images/investidobanner.png') }}');">
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="relative container mx-auto text-center px-4">
+            <h2 class="text-3xl md:text-5xl font-black uppercase text-white mb-6 drop-shadow-lg" data-aos="zoom-in">
+                "Pero quedaos vosotros en la ciudad de Jerusalén, hasta que seáis investidos de poder desde lo alto..."
+            </h2>
+            <p class="text-gold-500 text-xl font-cinzel" data-aos="fade-up">Lucas 24:49</p>
+        </div>
+    </div>
+
     <!-- INVITADOS (GRID MEJORADO) -->
     <section id="invitados" class="py-20 bg-[#0a0a0a]">
         <div class="container mx-auto px-4">
@@ -297,17 +309,7 @@
         </div>
     </section>
 
-    <!-- BANNER PARALLAX -->
-    <div class="relative py-32 bg-fixed bg-center bg-cover"
-        style="background-image: url('{{ asset('images/investidobanner.png') }}');">
-        <div class="absolute inset-0 bg-black/70"></div>
-        <div class="relative container mx-auto text-center px-4">
-            <h2 class="text-3xl md:text-5xl font-black uppercase text-white mb-6 drop-shadow-lg" data-aos="zoom-in">
-                "Hasta que seáis investidos de poder"
-            </h2>
-            <p class="text-gold-500 text-xl font-cinzel" data-aos="fade-up">Lucas 24:49</p>
-        </div>
-    </div>
+
 
     <!-- CRONOGRAMA (TIMELINE) -->
     <section id="cronograma" class="py-20 bg-[#050505] relative overflow-hidden">
