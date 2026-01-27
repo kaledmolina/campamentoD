@@ -248,24 +248,23 @@
                 <span
                     class="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-b from-white/10 to-transparent blur-sm">Expositores</span>
                 <p class="text-lg md:text-xl text-gold-500 font-cinzel font-normal mt-[-10px] relative z-10 capitalize">
-                    Voceros de Dios</p>
+                    De la Palabra de Dios</p>
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card Component Function -->
                 <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
                     data-aos="flip-left">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
-                        <!-- Aquí podrías poner fotos reales si las tuvieras recortadas, uso íconos por ahora -->
                         <i
-                            class="fas fa-user-tie text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
+                            class="fas fa-users text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
                     </div>
                     <div
                         class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Conferencista</p>
-                        <h3 class="text-2xl font-bold text-white mb-1">Pr. Jhon Fabio García</h3>
+                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Invitados Especiales
+                        </p>
+                        <h3 class="text-2xl font-bold text-white mb-1">Conquistadores Distrito 27</h3>
                         <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
                     </div>
                 </div>
@@ -274,30 +273,14 @@
                     data-aos="flip-left" data-aos-delay="100">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
                         <i
-                            class="fas fa-user-tie text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
+                            class="fas fa-music text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
                     </div>
                     <div
                         class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Conferencista</p>
-                        <h3 class="text-2xl font-bold text-white mb-1">Pr. Michael Álvarez</h3>
-                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
-                    </div>
-                </div>
-
-                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
-                    data-aos="flip-left" data-aos-delay="200">
-                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
-                        <i
-                            class="fas fa-music text-6xl text-gray-700 group-hover:text-orange-500 transition duration-500 transform group-hover:scale-110"></i>
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Adoración</p>
-                        <h3 class="text-2xl font-bold text-white mb-1">Juan Pablo Murillo</h3>
+                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Alabanza</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">Coro Distrito 27</h3>
                         <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
                     </div>
                 </div>
@@ -323,53 +306,91 @@
             <div
                 class="relative border-l-2 border-gold-500/30 ml-4 md:ml-1/2 md:transform md:-translate-x-1/2 space-y-12">
 
-                <!-- Item 1 -->
+                <!-- Item 1: Sábado -->
                 <div class="relative flex items-center md:justify-between md:flex-row-reverse group">
                     <div
                         class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
                     </div>
-
                     <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
                         data-aos="fade-left">
-                        <span class="text-orange-500 font-bold text-sm">Sábado 16 Mayo - 2:00 PM</span>
-                        <h3 class="text-xl font-bold text-white mt-1">Apertura y Registro</h3>
-                        <p class="text-sm text-gray-400 mt-2">Recepción de delegaciones, asignación de cabañas y primer
-                            servicio de avivamiento.</p>
+                        <span class="text-orange-500 font-bold text-sm">Sábado 16 Mayo</span>
+                        <h3 class="text-xl font-bold text-white mt-1">Registro y Apertura</h3>
                     </div>
                     <div class="hidden md:block md:w-[45%]"></div>
                 </div>
 
-                <!-- Item 2 -->
+                <!-- Item 2: Domingo Mañana -->
                 <div class="relative flex items-center md:justify-between group">
                     <div
                         class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
                     </div>
-
                     <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
                         data-aos="fade-right">
                         <span class="text-orange-500 font-bold text-sm">Domingo 17 Mayo - 8:00 AM</span>
-                        <h3 class="text-xl font-bold text-white mt-1">Mañana de Gloria</h3>
-                        <p class="text-sm text-gray-400 mt-2">Devocional general, talleres por edades y plenaria
-                            profética.</p>
+                        <h3 class="text-xl font-bold text-white mt-1">MAÑANA DE GLORIA</h3>
+                        <p class="text-sm text-gray-400 mt-2">Devocional General, Culto de avivamiento y taller de
+                            formación.</p>
                     </div>
                     <div class="hidden md:block md:w-[45%]"></div>
                 </div>
 
-                <!-- Item 3 -->
+                <!-- Item 3: Domingo Tarde -->
                 <div class="relative flex items-center md:justify-between md:flex-row-reverse group">
                     <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-orange-600 border-4 border-black z-10 animate-ping">
+                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
+                    </div>
+                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
+                        data-aos="fade-left">
+                        <span class="text-orange-500 font-bold text-sm">Domingo 17 Mayo - 2:00 PM</span>
+                        <h3 class="text-xl font-bold text-white mt-1">TARDE DE ACTIVIDADES</h3>
+                        <p class="text-sm text-gray-400 mt-2">Esparcimiento, desafíos dirigidos y campeonatos zonales.
+                        </p>
+                    </div>
+                    <div class="hidden md:block md:w-[45%]"></div>
+                </div>
+
+                <!-- Item 4: Domingo Noche -->
+                <div class="relative flex items-center md:justify-between group">
+                    <div
+                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-orange-600 border-4 border-black z-10 animate-pulse">
+                    </div>
+                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
+                        data-aos="fade-right">
+                        <span class="text-orange-500 font-bold text-sm">Domingo 17 Mayo - 7:00 PM</span>
+                        <h3 class="text-xl font-bold text-white mt-1">NOCHE DE INVESTIDURA</h3>
+                        <p class="text-sm text-gray-400 mt-2">Adoración, culto de restauración y renovación espiritual.
+                        </p>
+                    </div>
+                    <div class="hidden md:block md:w-[45%]"></div>
+                </div>
+
+                <!-- Item 5: Lunes Mañana -->
+                <div class="relative flex items-center md:justify-between md:flex-row-reverse group">
+                    <div
+                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 animate-ping">
                     </div>
                     <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-orange-600 border-4 border-black z-10">
+                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
                     </div>
-
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition border-orange-500/30 text-center"
+                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
                         data-aos="fade-left">
-                        <span class="text-orange-500 font-bold text-sm">Lunes 18 Mayo - 10:00 AM</span>
-                        <h3 class="text-xl font-bold text-white mt-1">Gran Cierre: La Investidura</h3>
-                        <p class="text-sm text-gray-400 mt-2">Servicio final de impartición, toma de votos y despedida.
-                        </p>
+                        <span class="text-orange-500 font-bold text-sm">Lunes 18 Mayo - 8:00 AM</span>
+                        <h3 class="text-xl font-bold text-white mt-1">GRAN CIERRE: INVESTIDOS</h3>
+                        <p class="text-sm text-gray-400 mt-2">Adoración, Servicio de clausura y Santa Cena.</p>
+                    </div>
+                    <div class="hidden md:block md:w-[45%]"></div>
+                </div>
+
+                <!-- Item 6: Lunes Tarde -->
+                <div class="relative flex items-center md:justify-between group">
+                    <div
+                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
+                    </div>
+                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
+                        data-aos="fade-right">
+                        <span class="text-orange-500 font-bold text-sm">Lunes 18 Mayo - 2:00 PM</span>
+                        <h3 class="text-xl font-bold text-white mt-1">TARDE RECREATIVA</h3>
+                        <p class="text-sm text-gray-400 mt-2">Esparcimiento, finalización de actividades y retorno.</p>
                     </div>
                     <div class="hidden md:block md:w-[45%]"></div>
                 </div>
@@ -392,14 +413,17 @@
                     <h3 class="text-xl font-bold text-gray-300 uppercase tracking-widest mb-4">Estadía Parcial</h3>
                     <div class="text-4xl font-black text-white mb-2">
                         ${{ number_format(GlobalSetting::get('partial_stay_cost', 100000), 0) }}</div>
-                    <p class="text-sm text-gray-500 mb-6">Por día</p>
+                    <p class="text-sm text-gray-500 mb-6">(Domingo, 17 mayo)</p>
 
                     <ul class="text-left space-y-3 mb-8 text-gray-300 text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Entrada a
                             conferencias</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Material de
                             apoyo</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-times text-red-500"></i> Alimentación</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Alimentación
+                            (Almuerzo y cena)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Tarde de
+                            esparcimiento</li>
                     </ul>
 
                     <a href="{{ route('registration') }}"
@@ -427,6 +451,9 @@
                         <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Alimentación
                             Completa</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Kit de Bienvenida
+                        </li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Hidratación y
+                            Cafetería
                         </li>
                     </ul>
 
