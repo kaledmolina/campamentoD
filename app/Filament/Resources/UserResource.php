@@ -206,6 +206,7 @@ class UserResource extends Resource
                 'Boca de las Mujeres',
                 'San Matías',
             ],
+
         ];
     }
 

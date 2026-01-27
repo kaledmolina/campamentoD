@@ -152,8 +152,8 @@
                             <label class="relative cursor-pointer group">
                                 <input type="radio" wire:model.live="registration_type" value="total" class="peer sr-only">
                                 <div class="p-5 rounded-xl border-2 transition-all duration-300 h-full flex flex-col
-                                            peer-checked:border-gold-500 peer-checked:bg-gold-900/10 peer-checked:shadow-[0_0_20px_rgba(234,179,8,0.1)]
-                                            border-gray-700 hover:border-gray-500 bg-gray-900/50">
+                                                    peer-checked:border-gold-500 peer-checked:bg-gold-900/10 peer-checked:shadow-[0_0_20px_rgba(234,179,8,0.1)]
+                                                    border-gray-700 hover:border-gray-500 bg-gray-900/50">
 
                                     <div class="flex justify-between items-start mb-2">
                                         <div class="text-gold-500 font-bold text-lg uppercase tracking-wide">Investidura Total
@@ -182,8 +182,8 @@
                             <label class="relative cursor-pointer group">
                                 <input type="radio" wire:model.live="registration_type" value="partial" class="peer sr-only">
                                 <div class="p-5 rounded-xl border-2 transition-all duration-300 h-full flex flex-col
-                                            peer-checked:border-orange-500 peer-checked:bg-orange-900/10 peer-checked:shadow-[0_0_20px_rgba(249,115,22,0.1)]
-                                            border-gray-700 hover:border-gray-500 bg-gray-900/50">
+                                                    peer-checked:border-orange-500 peer-checked:bg-orange-900/10 peer-checked:shadow-[0_0_20px_rgba(249,115,22,0.1)]
+                                                    border-gray-700 hover:border-gray-500 bg-gray-900/50">
 
                                     <div class="flex justify-between items-start mb-2">
                                         <div
@@ -349,16 +349,9 @@
                                 <select wire:model.live="zone"
                                     class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all">
                                     <option value="">Elige</option>
-                                    <option value="Zona Monteria">Zona Monteria</option>
-                                    <option value="Zona Alto San Jorge">Zona Alto San Jorge</option>
-                                    <option value="Zona Planeta Rica">Zona Planeta Rica</option>
-                                    <option value="Zona La Mojana">Zona La Mojana</option>
-                                    <option value="Zona Alto Sinu">Zona Alto Sinu</option>
-                                    <option value="Zona Bajo Sinu">Zona Bajo Sinu</option>
-                                    <option value="Zona Medio Sinu">Zona Medio Sinu</option>
-                                    <option value="Zona San Marcos">Zona San Marcos</option>
-                                    <option value="Zona Sahagun">Zona Sahagun</option>
-                                    <option value="Zona Franja del Mar">Zona Franja del Mar</option>
+                                    @foreach(array_keys(\App\Filament\Resources\UserResource::getZonesData()) as $zoneName)
+                                        <option value="{{ $zoneName }}">{{ $zoneName }}</option>
+                                    @endforeach
                                     <option value="Otro Distrito">Otro Distrito</option>
                                 </select>
                                 @error('zone') <span class="text-red-500 text-xs mt-1 block"><i
