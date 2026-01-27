@@ -123,7 +123,7 @@
 
         <a href="{{ route('registration') }}"
             class="hidden md:block bg-gold-500 hover:bg-gold-400 text-black font-bold py-2 px-6 rounded-full transition transform hover:scale-105 shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-            REGISTRARME
+            INSCRIBIRME
         </a>
 
         <!-- Mobile Menu Button -->
@@ -153,7 +153,7 @@
 
         <a href="{{ route('registration') }}"
             class="mt-4 bg-gold-500 text-black font-bold py-3 px-8 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-            REGISTRARME
+            INSCRIBIRME
         </a>
     </div>
 
@@ -304,28 +304,33 @@
 
             <!-- Linea Vertical Central (Desktop) -->
             <div class="relative">
-                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-gold-500/30"></div>
+                <div
+                    class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-gold-500/30">
+                </div>
 
                 <div class="space-y-12">
 
                     <!-- Item 1: Sábado -->
                     <div class="flex flex-col md:flex-row items-center justify-between group w-full">
                         <!-- Left Side (Empty/Icon) -->
-                         <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
-                             <div class="flex justify-end items-center h-full">
-                                <i class="fas fa-door-open text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
-                             </div>
-                         </div>
-                        
+                        <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
+                            <div class="flex justify-end items-center h-full">
+                                <i
+                                    class="fas fa-door-open text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                            </div>
+                        </div>
+
                         <!-- Center Dot -->
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0">
+                        </div>
 
                         <!-- Right Side (Content) -->
                         <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-left relative ml-6 md:ml-8"
                             data-aos="fade-left">
                             <span class="text-orange-500 font-bold text-sm block mb-1">Sábado 16 Mayo</span>
                             <h3 class="text-xl font-bold text-white">Registro y Apertura</h3>
-                             <p class="text-sm text-gray-400 mt-2">Recepción de delegaciones.</p>
+                            <p class="text-sm text-gray-400 mt-2">Recepción de delegaciones.</p>
                         </div>
                     </div>
 
@@ -336,34 +341,42 @@
                             data-aos="fade-right">
                             <span class="text-orange-500 font-bold text-sm block mb-1">Domingo 17 Mayo - 8:00 AM</span>
                             <h3 class="text-xl font-bold text-white">MAÑANA DE GLORIA</h3>
-                            <p class="text-sm text-gray-400 mt-2">Devocional General, Culto de avivamiento y taller de formación.</p>
+                            <p class="text-sm text-gray-400 mt-2">Devocional General, Culto de avivamiento y taller de
+                                formación.</p>
                         </div>
 
-                         <!-- Center Dot -->
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+                        <!-- Center Dot -->
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0">
+                        </div>
 
                         <!-- Right Side (Icon) -->
                         <div class="w-full md:w-[45%] text-left pl-8 hidden md:block" data-aos="fade-left">
-                            <i class="fas fa-sun text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                            <i
+                                class="fas fa-sun text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
                         </div>
                     </div>
 
                     <!-- Item 3: Domingo Tarde -->
                     <div class="flex flex-col md:flex-row items-center justify-between group w-full">
-                         <!-- Left Side (Icon) -->
-                         <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
-                            <i class="fas fa-running text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
-                         </div>
+                        <!-- Left Side (Icon) -->
+                        <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
+                            <i
+                                class="fas fa-running text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                        </div>
 
-                         <!-- Center Dot -->
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+                        <!-- Center Dot -->
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0">
+                        </div>
 
                         <!-- Right Side (Content) -->
                         <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-left relative ml-6 md:ml-8"
                             data-aos="fade-left">
                             <span class="text-orange-500 font-bold text-sm block mb-1">Domingo 17 Mayo - 2:00 PM</span>
                             <h3 class="text-xl font-bold text-white">TARDE DE ACTIVIDADES</h3>
-                            <p class="text-sm text-gray-400 mt-2">Esparcimiento, desafíos dirigidos y campeonatos zonales.</p>
+                            <p class="text-sm text-gray-400 mt-2">Esparcimiento, desafíos dirigidos y campeonatos
+                                zonales.</p>
                         </div>
                     </div>
 
@@ -374,28 +387,37 @@
                             data-aos="fade-right">
                             <span class="text-orange-500 font-bold text-sm block mb-1">Domingo 17 Mayo - 7:00 PM</span>
                             <h3 class="text-xl font-bold text-white">NOCHE DE INVESTIDURA</h3>
-                            <p class="text-sm text-gray-400 mt-2">Adoración, culto de restauración y renovación espiritual.</p>
+                            <p class="text-sm text-gray-400 mt-2">Adoración, culto de restauración y renovación
+                                espiritual.</p>
                         </div>
 
                         <!-- Center Dot -->
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-orange-600 border-4 border-black z-10 animate-pulse ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-orange-600 border-4 border-black z-10 animate-pulse ml-[-10px] md:ml-0 mt-6 md:mt-0">
+                        </div>
 
                         <!-- Right Side (Icon) -->
                         <div class="w-full md:w-[45%] text-left pl-8 hidden md:block" data-aos="fade-left">
-                            <i class="fas fa-fire text-5xl text-gray-800 group-hover:text-orange-500/50 transition duration-500"></i>
+                            <i
+                                class="fas fa-fire text-5xl text-gray-800 group-hover:text-orange-500/50 transition duration-500"></i>
                         </div>
                     </div>
 
                     <!-- Item 5: Lunes Mañana -->
                     <div class="flex flex-col md:flex-row items-center justify-between group w-full">
                         <!-- Left Side (Icon) -->
-                         <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
-                            <i class="fas fa-hands-praying text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
-                         </div>
+                        <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
+                            <i
+                                class="fas fa-hands-praying text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                        </div>
 
-                         <!-- Center Dot -->
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 animate-ping ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+                        <!-- Center Dot -->
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 animate-ping ml-[-10px] md:ml-0 mt-6 md:mt-0">
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0">
+                        </div>
 
                         <!-- Right Side (Content) -->
                         <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-left relative ml-6 md:ml-8"
@@ -406,23 +428,27 @@
                         </div>
                     </div>
 
-                     <!-- Item 6: Lunes Tarde -->
-                     <div class="flex flex-col md:flex-row items-center justify-between group w-full">
+                    <!-- Item 6: Lunes Tarde -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group w-full">
                         <!-- Left Side (Content) -->
-                         <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-right relative ml-6 md:ml-0 md:mr-8"
+                        <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-right relative ml-6 md:ml-0 md:mr-8"
                             data-aos="fade-right">
                             <span class="text-orange-500 font-bold text-sm block mb-1">Lunes 18 Mayo - 2:00 PM</span>
                             <h3 class="text-xl font-bold text-white">TARDE RECREATIVA</h3>
-                            <p class="text-sm text-gray-400 mt-2">Esparcimiento, finalización de actividades y retorno.</p>
+                            <p class="text-sm text-gray-400 mt-2">Esparcimiento, finalización de actividades y retorno.
+                            </p>
                         </div>
-                        
+
                         <!-- Center Dot -->
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0">
+                        </div>
 
                         <!-- Right Side (Icon) -->
-                         <div class="w-full md:w-[45%] text-left pl-8 hidden md:block" data-aos="fade-left">
-                            <i class="fas fa-bus text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
-                         </div>
+                        <div class="w-full md:w-[45%] text-left pl-8 hidden md:block" data-aos="fade-left">
+                            <i
+                                class="fas fa-bus text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -502,7 +528,8 @@
                 <div data-aos="fade-up">
                     <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco"
                         class="h-20 mx-auto md:mx-0 mb-4 opacity-80">
-                    <p class="text-gray-500 text-sm">Conquistadores Pentecostales – Distrito 27<br>Iglesia Pentecostal Unida de Colombia</p>
+                    <p class="text-gray-500 text-sm">Conquistadores Pentecostales – Distrito 27<br>Iglesia Pentecostal
+                        Unida de Colombia</p>
                 </div>
 
                 <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">

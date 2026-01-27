@@ -138,7 +138,7 @@
 
         <a href="{{ route('registration') }}"
             class="hidden md:block bg-gold-500 hover:bg-gold-400 text-black font-bold py-2 px-6 rounded-full transition transform hover:scale-105 shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-            REGISTRARME
+            INSCRIBIRME
         </a>
 
         <!-- Mobile Menu Button -->
@@ -168,7 +168,7 @@
 
         <a href="{{ route('registration') }}"
             class="mt-4 bg-gold-500 text-black font-bold py-3 px-8 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-            REGISTRARME
+            INSCRIBIRME
         </a>
     </div>
 
