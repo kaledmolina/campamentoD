@@ -296,107 +296,136 @@
 
     <!-- CRONOGRAMA (TIMELINE) -->
     <section id="cronograma" class="py-20 bg-[#050505] relative overflow-hidden">
-        <div class="container mx-auto px-4 max-w-4xl">
+        <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-bold text-white" data-aos="fade-up">Cronograma</h2>
                 <p class="text-gray-400 mt-2" data-aos="fade-up">Agenda sujeta a la dirección del Espíritu Santo</p>
             </div>
 
-            <!-- Linea Vertical -->
-            <div
-                class="relative border-l-2 border-gold-500/30 ml-4 md:ml-1/2 md:transform md:-translate-x-1/2 space-y-12">
+            <!-- Linea Vertical Central (Desktop) -->
+            <div class="relative">
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-gold-500/30"></div>
 
-                <!-- Item 1: Sábado -->
-                <div class="relative flex items-center md:justify-between md:flex-row-reverse group">
-                    <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
+                <div class="space-y-12">
+
+                    <!-- Item 1: Sábado -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group w-full">
+                        <!-- Left Side (Empty/Icon) -->
+                         <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
+                             <div class="flex justify-end items-center h-full">
+                                <i class="fas fa-door-open text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                             </div>
+                         </div>
+                        
+                        <!-- Center Dot -->
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+
+                        <!-- Right Side (Content) -->
+                        <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-left relative ml-6 md:ml-8"
+                            data-aos="fade-left">
+                            <span class="text-orange-500 font-bold text-sm block mb-1">Sábado 16 Mayo</span>
+                            <h3 class="text-xl font-bold text-white">Registro y Apertura</h3>
+                             <p class="text-sm text-gray-400 mt-2">Recepción de delegaciones.</p>
+                        </div>
                     </div>
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
-                        data-aos="fade-left">
-                        <span class="text-orange-500 font-bold text-sm">Sábado 16 Mayo</span>
-                        <h3 class="text-xl font-bold text-white mt-1">Registro y Apertura</h3>
+
+                    <!-- Item 2: Domingo Mañana -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group w-full">
+                        <!-- Left Side (Content) -->
+                        <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-right relative ml-6 md:ml-0 md:mr-8"
+                            data-aos="fade-right">
+                            <span class="text-orange-500 font-bold text-sm block mb-1">Domingo 17 Mayo - 8:00 AM</span>
+                            <h3 class="text-xl font-bold text-white">MAÑANA DE GLORIA</h3>
+                            <p class="text-sm text-gray-400 mt-2">Devocional General, Culto de avivamiento y taller de formación.</p>
+                        </div>
+
+                         <!-- Center Dot -->
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+
+                        <!-- Right Side (Icon) -->
+                        <div class="w-full md:w-[45%] text-left pl-8 hidden md:block" data-aos="fade-left">
+                            <i class="fas fa-sun text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                        </div>
                     </div>
-                    <div class="hidden md:block md:w-[45%]"></div>
+
+                    <!-- Item 3: Domingo Tarde -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group w-full">
+                         <!-- Left Side (Icon) -->
+                         <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
+                            <i class="fas fa-running text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                         </div>
+
+                         <!-- Center Dot -->
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+
+                        <!-- Right Side (Content) -->
+                        <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-left relative ml-6 md:ml-8"
+                            data-aos="fade-left">
+                            <span class="text-orange-500 font-bold text-sm block mb-1">Domingo 17 Mayo - 2:00 PM</span>
+                            <h3 class="text-xl font-bold text-white">TARDE DE ACTIVIDADES</h3>
+                            <p class="text-sm text-gray-400 mt-2">Esparcimiento, desafíos dirigidos y campeonatos zonales.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Domingo Noche -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group w-full">
+                        <!-- Left Side (Content) -->
+                        <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-right relative ml-6 md:ml-0 md:mr-8"
+                            data-aos="fade-right">
+                            <span class="text-orange-500 font-bold text-sm block mb-1">Domingo 17 Mayo - 7:00 PM</span>
+                            <h3 class="text-xl font-bold text-white">NOCHE DE INVESTIDURA</h3>
+                            <p class="text-sm text-gray-400 mt-2">Adoración, culto de restauración y renovación espiritual.</p>
+                        </div>
+
+                        <!-- Center Dot -->
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-orange-600 border-4 border-black z-10 animate-pulse ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+
+                        <!-- Right Side (Icon) -->
+                        <div class="w-full md:w-[45%] text-left pl-8 hidden md:block" data-aos="fade-left">
+                            <i class="fas fa-fire text-5xl text-gray-800 group-hover:text-orange-500/50 transition duration-500"></i>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Lunes Mañana -->
+                    <div class="flex flex-col md:flex-row items-center justify-between group w-full">
+                        <!-- Left Side (Icon) -->
+                         <div class="w-full md:w-[45%] text-right pr-8 hidden md:block" data-aos="fade-right">
+                            <i class="fas fa-hands-praying text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                         </div>
+
+                         <!-- Center Dot -->
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 animate-ping ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+
+                        <!-- Right Side (Content) -->
+                        <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-left relative ml-6 md:ml-8"
+                            data-aos="fade-left">
+                            <span class="text-orange-500 font-bold text-sm block mb-1">Lunes 18 Mayo - 8:00 AM</span>
+                            <h3 class="text-xl font-bold text-white">GRAN CIERRE: INVESTIDOS</h3>
+                            <p class="text-sm text-gray-400 mt-2">Adoración, Servicio de clausura y Santa Cena.</p>
+                        </div>
+                    </div>
+
+                     <!-- Item 6: Lunes Tarde -->
+                     <div class="flex flex-col md:flex-row items-center justify-between group w-full">
+                        <!-- Left Side (Content) -->
+                         <div class="w-full md:w-[45%] pl-8 md:pl-0 p-6 glass-card rounded-xl hover:bg-white/5 transition text-center md:text-right relative ml-6 md:ml-0 md:mr-8"
+                            data-aos="fade-right">
+                            <span class="text-orange-500 font-bold text-sm block mb-1">Lunes 18 Mayo - 2:00 PM</span>
+                            <h3 class="text-xl font-bold text-white">TARDE RECREATIVA</h3>
+                            <p class="text-sm text-gray-400 mt-2">Esparcimiento, finalización de actividades y retorno.</p>
+                        </div>
+                        
+                        <!-- Center Dot -->
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 ml-[-10px] md:ml-0 mt-6 md:mt-0"></div>
+
+                        <!-- Right Side (Icon) -->
+                         <div class="w-full md:w-[45%] text-left pl-8 hidden md:block" data-aos="fade-left">
+                            <i class="fas fa-bus text-5xl text-gray-800 group-hover:text-gold-500/50 transition duration-500"></i>
+                         </div>
+                    </div>
                 </div>
-
-                <!-- Item 2: Domingo Mañana -->
-                <div class="relative flex items-center md:justify-between group">
-                    <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
-                    </div>
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
-                        data-aos="fade-right">
-                        <span class="text-orange-500 font-bold text-sm">Domingo 17 Mayo - 8:00 AM</span>
-                        <h3 class="text-xl font-bold text-white mt-1">MAÑANA DE GLORIA</h3>
-                        <p class="text-sm text-gray-400 mt-2">Devocional General, Culto de avivamiento y taller de
-                            formación.</p>
-                    </div>
-                    <div class="hidden md:block md:w-[45%]"></div>
-                </div>
-
-                <!-- Item 3: Domingo Tarde -->
-                <div class="relative flex items-center md:justify-between md:flex-row-reverse group">
-                    <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
-                    </div>
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
-                        data-aos="fade-left">
-                        <span class="text-orange-500 font-bold text-sm">Domingo 17 Mayo - 2:00 PM</span>
-                        <h3 class="text-xl font-bold text-white mt-1">TARDE DE ACTIVIDADES</h3>
-                        <p class="text-sm text-gray-400 mt-2">Esparcimiento, desafíos dirigidos y campeonatos zonales.
-                        </p>
-                    </div>
-                    <div class="hidden md:block md:w-[45%]"></div>
-                </div>
-
-                <!-- Item 4: Domingo Noche -->
-                <div class="relative flex items-center md:justify-between group">
-                    <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-orange-600 border-4 border-black z-10 animate-pulse">
-                    </div>
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
-                        data-aos="fade-right">
-                        <span class="text-orange-500 font-bold text-sm">Domingo 17 Mayo - 7:00 PM</span>
-                        <h3 class="text-xl font-bold text-white mt-1">NOCHE DE INVESTIDURA</h3>
-                        <p class="text-sm text-gray-400 mt-2">Adoración, culto de restauración y renovación espiritual.
-                        </p>
-                    </div>
-                    <div class="hidden md:block md:w-[45%]"></div>
-                </div>
-
-                <!-- Item 5: Lunes Mañana -->
-                <div class="relative flex items-center md:justify-between md:flex-row-reverse group">
-                    <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10 animate-ping">
-                    </div>
-                    <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
-                    </div>
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
-                        data-aos="fade-left">
-                        <span class="text-orange-500 font-bold text-sm">Lunes 18 Mayo - 8:00 AM</span>
-                        <h3 class="text-xl font-bold text-white mt-1">GRAN CIERRE: INVESTIDOS</h3>
-                        <p class="text-sm text-gray-400 mt-2">Adoración, Servicio de clausura y Santa Cena.</p>
-                    </div>
-                    <div class="hidden md:block md:w-[45%]"></div>
-                </div>
-
-                <!-- Item 6: Lunes Tarde -->
-                <div class="relative flex items-center md:justify-between group">
-                    <div
-                        class="absolute -left-[9px] md:left-1/2 md:-ml-[9px] w-5 h-5 rounded-full bg-gold-500 border-4 border-black z-10">
-                    </div>
-                    <div class="ml-8 md:ml-0 md:w-[45%] p-6 glass-card rounded-xl hover:bg-white/5 transition text-center"
-                        data-aos="fade-right">
-                        <span class="text-orange-500 font-bold text-sm">Lunes 18 Mayo - 2:00 PM</span>
-                        <h3 class="text-xl font-bold text-white mt-1">TARDE RECREATIVA</h3>
-                        <p class="text-sm text-gray-400 mt-2">Esparcimiento, finalización de actividades y retorno.</p>
-                    </div>
-                    <div class="hidden md:block md:w-[45%]"></div>
-                </div>
-
             </div>
-        </div>
     </section>
 
     <!-- INVERSION -->
