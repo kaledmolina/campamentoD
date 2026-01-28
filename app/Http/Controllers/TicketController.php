@@ -30,18 +30,18 @@ class TicketController extends Controller
         return $pdf->download('ticket-campamento-' . $user->document_number . '.pdf');
     }
 
-    public function show(User $user)
+    public function show(User $user, Request $request)
     {
-        // Permission Check
-        if (auth()->user()->id !== $user->id && !auth()->user()->is_admin) {
-            abort(403, 'No tienes permiso para ver este ticket.');
+        // Public access protected by Signed URL
+        if (!$request->hasValidSignature()) {
+            abort(403, 'Enlace no válido o expirado.');
         }
 
         if ($user->balance > 0) {
             abort(403, 'Debes completar el pago para ver tu ticket.');
         }
 
-        // Generate Signed QR
+        // Generate Signed QR for the validation link itself
         $validationUrl = \Illuminate\Support\Facades\URL::signedRoute('tickets.validate', ['user' => $user->id]);
         $qrCode = base64_encode(QrCode::format('svg')->size(300)->generate($validationUrl));
 
