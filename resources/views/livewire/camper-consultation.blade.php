@@ -24,6 +24,12 @@
         </form>
     </div>
 
+    <div class="text-center mb-8">
+        <a href="{{ route('tickets.scan') }}" class="inline-flex items-center justify-center bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-500 hover:text-yellow-300 font-bold py-3 px-6 rounded-lg transition border border-yellow-600/50 hover:border-yellow-500 uppercase tracking-widest text-sm">
+            <i class="fas fa-qrcode mr-2"></i> ¿Eres Líder? Escanear Tickets
+        </a>
+    </div>
+
     @if ($camper)
         <div class="grid md:grid-cols-2 gap-8" data-aos="fade-up">
             <!-- Camper Info & Status -->
@@ -70,9 +76,6 @@
                         </a>
                     @endif
 
-                    <a href="{{ route('tickets.scan') }}" class="block w-full text-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 rounded-lg mt-2 transition shadow-[0_0_10px_rgba(202,138,4,0.4)]">
-                        <i class="fas fa-qrcode mr-2"></i>Escanear Tickets
-                    </a>
                 </div>
 
                 <div class="mt-8">
