@@ -339,9 +339,22 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->searchable()->label('Nombres'),
-                TextColumn::make('last_name')->searchable()->label('Apellidos'),
+                TextColumn::make('created_at')
+                    ->label('Fecha Registro')
+                    ->dateTime('d/m/Y h:i A')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('name')->searchable()->label('Nombres')->sortable(),
+                TextColumn::make('last_name')->searchable()->label('Apellidos')->sortable(),
                 TextColumn::make('document_number')->searchable()->label('Documento'),
+                TextColumn::make('phone')
+                    ->label('Celular')
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('email')
+                    ->label('Correo')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('registration_type')
                     ->label('Plan')
                     ->badge()
@@ -354,21 +367,42 @@ class UserResource extends Resource
                         'total' => 'Total',
                         default => $state,
                     }),
-                TextColumn::make('gender')->label('Sexo')->sortable(),
+                TextColumn::make('payment_status')
+                    ->label('Estado Pago')
+                    ->badge()
+                    ->state(function (User $record) {
+                        if ($record->balance <= 0)
+                            return 'Paz y Salvo';
+                        if ($record->total_paid > 0)
+                            return 'Abonando';
+                        return 'Sin Pagos';
+                    })
+                    ->colors([
+                        'success' => 'Paz y Salvo',
+                        'warning' => 'Abonando',
+                        'danger' => 'Sin Pagos',
+                    ]),
+                TextColumn::make('gender')
+                    ->label('Sexo')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('eps')->label('EPS')->searchable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('age')
                     ->label('Edad')
                     ->badge()
                     ->color(fn(string $state): string => $state < 18 ? 'danger' : 'success')
-                    ->formatStateUsing(fn(string $state) => $state . ($state < 18 ? ' (Menor)' : '')),
-                TextColumn::make('zone')->sortable()->label('Zona'),
+                    ->formatStateUsing(fn(string $state) => $state . ($state < 18 ? ' (Menor)' : ''))
+                    ->sortable(),
+                TextColumn::make('zone')->sortable()->label('Zona')->searchable(),
                 TextColumn::make('congregacion')->searchable()->label('Congregación'),
                 TextColumn::make('total_paid')
-                    ->label('Total Abonado')
-                    ->money('COP'),
+                    ->label('Abonado')
+                    ->money('COP')
+                    ->sortable(),
                 TextColumn::make('balance')
                     ->label('Pendiente')
                     ->money('COP')
+                    ->sortable()
                     ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
             ])
             ->filters([
@@ -377,7 +411,30 @@ class UserResource extends Resource
                         $zones = array_keys(self::getZonesData());
                         return array_combine($zones, $zones);
                     })
+                    ->searchable()
                     ->label('Zona'),
+                SelectFilter::make('registration_type')
+                    ->label('Tipo de Plan')
+                    ->options([
+                        'total' => 'Investidura Total',
+                        'partial' => 'Estadía Parcial',
+                    ]),
+                SelectFilter::make('payment_status')
+                    ->label('Estado de Pago')
+                    ->options([
+                        'paid' => 'Paz y Salvo (Pagado)',
+                        'debt' => 'Con Deuda (Pendiente)',
+                        'no_payment' => 'Sin Ningún Abono',
+                    ])
+                    ->query(function (Builder $query, array $data) {
+                        return $query->when($data['value'], function (Builder $query, $value) {
+                            match ($value) {
+                                'paid' => $query->where('balance', '<=', 0),
+                                'debt' => $query->where('balance', '>', 0),
+                                'no_payment' => $query->doesntHave('payments'),
+                            };
+                        });
+                    }),
                 SelectFilter::make('document_type')
                     ->options([
                         'CC' => 'Cédula de Ciudadanía',
@@ -386,12 +443,31 @@ class UserResource extends Resource
                         'Otro' => 'Otro',
                     ])
                     ->label('Tipo de Documento'),
+                SelectFilter::make('gender')
+                    ->label('Sexo')
+                    ->options([
+                        'M' => 'Masculino',
+                        'F' => 'Femenino',
+                    ]),
                 Tables\Filters\Filter::make('minors')
                     ->label('Solo Menores de Edad')
                     ->query(fn(Builder $query): Builder => $query->where('age', '<', 18)),
-                Tables\Filters\Filter::make('has_payments')
-                    ->label('Con Abonos Realizados')
-                    ->query(fn(Builder $query): Builder => $query->has('payments')),
+                Tables\Filters\Filter::make('created_at')
+                    ->form([
+                        Forms\Components\DatePicker::make('created_from')->label('Registrado desde'),
+                        Forms\Components\DatePicker::make('created_until')->label('Registrado hasta'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['created_until'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    })
             ])
             ->actions([
                 Tables\Actions\Action::make('download_ticket')
