@@ -394,6 +394,11 @@ class UserResource extends Resource
                     ->query(fn(Builder $query): Builder => $query->has('payments')),
             ])
             ->actions([
+                Tables\Actions\Action::make('download_ticket')
+                    ->label('Descargar Ticket')
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->url(fn(User $record): string => \Illuminate\Support\Facades\URL::signedRoute('ticket.show', ['user' => $record]))
+                    ->openUrlInNewTab(),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
@@ -441,6 +446,13 @@ class UserResource extends Resource
                         TextEntry::make('balance')->money('COP')->label('Saldo Pendiente')
                             ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
                         TextEntry::make('target_cost')->money('COP')->label('Costo Total'),
+                    ]),
+                Section::make('Ticket de Entrada')
+                    ->columnSpanFull()
+                    ->schema([
+                        Infolists\Components\ViewEntry::make('ticket_preview')
+                            ->view('filament.infolists.ticket-preview')
+                            ->label('Vista Previa'),
                     ]),
             ]);
     }
