@@ -19,7 +19,12 @@ class DashboardStats extends BaseWidget
             $query->where('is_admin', false);
         })->where('status', 'approved')->sum('amount');
 
-        $totalExpectedAmount = $totalCampers * 300000;
+        // Calculate total expected amount by summing each user's target_cost
+        // We iterate to use the getTargetCostAttribute accessor logic
+        $totalExpectedAmount = User::where('is_admin', false)->get()->sum(function ($user) {
+            return $user->target_cost;
+        });
+
         $totalPendingCollection = $totalExpectedAmount - $totalCapitalCollected;
 
         // Calculate counts of campers with debt

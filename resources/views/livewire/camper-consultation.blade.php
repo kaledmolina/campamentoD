@@ -71,7 +71,7 @@
                     </div>
 
                     @if($camper->balance <= 0)
-                        <a href="{{ route('ticket.download') }}" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg mt-4 transition shadow-[0_0_10px_rgba(37,99,235,0.4)]">
+                        <a href="{{ route('ticket.download', $camper) }}" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg mt-4 transition shadow-[0_0_10px_rgba(37,99,235,0.4)]">
                             <i class="fas fa-ticket-alt mr-2"></i>Descargar Ticket
                         </a>
                     @endif

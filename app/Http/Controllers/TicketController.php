@@ -9,10 +9,13 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TicketController extends Controller
 {
-    public function download()
+    public function download(User $user)
     {
-        /** @var User $user */
-        $user = auth()->user();
+        // Allow Admins to download any ticket.
+        // Allow Users to download ONLY their own ticket.
+        if (auth()->user()->id !== $user->id && !auth()->user()->is_admin) {
+            abort(403, 'No tienes permiso para descargar este ticket.');
+        }
 
         if ($user->balance > 0) {
             abort(403, 'Debes completar el pago para descargar tu ticket.');

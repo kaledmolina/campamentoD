@@ -14,5 +14,5 @@ Route::get('/ticket/scan', [App\Http\Controllers\TicketController::class, 'scann
 Route::get('/ticket/validate/{user}', [App\Http\Controllers\TicketController::class, 'validateUser'])->name('tickets.validate')->middleware('signed');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/ticket/download', [App\Http\Controllers\TicketController::class, 'download'])->name('ticket.download');
+    Route::get('/ticket/download/{user}', [App\Http\Controllers\TicketController::class, 'download'])->name('ticket.download');
 });
