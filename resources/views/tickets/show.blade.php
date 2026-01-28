@@ -46,7 +46,7 @@
                                 de Acceso</h3>
                         </div>
                         <h1
-                            class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-gold-100 to-gold-400 cinzel mb-2 tracking-wide drop-shadow-lg">
+                            class="text-4xl sm:text-5xl font-black text-white cinzel mb-2 tracking-wide" style="text-shadow: 0 0 15px rgba(212,175,55,0.6);">
                             INVESTI2
                         </h1>
                         <p class="text-zinc-400 text-[10px] sm:text-xs tracking-[0.3em] uppercase">Campamento Distrital
