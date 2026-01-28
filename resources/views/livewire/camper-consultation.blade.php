@@ -71,8 +71,8 @@
                     </div>
 
                     @if($camper->balance <= 0)
-                        <a href="{{ route('ticket.download', $camper) }}" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg mt-4 transition shadow-[0_0_10px_rgba(37,99,235,0.4)]">
-                            <i class="fas fa-ticket-alt mr-2"></i>Descargar Ticket
+                        <a href="{{ route('ticket.show', $camper) }}" class="flex items-center justify-center w-full bg-gold-500 hover:bg-gold-400 text-black font-bold py-3 rounded-lg mt-4 transition transform hover:scale-[1.02] shadow-[0_0_15px_rgba(212,175,55,0.4)] uppercase tracking-widest">
+                            <i class="fas fa-ticket-alt mr-2"></i> Ver Ticket Digital
                         </a>
                     @endif
 

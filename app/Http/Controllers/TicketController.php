@@ -30,6 +30,24 @@ class TicketController extends Controller
         return $pdf->download('ticket-campamento-' . $user->document_number . '.pdf');
     }
 
+    public function show(User $user)
+    {
+        // Permission Check
+        if (auth()->user()->id !== $user->id && !auth()->user()->is_admin) {
+            abort(403, 'No tienes permiso para ver este ticket.');
+        }
+
+        if ($user->balance > 0) {
+            abort(403, 'Debes completar el pago para ver tu ticket.');
+        }
+
+        // Generate Signed QR
+        $validationUrl = \Illuminate\Support\Facades\URL::signedRoute('tickets.validate', ['user' => $user->id]);
+        $qrCode = base64_encode(QrCode::format('svg')->size(300)->generate($validationUrl));
+
+        return view('tickets.show', compact('user', 'qrCode'));
+    }
+
     public function validateUser(User $user, Request $request)
     {
         // No checks needed if using signed middleware in routes

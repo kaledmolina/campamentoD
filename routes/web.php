@@ -15,4 +15,5 @@ Route::get('/ticket/validate/{user}', [App\Http\Controllers\TicketController::cl
 
 Route::middleware('auth')->group(function () {
     Route::get('/ticket/download/{user}', [App\Http\Controllers\TicketController::class, 'download'])->name('ticket.download');
+    Route::get('/ticket/view/{user}', [App\Http\Controllers\TicketController::class, 'show'])->name('ticket.show');
 });
