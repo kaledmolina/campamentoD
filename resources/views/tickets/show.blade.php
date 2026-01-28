@@ -6,11 +6,12 @@
 
             <!-- Glow Effect -->
             <div
-                class="absolute -inset-1 bg-gradient-to-r from-gold-600 to-yellow-300 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+                class="absolute -inset-1 bg-gradient-to-r from-gold-600 to-yellow-300 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 pointer-events-none">
             </div>
 
             <!-- Main Ticket Card -->
-            <div class="relative bg-black rounded-2xl border border-gold-500/30 overflow-hidden shadow-2xl">
+            <div id="ticket-card"
+                class="relative bg-black rounded-2xl border border-gold-500/30 overflow-hidden shadow-2xl">
 
                 <!-- Decorative Header Background -->
                 <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gold-900/20 to-transparent"></div>
@@ -85,18 +86,21 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="mt-8 flex gap-4 justify-center flex-wrap">
-                 <button onclick="captureTicket()" class="flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-gold-400 text-black rounded-full transition shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+            <div class="mt-8 flex gap-4 justify-center flex-wrap relative z-50">
+                <button onclick="captureTicket()"
+                    class="flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-gold-400 text-black rounded-full transition shadow-[0_0_15px_rgba(212,175,55,0.3)]">
                     <i class="fas fa-camera"></i> <span class="text-sm font-bold">Guardar Imagen</span>
-                 </button>
-                 
-                 <button onclick="shareTicket()" class="flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition border border-gray-700">
-                    <i class="fas fa-share-alt"></i> <span class="text-sm font-bold">Compartir</span>
-                 </button>
+                </button>
 
-                 <a href="{{ route('consultation') }}" class="flex items-center gap-2 px-6 py-3 bg-transparent hover:bg-white/10 text-gray-400 hover:text-white rounded-full transition border border-gray-700">
+                <button onclick="shareTicket()"
+                    class="flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition border border-gray-700">
+                    <i class="fas fa-share-alt"></i> <span class="text-sm font-bold">Compartir</span>
+                </button>
+
+                <a href="{{ route('consultation') }}"
+                    class="flex items-center gap-2 px-6 py-3 bg-transparent hover:bg-white/10 text-gray-400 hover:text-white rounded-full transition border border-gray-700">
                     <i class="fas fa-arrow-left"></i> <span class="text-sm font-bold">Volver</span>
-                 </a>
+                </a>
             </div>
 
         </div>
@@ -105,17 +109,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         function captureTicket() {
-            const ticketElement = document.querySelector('.relative.bg-black'); // The main ticket card
+            const ticketElement = document.getElementById('ticket-card');
             
             // Show loading state
             const btn = document.querySelector('button[onclick="captureTicket()"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
             
+            console.log('Capturing ticket...', ticketElement);
+
             html2canvas(ticketElement, {
                 backgroundColor: null,
                 scale: 2, // Better quality
-                useCORS: true
+                useCORS: true,
+                allowTaint: true,
+                logging: true
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = 'Ticket-Investi2-{{ $user->document_number }}.png';
@@ -125,7 +133,7 @@
                 // Restore button
                 btn.innerHTML = originalText;
             }).catch(err => {
-                console.error(err);
+                console.error('Error html2canvas:', err);
                 alert('Error al generar la imagen. Intenta con captura de pantalla.');
                 btn.innerHTML = originalText;
             });
