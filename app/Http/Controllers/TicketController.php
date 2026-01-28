@@ -18,17 +18,21 @@ class TicketController extends Controller
             abort(403, 'Debes completar el pago para descargar tu ticket.');
         }
 
-        $qrCode = base64_encode(QrCode::format('svg')->size(200)->generate(route('tickets.validate', $user->id)));
+        // Generate a SIGNED url. This allows the route to be public but prevents tampering and enumeration.
+        $validationUrl = \Illuminate\Support\Facades\URL::signedRoute('tickets.validate', ['user' => $user->id]);
+        $qrCode = base64_encode(QrCode::format('svg')->size(200)->generate($validationUrl));
 
         $pdf = Pdf::loadView('pdf.ticket', compact('user', 'qrCode'));
 
         return $pdf->download('ticket-campamento-' . $user->document_number . '.pdf');
     }
 
-    public function validateUser(User $user)
+    public function validateUser(User $user, Request $request)
     {
-        if (!auth()->user()->can_validate && !auth()->user()->is_admin) {
-            abort(403, 'No tienes permisos para validar tickets.');
+        // No checks needed if using signed middleware in routes
+        // If not using middleware, we could check $request->hasValidSignature() here.
+        if (!$request->hasValidSignature()) {
+            abort(403, 'Enlace de validación inválido o expirado.');
         }
 
         return view('tickets.validate', compact('user'));
@@ -36,10 +40,7 @@ class TicketController extends Controller
 
     public function scanner()
     {
-        if (!auth()->user()->can_validate && !auth()->user()->is_admin) {
-            abort(403, 'No tienes permisos para escanear tickets.');
-        }
-
+        // Public access to scanner
         return view('tickets.scanner');
     }
 }

@@ -70,11 +70,9 @@
                         </a>
                     @endif
 
-                    @if(auth()->check() && (auth()->user()->can_validate || auth()->user()->is_admin))
-                        <a href="{{ route('tickets.scan') }}" class="block w-full text-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 rounded-lg mt-2 transition shadow-[0_0_10px_rgba(202,138,4,0.4)]">
-                            <i class="fas fa-qrcode mr-2"></i>Escanear Tickets
-                        </a>
-                    @endif
+                    <a href="{{ route('tickets.scan') }}" class="block w-full text-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 rounded-lg mt-2 transition shadow-[0_0_10px_rgba(202,138,4,0.4)]">
+                        <i class="fas fa-qrcode mr-2"></i>Escanear Tickets
+                    </a>
                 </div>
 
                 <div class="mt-8">
