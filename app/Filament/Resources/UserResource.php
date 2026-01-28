@@ -344,17 +344,20 @@ class UserResource extends Resource
                     ->dateTime('d/m/Y h:i A')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('name')->searchable()->label('Nombres')->sortable(),
-                TextColumn::make('last_name')->searchable()->label('Apellidos')->sortable(),
-                TextColumn::make('document_number')->searchable()->label('Documento'),
-                TextColumn::make('phone')
-                    ->label('Celular')
+                TextColumn::make('name')
                     ->searchable()
+                    ->label('Nombres')
+                    ->sortable()
                     ->toggleable(),
-                TextColumn::make('email')
-                    ->label('Correo')
+                TextColumn::make('last_name')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('Apellidos')
+                    ->sortable()
+                    ->toggleable(),
+                TextColumn::make('document_number')
+                    ->searchable()
+                    ->label('Documento')
+                    ->toggleable(),
                 TextColumn::make('registration_type')
                     ->label('Plan')
                     ->badge()
@@ -366,7 +369,8 @@ class UserResource extends Resource
                         'partial' => 'Parcial',
                         'total' => 'Total',
                         default => $state,
-                    }),
+                    })
+                    ->toggleable(),
                 TextColumn::make('payment_status')
                     ->label('Estado Pago')
                     ->badge()
@@ -381,29 +385,52 @@ class UserResource extends Resource
                         'success' => 'Paz y Salvo',
                         'warning' => 'Abonando',
                         'danger' => 'Sin Pagos',
-                    ]),
-                TextColumn::make('gender')
-                    ->label('Sexo')
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('eps')->label('EPS')->searchable()->toggleable(isToggledHiddenByDefault: true),
+                    ])
+                    ->toggleable(),
                 TextColumn::make('age')
                     ->label('Edad')
                     ->badge()
                     ->color(fn(string $state): string => $state < 18 ? 'danger' : 'success')
                     ->formatStateUsing(fn(string $state) => $state . ($state < 18 ? ' (Menor)' : ''))
-                    ->sortable(),
-                TextColumn::make('zone')->sortable()->label('Zona')->searchable(),
-                TextColumn::make('congregacion')->searchable()->label('Congregación'),
+                    ->sortable()
+                    ->toggleable(),
+                TextColumn::make('zone')
+                    ->sortable()
+                    ->label('Zona')
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('congregacion')
+                    ->searchable()
+                    ->label('Congregación')
+                    ->toggleable(),
                 TextColumn::make('total_paid')
                     ->label('Abonado')
                     ->money('COP')
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
                 TextColumn::make('balance')
                     ->label('Pendiente')
                     ->money('COP')
                     ->sortable()
-                    ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
+                    ->color(fn($state) => $state > 0 ? 'danger' : 'success')
+                    ->toggleable(),
+                // Extra columns hidden by default
+                TextColumn::make('phone')
+                    ->label('Celular')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('email')
+                    ->label('Correo')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('gender')
+                    ->label('Sexo')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('eps')
+                    ->label('EPS')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('zone')
