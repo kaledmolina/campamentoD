@@ -37,6 +37,8 @@ class User extends Authenticatable
         'is_admin',
         'consent_proof_path',
         'participation_cost',
+        'discount_amount',
+        'coupon_code',
     ];
 
     public function payments()

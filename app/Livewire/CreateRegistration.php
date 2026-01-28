@@ -55,7 +55,7 @@ class CreateRegistration extends Component
     #[Validate('required|numeric|min:5|max:100')]
     public $age = '';
 
-    #[Validate('required|image|max:10240')] // 10MB max
+    #[Validate('image|max:10240')] // 10MB max, required logic handled manually
     public $payment_proof;
 
     #[Validate('nullable|image|max:10240')] // 10MB max
@@ -139,7 +139,7 @@ class CreateRegistration extends Component
             return;
         }
 
-        $proofPath = $this->payment_proof->store('payments', 'public');
+        // $proofPath logic moved down 
 
         $consentPath = null;
         if ($this->consent_proof) {
@@ -166,9 +166,10 @@ class CreateRegistration extends Component
         // Calculate Cost based on Plan
         $baseCost = $this->registration_type === 'partial' ? 100000 : 300000;
         $participationCost = $baseCost;
+        $discountAmount = 0;
 
         // Apply Discount if exists
-        if ($this->appliedDiscount) {
+        if ($this->appliedDiscount > 0) {
             $discountAmount = ($baseCost * $this->appliedDiscount) / 100;
             $participationCost = $baseCost - $discountAmount;
 
@@ -177,6 +178,19 @@ class CreateRegistration extends Component
             if ($coupon) {
                 $coupon->increment('used_count');
             }
+        }
+
+        // Validation for payment proof (Manual)
+        // Only require proof if they actually have to pay something now
+        // If discount is 100%, participationCost is 0, so no proof needed.
+        if ($participationCost > 0 && !$this->payment_proof) {
+            $this->addError('payment_proof', 'El comprobante de pago es obligatorio.');
+            return;
+        }
+
+        $proofPath = null;
+        if ($this->payment_proof) {
+            $proofPath = $this->payment_proof->store('payments', 'public');
         }
 
         // Create Camper User
@@ -199,19 +213,27 @@ class CreateRegistration extends Component
             'pastor_letter_path' => $pastorLetterPath,
             'registration_type' => $this->registration_type,
             'participation_cost' => $participationCost,
+            'discount_amount' => $discountAmount,
+            'coupon_code' => $this->discountCode ?: null,
         ]);
 
-        // Create Initial Payment
-        $registrationFee = GlobalSetting::get('registration_fee', 30000); // Default 30k
+        // Create Initial Payment ONLY if there is a cost
+        if ($participationCost > 0) {
+            $registrationFee = GlobalSetting::get('registration_fee', 30000); // Default 30k
 
-        Payment::create([
-            'user_id' => $user->id,
-            'amount' => $registrationFee,
-            'proof_path' => $proofPath,
-            'status' => 'pending',
-            'type' => 'registration',
-            'notes' => 'Inscripción inicial (Tarifa Global)',
-        ]);
+            // If the remaining cost is LESS than the standard fee (e.g. 90% discount), 
+            // only charge what is left.
+            $amountToCharge = min($registrationFee, $participationCost);
+
+            Payment::create([
+                'user_id' => $user->id,
+                'amount' => $amountToCharge,
+                'proof_path' => $proofPath,
+                'status' => 'pending',
+                'type' => 'registration',
+                'notes' => 'Inscripción inicial (Tarifa Global)',
+            ]);
+        }
 
         $this->registration_success = true;
         $this->reset(['name', 'last_name', 'email', 'document_type', 'document_number', 'document_issue_date', 'gender', 'birth_date', 'eps', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof', 'pastor_letter', 'registration_type']);

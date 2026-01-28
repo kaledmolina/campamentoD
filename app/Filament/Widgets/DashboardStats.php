@@ -54,6 +54,11 @@ class DashboardStats extends BaseWidget
                 ->description('Capital faltante segun inscritos')
                 ->descriptionIcon('heroicon-m-clock')
                 ->color('warning'),
+
+            Stat::make('Saldo en Cupones', '$' . number_format(User::sum('discount_amount'), 0))
+                ->description('Total descontado por cupones')
+                ->descriptionIcon('heroicon-m-ticket')
+                ->color('gray'),
         ];
     }
 }

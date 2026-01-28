@@ -440,6 +440,18 @@ class UserResource extends Resource
                     })
                     ->searchable()
                     ->label('Zona'),
+                SelectFilter::make('congregacion')
+                    ->label('Congregación')
+                    ->searchable()
+                    ->options(function () {
+                        $allCongregations = [];
+                        foreach (self::getZonesData() as $zoneCongregations) {
+                            foreach ($zoneCongregations as $congregation) {
+                                $allCongregations[$congregation] = $congregation;
+                            }
+                        }
+                        return $allCongregations;
+                    }),
                 SelectFilter::make('registration_type')
                     ->label('Tipo de Plan')
                     ->options([
