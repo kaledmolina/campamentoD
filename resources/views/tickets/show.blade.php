@@ -14,7 +14,7 @@
                 class="relative bg-black rounded-2xl border border-gold-500/30 overflow-hidden shadow-2xl">
 
                 <!-- Decorative Header Background -->
-                <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gold-900/20 to-transparent"></div>
+                <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gold-900/20 to-transparent"></div>
 
                 <!-- Ticket Holes/Notches -->
                 <div class="absolute top-1/2 -left-3 w-6 h-6 bg-[#050505] rounded-full z-10"></div>
@@ -24,30 +24,31 @@
                 </div>
 
                 <!-- Content -->
-                <div class="relative p-6 px-8 text-center">
+                <div class="relative p-5 px-6 text-center">
 
                     <!-- Event Branding -->
-                    <h3 class="text-gold-500 tracking-[0.2em] text-xs font-bold uppercase mb-1">TICKET DE ACCESO</h3>
-                    <h1 class="text-4xl md:text-5xl font-black text-white cinzel mb-2 tracking-wide"
+                    <h3 class="text-gold-500 tracking-[0.2em] text-[10px] font-bold uppercase mb-1">TICKET DE ACCESO
+                    </h3>
+                    <h1 class="text-3xl md:text-4xl font-black text-white cinzel mb-1 tracking-wide"
                         style="text-shadow: 0 2px 10px rgba(212,175,55,0.3)">
                         INVESTI2
                     </h1>
-                    <p class="text-gray-400 text-xs tracking-widest uppercase mb-8">Campamento Distrital 2026</p>
+                    <p class="text-gray-400 text-[10px] tracking-widest uppercase mb-4">Campamento Distrital 2026</p>
 
                     <!-- User Info -->
-                    <div class="mb-8">
-                        <h2 class="text-2xl font-bold text-white mb-1 uppercase">{{ $user->name }}</h2>
-                        <h2 class="text-xl font-bold text-gold-400 mb-4 uppercase">{{ $user->last_name }}</h2>
+                    <div class="mb-4">
+                        <h2 class="text-xl font-bold text-white mb-0 uppercase">{{ $user->name }}</h2>
+                        <h2 class="text-lg font-bold text-gold-400 mb-2 uppercase">{{ $user->last_name }}</h2>
 
                         <div
-                            class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 tracking-wider">
+                            class="inline-block px-3 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] text-gray-300 tracking-wider">
                             {{ $user->document_type }} {{ $user->document_number }}
                         </div>
                     </div>
 
                     <!-- Details Grid -->
                     <div
-                        class="grid grid-cols-2 gap-4 mb-8 text-left border-t border-b border-gray-800 py-6 bg-white/5 mx-[-2rem] px-8">
+                        class="grid grid-cols-2 gap-3 mb-4 text-left border-t border-b border-gray-800 py-4 bg-white/5 mx-[-1.5rem] px-6">
                         <div>
                             <span class="block text-[10px] text-gold-500 uppercase tracking-widest mb-1">Zona</span>
                             <span class="block text-white font-bold">{{ $user->zone }}</span>
@@ -57,9 +58,10 @@
                                 class="block text-[10px] text-gold-500 uppercase tracking-widest mb-1">Congregación</span>
                             <span class="block text-white font-bold">{{ $user->congregacion }}</span>
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-2 text-left">
                             <span class="block text-[10px] text-gold-500 uppercase tracking-widest mb-1">Fecha</span>
-                            <span class="block text-white font-bold">{{ now()->format('d M') }}</span>
+                            <span
+                                class="block text-white font-bold capitalize">{{ now()->locale('es')->isoFormat('D MMM') }}</span>
                         </div>
                         <div class="text-right mt-2">
                             <span class="block text-[10px] text-gold-500 uppercase tracking-widest mb-1">Estado</span>
@@ -69,9 +71,9 @@
                     </div>
 
                     <!-- QR Code -->
-                    <div class="flex justify-center mb-6">
-                        <div class="p-4 bg-white rounded-xl shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                            <img src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code" class="w-48 h-48">
+                    <div class="flex justify-center mb-4">
+                        <div class="p-3 bg-white rounded-xl shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                            <img src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code" class="w-40 h-40">
                         </div>
                     </div>
 
@@ -110,12 +112,12 @@
     <script>
         function captureTicket() {
             const ticketElement = document.getElementById('ticket-card');
-            
+
             // Show loading state
             const btn = document.querySelector('button[onclick="captureTicket()"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
-            
+
             console.log('Capturing ticket...', ticketElement);
 
             html2canvas(ticketElement, {
@@ -129,7 +131,7 @@
                 link.download = 'Ticket-Investi2-{{ $user->document_number }}.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
-                
+
                 // Restore button
                 btn.innerHTML = originalText;
             }).catch(err => {
