@@ -285,7 +285,57 @@
                     </div>
                 </div>
 
-                <!-- Nota: Agrega más bloques aquí para el resto de pastores -->
+                <!-- Pastor Jhon Fabio García -->
+                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
+                    data-aos="flip-left" data-aos-delay="200">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                        <i
+                            class="fas fa-user-tie text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
+                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Expositor</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">Pastor Jhon Fabio García</h3>
+                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Pastor Michael Alvarez -->
+                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
+                    data-aos="flip-left" data-aos-delay="300">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                        <i
+                            class="fas fa-user-tie text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
+                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Expositor</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">Pastor Michael Alvarez</h3>
+                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Adorador Juan Pablo Murillo -->
+                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
+                    data-aos="flip-left" data-aos-delay="400">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                        <i
+                            class="fas fa-microphone text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
+                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Adoración</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">Adorador Juan Pablo Murillo</h3>
+                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
+                    </div>
+                </div>
+
             </div>
 
             <p class="text-center text-gray-500 mt-8 italic" data-aos="fade-in">Y muchos más siervos de Dios...</p>

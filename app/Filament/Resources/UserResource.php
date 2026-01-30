@@ -105,6 +105,7 @@ class UserResource extends Resource
                 'Buenos Aires (La Manta)',
                 'Buenavista (Córdoba)',
                 'Pueblo Nuevo',
+                'Centro Alegre',
             ],
             'Zona Alto San Jorge' => [
                 'Ayapel Central',
