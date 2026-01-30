@@ -251,91 +251,146 @@
                     De la Palabra de Dios</p>
             </h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
+            <!-- Grid Container with Centering for last row items -->
+            <div class="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+
+                <!-- Conquistadores Distrito 27 -->
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
+                            bg-gray-900 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left">
-                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
-                            class="fas fa-users text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
+                            class="fas fa-users text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110 group-hover:rotate-3"></i>
+                        <!-- Glow Circle Behind Icon -->
+                        <div
+                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
+                        </div>
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
-                    </div>
+
                     <div
-                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Invitados Especiales
-                        </p>
-                        <h3 class="text-2xl font-bold text-white mb-1">Conquistadores Distrito 27</h3>
-                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                    </div>
+
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <p
+                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            Invitados Especiales</p>
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Conquistadores <span
+                                class="text-gold-500">Distrito 27</span></h3>
+                        <div
+                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                        </div>
                     </div>
                 </div>
 
-                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
+                <!-- Coro Distrito 27 -->
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
+                            bg-gray-900 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="100">
-                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
-                            class="fas fa-music text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
+                            class="fas fa-music text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110 group-hover:-rotate-3"></i>
+                        <div
+                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
+                        </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Alabanza</p>
-                        <h3 class="text-2xl font-bold text-white mb-1">Coro Distrito 27</h3>
-                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <p
+                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            Alabanza</p>
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Coro <span
+                                class="text-gold-500">Distrito 27</span></h3>
+                        <div
+                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Pastor Jhon Fabio García -->
-                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
+                            bg-gray-900 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="200">
-                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
-                            class="fas fa-user-tie text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
+                            class="fas fa-user-tie text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
+                        <div
+                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
+                        </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Expositor</p>
-                        <h3 class="text-2xl font-bold text-white mb-1">Pastor Jhon Fabio García</h3>
-                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <p
+                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            Expositor</p>
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Pastor <br><span
+                                class="text-gold-500">Jhon Fabio</span></h3>
+                        <div
+                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Pastor Michael Alvarez -->
-                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
+                            bg-gray-900 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="300">
-                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
-                            class="fas fa-user-tie text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
+                            class="fas fa-user-tie text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
+                        <div
+                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
+                        </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Expositor</p>
-                        <h3 class="text-2xl font-bold text-white mb-1">Pastor Michael Alvarez</h3>
-                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <p
+                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            Expositor</p>
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Pastor <br><span
+                                class="text-gold-500">Michael Alvarez</span></h3>
+                        <div
+                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Adorador Juan Pablo Murillo -->
-                <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black"
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
+                            bg-gray-900 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="400">
-                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
-                            class="fas fa-microphone text-6xl text-gray-700 group-hover:text-gold-500 transition duration-500 transform group-hover:scale-110"></i>
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90">
+                            class="fas fa-microphone text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
+                        <div
+                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
+                        </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
-                        <p class="text-orange-500 font-bold uppercase text-xs mb-1 tracking-widest">Adoración</p>
-                        <h3 class="text-2xl font-bold text-white mb-1">Adorador Juan Pablo Murillo</h3>
-                        <div class="h-0.5 w-0 bg-gold-500 group-hover:w-full transition-all duration-500"></div>
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <p
+                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            Adoración</p>
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Adorador <br><span
+                                class="text-gold-500">Juan Pablo</span></h3>
+                        <div
+                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                        </div>
                     </div>
                 </div>
-
             </div>
 
             <p class="text-center text-gray-500 mt-8 italic" data-aos="fade-in">Y muchos más siervos de Dios...</p>
@@ -598,7 +653,8 @@
                         <a href="https://www.facebook.com/share/17yXzxdwEL/" target="_blank"
                             class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/conquistadoresd27?utm_source=qr&igsh=MWd5MmZzaXRibDZ0Ng==" target="_blank"
+                        <a href="https://www.instagram.com/conquistadoresd27?utm_source=qr&igsh=MWd5MmZzaXRibDZ0Ng=="
+                            target="_blank"
                             class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition"><i
                                 class="fab fa-instagram"></i></a>
                         <a href="https://youtube.com/@conquistadorespentecostawy8tm?si=8iXByAX8QITyIzEm" target="_blank"

@@ -6,13 +6,18 @@ The user wants to add three new guests to the "Expositores" section of the landi
 2.  **Pastor Michael Alvarez**
 3.  **Adorador Juan Pablo Murillo**
 
+Also, enhance the visual presentation of these cards.
+
 ## Proposed Changes
 
 ### [Landing Page]
 #### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php)
--   Add a card for **Pastor Jhon Fabio García** (Icon: `fas fa-user-tie`, Label: `Expositor`).
--   Add a card for **Pastor Michael Alvarez** (Icon: `fas fa-user-tie`, Label: `Expositor`).
--   Add a card for **Adorador Juan Pablo Murillo** (Icon: `fas fa-microphone`, Label: `Adoración`).
+-   Add a card for **Pastor Jhon Fabio García**, **Pastor Michael Alvarez**, and **Adorador Juan Pablo Murillo**.
+-   **UI Enhancements:**
+    -   Add `border border-transparent group-hover:border-gold-500/50` to the card container.
+    -   Add `group-hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]` for a gold glow effect on hover.
+    -   Update the inner gradient to be slightly more visible on hover.
+    -   Add `scale-105` transform on hover for a subtle lift effect.
 
 ### [Backend]
 #### [MODIFY] [UserResource.php](file:///home/administrador/proyectos/campamentoD/app/Filament/Resources/UserResource.php)
@@ -24,7 +29,9 @@ The user wants to add three new guests to the "Expositores" section of the landi
 
 ## Verification Plan
 ### Manual Verification
--   Check the "Expositores" section on the landing page.
--   Verify that the 3 new cards appear correctly with the correct names and titles.
--   Ensure the hover effects and animations work as expected.
--   Verify that "Centro Alegre" appears in the congregation dropdown when "Zona Planeta Rica" is selected in the User Resource form.
+-   **Visual Check:** Open the landing page and hover over the guest cards.
+-   **Confirm:**
+    -   The border changes to gold.
+    -   A soft gold glow appears around the card.
+    -   The card scales up slightly.
+    -   The transitions are smooth.
