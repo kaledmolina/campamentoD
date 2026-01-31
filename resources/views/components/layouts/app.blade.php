@@ -51,10 +51,12 @@
 
     <style>
         body {
-            background-color: #050505;
+            background: linear-gradient(to bottom, #422006, #1a0b03);
+            /* Global Gold/Brown Theme */
             color: #ffffff;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         /* Glassmorphism Cards */
@@ -203,7 +205,8 @@
                         <a href="https://www.facebook.com/share/17yXzxdwEL/" target="_blank"
                             class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/conquistadoresd27?utm_source=qr&igsh=MWd5MmZzaXRibDZ0Ng==" target="_blank"
+                        <a href="https://www.instagram.com/conquistadoresd27?utm_source=qr&igsh=MWd5MmZzaXRibDZ0Ng=="
+                            target="_blank"
                             class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition"><i
                                 class="fab fa-instagram"></i></a>
                         <a href="https://youtube.com/@conquistadorespentecostawy8tm?si=8iXByAX8QITyIzEm" target="_blank"

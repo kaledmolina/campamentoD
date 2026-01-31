@@ -125,7 +125,7 @@
                     class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Programa</a>
                 <a href="#inversion"
                     class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inversión</a>
-                <a href="/consultar"
+                <a href="/consulta"
                     class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Consulta
                     / Pagos</a>
             </div>

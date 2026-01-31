@@ -7,7 +7,7 @@
 
     <!-- Search Section -->
     <div class="glass-card rounded-2xl p-4 md:p-8 mb-8 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         
         <form wire:submit="search" class="flex flex-col md:flex-row gap-4 items-end relative z-10">
             <div class="flex-grow w-full">
