@@ -76,10 +76,9 @@ Also, enhance the visual presentation of these cards.
                 -   **Main Content:** Add `pt-32` to `<main>` to prevent overlap with fixed header.
         -   **Footer:** Apply **Warm Brown Gradient** (`from-[#3E2723] to-[#1a0b03]`).
         -   **Navigation:** Rename "Programa" link to "Agenda" and ensure it points to `#cronograma`.
-    -   **Expositores Cards:** Update to match **Inversión** style:
-        -   Use `glass-card !bg-black/80` instead of solid colors or gradients.
+    -   **Expositores Cards:** Update to **Dark Brown Glass** style:
+        -   Use `glass-card !bg-[#422006]/90` (Dark Brown with opacity) to avoid black but keep the glass feel.
         -   Keep `rounded-2xl`, `p-8`, and hover effects.
-        -   Ensure `border border-transparent hover:border-gold-500/50` is maintained or adapted.
 
 ## Verification Plan
 ### Manual Verification
