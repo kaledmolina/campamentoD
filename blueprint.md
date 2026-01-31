@@ -68,7 +68,12 @@ Also, enhance the visual presentation of these cards.
     -   **Global Layout (`app.blade.php`):**
         -   **Navbar Structure:** Adopt the **"Pill" Design** for the desktop menu links container:
             -   Wrap links in: `div class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10"`
-            -   Remove the heavy solid background from the main `<nav>` tag, or adjust it to be compatible (e.g., sticky/fixed or solid dark brown if content scrolls behind).
+            -   **Exact Match Update:**
+                -   Make Navbar `fixed top-0 z-50 transition-all duration-300 py-6`.
+                -   Logo: Use `h-12 md:h-16` and `transition-transform duration-300 group-hover:scale-110`.
+                -   Script: Add `window.scrollY > 50` toggle for `.nav-scrolled` class.
+                -   CSS: Add `.nav-scrolled` rule (bg dark brown, compact padding).
+                -   **Main Content:** Add `pt-32` to `<main>` to prevent overlap with fixed header.
         -   **Footer:** Apply **Warm Brown Gradient** (`from-[#3E2723] to-[#1a0b03]`).
         -   **Navigation:** Rename "Programa" link to "Agenda" and ensure it points to `#cronograma`.
 

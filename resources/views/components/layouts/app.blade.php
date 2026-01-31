@@ -111,6 +111,14 @@
             background-color: #050505;
             color: white;
         }
+
+        .nav-scrolled {
+            background-color: rgba(66, 32, 6, 0.95);
+            /* Dark Brown/Gold Theme */
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
     </style>
 </head>
 
@@ -119,35 +127,35 @@
     <div class="fire-bg"></div>
 
     <!-- NAVIGATION -->
-    <nav
-        class="w-full z-50 py-6 px-4 md:px-8 flex justify-between items-center bg-[#422006]/95 border-b border-gold-500/20 backdrop-blur-md">
-        <div class="w-24 md:w-32">
-            <a href="/">
-                <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
-                    class="w-full drop-shadow-lg has-tooltip" title="Volver al Inicio">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="/" class="text-2xl font-bold flex items-center gap-2 group">
+                <img src="{{ asset('images/INVESTIDOS.png') }}" alt="Logo"
+                    class="h-12 md:h-16 transition-transform duration-300 group-hover:scale-110">
             </a>
+
+            <div
+                class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10 text-sm font-bold tracking-widest uppercase">
+                <a href="/#inicio" class="text-gray-300 hover:text-gold-400 transition duration-300">Inicio</a>
+                <a href="/#invitados" class="text-gray-300 hover:text-gold-400 transition duration-300">Invitados</a>
+                <a href="/#cronograma" class="text-gray-300 hover:text-gold-400 transition duration-300">Agenda</a>
+                <a href="/#inversion" class="text-gray-300 hover:text-gold-400 transition duration-300">Inversión</a>
+                <a href="{{ route('consultation') }}"
+                    class="text-gray-300 hover:text-gold-400 transition duration-300 {{ request()->routeIs('consultation') ? 'text-gold-400' : '' }}">Consulta
+                    / Pagos</a>
+            </div>
+
+            <a href="{{ route('registration') }}"
+                class="hidden md:block bg-gold-500 hover:bg-gold-400 text-black font-bold py-2 px-6 rounded-full transition transform hover:scale-105 shadow-[0_0_15px_rgba(212,175,55,0.5)]">
+                INSCRIBIRME
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-
-        <div
-            class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10 text-sm font-bold tracking-widest uppercase">
-            <a href="/#inicio" class="text-gray-300 hover:text-gold-400 transition duration-300">Inicio</a>
-            <a href="/#invitados" class="text-gray-300 hover:text-gold-400 transition duration-300">Invitados</a>
-            <a href="/#cronograma" class="text-gray-300 hover:text-gold-400 transition duration-300">Agenda</a>
-            <a href="/#inversion" class="text-gray-300 hover:text-gold-400 transition duration-300">Inversión</a>
-            <a href="{{ route('consultation') }}"
-                class="text-gray-300 hover:text-gold-400 transition duration-300 {{ request()->routeIs('consultation') ? 'text-gold-400' : '' }}">Consulta
-                / Pagos</a>
-        </div>
-
-        <a href="{{ route('registration') }}"
-            class="hidden md:block bg-gold-500 hover:bg-gold-400 text-black font-bold py-2 px-6 rounded-full transition transform hover:scale-105 shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-            INSCRIBIRME
-        </a>
-
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
-            <i class="fas fa-bars"></i>
-        </button>
     </nav>
 
     <!-- Mobile Menu Overlay -->
@@ -175,7 +183,7 @@
         </a>
     </div>
 
-    <main class="container mx-auto py-12 px-4 flex-grow">
+    <main class="container mx-auto py-12 px-4 flex-grow pt-32">
         {{ $slot }}
     </main>
 
@@ -252,6 +260,18 @@
         // Close menu when clicking a link
         mobileLinks.forEach(link => {
             link.addEventListener('click', toggleMenu);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function () {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+                nav.classList.add('bg-[#422006]/95'); // Fallback/Base color if needed, but class handles it
+            } else {
+                nav.classList.remove('nav-scrolled');
+                nav.classList.remove('bg-[#422006]/95');
+            }
         });
     </script>
 </body>
