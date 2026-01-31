@@ -212,7 +212,7 @@ class CreateRegistration extends Component
             'consent_proof_path' => $consentPath,
             'pastor_letter_path' => $pastorLetterPath,
             'registration_type' => $this->registration_type,
-            'participation_cost' => $participationCost,
+            'participation_cost' => $baseCost, // Save BASE cost (e.g., 300k) so model logic works (Base - Discount)
             'discount_amount' => $discountAmount,
             'coupon_code' => $this->discountCode ?: null,
         ]);
