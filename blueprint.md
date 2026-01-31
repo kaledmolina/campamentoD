@@ -76,8 +76,9 @@ Also, enhance the visual presentation of these cards.
                 -   **Main Content:** Add `pt-32` to `<main>` to prevent overlap with fixed header.
         -   **Footer:** Apply **Warm Brown Gradient** (`from-[#3E2723] to-[#1a0b03]`).
         -   **Navigation:** Rename "Programa" link to "Agenda" and ensure it points to `#cronograma`.
-    -   **Expositores Cards:** Update to **Dark Brown Glass** style:
-        -   Use `glass-card !bg-[#422006]/90` (Dark Brown with opacity) to avoid black but keep the glass feel.
+    -   **Expositores Cards:** Revert to **Brown Gradient** style (as per user request matching the first card):
+        -   Use `bg-gradient-to-br from-[#8D6E63] to-[#3E2723]` for ALL cards.
+        -   Remove `glass-card` and `!bg-*` classes to ensure the gradient is visible.
         -   Keep `rounded-2xl`, `p-8`, and hover effects.
 
 ## Verification Plan
