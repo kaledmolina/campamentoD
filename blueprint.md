@@ -26,6 +26,11 @@ Also, enhance the visual presentation of these cards.
 ### [Public Form]
 #### [MODIFY] [RegistrationForm.php / registration.blade.php] (To be determined)
 -   Add "Centro Alegre" to the congregation list in the public registration form.
+-   Smoother background transitions.
+
+### [Hero Section]
+#### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php)
+-   Change background image to `images/16x9.png`.
 
 ## Verification Plan
 ### Manual Verification

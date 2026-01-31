@@ -161,7 +161,7 @@
     <header id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('images/investidobanner.png') }}"
+            <img src="{{ asset('images/16x9.png') }}"
                 class="w-full h-full object-cover opacity-40 scale-105 animate-pulse-slow" alt="Fondo">
             <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-black/80"></div>
         </div>
