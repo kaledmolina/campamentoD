@@ -55,13 +55,13 @@ class CreateRegistration extends Component
     #[Validate('required|numeric|min:5|max:100')]
     public $age = '';
 
-    #[Validate('image|max:10240')] // 10MB max, required logic handled manually
+    #[Validate('mimes:jpg,jpeg,png,webp,pdf|max:10240')] // 10MB max, required logic handled manually
     public $payment_proof;
 
-    #[Validate('nullable|image|max:10240')] // 10MB max
+    #[Validate('nullable|mimes:jpg,jpeg,png,webp,pdf|max:10240')] // 10MB max
     public $consent_proof;
 
-    #[Validate('nullable|image|max:10240')] // 10MB max
+    #[Validate('nullable|mimes:jpg,jpeg,png,webp,pdf|max:10240')] // 10MB max
     public $pastor_letter;
 
     #[Validate('required|in:partial,total')]
@@ -149,7 +149,7 @@ class CreateRegistration extends Component
         if ($this->zone === 'Otro Distrito') {
             $this->validate([
                 'other_zone' => 'required|min:3',
-                'pastor_letter' => 'required|image|max:10240',
+                'pastor_letter' => 'required|mimes:jpg,jpeg,png,webp,pdf|max:10240',
             ], [
                 'pastor_letter.required' => 'La carta de autorización pastoral es obligatoria para campistas de otros distritos.'
             ]);

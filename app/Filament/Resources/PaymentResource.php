@@ -67,7 +67,7 @@ class PaymentResource extends Resource
                     ->required()
                     ->label('Estado'),
                 FileUpload::make('proof_path')
-                    ->image()
+                    ->acceptedFileTypes(['image/*', 'application/pdf'])
                     ->directory('payments')
                     ->required()
                     ->label('Comprobante'),

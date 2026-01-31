@@ -296,7 +296,7 @@ class UserResource extends Resource
                     ->label('Carta de Aval Pastoral')
                     ->directory('pastor_letters')
                     ->visibility('public')
-                    ->image()
+                    ->acceptedFileTypes(['image/*', 'application/pdf'])
                     ->openable()
                     ->downloadable()
                     ->visible(fn(Forms\Get $get) => $get('zone') === 'Otro Distrito'),
