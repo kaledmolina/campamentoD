@@ -580,12 +580,26 @@ class UserResource extends Resource
                             ->limit(1)
 
                             ->visible(fn($record) => $record->consent_proof_path !== null),
+                        TextEntry::make('consent_download')
+                            ->label('Descargar Consentimiento')
+                            ->value('Descargar')
+                            ->url(fn($record) => \Illuminate\Support\Facades\Storage::url($record->consent_proof_path))
+                            ->openUrlInNewTab()
+                            ->visible(fn($record) => $record->consent_proof_path !== null)
+                            ->color('primary'),
                         ImageEntry::make('pastor_letter_path')
                             ->label('Carta Aval Pastoral')
                             ->disk('public')
                             ->limit(1)
 
                             ->visible(fn($record) => $record->pastor_letter_path !== null),
+                        TextEntry::make('pastor_letter_download')
+                            ->label('Descargar Carta')
+                            ->value('Descargar')
+                            ->url(fn($record) => \Illuminate\Support\Facades\Storage::url($record->pastor_letter_path))
+                            ->openUrlInNewTab()
+                            ->visible(fn($record) => $record->pastor_letter_path !== null)
+                            ->color('primary'),
                     ]),
                 Section::make('Ticket de Entrada')
                     ->columnSpanFull()

@@ -41,6 +41,18 @@ class PaymentsRelationManager extends RelationManager
                         'rejected' => 'danger',
                     })
                     ->label('Estado'),
+                Tables\Columns\TextColumn::make('type')
+                    ->label('Tipo')
+                    ->badge()
+                    ->colors([
+                        'primary' => 'registration',
+                        'gray' => 'abono',
+                    ])
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                        'registration' => 'Inscripción',
+                        'abono' => 'Abono',
+                        default => $state,
+                    }),
                 Tables\Columns\ImageColumn::make('proof_path')
                     ->label('Comprobante')
                     ->disk('public')
