@@ -231,8 +231,8 @@
     </header>
 
     <!-- INTRODUCCIÓN -->
-    <section class="py-20 relative">
-        <div class="absolute inset-0 fire-bg pointer-events-none"></div>
+    <section class="py-20 relative bg-gradient-to-b from-[#422006] to-[#2a1205]">
+        <div class="absolute inset-0 fire-bg pointer-events-none opacity-50"></div>
         <div class="container mx-auto px-4 text-center max-w-3xl">
             <i class="fas fa-fire text-4xl text-orange-600 mb-6" data-aos="fade-down"></i>
             <h2 class="text-3xl md:text-5xl font-cinzel text-white mb-8" data-aos="fade-up">¿Qué es <span
@@ -262,7 +262,9 @@
     </div>
 
     <!-- INVITADOS (GRID MEJORADO) -->
-    <section id="invitados" class="py-20 bg-[#0a0a0a]">
+    <!-- INVITADOS (GRID MEJORADO) -->
+    <section id="invitados"
+        class="py-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#EEDC82] via-[#D4AF37]/30 to-[#8B4513]/80">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl md:text-6xl font-black text-center mb-16 uppercase text-gray-800 relative"
                 data-aos="fade-in">
@@ -278,9 +280,9 @@
 
                 <!-- Conquistadores Distrito 27 -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gray-900 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
+                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left">
-                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 bg-transparent flex items-center justify-center overflow-hidden">
                         <i
                             class="fas fa-users text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110 group-hover:rotate-3"></i>
                         <!-- Glow Circle Behind Icon -->

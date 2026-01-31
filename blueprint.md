@@ -55,6 +55,10 @@ Also, enhance the visual presentation of these cards.
 -   **Navbar Polish:**
     -   **Scroll Background:** Update JS logic to use a dark brown/gold backdrop (`bg-[#422006]/90`) instead of black on scroll.
     -   **Text Size:** Increase menu item text size from `text-xs` to `text-sm` or `text-base`.
+-   **Section Backgrounds (Ref 2):**
+    -   **Introduction:** Change from default/black to **Dark Brown Gradient** (`from-[#422006] to-[#2a1205]`).
+    -   **Expositores (Main):** Change from black to **Light Gold/Beige Radial Gradient** (`from-[#EEDC82] via-[#D4AF37]/30 to-[#8B4513]/80`) to provide contrast.
+    -   **Expositores (Cards):** Change from `bg-gray-900` to **Brown Gradient cards** (`bg-gradient-to-br from-[#8D6E63] to-[#3E2723]`).
 
 ## Verification Plan
 ### Manual Verification
