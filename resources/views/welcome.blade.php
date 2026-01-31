@@ -105,26 +105,32 @@
 <body class="font-montserrat">
 
     <!-- NAVIGATION -->
-    <nav id="navbar"
-        class="fixed w-full z-50 transition-all duration-300 py-6 px-4 md:px-8 flex justify-between items-center">
-        <div class="w-24 md:w-32">
-            <!-- Logo Pequeño Nav -->
-            <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo" class="w-full drop-shadow-lg">
-        </div>
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold flex items-center gap-2 group">
+                <img src="{{ asset('images/logo_investi.png') }}" alt="Logo" class="h-8 md:h-10 transition-transform duration-300 group-hover:scale-110">
+            </a>
 
-        <div class="hidden md:flex gap-8 text-sm font-bold tracking-widest uppercase">
-            <a href="#inicio" class="hover:text-gold-500 transition duration-300">Inicio</a>
-            <a href="#invitados" class="hover:text-gold-500 transition duration-300">Invitados</a>
-            <a href="#cronograma" class="hover:text-gold-500 transition duration-300">Programa</a>
-            <a href="#inversion" class="hover:text-gold-500 transition duration-300">Inversión</a>
-            <a href="{{ route('consultation') }}" class="hover:text-gold-500 transition duration-300">Consulta /
-                Pagos</a>
-        </div>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-6 items-center bg-black/30 backdrop-blur-md px-6 py-2 rounded-full border border-white/10">
+                <a href="#inicio"
+                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Inicio</a>
+                <a href="#invitados"
+                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Invitados</a>
+                <a href="#programa"
+                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Programa</a>
+                <a href="#inversion"
+                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Inversión</a>
+                <a href="/consultar"
+                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Consulta / Pagos</a>
+            </div>
 
-        <a href="{{ route('registration') }}"
-            class="hidden md:block bg-gold-500 hover:bg-gold-400 text-black font-bold py-2 px-6 rounded-full transition transform hover:scale-105 shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-            INSCRIBIRME
-        </a>
+            <!-- CTA Button -->
+            <a href="/registro"
+                class="hidden md:inline-block bg-gradient-to-r from-yellow-600 to-yellow-400 text-black font-bold py-2 px-6 rounded-full shadow-[0_0_15px_rgba(250,204,21,0.5)] transform hover:scale-105 transition duration-300 text-xs tracking-wider">
+                INSCRIBIRME
+            </a>
 
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
@@ -176,13 +182,19 @@
             </div>
 
             <!-- Logos Distrito Image -->
-            <div class="relative w-full max-w-3xl mx-auto px-4 mb-12" data-aos="fade-up" data-aos-delay="500">
-                <img src="{{ asset('images/logos_distrito.png') }}" alt="Logos Distrito"
+            <div class="relative w-full max-w-2xl mx-auto px-4 mb-8" data-aos="fade-up" data-aos-delay="500">
+                <img src="{{ asset('images/logos_distrito.png') }}"
+                    alt="Logos Distrito"
                     class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity duration-500">
             </div>
 
+            <!-- Countdown Label -->
+             <p data-aos="fade-up" data-aos-delay="600" class="text-gold-500 font-cinzel text-xs md:text-sm tracking-[0.4em] uppercase mb-4 font-bold">
+                Cuenta Regresiva
+            </p>
+
             <!-- Countdown Timer -->
-            <div data-aos="fade-up" data-aos-delay="700" class="flex flex-wrap justify-center gap-4 md:gap-8 my-10"
+            <div data-aos="fade-up" data-aos-delay="700" class="flex flex-wrap justify-center gap-3 md:gap-6 mb-8"
                 id="countdown">
                 <!-- Se llena con JS -->
             </div>

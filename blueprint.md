@@ -33,6 +33,11 @@ Also, enhance the visual presentation of these cards.
 -   Change background image to `images/16x9.png`.
 -   Replace "CAMPAMENTO JUVENIL 2026" text with `images/camp_logo_2026.png`.
 -   Add `images/logos_distrito.png` below the main logo, centered.
+-   Add `images/logos_distrito.png` below the main logo, centered.
+-   **Refinements:**
+    -   **Countdown Label:** Insert `<p>` with "CUENTA REGRESIVA" text above `#countdown` div. Style with gold color and tracking.
+    -   **Navbar:** Reduce `py` padding, reduce logo width/height, and reduce text size slightly.
+    -   **Hero Layout:** Adjust `min-h-screen` behavior, reduce bottom margins of logos, and ensure content fits better on smaller screens without feeling "tight".
 
 ## Verification Plan
 ### Manual Verification
