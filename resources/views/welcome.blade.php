@@ -100,10 +100,25 @@
             background: #D4AF37;
             border-radius: 5px;
         }
+
+        /* Global Noise Texture */
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.07;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+        }
     </style>
 </head>
 
-<body class="font-montserrat">
+<body class="font-montserrat antialiased selection:bg-gold-500 selection:text-black">
+    <div class="bg-noise"></div>
 
     <!-- NAVIGATION -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
@@ -176,8 +191,23 @@
             <div
                 class="absolute inset-0 bg-gradient-to-b from-[#422006] via-[#a16207]/40 to-[#422006]/90 mix-blend-multiply">
             </div>
+            <!-- Spotlight Gradient -->
             <div
-                class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-black/40">
+                class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-black/60">
+            </div>
+
+            <!-- Floating Particles -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-gold-400 rounded-full opacity-60 animate-float"
+                    style="animation-delay: 0s;"></div>
+                <div class="absolute top-3/4 left-1/3 w-3 h-3 bg-gold-500 rounded-full opacity-40 animate-float"
+                    style="animation-delay: 2s;"></div>
+                <div class="absolute top-1/2 left-3/4 w-1 h-1 bg-white rounded-full opacity-80 animate-float"
+                    style="animation-delay: 4s;"></div>
+                <div class="absolute bottom-10 right-20 w-2 h-2 bg-gold-300 rounded-full opacity-50 animate-float"
+                    style="animation-delay: 1s;"></div>
+                <div class="absolute top-10 right-1/3 w-1.5 h-1.5 bg-orange-400 rounded-full opacity-60 animate-float"
+                    style="animation-delay: 3s;"></div>
             </div>
         </div>
 
@@ -225,8 +255,18 @@
         </div>
 
         <!-- Scroll Down Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
             <i class="fas fa-chevron-down text-gold-500 text-2xl"></i>
+        </div>
+
+        <!-- Wave Divider (Hero -> Intro) -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-10">
+            <svg class="relative block w-[calc(111%_+_1.3px)] h-[60px]" data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="fill-[#422006]"></path>
+            </svg>
         </div>
     </header>
 
@@ -254,10 +294,20 @@
         style="background-image: url('{{ asset('images/investidobanner.png') }}');">
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="relative container mx-auto text-center px-4">
-            <h2 class="text-3xl md:text-5xl font-black uppercase text-white mb-6 drop-shadow-lg" data-aos="zoom-in">
+            <h2 class="text-3xl md:text-5xl font-black font-cinzel uppercase text-white mb-6 drop-shadow-lg"
+                data-aos="zoom-in">
                 "Pero quedaos vosotros en la ciudad de Jerusalén, hasta que seáis investidos de poder desde lo alto..."
             </h2>
             <p class="text-gold-500 text-xl font-cinzel" data-aos="fade-up">Lucas 24:49</p>
+        </div>
+        <!-- Wave Divider (Banner -> Expositores) -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+            <svg class="relative block w-[calc(100%_+_1.3px)] h-[50px]" data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                    d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+                    class="fill-[#EEDC82]"></path>
+            </svg>
         </div>
     </div>
 
@@ -419,6 +469,15 @@
 
             <p class="text-center text-gray-500 mt-8 italic" data-aos="fade-in">Y muchos más siervos de Dios...</p>
         </div>
+        <!-- Wave Divider (Expositores -> Cronograma) -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+            <svg class="relative block w-[calc(100%_+_1.3px)] h-[60px]" data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="fill-[#2a1205]"></path>
+            </svg>
+        </div>
     </section>
 
 
@@ -428,14 +487,14 @@
     <section id="cronograma" class="py-20 bg-gradient-to-b from-[#2a1205] to-[#1a0b03] relative overflow-hidden">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-white" data-aos="fade-up">Cronograma</h2>
+                <h2 class="text-3xl md:text-5xl font-bold font-cinzel text-white" data-aos="fade-up">Cronograma</h2>
                 <p class="text-gray-400 mt-2" data-aos="fade-up">Agenda sujeta a la dirección del Espíritu Santo</p>
             </div>
 
             <!-- Linea Vertical Central (Desktop) -->
             <div class="relative">
                 <div
-                    class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-gold-500/30">
+                    class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-transparent via-gold-500 to-transparent shadow-[0_0_20px_rgba(212,175,55,0.6)]">
                 </div>
 
                 <div class="space-y-12">
@@ -588,7 +647,7 @@
     <!-- INVERSION -->
     <section id="inversion" class="py-20 bg-gradient-to-br from-[#FDB931] via-[#F5D061] to-[#D4AF37]">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Inversión</h2>
+            <h2 class="text-4xl font-bold font-cinzel text-center mb-12" data-aos="fade-up">Inversión</h2>
 
             <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
                 <!-- Plan 1 -->
@@ -653,8 +712,16 @@
 
     <!-- FOOTER / CONTACTO -->
     <footer id="registro"
-        class="bg-gradient-to-t from-[#3E2723] to-[#1a0b03] pt-20 pb-10 border-t border-orange-900/30">
-        <div class="container mx-auto px-4">
+        class="relative bg-gradient-to-t from-[#3E2723] to-[#1a0b03] pt-20 pb-10 border-t border-orange-900/30 overflow-hidden">
+
+        <!-- Massive Watermark -->
+        <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl opacity-[0.03] pointer-events-none">
+            <img src="{{ asset('images/INVESTIDOS.png') }}" alt="Watermark" class="w-full grayscale">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#3E2723]/90 to-transparent pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
 
                 <div data-aos="fade-up">
@@ -665,7 +732,7 @@
                 </div>
 
                 <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-xl font-bold text-white mb-4">MAYOR INFORMACIÓN</h3>
+                    <h3 class="text-xl font-bold font-cinzel text-white mb-4">MAYOR INFORMACIÓN</h3>
                     <p class="flex items-center justify-center md:justify-start gap-3 text-gray-300">
                         <i class="fas fa-phone text-gold-500"></i> 3113300389 – 3132777477 – 3122138597
                     </p>
@@ -675,7 +742,7 @@
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-xl font-bold text-white mb-4">Síguenos</h3>
+                    <h3 class="text-xl font-bold font-cinzel text-white mb-4">Síguenos</h3>
                     <div class="flex justify-center md:justify-start gap-4">
                         <a href="https://www.facebook.com/share/17yXzxdwEL/" target="_blank"
                             class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition"><i
