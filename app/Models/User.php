@@ -53,12 +53,13 @@ class User extends Authenticatable
 
     public function getTargetCostAttribute()
     {
-        // Return personal cost override if set, otherwise global default
-        if ($this->participation_cost !== null) {
-            return $this->participation_cost;
-        }
+        // 1. Determine Base Cost (Personalized Price OR Global Default)
+        $baseCost = $this->participation_cost !== null
+            ? $this->participation_cost
+            : GlobalSetting::get('default_total_cost', 300000);
 
-        return GlobalSetting::get('default_total_cost', 300000);
+        // 2. Always apply discount (if any)
+        return $baseCost - ($this->discount_amount ?? 0);
     }
 
     public function getBalanceAttribute()
