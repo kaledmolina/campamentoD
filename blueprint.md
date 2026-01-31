@@ -32,9 +32,16 @@ Also, enhance the visual presentation of these cards.
 #### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php)
 -   Change background image to `images/16x9.png`.
 -   Replace "CAMPAMENTO JUVENIL 2026" text with `images/camp_logo_2026.png`.
+-   Add `images/logos_distrito.png` below the main logo, centered.
 
 ## Verification Plan
 ### Manual Verification
+-   **Visual Check:** Open the landing page.
+-   **Confirm:**
+    -   The main logo appears correctly.
+    -   The new image `logos_distrito.png` appears **below** the main logo.
+    -   Both images are centered and responsive.
+    -   The transitions are smooth.
 -   **Visual Check:** Open the landing page and hover over the guest cards.
 -   **Confirm:**
     -   The border changes to gold.

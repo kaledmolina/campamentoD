@@ -170,9 +170,15 @@
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-12">
 
             <!-- Logo Image -->
-            <div class="relative w-full max-w-4xl mx-auto px-4 mb-8" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="relative w-full max-w-4xl mx-auto px-4 mb-2" data-aos="zoom-in" data-aos-duration="1500">
                 <img src="{{ asset('images/camp_logo_2026.png') }}" alt="Campamento Juvenil 2026"
                     class="w-full h-auto drop-shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:drop-shadow-[0_0_40px_rgba(212,175,55,0.6)] transition-all duration-500 transform hover:scale-105">
+            </div>
+
+            <!-- Logos Distrito Image -->
+            <div class="relative w-full max-w-3xl mx-auto px-4 mb-12" data-aos="fade-up" data-aos-delay="500">
+                <img src="{{ asset('images/logos_distrito.png') }}" alt="Logos Distrito"
+                    class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity duration-500">
             </div>
 
             <!-- Countdown Timer -->
