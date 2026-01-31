@@ -516,14 +516,16 @@ class UserResource extends Resource
                     })
             ])
             ->actions([
-                Tables\Actions\Action::make('download_ticket')
-                    ->label('Descargar Ticket')
-                    ->icon('heroicon-o-arrow-down-tray')
-                    ->url(fn(User $record): string => \Illuminate\Support\Facades\URL::signedRoute('ticket.show', ['user' => $record]))
-                    ->openUrlInNewTab(),
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\Action::make('download_ticket')
+                        ->label('Descargar Ticket')
+                        ->icon('heroicon-o-arrow-down-tray')
+                        ->url(fn(User $record): string => \Illuminate\Support\Facades\URL::signedRoute('ticket.show', ['user' => $record]))
+                        ->openUrlInNewTab(),
+                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
