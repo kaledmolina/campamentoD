@@ -19,7 +19,7 @@
 
             <!-- Main Ticket Card -->
             <div id="ticket-card"
-                class="relative bg-[#2a1205] rounded-3xl border border-gold-500/30 overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                class="relative bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.2)]">
 
                 <!-- Decorative Header Background -->
                 <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-gold-900/30 to-transparent"></div>
@@ -33,7 +33,7 @@
                 <div class="absolute top-1/2 -mt-3 -left-3 w-6 h-6 bg-[#422006] rounded-full z-10 shadow-inner"></div>
                 <div class="absolute top-1/2 -mt-3 -right-3 w-6 h-6 bg-[#422006] rounded-full z-10 shadow-inner"></div>
                 <div
-                    class="absolute top-1/2 left-5 right-5 border-t-2 border-dashed border-gold-500/20 pointer-events-none">
+                    class="absolute top-1/2 left-5 right-5 border-t-2 border-dashed border-gray-300 pointer-events-none">
                 </div>
 
                 <!-- Content -->
@@ -46,12 +46,11 @@
                             <h3 class="text-gold-400 tracking-[0.2em] text-[10px] sm:text-xs font-bold uppercase">Ticket
                                 de Acceso</h3>
                         </div>
-                        <h1 class="text-4xl sm:text-5xl font-black text-white cinzel mb-2 tracking-wide"
-                            style="text-shadow: 0 0 15px rgba(212,175,55,0.6);">
+                        <h1
+                            class="text-4xl sm:text-5xl font-black text-black cinzel mb-2 tracking-wide">
                             INVESTI2
                         </h1>
-                        <p class="text-gold-500/60 text-[10px] sm:text-xs tracking-[0.3em] uppercase">Campamento
-                            Distrital
+                        <p class="text-gray-500 text-[10px] sm:text-xs tracking-[0.3em] uppercase">Campamento Distrital
                             2026</p>
                     </div>
 
@@ -60,39 +59,37 @@
                         <div class="relative inline-block">
                             <!-- Profile Avatar Placeholder or Initials could go here if available -->
                         </div>
-                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-1 uppercase tracking-tight">
-                            {{ $user->name }}
-                        </h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 uppercase tracking-tight">
+                            {{ $user->name }}</h2>
                         <h2
-                            class="text-xl sm:text-2xl font-bold text-gold-400 mb-3 uppercase tracking-tight leading-none">
-                            {{ $user->last_name }}
-                        </h2>
+                            class="text-xl sm:text-2xl font-bold text-gold-600 mb-3 uppercase tracking-tight leading-none">
+                            {{ $user->last_name }}</h2>
 
                         <div
-                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/20 border border-gold-500/10 text-[11px] text-gray-300 tracking-wider font-mono">
+                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-[11px] text-gray-600 tracking-wider font-mono">
                             <span class="opacity-50">ID:</span> {{ $user->document_type }} {{ $user->document_number }}
                         </div>
                     </div>
 
                     <!-- Details Grid -->
                     <div
-                        class="grid grid-cols-2 gap-4 mb-6 text-left border-t border-b border-gold-500/10 py-6 bg-black/20 mx-[-1.5rem] px-8 relative">
+                        class="grid grid-cols-2 gap-4 mb-6 text-left border-t border-b border-gray-200 py-6 bg-gray-50 mx-[-1.5rem] px-8 relative">
                         <div class="relative">
                             <span
-                                class="block text-[10px] text-gold-600 uppercase tracking-widest font-bold mb-1">Zona</span>
-                            <span class="block text-white font-bold text-sm tracking-wide">{{ $user->zone }}</span>
+                                class="block text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Zona</span>
+                            <span class="block text-gray-900 font-bold text-sm tracking-wide">{{ $user->zone }}</span>
                         </div>
                         <div class="text-right">
                             <span
-                                class="block text-[10px] text-gold-600 uppercase tracking-widest font-bold mb-1">Congregación</span>
+                                class="block text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Congregación</span>
                             <span
-                                class="block text-white font-bold text-sm tracking-wide">{{ $user->congregacion }}</span>
+                                class="block text-gray-900 font-bold text-sm tracking-wide">{{ $user->congregacion }}</span>
                         </div>
                         <div class="mt-3 text-left">
                             <span
-                                class="block text-[10px] text-gold-600 uppercase tracking-widest font-bold mb-1">Fecha</span>
+                                class="block text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Fecha</span>
                             <span
-                                class="block text-white font-bold text-sm capitalize tracking-wide">{{ now()->locale('es')->isoFormat('D MMMM') }}</span>
+                                class="block text-gray-900 font-bold text-sm capitalize tracking-wide">{{ now()->locale('es')->isoFormat('D MMMM') }}</span>
                         </div>
                         <div class="text-right mt-3">
                             <span
@@ -131,7 +128,7 @@
                     </div>
 
                     <!-- ID Hashtag -->
-                    <div class="mt-4 font-mono text-gold-900/40 text-xs tracking-widest">
+                    <div class="mt-4 font-mono text-gray-300 text-xs tracking-widest">
                         #{{ str_pad($user->id, 8, '0', STR_PAD_LEFT) }}
                     </div>
 
