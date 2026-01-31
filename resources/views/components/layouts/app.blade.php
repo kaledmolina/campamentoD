@@ -136,13 +136,17 @@
             </a>
 
             <div
-                class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10 text-sm font-bold tracking-widest uppercase">
-                <a href="/#inicio" class="text-gray-300 hover:text-gold-400 transition duration-300">Inicio</a>
-                <a href="/#invitados" class="text-gray-300 hover:text-gold-400 transition duration-300">Invitados</a>
-                <a href="/#cronograma" class="text-gray-300 hover:text-gold-400 transition duration-300">Agenda</a>
-                <a href="/#inversion" class="text-gray-300 hover:text-gold-400 transition duration-300">Inversión</a>
+                class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10">
+                <a href="/#inicio"
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inicio</a>
+                <a href="/#invitados"
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Invitados</a>
+                <a href="/#cronograma"
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Agenda</a>
+                <a href="/#inversion"
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inversión</a>
                 <a href="{{ route('consultation') }}"
-                    class="text-gray-300 hover:text-gold-400 transition duration-300 {{ request()->routeIs('consultation') ? 'text-gold-400' : '' }}">Consulta
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300 {{ request()->routeIs('consultation') ? 'text-gold-400' : '' }}">Consulta
                     / Pagos</a>
             </div>
 
