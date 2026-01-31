@@ -120,7 +120,7 @@
 
     <!-- NAVIGATION -->
     <nav
-        class="w-full z-50 py-6 px-4 md:px-8 flex justify-between items-center bg-black/80 border-b border-gold-500/20 backdrop-blur-md">
+        class="w-full z-50 py-6 px-4 md:px-8 flex justify-between items-center bg-[#422006]/95 border-b border-gold-500/20 backdrop-blur-md">
         <div class="w-24 md:w-32">
             <a href="/">
                 <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
@@ -131,7 +131,7 @@
         <div class="hidden md:flex gap-8 text-sm font-bold tracking-widest uppercase">
             <a href="/#inicio" class="hover:text-gold-500 transition duration-300">Inicio</a>
             <a href="/#invitados" class="hover:text-gold-500 transition duration-300">Invitados</a>
-            <a href="/#cronograma" class="hover:text-gold-500 transition duration-300">Programa</a>
+            <a href="/#cronograma" class="hover:text-gold-500 transition duration-300">Agenda</a>
             <a href="/#inversion" class="hover:text-gold-500 transition duration-300">Inversión</a>
             <a href="{{ route('consultation') }}"
                 class="hover:text-gold-500 transition duration-300 {{ request()->routeIs('consultation') ? 'text-gold-500' : '' }}">Consulta
@@ -161,7 +161,7 @@
         <a href="/#invitados"
             class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Invitados</a>
         <a href="/#cronograma"
-            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Programa</a>
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Agenda</a>
         <a href="/#inversion"
             class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Inversión</a>
         <a href="{{ route('consultation') }}"
@@ -178,7 +178,7 @@
         {{ $slot }}
     </main>
 
-    <footer class="bg-black pt-20 pb-10 border-t border-gray-900 mt-auto">
+    <footer class="bg-gradient-to-t from-[#3E2723] to-[#1a0b03] pt-20 pb-10 border-t border-gray-900 mt-auto">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
 

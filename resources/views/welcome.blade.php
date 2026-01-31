@@ -121,8 +121,8 @@
                     class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inicio</a>
                 <a href="#invitados"
                     class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Invitados</a>
-                <a href="#programa"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Programa</a>
+                <a href="#cronograma"
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Agenda</a>
                 <a href="#inversion"
                     class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inversión</a>
                 <a href="/consulta"
@@ -154,7 +154,7 @@
         <a href="#invitados"
             class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Invitados</a>
         <a href="#cronograma"
-            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Programa</a>
+            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Agenda</a>
         <a href="#inversion"
             class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Inversión</a>
         <a href="{{ route('consultation') }}"

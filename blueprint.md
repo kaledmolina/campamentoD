@@ -65,6 +65,10 @@ Also, enhance the visual presentation of these cards.
 -   **Other Pages Refinement:**
     -   **Fix 404:** Verify route for `/consultar`. It might be named differently in `web.php` (e.g., `/consultation`).
     -   **Registration & Consultation:** Apply the **Gold/Brown** theme (backgrounds, buttons, inputs) to match the landing page.
+    -   **Global Layout (`app.blade.php`):**
+        -   **Navbar:** Change background to **Dark Brown** (`#422006`) to match landing page scroll state.
+        -   **Footer:** Apply **Warm Brown Gradient** (`from-[#3E2723] to-[#1a0b03]`).
+        -   **Navigation:** Rename "Programa" link to "Agenda" and ensure it points to `#cronograma`.
 
 ## Verification Plan
 ### Manual Verification
