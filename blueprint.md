@@ -36,8 +36,15 @@ Also, enhance the visual presentation of these cards.
 -   Add `images/logos_distrito.png` below the main logo, centered.
 -   **Refinements:**
     -   **Countdown Label:** Insert `<p>` with "CUENTA REGRESIVA" text above `#countdown` div. Style with gold color and tracking.
+-   **Refinements:**
+    -   **Countdown Label:** Insert `<p>` with "CUENTA REGRESIVA" text above `#countdown` div. Style with gold color and tracking.
     -   **Navbar:** Reduce `py` padding, reduce logo width/height, and reduce text size slightly.
     -   **Hero Layout:** Adjust `min-h-screen` behavior, reduce bottom margins of logos, and ensure content fits better on smaller screens without feeling "tight".
+-   **Final Polish:**
+    -   Reduce spacing between main logo and district logos.
+    -   Make main logo slightly smaller (`max-w-3xl`).
+    -   Increase Navbar padding slightly (`py-4`) from previous reduction to find sweet spot.
+    -   Improve vertical symmetry.
 
 ## Verification Plan
 ### Manual Verification

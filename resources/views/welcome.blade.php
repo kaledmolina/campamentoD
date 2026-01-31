@@ -105,15 +105,15 @@
 <body class="font-montserrat">
 
     <!-- NAVIGATION -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
             <a href="#" class="text-2xl font-bold flex items-center gap-2 group">
-                <img src="{{ asset('images/logo_investi.png') }}" alt="Logo" class="h-8 md:h-10 transition-transform duration-300 group-hover:scale-110">
+                <img src="{{ asset('images/logo_investi.png') }}" alt="Logo" class="h-10 md:h-12 transition-transform duration-300 group-hover:scale-110">
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6 items-center bg-black/30 backdrop-blur-md px-6 py-2 rounded-full border border-white/10">
+            <div class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10">
                 <a href="#inicio"
                     class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Inicio</a>
                 <a href="#invitados"
@@ -176,8 +176,9 @@
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-12">
 
             <!-- Logo Image -->
-            <div class="relative w-full max-w-4xl mx-auto px-4 mb-2" data-aos="zoom-in" data-aos-duration="1500">
-                <img src="{{ asset('images/camp_logo_2026.png') }}" alt="Campamento Juvenil 2026"
+            <div class="relative w-full max-w-3xl mx-auto px-4 -mb-4" data-aos="zoom-in" data-aos-duration="1500">
+                <img src="{{ asset('images/camp_logo_2026.png') }}"
+                    alt="Campamento Juvenil 2026"
                     class="w-full h-auto drop-shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:drop-shadow-[0_0_40px_rgba(212,175,55,0.6)] transition-all duration-500 transform hover:scale-105">
             </div>
 
