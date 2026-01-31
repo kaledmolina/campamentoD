@@ -582,7 +582,7 @@ class UserResource extends Resource
                             ->visible(fn($record) => $record->consent_proof_path !== null),
                         TextEntry::make('consent_download')
                             ->label('Descargar Consentimiento')
-                            ->value('Descargar')
+                            ->state('Descargar')
                             ->url(fn($record) => \Illuminate\Support\Facades\Storage::url($record->consent_proof_path))
                             ->openUrlInNewTab()
                             ->visible(fn($record) => $record->consent_proof_path !== null)
@@ -595,7 +595,7 @@ class UserResource extends Resource
                             ->visible(fn($record) => $record->pastor_letter_path !== null),
                         TextEntry::make('pastor_letter_download')
                             ->label('Descargar Carta')
-                            ->value('Descargar')
+                            ->state('Descargar')
                             ->url(fn($record) => \Illuminate\Support\Facades\Storage::url($record->pastor_letter_path))
                             ->openUrlInNewTab()
                             ->visible(fn($record) => $record->pastor_letter_path !== null)
