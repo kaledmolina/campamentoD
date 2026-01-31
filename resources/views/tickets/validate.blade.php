@@ -61,16 +61,17 @@
 
             <!-- RESULT CARD (White Paper Style) -->
             <div
-                class="bg-white rounded-3xl p-8 text-left space-y-6 mb-8 border border-gray-200 shadow-[0_0_40px_rgba(0,0,0,0.2)] relative z-10">
+                class="bg-white rounded-3xl p-6 md:p-8 text-left space-y-6 mb-8 border border-gray-200 shadow-[0_0_40px_rgba(0,0,0,0.2)] relative z-10 w-full max-w-lg mx-auto">
 
                 <!-- Campista Info -->
                 <div class="flex flex-col border-b border-gray-100 pb-4">
                     <label class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Campista</label>
-                    <span class="text-2xl text-gray-900 font-bold tracking-tight cinzel">{{ $user->name }}
+                    <span
+                        class="text-xl md:text-2xl text-gray-900 font-bold tracking-tight cinzel leading-tight">{{ $user->name }}
                         {{ $user->last_name }}</span>
                 </div>
 
-                <div class="grid grid-cols-2 gap-6">
+                <div class="grid grid-cols-2 gap-4">
                     <div class="flex flex-col">
                         <label
                             class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Documento</label>
@@ -80,6 +81,13 @@
                         <label class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Zona</label>
                         <span class="text-sm text-gray-800 font-bold">{{ $user->zone }}</span>
                     </div>
+                </div>
+
+                <!-- Congregación (New Field) -->
+                <div class="flex flex-col border-t border-gray-100 pt-4">
+                    <label
+                        class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Congregación</label>
+                    <span class="text-base text-gray-900 font-bold tracking-wide">{{ $user->congregacion }}</span>
                 </div>
 
                 <!-- Financial Status -->
