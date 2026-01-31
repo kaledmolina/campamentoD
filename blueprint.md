@@ -52,6 +52,9 @@ Also, enhance the visual presentation of these cards.
     -   **Navbar:** Increase size/padding (`py-6`) and make the top-left logo bigger.
 -   **Visual Polish:**
     -   **Background Colors:** Change Hero overlay from **Black** to **Gold/Brown** gradient to match reference image (remove dark/black aesthetic).
+-   **Navbar Polish:**
+    -   **Scroll Background:** Update JS logic to use a dark brown/gold backdrop (`bg-[#422006]/90`) instead of black on scroll.
+    -   **Text Size:** Increase menu item text size from `text-xs` to `text-sm` or `text-base`.
 
 ## Verification Plan
 ### Manual Verification

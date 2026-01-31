@@ -80,7 +80,8 @@
         }
 
         .nav-scrolled {
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(66, 32, 6, 0.95);
+            /* Dark Brown/Gold Theme */
             padding-top: 10px !important;
             padding-bottom: 10px !important;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -117,15 +118,15 @@
             <div
                 class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10">
                 <a href="#inicio"
-                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Inicio</a>
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inicio</a>
                 <a href="#invitados"
-                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Invitados</a>
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Invitados</a>
                 <a href="#programa"
-                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Programa</a>
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Programa</a>
                 <a href="#inversion"
-                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Inversión</a>
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inversión</a>
                 <a href="/consultar"
-                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Consulta
+                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Consulta
                     / Pagos</a>
             </div>
 
@@ -172,8 +173,12 @@
         <div class="absolute inset-0 z-0">
             <img src="{{ asset('images/16x9.png') }}"
                 class="w-full h-full object-cover opacity-40 scale-105 animate-pulse-slow" alt="Fondo">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#422006] via-[#a16207]/40 to-[#422006]/90 mix-blend-multiply"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-black/40"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-[#422006] via-[#a16207]/40 to-[#422006]/90 mix-blend-multiply">
+            </div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-black/40">
+            </div>
         </div>
 
         <!-- Content -->
