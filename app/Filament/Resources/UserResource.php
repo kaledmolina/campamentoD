@@ -578,14 +578,12 @@ class UserResource extends Resource
                             ->label('Consentimiento de Padres')
                             ->disk('public')
                             ->limit(1)
-                            ->openable()
                             ->downloadable()
                             ->visible(fn($record) => $record->consent_proof_path !== null),
                         ImageEntry::make('pastor_letter_path')
                             ->label('Carta Aval Pastoral')
                             ->disk('public')
                             ->limit(1)
-                            ->openable()
                             ->downloadable()
                             ->visible(fn($record) => $record->pastor_letter_path !== null),
                     ]),
