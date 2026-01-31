@@ -21,8 +21,12 @@
             <div id="ticket-card"
                 class="relative bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.2)]">
 
-                <!-- Decorative Header Background -->
-                <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-gold-900/30 to-transparent"></div>
+                <!-- Decorative Header Background (Removed for clean white look) -->
+                <!-- <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-gold-900/30 to-transparent"></div> -->
+
+                <!-- Top Gold Bar -->
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gold-600 via-yellow-400 to-gold-600">
+                </div>
 
                 <!-- Noise Texture Overlay (Optional for grit) -->
                 <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -42,12 +46,12 @@
                     <!-- Event Branding -->
                     <div class="mb-6 relative">
                         <div
-                            class="inline-block px-3 py-1 rounded-full border border-gold-500/30 bg-gold-900/10 backdrop-blur-sm mb-3">
-                            <h3 class="text-gold-400 tracking-[0.2em] text-[10px] sm:text-xs font-bold uppercase">Ticket
+                            class="inline-block px-3 py-1 rounded-full border border-gold-500/50 bg-gold-50 text-gold-700 mb-3">
+                            <h3 class="tracking-[0.2em] text-[10px] sm:text-xs font-bold uppercase">Ticket
                                 de Acceso</h3>
                         </div>
                         <h1
-                            class="text-4xl sm:text-5xl font-black text-black cinzel mb-2 tracking-wide">
+                            class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gold-700 to-gold-500 cinzel mb-2 tracking-wide">
                             INVESTI2
                         </h1>
                         <p class="text-gray-500 text-[10px] sm:text-xs tracking-[0.3em] uppercase">Campamento Distrital
@@ -55,15 +59,17 @@
                     </div>
 
                     <!-- User Info -->
-                    <div class="mb-6">
+                    <div class="mb-6 relative z-10">
                         <div class="relative inline-block">
                             <!-- Profile Avatar Placeholder or Initials could go here if available -->
                         </div>
                         <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 uppercase tracking-tight">
-                            {{ $user->name }}</h2>
+                            {{ $user->name }}
+                        </h2>
                         <h2
                             class="text-xl sm:text-2xl font-bold text-gold-600 mb-3 uppercase tracking-tight leading-none">
-                            {{ $user->last_name }}</h2>
+                            {{ $user->last_name }}
+                        </h2>
 
                         <div
                             class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-[11px] text-gray-600 tracking-wider font-mono">
@@ -73,7 +79,7 @@
 
                     <!-- Details Grid -->
                     <div
-                        class="grid grid-cols-2 gap-4 mb-6 text-left border-t border-b border-gray-200 py-6 bg-gray-50 mx-[-1.5rem] px-8 relative">
+                        class="grid grid-cols-2 gap-4 mb-6 text-left border-t border-b border-gray-100 py-6 bg-gray-50/80 mx-[-1.5rem] px-8 relative">
                         <div class="relative">
                             <span
                                 class="block text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Zona</span>
