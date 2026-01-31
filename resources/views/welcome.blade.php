@@ -105,15 +105,17 @@
 <body class="font-montserrat">
 
     <!-- NAVIGATION -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
             <a href="#" class="text-2xl font-bold flex items-center gap-2 group">
-                <img src="{{ asset('images/logo_investi.png') }}" alt="Logo" class="h-10 md:h-12 transition-transform duration-300 group-hover:scale-110">
+                <img src="{{ asset('images/logo_investi.png') }}" alt="Logo"
+                    class="h-12 md:h-16 transition-transform duration-300 group-hover:scale-110">
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10">
+            <div
+                class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10">
                 <a href="#inicio"
                     class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Inicio</a>
                 <a href="#invitados"
@@ -123,7 +125,8 @@
                 <a href="#inversion"
                     class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Inversión</a>
                 <a href="/consultar"
-                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Consulta / Pagos</a>
+                    class="text-gray-300 hover:text-gold-400 text-xs uppercase tracking-widest transition duration-300">Consulta
+                    / Pagos</a>
             </div>
 
             <!-- CTA Button -->
@@ -132,10 +135,10 @@
                 INSCRIBIRME
             </a>
 
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
-            <i class="fas fa-bars"></i>
-        </button>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
     </nav>
 
     <!-- Mobile Menu Overlay -->
@@ -173,24 +176,23 @@
         </div>
 
         <!-- Content -->
-        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-12">
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20 md:mt-0">
 
             <!-- Logo Image -->
-            <div class="relative w-full max-w-3xl mx-auto px-4 -mb-4" data-aos="zoom-in" data-aos-duration="1500">
-                <img src="{{ asset('images/camp_logo_2026.png') }}"
-                    alt="Campamento Juvenil 2026"
+            <div class="relative w-full max-w-2xl mx-auto px-4 -mb-6" data-aos="zoom-in" data-aos-duration="1500">
+                <img src="{{ asset('images/camp_logo_2026.png') }}" alt="Campamento Juvenil 2026"
                     class="w-full h-auto drop-shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:drop-shadow-[0_0_40px_rgba(212,175,55,0.6)] transition-all duration-500 transform hover:scale-105">
             </div>
 
             <!-- Logos Distrito Image -->
-            <div class="relative w-full max-w-2xl mx-auto px-4 mb-8" data-aos="fade-up" data-aos-delay="500">
-                <img src="{{ asset('images/logos_distrito.png') }}"
-                    alt="Logos Distrito"
+            <div class="relative w-full max-w-xl mx-auto px-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <img src="{{ asset('images/logos_distrito.png') }}" alt="Logos Distrito"
                     class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity duration-500">
             </div>
 
             <!-- Countdown Label -->
-             <p data-aos="fade-up" data-aos-delay="600" class="text-gold-500 font-cinzel text-xs md:text-sm tracking-[0.4em] uppercase mb-4 font-bold">
+            <p data-aos="fade-up" data-aos-delay="600"
+                class="text-gold-500 font-cinzel text-xs md:text-sm tracking-[0.4em] uppercase mb-2 font-bold">
                 Cuenta Regresiva
             </p>
 
