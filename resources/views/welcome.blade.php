@@ -424,7 +424,8 @@
 
 
     <!-- CRONOGRAMA (TIMELINE) -->
-    <section id="cronograma" class="py-20 bg-[#050505] relative overflow-hidden">
+    <!-- CRONOGRAMA (TIMELINE) -->
+    <section id="cronograma" class="py-20 bg-gradient-to-b from-[#2a1205] to-[#1a0b03] relative overflow-hidden">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-bold text-white" data-aos="fade-up">Cronograma</h2>
@@ -584,13 +585,14 @@
     </section>
 
     <!-- INVERSION -->
-    <section id="inversion" class="py-20 bg-gradient-to-b from-[#0a0a0a] to-[#111]">
+    <!-- INVERSION -->
+    <section id="inversion" class="py-20 bg-gradient-to-br from-[#FDB931] via-[#F5D061] to-[#D4AF37]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Inversión</h2>
 
             <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
                 <!-- Plan 1 -->
-                <div class="glass-card p-8 rounded-2xl flex-1 text-center transform hover:-translate-y-2 transition duration-300 relative overflow-hidden"
+                <div class="glass-card !bg-black/80 p-8 rounded-2xl flex-1 text-center transform hover:-translate-y-2 transition duration-300 relative overflow-hidden"
                     data-aos="zoom-in-right">
                     @use('App\Models\GlobalSetting')
 
@@ -616,7 +618,7 @@
                 </div>
 
                 <!-- Plan Full (Destacado) -->
-                <div class="glass-card p-8 rounded-2xl flex-1 text-center transform scale-105 border-gold-500 shadow-[0_0_30px_rgba(212,175,55,0.15)] relative"
+                <div class="glass-card !bg-black/80 p-8 rounded-2xl flex-1 text-center transform scale-105 border-gold-500 shadow-[0_0_30px_rgba(212,175,55,0.15)] relative"
                     data-aos="zoom-in">
                     <div
                         class="absolute top-0 right-0 bg-gold-500 text-black text-xs font-bold px-3 py-1 rounded-bl-lg">
@@ -650,7 +652,8 @@
     </section>
 
     <!-- FOOTER / CONTACTO -->
-    <footer id="registro" class="bg-black pt-20 pb-10 border-t border-gray-900">
+    <footer id="registro"
+        class="bg-gradient-to-t from-[#3E2723] to-[#1a0b03] pt-20 pb-10 border-t border-orange-900/30">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
 

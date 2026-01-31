@@ -59,6 +59,9 @@ Also, enhance the visual presentation of these cards.
     -   **Introduction:** Change from default/black to **Dark Brown Gradient** (`from-[#422006] to-[#2a1205]`).
     -   **Expositores (Main):** Change from black to **Light Gold/Beige Radial Gradient** (`from-[#EEDC82] via-[#D4AF37]/30 to-[#8B4513]/80`) to provide contrast.
     -   **Expositores (Cards):** Change from `bg-gray-900` to **Brown Gradient cards** (`bg-gradient-to-br from-[#8D6E63] to-[#3E2723]`).
+    -   **Cronograma:** Update to **Dark Chocolate Gradient** (`bg-gradient-to-b from-[#2a1205] to-[#1a0b03]`) to match Intro/Hero depth.
+    -   **Inversión:** Update to **Bright Gold/Yellow Gradient** (`bg-gradient-to-br from-[#FDB931] via-[#F5D061] to-[#D4AF37]`) for high impact.
+    -   **Footer:** Update to **Warm Brown Gradient** (`bg-gradient-to-t from-[#3E2723] to-[#1a0b03]`).
 
 ## Verification Plan
 ### Manual Verification
