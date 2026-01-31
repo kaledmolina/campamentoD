@@ -66,7 +66,9 @@ Also, enhance the visual presentation of these cards.
     -   **Fix 404:** Verify route for `/consultar`. It might be named differently in `web.php` (e.g., `/consultation`).
     -   **Registration & Consultation:** Apply the **Gold/Brown** theme (backgrounds, buttons, inputs) to match the landing page.
     -   **Global Layout (`app.blade.php`):**
-        -   **Navbar:** Change background to **Dark Brown** (`#422006`) to match landing page scroll state.
+        -   **Navbar Structure:** Adopt the **"Pill" Design** for the desktop menu links container:
+            -   Wrap links in: `div class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10"`
+            -   Remove the heavy solid background from the main `<nav>` tag, or adjust it to be compatible (e.g., sticky/fixed or solid dark brown if content scrolls behind).
         -   **Footer:** Apply **Warm Brown Gradient** (`from-[#3E2723] to-[#1a0b03]`).
         -   **Navigation:** Rename "Programa" link to "Agenda" and ensure it points to `#cronograma`.
 
