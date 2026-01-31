@@ -280,7 +280,7 @@
 
                 <!-- Conquistadores Distrito 27 -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
+                            glass-card !bg-black/80 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left">
                     <div class="absolute inset-0 bg-transparent flex items-center justify-center overflow-hidden">
                         <i
@@ -310,7 +310,7 @@
 
                 <!-- Coro Distrito 27 -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
+                            glass-card !bg-black/80 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="100">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
@@ -337,7 +337,7 @@
 
                 <!-- Pastor Jhon Fabio García -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
+                            glass-card !bg-black/80 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="200">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
@@ -364,7 +364,7 @@
 
                 <!-- Pastor Michael Alvarez -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
+                            glass-card !bg-black/80 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="300">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
@@ -391,7 +391,7 @@
 
                 <!-- Adorador Juan Pablo Murillo -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
+                            glass-card !bg-black/80 border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="400">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
