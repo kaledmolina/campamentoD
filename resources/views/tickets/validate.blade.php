@@ -1,10 +1,16 @@
 <x-layouts.app>
-    <div class="min-h-screen flex items-center justify-center p-4 py-12 bg-zinc-950">
+    <div
+        class="min-h-screen flex items-center justify-center p-4 py-12 bg-gradient-to-b from-[#422006] to-[#1a0b03] relative">
 
         <!-- Background Ambient -->
         <div class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+            <!-- Noise Texture -->
+            <div class="absolute inset-0 opacity-[0.03] z-0"
+                style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PHBmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjY1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==');">
+            </div>
+
             <div class="absolute -top-40 -right-40 w-96 h-96 bg-gold-500/10 rounded-full blur-[120px]"></div>
-            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-900/10 rounded-full blur-[120px]"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gold-900/10 rounded-full blur-[120px]"></div>
         </div>
 
         <div
@@ -53,45 +59,49 @@
                 </div>
             @endif
 
+            <!-- RESULT CARD (White Paper Style) -->
             <div
-                class="bg-white/5 rounded-xl p-6 text-left space-y-4 mb-8 border border-white/5 shadow-inner relative overflow-hidden group">
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                </div>
+                class="bg-white rounded-3xl p-8 text-left space-y-6 mb-8 border border-gray-200 shadow-[0_0_40px_rgba(0,0,0,0.2)] relative z-10">
 
-                <div class="flex flex-col relative z-10">
-                    <label class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Campista</label>
-                    <span class="text-xl text-white font-bold tracking-tight">{{ $user->name }}
+                <!-- Campista Info -->
+                <div class="flex flex-col border-b border-gray-100 pb-4">
+                    <label class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Campista</label>
+                    <span class="text-2xl text-gray-900 font-bold tracking-tight cinzel">{{ $user->name }}
                         {{ $user->last_name }}</span>
                 </div>
 
-                <div class="grid grid-cols-2 gap-6 relative z-10">
+                <div class="grid grid-cols-2 gap-6">
                     <div class="flex flex-col">
                         <label
-                            class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Documento</label>
-                        <span class="text-sm text-zinc-300 font-mono">{{ $user->document_number }}</span>
+                            class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Documento</label>
+                        <span class="text-sm text-gray-800 font-mono font-bold">{{ $user->document_number }}</span>
                     </div>
-                    <div class="flex flex-col">
-                        <label class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">Zona</label>
-                        <span class="text-sm text-zinc-300">{{ $user->zone }}</span>
+                    <div class="flex flex-col text-right">
+                        <label class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Zona</label>
+                        <span class="text-sm text-gray-800 font-bold">{{ $user->zone }}</span>
                     </div>
                 </div>
 
-                <div class="flex flex-col border-t border-white/10 pt-4 mt-2 relative z-10">
+                <!-- Financial Status -->
+                <div class="bg-gray-50 rounded-xl p-4 border border-gray-100 mt-4">
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Estado de
-                            Cuenta</label>
+                        <label class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Estado
+                            Financiero</label>
                         <span
-                            class="text-xs font-bold px-2 py-0.5 rounded {{ $user->balance <= 0 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400' }}">
-                            {{ $user->balance <= 0 ? 'PAZ Y SALVO' : 'DEUDA PENDIENTE' }}
+                            class="text-xs font-bold px-2 py-1 rounded-md {{ $user->balance <= 0 ? 'bg-emerald-100 text-emerald-700 border border-emerald-200' : 'bg-red-100 text-red-700 border border-red-200' }}">
+                            {{ $user->balance <= 0 ? '• PAZ Y SALVO' : '• PENDIENTE' }}
                         </span>
                     </div>
                     @if($user->balance > 0)
-                        <div
-                            class="flex justify-between items-center mt-2 p-2 rounded bg-red-500/10 border border-red-500/20">
-                            <label class="text-xs text-red-300 font-medium">Debe:</label>
+                        <div class="flex justify-between items-center mt-3 pt-3 border-t border-gray-200">
+                            <label class="text-xs text-red-500 font-medium">Saldo a Pagar:</label>
                             <span
-                                class="text-lg font-black text-red-400 font-mono">${{ number_format($user->balance, 0, ',', '.') }}</span>
+                                class="text-xl font-black text-red-600 font-mono">${{ number_format($user->balance, 0, ',', '.') }}</span>
+                        </div>
+                    @else
+                        <div class="flex items-center gap-2 mt-2">
+                            <i class="fas fa-check-circle text-emerald-500"></i> <span
+                                class="text-xs text-emerald-600 font-medium">Ticket 100% Pagado</span>
                         </div>
                     @endif
                 </div>
