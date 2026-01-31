@@ -432,6 +432,12 @@ class UserResource extends Resource
                     ->label('EPS')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('coupon_code')
+                    ->label('Cupón')
+                    ->badge()
+                    ->color('warning')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('zone')
@@ -559,9 +565,29 @@ class UserResource extends Resource
                     ->columns(3)
                     ->schema([
                         TextEntry::make('total_paid')->money('COP')->label('Total Abonado'),
+                        TextEntry::make('discount_amount')->money('COP')->label('Descuento Aplicado')->color('warning'),
+                        TextEntry::make('coupon_code')->label('Código Cupón')->badge()->color('warning'),
                         TextEntry::make('balance')->money('COP')->label('Saldo Pendiente')
                             ->color(fn($state) => $state > 0 ? 'danger' : 'success'),
                         TextEntry::make('target_cost')->money('COP')->label('Costo Total'),
+                    ]),
+                Section::make('Documentos de Soporte')
+                    ->columns(2)
+                    ->schema([
+                        ImageEntry::make('consent_proof_path')
+                            ->label('Consentimiento de Padres')
+                            ->disk('public')
+                            ->limit(1)
+                            ->openable()
+                            ->downloadable()
+                            ->visible(fn($record) => $record->consent_proof_path !== null),
+                        ImageEntry::make('pastor_letter_path')
+                            ->label('Carta Aval Pastoral')
+                            ->disk('public')
+                            ->limit(1)
+                            ->openable()
+                            ->downloadable()
+                            ->visible(fn($record) => $record->pastor_letter_path !== null),
                     ]),
                 Section::make('Ticket de Entrada')
                     ->columnSpanFull()
