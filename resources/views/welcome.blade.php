@@ -169,16 +169,11 @@
         <!-- Content -->
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-12">
 
-            <p data-aos="fade-up" data-aos-delay="300"
-                class="text-gold-500 font-cinzel text-lg md:text-2xl tracking-[0.2em] mb-2">
-                CAMPAMENTO JUVENIL 2026
-            </p>
-
-            <h1 data-aos="fade-up" data-aos-delay="500"
-                class="text-3xl md:text-7xl font-black text-white uppercase mb-6 leading-tight">
-                Por un mismo <br><span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-400">Espíritu</span>
-            </h1>
+            <!-- Logo Image -->
+            <div class="relative w-full max-w-4xl mx-auto px-4 mb-8" data-aos="zoom-in" data-aos-duration="1500">
+                <img src="{{ asset('images/camp_logo_2026.png') }}" alt="Campamento Juvenil 2026"
+                    class="w-full h-auto drop-shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:drop-shadow-[0_0_40px_rgba(212,175,55,0.6)] transition-all duration-500 transform hover:scale-105">
+            </div>
 
             <!-- Countdown Timer -->
             <div data-aos="fade-up" data-aos-delay="700" class="flex flex-wrap justify-center gap-4 md:gap-8 my-10"

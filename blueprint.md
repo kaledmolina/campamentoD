@@ -31,6 +31,7 @@ Also, enhance the visual presentation of these cards.
 ### [Hero Section]
 #### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php)
 -   Change background image to `images/16x9.png`.
+-   Replace "CAMPAMENTO JUVENIL 2026" text with `images/camp_logo_2026.png`.
 
 ## Verification Plan
 ### Manual Verification
