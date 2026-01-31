@@ -1,5 +1,6 @@
 <x-layouts.app>
-    <div class="min-h-screen py-8 md:py-12 px-4 flex items-center justify-center bg-zinc-950 relative overflow-hidden">
+    <div
+        class="min-h-screen py-8 md:py-12 px-4 flex items-center justify-center bg-gradient-to-b from-[#422006] to-[#1a0b03] relative overflow-hidden">
 
         <!-- Background Ambient Glow -->
         <div
@@ -18,7 +19,7 @@
 
             <!-- Main Ticket Card -->
             <div id="ticket-card"
-                class="relative bg-zinc-900 rounded-3xl border border-gold-500/30 overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                class="relative bg-[#2a1205] rounded-3xl border border-gold-500/30 overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)]">
 
                 <!-- Decorative Header Background -->
                 <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-gold-900/30 to-transparent"></div>
@@ -29,10 +30,10 @@
                 </div>
 
                 <!-- Ticket Holes/Notches -->
-                <div class="absolute top-1/2 -mt-3 -left-3 w-6 h-6 bg-zinc-950 rounded-full z-10 shadow-inner"></div>
-                <div class="absolute top-1/2 -mt-3 -right-3 w-6 h-6 bg-zinc-950 rounded-full z-10 shadow-inner"></div>
+                <div class="absolute top-1/2 -mt-3 -left-3 w-6 h-6 bg-[#422006] rounded-full z-10 shadow-inner"></div>
+                <div class="absolute top-1/2 -mt-3 -right-3 w-6 h-6 bg-[#422006] rounded-full z-10 shadow-inner"></div>
                 <div
-                    class="absolute top-1/2 left-5 right-5 border-t-2 border-dashed border-zinc-800/80 pointer-events-none">
+                    class="absolute top-1/2 left-5 right-5 border-t-2 border-dashed border-gold-500/20 pointer-events-none">
                 </div>
 
                 <!-- Content -->
@@ -45,11 +46,12 @@
                             <h3 class="text-gold-400 tracking-[0.2em] text-[10px] sm:text-xs font-bold uppercase">Ticket
                                 de Acceso</h3>
                         </div>
-                        <h1
-                            class="text-4xl sm:text-5xl font-black text-white cinzel mb-2 tracking-wide" style="text-shadow: 0 0 15px rgba(212,175,55,0.6);">
+                        <h1 class="text-4xl sm:text-5xl font-black text-white cinzel mb-2 tracking-wide"
+                            style="text-shadow: 0 0 15px rgba(212,175,55,0.6);">
                             INVESTI2
                         </h1>
-                        <p class="text-zinc-400 text-[10px] sm:text-xs tracking-[0.3em] uppercase">Campamento Distrital
+                        <p class="text-gold-500/60 text-[10px] sm:text-xs tracking-[0.3em] uppercase">Campamento
+                            Distrital
                             2026</p>
                     </div>
 
@@ -59,20 +61,22 @@
                             <!-- Profile Avatar Placeholder or Initials could go here if available -->
                         </div>
                         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-1 uppercase tracking-tight">
-                            {{ $user->name }}</h2>
+                            {{ $user->name }}
+                        </h2>
                         <h2
                             class="text-xl sm:text-2xl font-bold text-gold-400 mb-3 uppercase tracking-tight leading-none">
-                            {{ $user->last_name }}</h2>
+                            {{ $user->last_name }}
+                        </h2>
 
                         <div
-                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-[11px] text-zinc-300 tracking-wider font-mono">
+                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/20 border border-gold-500/10 text-[11px] text-gray-300 tracking-wider font-mono">
                             <span class="opacity-50">ID:</span> {{ $user->document_type }} {{ $user->document_number }}
                         </div>
                     </div>
 
                     <!-- Details Grid -->
                     <div
-                        class="grid grid-cols-2 gap-4 mb-6 text-left border-t border-b border-zinc-800 py-6 bg-zinc-900/50 mx-[-1.5rem] px-8 relative">
+                        class="grid grid-cols-2 gap-4 mb-6 text-left border-t border-b border-gold-500/10 py-6 bg-black/20 mx-[-1.5rem] px-8 relative">
                         <div class="relative">
                             <span
                                 class="block text-[10px] text-gold-600 uppercase tracking-widest font-bold mb-1">Zona</span>
@@ -122,12 +126,12 @@
                             <img src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code"
                                 class="w-36 h-36 sm:w-40 sm:h-40">
                         </div>
-                        <p class="text-[10px] text-zinc-500 uppercase tracking-[0.2em] mt-4 font-medium">Presenta este
+                        <p class="text-[10px] text-gray-500 uppercase tracking-[0.2em] mt-4 font-medium">Presenta este
                             código en la entrada</p>
                     </div>
 
                     <!-- ID Hashtag -->
-                    <div class="mt-4 font-mono text-zinc-700 text-xs tracking-widest">
+                    <div class="mt-4 font-mono text-gold-900/40 text-xs tracking-widest">
                         #{{ str_pad($user->id, 8, '0', STR_PAD_LEFT) }}
                     </div>
 
@@ -143,13 +147,13 @@
                 </button>
 
                 <button onclick="shareTicket()"
-                    class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-zinc-800/80 hover:bg-zinc-700 backdrop-blur-md text-white rounded-xl transition-all border border-zinc-700 hover:border-zinc-600 hover:-translate-y-0.5">
+                    class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white rounded-xl transition-all border border-gold-500/20 hover:border-gold-500/40 hover:-translate-y-0.5">
                     <i class="fas fa-share-nodes"></i> <span
                         class="text-sm font-bold uppercase tracking-wide">Compartir</span>
                 </button>
 
                 <a href="{{ route('consultation') }}"
-                    class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent hover:bg-white/5 text-zinc-500 hover:text-white rounded-xl transition-all">
+                    class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent hover:bg-white/5 text-gold-500/50 hover:text-white rounded-xl transition-all">
                     <span class="text-xs font-bold uppercase tracking-wider">Volver</span>
                 </a>
             </div>
