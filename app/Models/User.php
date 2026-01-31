@@ -91,4 +91,20 @@ class User extends Authenticatable
             'birth_date' => 'date',
         ];
     }
+    protected static function booted()
+    {
+        static::deleting(function (User $user) {
+            // Delete related payments
+            $user->payments()->delete();
+
+            // Delete uploaded files
+            if ($user->consent_proof_path) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($user->consent_proof_path);
+            }
+
+            if ($user->pastor_letter_path) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($user->pastor_letter_path);
+            }
+        });
+    }
 }
