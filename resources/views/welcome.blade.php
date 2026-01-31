@@ -109,7 +109,7 @@
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
             <a href="#" class="text-2xl font-bold flex items-center gap-2 group">
-                <img src="{{ asset('images/logo_investi.png') }}" alt="Logo"
+                <img src="{{ asset('images/INVESTIDOS.png') }}" alt="Logo"
                     class="h-12 md:h-16 transition-transform duration-300 group-hover:scale-110">
             </a>
 
