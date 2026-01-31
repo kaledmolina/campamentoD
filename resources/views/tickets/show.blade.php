@@ -50,8 +50,7 @@
                             <h3 class="tracking-[0.2em] text-[10px] sm:text-xs font-bold uppercase">Ticket
                                 de Acceso</h3>
                         </div>
-                        <h1
-                            class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gold-700 to-gold-500 cinzel mb-2 tracking-wide">
+                        <h1 class="text-4xl sm:text-5xl font-black text-yellow-600 cinzel mb-2 tracking-wide">
                             INVESTI2
                         </h1>
                         <p class="text-gray-500 text-[10px] sm:text-xs tracking-[0.3em] uppercase">Campamento Distrital
