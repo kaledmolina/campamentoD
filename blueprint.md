@@ -50,6 +50,8 @@ Also, enhance the visual presentation of these cards.
     -   **Countdown:** Bring "Cuenta Regresiva" label closer to the logos.
     -   **Hero Logo:** Make slightly smaller (`max-w-2xl`).
     -   **Navbar:** Increase size/padding (`py-6`) and make the top-left logo bigger.
+-   **Visual Polish:**
+    -   **Background Colors:** Change Hero overlay from **Black** to **Gold/Brown** gradient to match reference image (remove dark/black aesthetic).
 
 ## Verification Plan
 ### Manual Verification
