@@ -45,7 +45,7 @@
                         },
                         // New Premium Dark Background Palette
                         'rich-dark': {
-                            900: '#1a0f05', // Deepest Brown/Black
+                            900: '#1e1208', // Slightly Lighter Dark Brown (Was #1a0f05)
                             800: '#2c1a0b', // Dark Coffee
                             700: '#3e2510', // Rich Brown
                         }
@@ -191,7 +191,7 @@
                     class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Inicio</a>
                 <a href="#invitados"
                     class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Invitados</a>
-                <a href="#cronograma"
+                <a href="#Agenda"
                     class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Agenda</a>
                 <a href="#inversion"
                     class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Inversión</a>
@@ -228,7 +228,7 @@
             class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Inicio</a>
         <a href="#invitados" onclick="toggleMenu()"
             class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Invitados</a>
-        <a href="#cronograma" onclick="toggleMenu()"
+        <a href="#Agenda" onclick="toggleMenu()"
             class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Agenda</a>
         <a href="#inversion" onclick="toggleMenu()"
             class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Inversión</a>
@@ -311,13 +311,13 @@
     </header>
 
     <!-- INTRO & VIDEO WRAPPER (Dark Luxury Background) -->
-    <div class="relative bg-gradient-to-b from-rich-dark-900 to-[#1a0f05] py-24 overflow-hidden">
+    <div class="relative bg-gradient-to-b from-rich-dark-900 to-rich-dark-900 py-24 overflow-hidden">
         <!-- Lighting Background -->
         <div class="ambient-light bg-gold-600/10 top-0 left-0 w-[500px] h-[500px]"></div>
         <div class="ambient-light bg-gold-500/5 bottom-0 right-0 w-[600px] h-[600px]"></div>
 
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16 max-w-7xl mx-auto">
+        <div class="container mx-auto px-4 relative z-10 w-full">
+            <div class="flex flex-col lg:flex-row items-center gap-16 w-full max-w-[95rem] mx-auto">
 
                 <!-- Text Content -->
                 <div class="lg:w-1/2 text-left" data-aos="fade-right">
@@ -385,10 +385,10 @@
     </div>
 
     <!-- INVITADOS (Dark & Elegant) -->
-    <section id="invitados" class="py-24 relative bg-[#0a0502]">
+    <section id="invitados" class="py-24 relative bg-rich-dark-900">
         <!-- Ambient Gloom -->
         <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-gold-900/10 via-[#0a0502] to-[#0a0502]">
+            class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-gold-900/10 via-rich-dark-900 to-rich-dark-900">
         </div>
 
         <div class="container mx-auto px-4 relative z-10">
@@ -518,8 +518,8 @@
         </div>
     </section>
 
-    <!-- CRONOGRAMA (Neon Line Style) -->
-    <section id="cronograma" class="py-24 relative bg-rich-dark-900 overflow-hidden">
+    <!-- Agenda (Neon Line Style) -->
+    <section id="Agenda" class="py-24 relative bg-rich-dark-900 overflow-hidden">
         <div
             class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-900/20 via-rich-dark-900 to-rich-dark-900">
         </div>
@@ -527,7 +527,7 @@
         <div class="container mx-auto px-4 max-w-5xl relative z-10">
             <div class="flex flex-col items-center mb-20 text-center">
                 <i class="fas fa-hourglass-half text-3xl text-gold-500 mb-4"></i>
-                <h2 class="text-4xl md:text-5xl font-cinzel text-white">Cronograma</h2>
+                <h2 class="text-4xl md:text-5xl font-cinzel text-white">Agenda</h2>
                 <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-gold-500 to-transparent mt-6 mb-2"></div>
                 <p class="text-gray-400 text-sm italic">Sujeto a la dirección del Espíritu Santo</p>
             </div>
@@ -634,7 +634,7 @@
     </section>
 
     <!-- INVERSION -->
-    <section id="inversion" class="py-24 relative bg-[#0a0502] overflow-hidden">
+    <section id="inversion" class="py-24 relative bg-rich-dark-900 overflow-hidden">
         <!-- Background Glows -->
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-600/5 rounded-full blur-[100px]"></div>
         <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-rich-dark-800/20 rounded-full blur-[100px]"></div>
@@ -690,7 +690,7 @@
                     </div>
 
                     <div
-                        class="relative bg-[#100a05] border border-gold-500/20 rounded-3xl p-10 overflow-hidden h-full shadow-2xl shadow-gold-900/10">
+                        class="relative bg-rich-dark-900 border border-gold-500/20 rounded-3xl p-10 overflow-hidden h-full shadow-2xl shadow-gold-900/10">
                         <!-- Shine effect -->
                         <div
                             class="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-gold-500/10 blur-3xl rounded-full">
@@ -769,7 +769,7 @@
     </section>
 
     <!-- FOOTER (Dark Anchoring) -->
-    <footer class="bg-[#1a120b] pt-20 pb-10 border-t border-gold-900/30 relative overflow-hidden">
+    <footer class="bg-rich-dark-900 pt-20 pb-10 border-t border-gold-900/30 relative overflow-hidden">
         <div
             class="absolute inset-0 bg-[url('{{ asset('images/INVESTIDOS.png') }}')] bg-center bg-no-repeat opacity-[0.05] bg-contain pointer-events-none grayscale invert">
         </div>
