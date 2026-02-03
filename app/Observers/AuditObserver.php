@@ -42,6 +42,12 @@ class AuditObserver
 
         $userId = Auth::id();
 
+        // If no user is logged in (e.g. registration) and we are creating a User,
+        // attribute the action to the new user themselves.
+        if (!$userId && $model instanceof \App\Models\User && $action === 'created') {
+            $userId = $model->id;
+        }
+
         ActivityLog::create([
             'user_id' => $userId,
             'action' => $action,

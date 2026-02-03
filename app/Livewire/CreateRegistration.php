@@ -225,6 +225,8 @@ class CreateRegistration extends Component
             // only charge what is left.
             $amountToCharge = min($registrationFee, $participationCost);
 
+            \Illuminate\Support\Facades\Auth::login($user);
+
             Payment::create([
                 'user_id' => $user->id,
                 'amount' => $amountToCharge,
