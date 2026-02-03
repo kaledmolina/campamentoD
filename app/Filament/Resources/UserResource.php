@@ -237,7 +237,7 @@ class UserResource extends Resource
                 Forms\Components\Select::make('registration_type')
                     ->label('Tipo de Inscripción')
                     ->options([
-                        'partial' => 'Estadía Parcial ($100.000)',
+                        'partial' => 'Estadía Parcial ($120.000)',
                         'total' => 'Investidura Total ($300.000)',
                     ])
                     ->required(),

@@ -655,7 +655,7 @@
 
                     <h3 class="text-xl font-bold text-gray-300 uppercase tracking-widest mb-4">Estadía Parcial</h3>
                     <div class="text-4xl font-black text-white mb-2">
-                        ${{ number_format(GlobalSetting::get('partial_stay_cost', 100000), 0) }}</div>
+                        ${{ number_format(GlobalSetting::get('partial_stay_cost', 120000), 0) }}</div>
                     <p class="text-sm text-gray-500 mb-6">(Domingo, 17 mayo)</p>
 
                     <ul class="text-left space-y-3 mb-8 text-gray-300 text-sm">

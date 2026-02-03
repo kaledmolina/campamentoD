@@ -87,6 +87,14 @@ Also, enhance the visual presentation of these cards.
 -   Updated names: "**Jhon Fabio García**" and "**Juan Pablo M.**".
 -   Updated label: "**Organizadores**" for Conquistadores group.
 
+### [Cost Update]
+#### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php) & [CreateRegistration.php](file:///home/administrador/proyectos/campamentoD/app/Livewire/CreateRegistration.php)
+-   Increased "Estadía Parcial" cost from **100.000** to **120.000**.
+#### [MODIFY] [UserResource.php](file:///home/administrador/proyectos/campamentoD/app/Filament/Resources/UserResource.php)
+-   Updated hardcoded label for "Estadía Parcial" to **$120.000**.
+#### [NEW] [Migration](file:///home/administrador/proyectos/campamentoD/database/migrations/2026_02_03_101302_update_partial_stay_cost_in_global_settings.php)
+-   Created migration to update `partial_stay_cost` in `global_settings` table (Not executed).
+
 ## Verification Plan
 ### Manual Verification
 -   **Visual Check:** Open the landing page.

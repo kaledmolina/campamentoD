@@ -164,7 +164,7 @@ class CreateRegistration extends Component
         }
 
         // Calculate Cost based on Plan
-        $baseCost = $this->registration_type === 'partial' ? 100000 : 300000;
+        $baseCost = $this->registration_type === 'partial' ? 120000 : 300000;
         $participationCost = $baseCost;
         $discountAmount = 0;
 
