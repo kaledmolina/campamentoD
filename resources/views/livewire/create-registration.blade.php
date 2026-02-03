@@ -195,7 +195,7 @@
                                             class="fas fa-check-circle text-orange-500 text-xl opacity-0 peer-checked:opacity-100 transition-opacity"></i>
                                     </div>
 
-                                    <div class="text-3xl font-bold text-white mb-4">$100.000 <span
+                                    <div class="text-3xl font-bold text-white mb-4">$120.000 <span
                                             class="text-xs text-gray-400 font-normal">COP</span></div>
 
                                     <ul class="space-y-2 text-sm text-gray-400 mt-auto">
