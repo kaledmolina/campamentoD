@@ -32,12 +32,6 @@
                     },
                     colors: {
                         gold: {
-                            50: '#FCF9EE',
-                            100: '#F9F1D8',
-                            200: '#F0E6D2', // Beige suave
-                            300: '#EEDC82',
-                            400: '#D4AF37', // Gold Standard
-                            500: '#C5A028',
                             600: '#A3841F',
                             700: '#8B6508', // Dark Gold
                             800: '#634706',
