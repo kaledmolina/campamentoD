@@ -169,36 +169,45 @@
 
     <!-- NAVIGATION (Más grande y visible) -->
     <nav id="navbar"
-        class="fixed w-full z-50 transition-all duration-300 py-8 border-b border-white/5 bg-gradient-to-b from-prestige-950/90 to-transparent">
+        class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-white/5 bg-gradient-to-b from-prestige-950/90 to-transparent">
         <div class="container mx-auto px-8 flex justify-between items-center relative z-50">
             <!-- Logo Grande -->
             <a href="#" class="flex items-center gap-2 group md:absolute md:left-0">
                 <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
-                    class="h-12 md:h-24 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+                    class="h-12 md:h-20 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
             </a>
 
-            <!-- Desktop Menu (Texto más grande) -->
-            <div
-                class="hidden md:flex items-center gap-12 mx-auto bg-prestige-900/50 backdrop-blur-md px-10 py-4 rounded-full border border-white/5 shadow-lg">
+            <!-- Desktop Menu (Simplificado: Sin cápsula, texto limpio) -->
+            <div class="hidden md:flex items-center gap-10 mx-auto">
                 <a href="#inicio"
-                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300">
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300 relative group">
                     Inicio
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="#invitados"
-                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300">
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300 relative group">
                     Invitados
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="#Agenda"
-                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300">
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300 relative group">
                     Agenda
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="#inversion"
-                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300">
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300 relative group">
                     Inversión
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="/consulta"
-                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300">
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-gold-400 transition-colors duration-300 relative group">
                     Pagos
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
             </div>
 
