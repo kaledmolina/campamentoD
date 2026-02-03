@@ -81,6 +81,12 @@ Also, enhance the visual presentation of these cards.
         -   Remove `glass-card` and `!bg-*` classes to ensure the gradient is visible.
         -   Keep `rounded-2xl`, `p-8`, and hover effects.
 
+### [Guests Reordering]
+#### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php)
+-   Reordered guests list priority: Pastors > Adorador > Groups.
+-   Updated names: "**Jhon Fabio García**" and "**Juan Pablo M.**".
+-   Updated label: "**Organizadores**" for Conquistadores group.
+
 ## Verification Plan
 ### Manual Verification
 -   **Visual Check:** Open the landing page.

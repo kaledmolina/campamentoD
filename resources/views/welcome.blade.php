@@ -312,7 +312,6 @@
     </div>
 
     <!-- INVITADOS (GRID MEJORADO) -->
-    <!-- INVITADOS (GRID MEJORADO) -->
     <section id="invitados"
         class="py-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#EEDC82] via-[#D4AF37]/30 to-[#8B4513]/80">
         <div class="container mx-auto px-4">
@@ -328,67 +327,10 @@
             <!-- Grid Container with Centering for last row items -->
             <div class="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
 
-                <!-- Conquistadores Distrito 27 -->
-                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left">
-                    <div class="absolute inset-0 bg-transparent flex items-center justify-center overflow-hidden">
-                        <i
-                            class="fas fa-users text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110 group-hover:rotate-3"></i>
-                        <!-- Glow Circle Behind Icon -->
-                        <div
-                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
-                    </div>
-
-                    <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
-                        <p
-                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
-                            Invitados Especiales</p>
-                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Conquistadores <span
-                                class="text-gold-500">Distrito 27</span></h3>
-                        <div
-                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Coro Distrito 27 -->
-                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left" data-aos-delay="100">
-                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
-                        <i
-                            class="fas fa-music text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110 group-hover:-rotate-3"></i>
-                        <div
-                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
-                        </div>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
-                        <p
-                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
-                            Alabanza</p>
-                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Coro <span
-                                class="text-gold-500">Distrito 27</span></h3>
-                        <div
-                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Pastor Jhon Fabio García -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
                             bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left" data-aos-delay="200">
+                    data-aos="flip-left">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
                             class="fas fa-user-tie text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
@@ -405,7 +347,7 @@
                             class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
                             Expositor</p>
                         <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Pastor <br><span
-                                class="text-gold-500">Jhon Fabio</span></h3>
+                                class="text-gold-500">Jhon Fabio García</span></h3>
                         <div
                             class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
                         </div>
@@ -415,7 +357,7 @@
                 <!-- Pastor Michael Alvarez -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
                             bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left" data-aos-delay="300">
+                    data-aos="flip-left" data-aos-delay="100">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
                             class="fas fa-user-tie text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
@@ -439,10 +381,10 @@
                     </div>
                 </div>
 
-                <!-- Adorador Juan Pablo Murillo -->
+                <!-- Adorador Juan Pablo M. -->
                 <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
                             bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left" data-aos-delay="400">
+                    data-aos="flip-left" data-aos-delay="200">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <i
                             class="fas fa-microphone text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
@@ -459,7 +401,64 @@
                             class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
                             Adoración</p>
                         <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Adorador <br><span
-                                class="text-gold-500">Juan Pablo</span></h3>
+                                class="text-gold-500">Juan Pablo M.</span></h3>
+                        <div
+                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coro Distrito 27 -->
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
+                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
+                    data-aos="flip-left" data-aos-delay="300">
+                    <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
+                        <i
+                            class="fas fa-music text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110 group-hover:-rotate-3"></i>
+                        <div
+                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
+                        </div>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <p
+                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            Alabanza</p>
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Coro <span
+                                class="text-gold-500">Distrito 27</span></h3>
+                        <div
+                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conquistadores Distrito 27 -->
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
+                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
+                    data-aos="flip-left" data-aos-delay="400">
+                    <div class="absolute inset-0 bg-transparent flex items-center justify-center overflow-hidden">
+                        <i
+                            class="fas fa-users text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110 group-hover:rotate-3"></i>
+                        <!-- Glow Circle Behind Icon -->
+                        <div
+                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                    </div>
+
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <p
+                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            Organizadores</p>
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Conquistadores <span
+                                class="text-gold-500">Distrito 27</span></h3>
                         <div
                             class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
                         </div>
@@ -482,7 +481,6 @@
 
 
 
-    <!-- CRONOGRAMA (TIMELINE) -->
     <!-- CRONOGRAMA (TIMELINE) -->
     <section id="cronograma" class="py-20 bg-gradient-to-b from-[#2a1205] to-[#1a0b03] relative overflow-hidden">
         <div class="container mx-auto px-4 max-w-6xl">
