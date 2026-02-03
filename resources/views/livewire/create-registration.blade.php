@@ -1,22 +1,22 @@
 <div class="max-w-3xl mx-auto">
-    <div class="glass-card p-4 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+    <div class="glass-premium p-4 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
         <!-- Glow Effect -->
         <div
             class="absolute top-0 right-0 w-64 h-64 bg-gold-500/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2">
         </div>
 
-        <h2 class="text-3xl font-cinzel text-center text-white mb-2">Formulario de Inscripción</h2>
+        <h2 class="text-3xl font-cinzel text-center text-prestige-100 mb-2">Formulario de Inscripción</h2>
         <p class="text-center text-gold-500 uppercase tracking-widest text-sm mb-8">Campamento Distrital Juvenil 2026
         </p>
 
         @if ($registration_success)
             <div
-                class="bg-green-900/50 border border-green-500 text-green-200 px-8 py-12 rounded-lg relative mb-6 text-center shadow-[0_0_15px_rgba(34,197,94,0.3)] animate-fade-in">
+                class="bg-green-900/20 border border-green-500/50 text-green-200 px-8 py-12 rounded-lg relative mb-6 text-center shadow-[0_0_15px_rgba(34,197,94,0.3)] animate-fade-in backdrop-blur-sm">
                 <div class="mb-6">
                     <i class="fas fa-check-circle text-6xl text-green-400 animate-bounce"></i>
                 </div>
                 <strong class="font-bold text-3xl block mb-4 font-cinzel text-white">¡Registro Exitoso!</strong>
-                <span class="block text-lg text-gray-300 max-w-lg mx-auto leading-relaxed">
+                <span class="block text-lg text-prestige-100/80 max-w-lg mx-auto leading-relaxed">
                     Tu inscripción ha sido recibida y está pendiente de aprobación. <br>
                     Puedes consultar tu estado con tu número de documento.
                 </span>
@@ -69,12 +69,12 @@
                 <div class="text-center py-10 animate-fade-in">
                     <i class="fas fa-question-circle text-6xl text-gold-500 mb-6"></i>
                     <h3 class="text-2xl font-cinzel text-white mb-4">Antes de Iniciar</h3>
-                    <p class="text-gray-300 mb-8 text-lg">Para continuar con tu registro, por favor confirma tu rango de edad.
+                    <p class="text-prestige-100/80 mb-8 text-lg">Para continuar con tu registro, por favor confirma tu rango de edad.
                     </p>
 
                     <div class="flex flex-col md:flex-row justify-center gap-6">
                         <button wire:click="selectMinor"
-                            class="group relative bg-black/40 border border-gray-600 hover:border-gold-500 p-6 rounded-xl transition-all hover:scale-105 w-full md:w-64">
+                            class="group relative bg-prestige-900/40 border border-prestige-700 hover:border-gold-500 p-6 rounded-xl transition-all hover:scale-105 w-full md:w-64 backdrop-blur-sm">
                             <div
                                 class="absolute inset-0 bg-gold-500/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-xl">
                             </div>
@@ -84,7 +84,7 @@
                         </button>
 
                         <button wire:click="selectAdult"
-                            class="group relative bg-black/40 border border-gray-600 hover:border-gold-500 p-6 rounded-xl transition-all hover:scale-105 w-full md:w-64">
+                            class="group relative bg-prestige-900/40 border border-prestige-700 hover:border-gold-500 p-6 rounded-xl transition-all hover:scale-105 w-full md:w-64 backdrop-blur-sm">
                             <div
                                 class="absolute inset-0 bg-gold-500/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-xl">
                             </div>
@@ -104,14 +104,14 @@
                     </div>
 
                     <h3 class="text-2xl font-cinzel text-white mb-4">¡Atención Campista!</h3>
-                    <p class="text-gray-300 mb-6 max-w-lg mx-auto leading-relaxed">
+                    <p class="text-prestige-100/80 mb-6 max-w-lg mx-auto leading-relaxed">
                         Al ser menor de edad, para completar tu inscripción es <strong class="text-red-400">OBLIGATORIO</strong>
                         que adjuntes el consentimiento firmado por tus padres o acudiente.
                     </p>
 
-                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 max-w-md mx-auto mb-8">
+                    <div class="bg-prestige-900/50 p-6 rounded-xl border border-prestige-700 max-w-md mx-auto mb-8">
                         <h4 class="text-gold-500 text-sm font-bold uppercase tracking-widest mb-3">Instrucciones</h4>
-                        <ol class="text-left text-sm text-gray-400 space-y-2 list-decimal list-inside">
+                        <ol class="text-left text-sm text-prestige-100/60 space-y-2 list-decimal list-inside">
                             <li>Descarga el formato de consentimiento.</li>
                             <li>Imprímelo y pide a tus padres que lo firmen.</li>
                             <li>Escanea o toma una foto clara del documento.</li>
@@ -121,7 +121,7 @@
 
                     <div class="flex flex-col md:flex-row justify-center items-center gap-4">
                         <a href="/pdf/FormularioMenordeEdad -.pdf" download
-                            class="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition border border-gray-500">
+                            class="flex items-center gap-2 bg-prestige-800 hover:bg-prestige-700 text-white font-bold py-3 px-6 rounded-lg transition border border-prestige-600">
                             <i class="fas fa-file-download"></i> Descargar Formato PDF
                         </a>
 
@@ -136,14 +136,14 @@
                 <!-- PASO 2: Formulario -->
                 <form wire:submit="save" class="space-y-6 relative z-10 animate-fade-in">
                     <button type="button" wire:click="$set('registration_step', 0)"
-                        class="mb-4 text-xs text-gray-500 hover:text-gold-500 transition flex items-center gap-1">
+                        class="mb-4 text-xs text-prestige-100/60 hover:text-gold-500 transition flex items-center gap-1">
                         <i class="fas fa-arrow-left"></i> Volver a selección de edad
                     </button>
 
                     <!-- SELECCIÓN DE PLAN -->
-                    <div class="bg-gray-800/80 p-6 rounded-xl border border-gold-500/20 mb-8 backdrop-blur-sm shadow-lg">
+                    <div class="bg-prestige-900/40 p-6 rounded-xl border border-gold-500/20 mb-8 backdrop-blur-sm shadow-lg">
                         <h3
-                            class="text-xl font-cinzel text-gold-500 mb-6 flex items-center gap-2 border-b border-gray-700 pb-3">
+                            class="text-xl font-cinzel text-gold-500 mb-6 flex items-center gap-2 border-b border-prestige-800 pb-3">
                             <i class="fas fa-ticket-alt"></i> Elige tu Plan de Inscripción
                         </h3>
 
@@ -154,7 +154,7 @@
                                 <div
                                     class="p-5 rounded-xl border-2 transition-all duration-300 h-full flex flex-col
                                                                             peer-checked:border-gold-500 peer-checked:bg-gold-900/10 peer-checked:shadow-[0_0_20px_rgba(234,179,8,0.1)]
-                                                                            border-gray-700 hover:border-gray-500 bg-gray-900/50">
+                                                                            border-prestige-800 hover:border-prestige-600 bg-prestige-950/30">
 
                                     <div class="flex justify-between items-start mb-2">
                                         <div class="text-gold-500 font-bold text-lg uppercase tracking-wide">Investidura Total
@@ -185,7 +185,7 @@
                                 <div
                                     class="p-5 rounded-xl border-2 transition-all duration-300 h-full flex flex-col
                                                                             peer-checked:border-orange-500 peer-checked:bg-orange-900/10 peer-checked:shadow-[0_0_20px_rgba(249,115,22,0.1)]
-                                                                            border-gray-700 hover:border-gray-500 bg-gray-900/50">
+                                                                            border-prestige-800 hover:border-prestige-600 bg-prestige-950/30">
 
                                     <div class="flex justify-between items-start mb-2">
                                         <div
@@ -202,7 +202,7 @@
                                         <li class="flex items-center gap-2"><i class="fas fa-clock text-orange-500 text-xs"></i>
                                             Acceso limitado (1 día)</li>
                                         <li class="flex items-center gap-2"><i
-                                                class="fas fa-utensils text-gray-500 text-xs"></i> Alimentación parcial</li>
+                                            class="fas fa-utensils text-gray-500 text-xs"></i> Alimentación parcial</li>
                                         <li class="flex items-center gap-2"><i class="fas fa-times text-red-500 text-xs"></i>
                                             Sin Hospedaje</li>
                                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i>
@@ -213,47 +213,47 @@
                         </div>
                     </div>
                     <!-- Sección Personal -->
-                    <div class="border-b border-gray-700 pb-6 mb-6">
-                        <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
+                    <div class="border-b border-prestige-800 pb-6 mb-6">
+                        <h3 class="text-lg font-bold text-prestige-100/80 mb-4 flex items-center gap-2">
                             <i class="fas fa-user text-gold-500"></i> Datos Personales
                         </h3>
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="md:col-span-1">
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Nombres
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Nombres
                                     *</label>
                                 <input wire:model="name" type="text"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50"
                                     placeholder="Tus nombres">
                                 @error('name') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
                             <div class="md:col-span-1">
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Apellidos
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Apellidos
                                     *</label>
                                 <input wire:model="last_name" type="text"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50"
                                     placeholder="Tus apellidos">
                                 @error('last_name') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
                             <div class="md:col-span-2">
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Correo
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Correo
                                     Electrónico *</label>
                                 <input wire:model="email" type="email"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50"
                                     placeholder="ejemplo@correo.com">
                                 @error('email') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Tipo de
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Tipo de
                                     documento *</label>
                                 <select wire:model="document_type"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all text-black">
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all text-gray-200">
                                     <option value="">Seleccione...</option>
                                     @if(!$is_minor_flow)
                                         <option value="CC">Cédula de Ciudadanía</option>
@@ -271,26 +271,26 @@
                             </div>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Número de
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Número de
                                     documento *</label>
                                 <input wire:model="document_number" type="text"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50"
                                     placeholder="Sin puntos ni guiones">
                                 @error('document_number') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Fecha de
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Fecha de
                                     Expedición (Documento) *</label>
                                 <input wire:model="document_issue_date" type="date"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 block text-gray-400">
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50 block text-gray-300">
                                 @error('document_issue_date') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Sexo *</label>
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Sexo *</label>
                                 <select wire:model="gender"
                                     class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all">
                                     <option value="">Seleccione...</option>
@@ -302,37 +302,37 @@
                             </div>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Fecha de
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Fecha de
                                     Nacimiento *</label>
                                 <input wire:model="birth_date" type="date"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 text-gray-400">
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50 text-gray-300">
                                 @error('birth_date') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Edad *</label>
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Edad *</label>
                                 <input wire:model="age" type="number"
                                     x-on:input="if($el.value == 666) { document.getElementById('demon-game-modal').classList.remove('hidden'); initDemonGame(); }"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600">
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50">
                                 @error('age') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">EPS *</label>
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">EPS *</label>
                                 <input wire:model="eps" type="text"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50"
                                     placeholder="Nombre EPS">
                                 @error('eps') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
                             </div>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Celular
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Celular
                                     *</label>
                                 <input wire:model="phone" type="tel"
-                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                    class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50"
                                     placeholder="300 123 4567">
                                 @error('phone') <span class="text-red-500 text-xs mt-1 block"><i
                                 class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
@@ -341,13 +341,13 @@
                     </div>
 
                     <!-- Sección Eclesiástica -->
-                    <div class="border-b border-gray-700 pb-6 mb-6">
-                        <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
+                    <div class="border-b border-prestige-800 pb-6 mb-6">
+                        <h3 class="text-lg font-bold text-prestige-100/80 mb-4 flex items-center gap-2">
                             <i class="fas fa-church text-gold-500"></i> Datos Eclesiásticos
                         </h3>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Zona *</label>
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Zona *</label>
                                 <select wire:model.live="zone"
                                     class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all">
                                     <option value="">Elige</option>
@@ -361,13 +361,13 @@
 
                                 @if($zone === 'Otro Distrito')
                                     <!-- Lógica de Otro Distrito Oculta Temporalmente -->
-                                    <div class="mt-4 p-4 bg-gray-800 rounded-lg border border-gold-500/30">
+                                    <div class="mt-4 p-4 bg-prestige-900/50 rounded-lg border border-gold-500/30">
 
                                         <div class="mb-4">
-                                            <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Cuál
+                                            <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">¿Cuál
                                                 Zona?</label>
                                             <input wire:model="other_zone" type="text"
-                                                class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 border-gold-500"
+                                                class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50 border-gold-500"
                                                 placeholder="Escribe tu zona">
                                             @error('other_zone') <span class="text-red-500 text-xs mt-1 block"><i
                                             class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
@@ -375,7 +375,7 @@
 
                                         <h4 class="text-gold-500 font-bold mb-2 text-sm uppercase tracking-wide"><i
                                                 class="fas fa-file-signature mr-2"></i>Autorización Pastoral Requerida</h4>
-                                        <p class="text-gray-400 text-xs mb-4">
+                                        <p class="text-prestige-100/60 text-xs mb-4">
                                             Al pertenecer a otro distrito, es necesario que descargues la carta de aval, la hagas
                                             firmar por tu pastor y la subas aquí.
                                         </p>
@@ -389,13 +389,13 @@
 
                                         <div>
                                             <label
-                                                class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Adjuntar
+                                                class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Adjuntar
                                                 Carta Firmada *</label>
                                             <div class="relative group cursor-pointer">
                                                 <input type="file" wire:model="pastor_letter" id="pastor_letter" class="hidden"
                                                     accept="image/*">
                                                 <label for="pastor_letter"
-                                                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-600 rounded-lg hover:border-gold-500 hover:bg-gray-700 transition-all cursor-pointer">
+                                                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-prestige-700 rounded-lg hover:border-gold-500 hover:bg-prestige-900/50 transition-all cursor-pointer">
 
                                                     @if ($pastor_letter)
                                                         <div class="relative w-full h-full p-2">
@@ -425,16 +425,16 @@
                                 @endif
                             </div>
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Congregación
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Congregación
                                     *</label>
 
                                 @if($zone === 'Otro Distrito')
                                     <input wire:model="congregacion" type="text"
-                                        class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600"
+                                        class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50"
                                         placeholder="Nombre de tu congregación">
                                 @else
                                     <select wire:model="congregacion"
-                                        class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all text-black"
+                                        class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all text-gray-200"
                                         @if(empty($congregations)) disabled @endif>
                                         <option value="">Seleccione...</option>
                                         @foreach($congregations as $congregation)
@@ -458,7 +458,7 @@
                             <h3 class="text-lg font-bold text-red-500 mb-2 flex items-center gap-2">
                                 <i class="fas fa-exclamation-triangle"></i> Requisito para Menores de Edad
                             </h3>
-                            <p class="text-sm text-gray-300 mb-4">
+                            <p class="text-sm text-prestige-100/80 mb-4">
                                 Al ser menor de edad, es <strong>obligatorio</strong> adjuntar el consentimiento firmado por tus
                                 padres o acudiente legal.
                             </p>
@@ -469,7 +469,7 @@
                             </a>
 
                             <div>
-                                <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Subir
+                                <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Subir
                                     Consentimiento Firmado *</label>
                                 <input wire:model="consent_proof" type="file"
                                     class="w-full py-2 px-4 rounded-lg border border-dashed border-gray-600 bg-black/20 text-gray-400 cursor-pointer hover:border-red-500 transition">
@@ -487,16 +487,16 @@
 
                     <!-- Sección Descuentos (Oculta Temporalmente) -->
                     <!-- Sección Descuentos -->
-                     <div class="border-b border-gray-700 pb-6 mb-6">
-                        <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
+                     <div class="border-b border-prestige-800 pb-6 mb-6">
+                        <h3 class="text-lg font-bold text-prestige-100/80 mb-4 flex items-center gap-2">
                             <i class="fas fa-tag text-gold-500"></i> Código de Promoción
                         </h3>
-                        <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                            <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">¿Tienes un
+                        <div class="bg-prestige-900/40 p-4 rounded-lg border border-prestige-700">
+                            <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">¿Tienes un
                                 código?</label>
                             <div class="flex gap-2">
                                 <input wire:model="discountCode" type="text"
-                                    class="w-full py-2 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-600 bg-black/20 text-white uppercase"
+                                    class="w-full py-2 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50 bg-black/20 text-white uppercase"
                                     placeholder="INGRESA TU CÓDIGO">
                                 <button type="button" wire:click="applyDiscount"
                                     class="bg-gold-500 hover:bg-gold-400 text-black font-bold py-2 px-4 rounded-lg transition uppercase text-xs">
@@ -513,7 +513,7 @@
                             <div class="mt-2 text-green-400 text-sm font-bold flex items-center gap-2 animate-fade-in">
                                 <i class="fas fa-check-circle"></i> {{ $discountMessage }}
                             </div>
-                            <div class="mt-1 text-gray-300 text-xs">
+                            <div class="mt-1 text-gray-400 text-xs">
                                 El descuento se aplicará al costo total del campamento.
                             </div>
                             @endif
@@ -522,17 +522,17 @@
 
                     <!-- Sección Pago -->
                     <div>
-                        <h3 class="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
+                        <h3 class="text-lg font-bold text-prestige-100/80 mb-4 flex items-center gap-2">
                             <i class="fas fa-receipt text-gold-500"></i> Pago Inicial
                         </h3>
                         <div class="bg-white/5 p-4 rounded-lg border border-gold-500/20 mb-4">
-                            <p class="text-sm text-gray-300 mb-2">Para asegurar tu cupo debes realizar un abono mínimo del
+                            <p class="text-sm text-prestige-100/80 mb-2">Para asegurar tu cupo debes realizar un abono mínimo del
                                 <strong>10% ($30.000)</strong>.
                             </p>
                             <p class="text-xs text-gold-500 italic">Formatos permitidos: JPG, PNG, PDF (Máx 10MB)</p>
                         </div>
 
-                        <label class="block text-gray-300 text-xs font-bold mb-2 uppercase tracking-wide">Subir Comprobante
+                        <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Subir Comprobante
                             *</label>
                         <input wire:model="payment_proof" type="file"
                             class="w-full py-2 px-4 rounded-lg border border-dashed border-gray-600 bg-black/20 text-gray-400 cursor-pointer hover:border-gold-500 transition">

@@ -11,8 +11,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Cinzel:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -27,216 +29,303 @@
                         cinzel: ['Cinzel', 'serif'],
                     },
                     colors: {
+                        // Paleta Dorada (Mantenida, combina perfecto con sepia)
                         gold: {
-                            400: '#FDD835',
-                            500: '#D4AF37',
-                            600: '#B38F00',
+                            50: '#FBF7E6',
+                            100: '#F5EBC4',
+                            200: '#ECD58C',
+                            300: '#E4BF55',
+                            400: '#D4AF37', // Gold Base
+                            500: '#BFA124',
+                            600: '#997B14',
+                            700: '#75590B',
+                            800: '#564006',
+                            900: '#3D2C03',
                         },
-                        fire: '#FF4500'
+                        // Nueva Paleta "Vintage Luxury" (Basada en la imagen 16x9.jpg)
+                        // Tonos cálidos, tierra profunda, café y bronce oscuro.
+                        prestige: {
+                            950: '#1a120b', // Deep Espresso/Black Brown (Fondo principal)
+                            900: '#2b1d12', // Dark Mocha (Secciones alternas)
+                            800: '#422d1e', // Dark Leather (Tarjetas)
+                            700: '#5c402b', // Bronze Earth (Bordes suaves)
+                            100: '#eaddcf', // Warm Cream (Textos claros)
+                        }
                     },
                     animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'shine': 'shine 8s linear infinite',
                     },
                     keyframes: {
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
                         }
                     }
                 }
             }
         }
     </script>
-
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: linear-gradient(to bottom, #422006, #1a0b03);
-            /* Global Gold/Brown Theme */
-            color: #ffffff;
+            /* Cambio principal de fondo: De azul a Café Profundo */
+            background-color: #1a120b;
+            color: #eaddcf;
+            /* Texto crema cálido */
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Glassmorphism Cards */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Partículas de fuego fondo */
-        .fire-bg {
-            background: radial-gradient(circle at center, rgba(255, 69, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        /* Ruido */
+        .bg-grain {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
+            opacity: 0.07;
+            /* Un poco más visible para dar textura de papel viejo/film */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
         }
 
-        /* Scrollbar personalizada */
-        ::-webkit-scrollbar {
-            width: 10px;
+        /* Glassmorphism Ajustado para Tonos Cálidos */
+        .glass-premium {
+            background: rgba(43, 29, 18, 0.6);
+            /* Warm tint */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
         }
 
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #D4AF37;
-            border-radius: 5px;
+        .glass-premium:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            background: rgba(66, 45, 30, 0.7);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
         }
 
         /* Form Inputs Override */
         input,
         select {
-            background-color: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 215, 0, 0.2) !important;
-            color: white !important;
+            background-color: rgba(66, 45, 30, 0.7) !important;
+            border: 1px solid rgba(212, 175, 55, 0.3) !important;
+            color: #eaddcf !important;
         }
 
         input:focus,
         select:focus {
             border-color: #D4AF37 !important;
             box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+            outline: none;
         }
 
         option {
-            background-color: #050505;
-            color: white;
+            background-color: #2b1d12;
+            color: #eaddcf;
         }
 
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a120b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #5c402b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+
+        /* Navbar Scrolled Cálida */
         .nav-scrolled {
-            background-color: rgba(66, 32, 6, 0.95);
-            /* Dark Brown/Gold Theme */
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(26, 18, 11, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 20px !important;
+            padding-bottom: 20px !important;
         }
     </style>
 </head>
 
-<body class="flex flex-col min-h-screen">
-
-    <div class="fire-bg"></div>
+<body class="font-montserrat antialiased selection:bg-gold-500 selection:text-white overflow-x-hidden">
+    <div class="bg-grain"></div>
 
     <!-- NAVIGATION -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="/" class="text-2xl font-bold flex items-center gap-2 group">
-                <img src="{{ asset('images/INVESTIDOS.png') }}" alt="Logo"
-                    class="h-12 md:h-16 transition-transform duration-300 group-hover:scale-110">
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-white/5 bg-gradient-to-b from-prestige-950/90 to-transparent">
+        <div class="container mx-auto px-8 flex justify-between items-center relative z-50">
+            <!-- Logo Grande -->
+            <a href="/" class="flex items-center gap-2 group md:absolute md:left-0">
+                <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
+                    class="h-16 md:h-32 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
             </a>
 
-            <div
-                class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10">
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-10 mx-auto">
                 <a href="/#inicio"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inicio</a>
+                    class="text-sm font-bold uppercase tracking-widest text-prestige-100/80 hover:text-gold-400 transition-colors duration-300 relative group">
+                    Inicio
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
                 <a href="/#invitados"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Invitados</a>
-                <a href="/#cronograma"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Agenda</a>
+                    class="text-sm font-bold uppercase tracking-widest text-prestige-100/80 hover:text-gold-400 transition-colors duration-300 relative group">
+                    Invitados
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="/#Agenda"
+                    class="text-sm font-bold uppercase tracking-widest text-prestige-100/80 hover:text-gold-400 transition-colors duration-300 relative group">
+                    Agenda
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
                 <a href="/#inversion"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inversión</a>
+                    class="text-sm font-bold uppercase tracking-widest text-prestige-100/80 hover:text-gold-400 transition-colors duration-300 relative group">
+                    Inversión
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
                 <a href="{{ route('consultation') }}"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300 {{ request()->routeIs('consultation') ? 'text-gold-400' : '' }}">Consulta
-                    / Pagos</a>
+                    class="text-sm font-bold uppercase tracking-widest text-prestige-100/80 hover:text-gold-400 transition-colors duration-300 relative group {{ request()->routeIs('consultation') ? 'text-gold-400' : '' }}">
+                    Pagos
+                    <span
+                        class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full {{ request()->routeIs('consultation') ? 'w-full' : '' }}"></span>
+                </a>
             </div>
 
-            <a href="{{ route('registration') }}"
-                class="hidden md:block bg-gold-500 hover:bg-gold-400 text-black font-bold py-2 px-6 rounded-full transition transform hover:scale-105 shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-                INSCRIBIRME
-            </a>
+            <!-- CTA Button -->
+            <div class="flex items-center gap-4">
+                <a href="/registro"
+                    class="hidden md:inline-flex items-center justify-center bg-gold-500 hover:bg-prestige-100 text-prestige-950 hover:text-gold-600 font-black text-xs py-4 px-10 rounded shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transform hover:-translate-y-1 transition duration-300 tracking-[0.2em] border border-gold-400">
+                    INSCRIBIRME
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden w-12 h-12 flex items-center justify-center rounded bg-white/10 border border-white/20 text-gold-400 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="fixed inset-0 z-[60] bg-black/95 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8">
-        <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white">
-            <i class="fas fa-times"></i>
+        class="fixed inset-0 z-[60] bg-prestige-950/98 backdrop-blur-xl transform translate-x-full transition-transform duration-500 flex flex-col items-center justify-center space-y-10">
+        <button id="close-menu-btn"
+            class="absolute top-8 right-8 w-14 h-14 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-prestige-100/60 hover:text-white transition">
+            <i class="fas fa-times text-2xl"></i>
         </button>
 
-        <a href="/#inicio"
-            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Inicio</a>
-        <a href="/#invitados"
-            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Invitados</a>
-        <a href="/#cronograma"
-            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Agenda</a>
-        <a href="/#inversion"
-            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Inversión</a>
-        <a href="{{ route('consultation') }}"
-            class="mobile-link text-2xl font-bold text-white hover:text-gold-500 tracking-widest uppercase transition">Consulta
-            / Pagos</a>
+        <a href="/#inicio" onclick="toggleMenu()"
+            class="mobile-link text-4xl font-cinzel text-prestige-100 hover:text-gold-400 transition-colors">Inicio</a>
+        <a href="/#invitados" onclick="toggleMenu()"
+            class="mobile-link text-4xl font-cinzel text-prestige-100 hover:text-gold-400 transition-colors">Invitados</a>
+        <a href="/#Agenda" onclick="toggleMenu()"
+            class="mobile-link text-4xl font-cinzel text-prestige-100 hover:text-gold-400 transition-colors">Agenda</a>
+        <a href="/#inversion" onclick="toggleMenu()"
+            class="mobile-link text-4xl font-cinzel text-prestige-100 hover:text-gold-400 transition-colors">Inversión</a>
+        <a href="{{ route('consultation') }}" onclick="toggleMenu()"
+            class="mobile-link text-4xl font-cinzel text-prestige-100 hover:text-gold-400 transition-colors">Consulta</a>
 
-        <a href="{{ route('registration') }}"
-            class="mt-4 bg-gold-500 text-black font-bold py-3 px-8 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-            INSCRIBIRME
+        <a href="{{ route('registration') }}" onclick="toggleMenu()"
+            class="mt-10 bg-gold-500 text-black font-bold py-5 px-14 rounded shadow-lg text-lg tracking-widest uppercase hover:bg-white hover:text-gold-600 transition-all">
+            Inscribirme
         </a>
     </div>
 
-    <main class="container mx-auto py-12 px-4 flex-grow pt-32">
+    <main class="container mx-auto py-12 px-4 flex-grow pt-40 relative z-10">
         {{ $slot }}
     </main>
 
-    <footer class="bg-gradient-to-t from-[#3E2723] to-[#1a0b03] pt-20 pb-10 border-t border-gray-900 mt-auto">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
+    <!-- FOOTER -->
+    <footer class="bg-prestige-950 pt-24 pb-12 border-t border-white/10 relative overflow-hidden mt-auto">
 
-                <div>
-                    <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco"
-                        class="h-20 mx-auto md:mx-0 mb-4 opacity-80">
-                    <p class="text-gray-500 text-sm">Conquistadores Pentecostales – Distrito 27<br>Iglesia Pentecostal
-                        Unida de Colombia</p>
-                </div>
+        <div class="container mx-auto px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-16">
 
-                <div class="space-y-4">
-                    <h3 class="text-xl font-bold text-white mb-4">MAYOR INFORMACIÓN</h3>
-                    <p class="flex items-center justify-center md:justify-start gap-3 text-gray-300">
-                        <i class="fas fa-phone text-gold-500"></i> 311 330 03 89 – 313 277 74 77 – 312 213 85 97
-                    </p>
-                    <p class="flex items-center justify-center md:justify-start gap-3 text-gray-300">
-                        <i class="fas fa-envelope text-gold-500"></i> conquistadoresdt27@gmail.com
+                <div class="md:w-1/3">
+                    <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo Blanco" class="h-14 mb-8 opacity-80">
+                    <p class="text-prestige-100/60 text-sm leading-relaxed font-light tracking-wide uppercase">
+                        Campamento Juvenil 2026.<br>
+                        Distrito 27 - Iglesia Pentecostal Unida de Colombia.
                     </p>
                 </div>
 
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-4">Síguenos</h3>
-                    <div class="flex justify-center md:justify-start gap-4">
+                <div class="md:w-1/3">
+                    <h3 class="text-gold-400 font-cinzel font-bold mb-8 text-xl">Contacto</h3>
+                    <ul class="space-y-5 text-prestige-100/80 text-sm font-medium">
+                        <li class="flex items-center gap-4 hover:text-white transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gold-500">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <span class="tracking-wider">311 330 0389</span>
+                        </li>
+                        <li class="flex items-center gap-4 hover:text-white transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gold-500">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <span class="tracking-wider">313 277 7477</span>
+                        </li>
+                        <li class="flex items-center gap-4 hover:text-white transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gold-500">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="tracking-wider">conquistadoresdt27@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="md:w-1/3">
+                    <h3 class="text-gold-400 font-cinzel font-bold mb-8 text-xl">Síguenos</h3>
+                    <div class="flex gap-4">
                         <a href="https://www.facebook.com/share/17yXzxdwEL/" target="_blank"
-                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition"><i
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-prestige-100/60 hover:bg-blue-600 hover:text-white transition-all duration-300"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/conquistadoresd27?utm_source=qr&igsh=MWd5MmZzaXRibDZ0Ng=="
-                            target="_blank"
-                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition"><i
+                        <a href="https://www.instagram.com/conquistadoresd27" target="_blank"
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-prestige-100/60 hover:bg-pink-600 hover:text-white transition-all duration-300"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@conquistadorespentecostawy8tm?si=8iXByAX8QITyIzEm" target="_blank"
-                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition"><i
+                        <a href="https://youtube.com/@conquistadorespentecostawy8tm" target="_blank"
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-prestige-100/60 hover:bg-red-600 hover:text-white transition-all duration-300"><i
                                 class="fab fa-youtube"></i></a>
                         <a href="https://whatsapp.com/channel/0029Vb29KYMDDmFP0H0gWs2x" target="_blank"
-                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition"><i
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-prestige-100/60 hover:bg-green-600 hover:text-white transition-all duration-300"><i
                                 class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-
             </div>
 
-            <div class="border-t border-gray-900 mt-12 pt-8 text-center text-gray-600 text-xs">
-                &copy; 2026 Conquistadores Pentecostales distrito 27. Todos los derechos reservados. <br>
-                Desarrollado por <a href="https://wa.me/573004200048" target="_blank"
-                    class="text-gold-500 hover:text-white transition">Kaled Molina</a>
+            <div
+                class="border-t border-white/10 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-prestige-100/40 uppercase tracking-widest">
+                <p>&copy; 2026 Conquistadores Pentecostales Distrito 27.</p>
+                <p>Desarrollado por <a href="https://wa.me/573004200048"
+                        class="text-gold-500 hover:text-white transition">Kaled Molina</a></p>
             </div>
         </div>
     </footer>
@@ -271,10 +360,8 @@
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 nav.classList.add('nav-scrolled');
-                nav.classList.add('bg-[#422006]/95'); // Fallback/Base color if needed, but class handles it
             } else {
                 nav.classList.remove('nav-scrolled');
-                nav.classList.remove('bg-[#422006]/95');
             }
         });
     </script>
