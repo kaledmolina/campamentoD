@@ -114,6 +114,13 @@ Also, enhance the visual presentation of these cards.
 -   Added new section displaying `video-caamp.mp4` after the Introduction.
 -   Styled with gold borders, shadow effects, and `investidobanner.png` as poster.
 
+### [UI/UX Overhaul]
+#### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php)
+-   **Hero Section**: Replaced background with `fondowebsite.png`, simplified overlays, and enhanced typography.
+-   **Navigation**: Improved glassmorphism with `backdrop-blur-xl` and shadow effects.
+-   **Cards**: Updated "Expositores" and "Inversión" sections with `rounded-3xl`, localized glow effects, and clearer hierarchy.
+-   **Styles**: Refined gradients and borders to a consistent "Gold & Dark Glass" theme.
+
 ## Verification Plan
 ### Manual Verification
 -   **Visual Check:** Open the landing page.

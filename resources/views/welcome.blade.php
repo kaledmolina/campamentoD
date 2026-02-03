@@ -126,28 +126,28 @@
             <!-- Logo -->
             <a href="#" class="text-2xl font-bold flex items-center gap-2 group">
                 <img src="{{ asset('images/INVESTIDOS.png') }}" alt="Logo"
-                    class="h-12 md:h-16 transition-transform duration-300 group-hover:scale-110">
+                    class="h-12 md:h-16 transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]">
             </a>
 
             <!-- Desktop Menu -->
             <div
-                class="hidden md:flex space-x-8 items-center bg-black/30 backdrop-blur-md px-8 py-3 rounded-full border border-white/10">
+                class="hidden md:flex space-x-8 items-center bg-black/40 backdrop-blur-xl px-8 py-3 rounded-full border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
                 <a href="#inicio"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inicio</a>
+                    class="text-gray-200 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300 font-medium hover:shadow-[0_0_10px_rgba(212,175,55,0.3)]">Inicio</a>
                 <a href="#invitados"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Invitados</a>
+                    class="text-gray-200 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300 font-medium hover:shadow-[0_0_10px_rgba(212,175,55,0.3)]">Invitados</a>
                 <a href="#cronograma"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Agenda</a>
+                    class="text-gray-200 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300 font-medium hover:shadow-[0_0_10px_rgba(212,175,55,0.3)]">Agenda</a>
                 <a href="#inversion"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Inversión</a>
+                    class="text-gray-200 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300 font-medium hover:shadow-[0_0_10px_rgba(212,175,55,0.3)]">Inversión</a>
                 <a href="/consulta"
-                    class="text-gray-300 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300">Consulta
+                    class="text-gray-200 hover:text-gold-400 text-sm md:text-base uppercase tracking-widest transition duration-300 font-medium hover:shadow-[0_0_10px_rgba(212,175,55,0.3)]">Consulta
                     / Pagos</a>
             </div>
 
             <!-- CTA Button -->
             <a href="/registro"
-                class="hidden md:inline-block bg-gradient-to-r from-yellow-600 to-yellow-400 text-black font-bold py-2 px-6 rounded-full shadow-[0_0_15px_rgba(250,204,21,0.5)] transform hover:scale-105 transition duration-300 text-xs tracking-wider">
+                class="hidden md:inline-block bg-gradient-to-r from-gold-600 to-gold-400 text-black font-black py-2.5 px-7 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.6)] transform hover:scale-110 transition duration-300 text-sm tracking-wider border border-white/20 hover:border-white/40">
                 INSCRIBIRME
             </a>
 
@@ -186,29 +186,11 @@
     <header id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('images/16x9.png') }}"
-                class="w-full h-full object-cover opacity-40 scale-105 animate-pulse-slow" alt="Fondo">
-            <div
-                class="absolute inset-0 bg-gradient-to-b from-[#422006] via-[#a16207]/40 to-[#422006]/90 mix-blend-multiply">
-            </div>
-            <!-- Spotlight Gradient -->
-            <div
-                class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-black/60">
-            </div>
-
-            <!-- Floating Particles -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-gold-400 rounded-full opacity-60 animate-float"
-                    style="animation-delay: 0s;"></div>
-                <div class="absolute top-3/4 left-1/3 w-3 h-3 bg-gold-500 rounded-full opacity-40 animate-float"
-                    style="animation-delay: 2s;"></div>
-                <div class="absolute top-1/2 left-3/4 w-1 h-1 bg-white rounded-full opacity-80 animate-float"
-                    style="animation-delay: 4s;"></div>
-                <div class="absolute bottom-10 right-20 w-2 h-2 bg-gold-300 rounded-full opacity-50 animate-float"
-                    style="animation-delay: 1s;"></div>
-                <div class="absolute top-10 right-1/3 w-1.5 h-1.5 bg-orange-400 rounded-full opacity-60 animate-float"
-                    style="animation-delay: 3s;"></div>
-            </div>
+            <img src="{{ asset('images/fondowebsite.png') }}"
+                class="w-full h-full object-cover opacity-100 scale-105 animate-pulse-slow" alt="Fondo">
+            <!-- Simplified Overlay to let the image shine but keep text readable -->
+            <div class="absolute inset-0 bg-black/30"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/60"></div>
         </div>
 
         <!-- Content -->
@@ -341,124 +323,124 @@
             <!-- Grid Container with Centering for last row items -->
             <div class="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
 
-                <!-- Pastor Jhon Fabio García -->
-                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left">
+                <!-- Pastor Jhon Fabio García --
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-[28rem] rounded-3xl overflow-hidden cursor-pointer 
+                            bg-black/40 backdrop-blur-sm border border-white/10 hover:border-gold-500/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)] hover:-translate-y-3"
+                    data-aos="fade-up" data-aos-duration="1000">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <img src="{{ asset('images/jhonfabio.png') }}" alt="Pastor Jhon Fabio García"
-                            class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110">
+                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition duration-500">
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
                         <p
-                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            class="text-gold-400 font-bold uppercase text-xs mb-3 tracking-[0.25em] border-l-2 border-gold-500 pl-3">
                             Expositor</p>
-                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Pastor <br><span
-                                class="text-gold-500">Jhon Fabio García</span></h3>
+                        <h3 class="text-3xl font-black text-white mb-2 leading-none uppercase italic">Pastor <br><span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Jhon Fabio García</span></h3>
                         <div
-                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                            class="h-1 w-12 bg-white/20 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
                         </div>
                     </div>
                 </div>
 
                 <!-- Pastor Michael Alvarez -->
-                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left" data-aos-delay="100">
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-[28rem] rounded-3xl overflow-hidden cursor-pointer 
+                            bg-black/40 backdrop-blur-sm border border-white/10 hover:border-gold-500/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)] hover:-translate-y-3"
+                    data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <img src="{{ asset('images/michaelalvarez.png') }}" alt="Pastor Michael Alvarez"
-                            class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110">
+                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition duration-500">
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
                         <p
-                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            class="text-gold-400 font-bold uppercase text-xs mb-3 tracking-[0.25em] border-l-2 border-gold-500 pl-3">
                             Expositor</p>
-                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Pastor <br><span
-                                class="text-gold-500">Michael Alvarez</span></h3>
+                        <h3 class="text-3xl font-black text-white mb-2 leading-none uppercase italic">Pastor <br><span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Michael Alvarez</span></h3>
                         <div
-                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                            class="h-1 w-12 bg-white/20 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
                         </div>
                     </div>
                 </div>
 
                 <!-- Adorador Juan Pablo M. -->
-                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left" data-aos-delay="200">
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-[28rem] rounded-3xl overflow-hidden cursor-pointer 
+                            bg-black/40 backdrop-blur-sm border border-white/10 hover:border-gold-500/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)] hover:-translate-y-3"
+                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <img src="{{ asset('images/juanpablo.png') }}" alt="Adorador Juan Pablo M."
-                            class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110">
+                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition duration-500">
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
                         <p
-                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                             class="text-gold-400 font-bold uppercase text-xs mb-3 tracking-[0.25em] border-l-2 border-gold-500 pl-3">
                             Adoración</p>
-                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Adorador <br><span
-                                class="text-gold-500">Juan Pablo M.</span></h3>
+                        <h3 class="text-3xl font-black text-white mb-2 leading-none uppercase italic">Adorador <br><span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Juan Pablo M.</span></h3>
                         <div
-                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                            class="h-1 w-12 bg-white/20 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
                         </div>
                     </div>
                 </div>
 
                 <!-- Coro Distrito 27 -->
-                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left" data-aos-delay="300">
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-[28rem] rounded-3xl overflow-hidden cursor-pointer 
+                            bg-black/40 backdrop-blur-sm border border-white/10 hover:border-gold-500/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)] hover:-translate-y-3"
+                    data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
                         <img src="{{ asset('images/coro.png') }}" alt="Coro Distrito 27"
-                            class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110">
+                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition duration-500">
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
                         <p
-                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                            class="text-gold-400 font-bold uppercase text-xs mb-3 tracking-[0.25em] border-l-2 border-gold-500 pl-3">
                             Alabanza</p>
-                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Coro <span
-                                class="text-gold-500">Distrito 27</span></h3>
+                        <h3 class="text-3xl font-black text-white mb-2 leading-none uppercase italic">Coro <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Distrito 27</span></h3>
                         <div
-                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                            class="h-1 w-12 bg-white/20 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
                         </div>
                     </div>
                 </div>
 
                 <!-- Conquistadores Distrito 27 -->
-                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-96 rounded-2xl overflow-hidden cursor-pointer 
-                            bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
-                    data-aos="flip-left" data-aos-delay="400">
+                <div class="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-[28rem] rounded-3xl overflow-hidden cursor-pointer 
+                            bg-black/40 backdrop-blur-sm border border-white/10 hover:border-gold-500/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)] hover:-translate-y-3"
+                    data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                     <div class="absolute inset-0 bg-transparent flex items-center justify-center overflow-hidden">
                         <img src="{{ asset('images/conquistadores.png') }}" alt="Conquistadores Distrito 27"
-                            class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110">
+                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
 
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition duration-500">
                     </div>
 
                     <div
-                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition duration-500">
                         <p
-                            class="text-orange-500 font-bold uppercase text-xs mb-2 tracking-[0.2em] transform group-hover:translate-x-2 transition duration-500">
+                           class="text-gold-400 font-bold uppercase text-xs mb-3 tracking-[0.25em] border-l-2 border-gold-500 pl-3">
                             Organizadores</p>
-                        <h3 class="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">Conquistadores <span
-                                class="text-gold-500">Distrito 27</span></h3>
+                        <h3 class="text-3xl font-black text-white mb-2 leading-none uppercase italic">Conquistadores <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Distrito 27</span></h3>
                         <div
-                            class="h-1 w-12 bg-gray-700 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
+                            class="h-1 w-12 bg-white/20 group-hover:w-full group-hover:bg-gold-500 transition-all duration-700 mt-4 rounded-full">
                         </div>
                     </div>
                 </div>
@@ -640,67 +622,143 @@
     </section>
 
     <!-- INVERSION -->
-    <!-- INVERSION -->
-    <section id="inversion" class="py-20 bg-gradient-to-br from-[#FDB931] via-[#F5D061] to-[#D4AF37]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold font-cinzel text-center mb-12" data-aos="fade-up">Inversión</h2>
+    <section id="inversion" class="py-24 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-[#0a0502]"></div>
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 via-transparent to-transparent pointer-events-none">
+        </div>
 
-            <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
-                <!-- Plan 1 -->
-                <div class="glass-card !bg-black/80 p-8 rounded-2xl flex-1 text-center transform hover:-translate-y-2 transition duration-300 relative overflow-hidden"
-                    data-aos="zoom-in-right">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <p class="text-gold-500 font-bold uppercase tracking-[0.3em] text-sm mb-2" data-aos="fade-up">Tu
+                    Inversión</p>
+                <h2 class="text-4xl md:text-6xl font-black font-cinzel text-white uppercase" data-aos="fade-up"
+                    data-aos-delay="100">
+                    Planes de <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Registro</span>
+                </h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row justify-center items-center gap-8 max-w-5xl mx-auto">
+                <!-- Plan 1: Estadía Parcial -->
+                <div class="w-full lg:w-5/12 glass-card !bg-white/5 !backdrop-blur-xl !border-white/10 p-8 rounded-3xl text-center transform hover:-translate-y-2 transition duration-500 relative overflow-hidden group"
+                    data-aos="fade-right" data-aos-delay="200">
                     @use('App\Models\GlobalSetting')
+                    
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-50"></div>
 
-                    <h3 class="text-xl font-bold text-gray-300 uppercase tracking-widest mb-4">Estadía Parcial</h3>
-                    <div class="text-4xl font-black text-white mb-2">
-                        ${{ number_format(GlobalSetting::get('partial_stay_cost', 120000), 0) }}</div>
-                    <p class="text-sm text-gray-500 mb-6">(Domingo, 17 mayo)</p>
+                    <h3 class="text-xl font-bold text-gray-400 uppercase tracking-widest mb-2">Estadía Parcial</h3>
+                    <div class="flex justify-center items-start gap-1 mb-2">
+                        <span class="text-2xl text-gray-500 mt-2">$</span>
+                        <div class="text-5xl font-black text-white tracking-tight">
+                            {{ number_format(GlobalSetting::get('partial_stay_cost', 120000), 0) }}</div>
+                    </div>
+                    <p class="text-sm font-medium text-gray-500 mb-8 uppercase tracking-wider">Un solo día</p>
 
-                    <ul class="text-left space-y-3 mb-8 text-gray-300 text-sm">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Entrada a
-                            conferencias</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Material de
-                            apoyo</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Alimentación
-                            (Almuerzo y cena)</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Tarde de
-                            esparcimiento</li>
+                    <ul class="text-left space-y-4 mb-10 pl-4 relative">
+                        <!-- Connecting Line -->
+                        <div class="absolute left-[11px] top-2 bottom-2 w-[1px] bg-gray-700"></div>
+                        
+                        <li class="flex items-center gap-4 relative z-10">
+                            <div class="w-6 h-6 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-xs text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Entrada a conferencias</span>
+                        </li>
+                        <li class="flex items-center gap-4 relative z-10">
+                            <div class="w-6 h-6 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-xs text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Material de apoyo</span>
+                        </li>
+                        <li class="flex items-center gap-4 relative z-10">
+                            <div class="w-6 h-6 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-xs text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Alimentación (Almuerzo y cena)</span>
+                        </li>
+                         <li class="flex items-center gap-4 relative z-10">
+                            <div class="w-6 h-6 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-xs text-gray-400"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Tarde de esparcimiento</span>
+                        </li>
                     </ul>
 
                     <a href="{{ route('registration') }}"
-                        class="block w-full py-3 border border-gray-600 rounded-lg hover:border-white hover:bg-white hover:text-black transition font-bold">Elegir
-                        Plan</a>
+                        class="block w-full py-4 border border-white/20 rounded-xl hover:bg-white hover:text-black transition-all duration-300 font-bold uppercase tracking-wider text-sm">
+                        Elegir Plan
+                    </a>
                 </div>
 
                 <!-- Plan Full (Destacado) -->
-                <div class="glass-card !bg-black/80 p-8 rounded-2xl flex-1 text-center transform scale-105 border-gold-500 shadow-[0_0_30px_rgba(212,175,55,0.15)] relative"
-                    data-aos="zoom-in">
-                    <div
-                        class="absolute top-0 right-0 bg-gold-500 text-black text-xs font-bold px-3 py-1 rounded-bl-lg">
-                        RECOMENDADO</div>
+                <div class="w-full lg:w-6/12 relative group" data-aos="zoom-in">
+                    <!-- Glow Effect -->
+                    <div class="absolute -inset-1 bg-gradient-to-b from-gold-400 to-gold-700 rounded-[2rem] opacity-75 blur-lg group-hover:opacity-100 transition duration-500"></div>
+                    
+                    <div class="relative bg-[#121212] p-10 rounded-[1.9rem] text-center border border-gold-500/30 overflow-hidden h-full">
+                        <!-- Background Pattern -->
+                        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                        
+                        <!-- Ribbon -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gold-600 to-gold-400 text-black text-xs font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-b-lg shadow-[0_4px_15px_rgba(212,175,55,0.4)] z-20">
+                            Más Popular
+                        </div>
 
-                    <h3 class="text-xl font-bold text-gold-500 uppercase tracking-widest mb-4">Investidura Total</h3>
-                    <div class="text-5xl font-black text-white mb-2">
-                        ${{ number_format(GlobalSetting::get('default_total_cost', 300000), 0) }}</div>
-                    <p class="text-sm text-gray-500 mb-6">Todo incluido</p>
+                        <h3 class="text-2xl font-black text-gold-500 uppercase tracking-widest mb-2 mt-4 inline-block relative">
+                            Investidura Total
+                            <!-- Underline -->
+                            <div class="h-0.5 w-full bg-gold-500/50 mt-1"></div>
+                        </h3>
+                        
+                        <div class="flex justify-center items-start gap-1 mb-2 mt-4">
+                            <span class="text-3xl text-gold-600 mt-2">$</span>
+                            <div class="text-6xl font-black text-white tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                                {{ number_format(GlobalSetting::get('default_total_cost', 300000), 0) }}</div>
+                        </div>
+                        <p class="text-sm font-bold text-gray-400 mb-10 uppercase tracking-wider">Experiencia Completa</p>
 
-                    <ul class="text-left space-y-3 mb-8 text-gray-300 text-sm">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Acceso Total 3
-                            Días</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Hospedaje en
-                            Cabaña</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Alimentación
-                            Completa</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Kit de Bienvenida
-                        </li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Hidratación y
-                            Cafetería
-                        </li>
-                    </ul>
+                        <ul class="text-left space-y-5 mb-12 pl-6 relative inline-block mx-auto w-full">
+                            <!-- Connecting Line -->
+                            <div class="absolute left-[19px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-gold-500/50 to-transparent"></div>
 
-                    <a href="{{ route('registration') }}"
-                        class="block w-full py-3 bg-gradient-to-r from-orange-600 to-gold-500 rounded-lg hover:shadow-lg transition font-bold text-black">Inscribirme
-                        Ahora</a>
+                            <li class="flex items-center gap-4 relative z-10">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(212,175,55,0.4)]">
+                                    <i class="fas fa-check text-xs text-black font-bold"></i>
+                                </div>
+                                <span class="text-white font-medium text-lg">Acceso Total 3 Días</span>
+                            </li>
+                            <li class="flex items-center gap-4 relative z-10">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(212,175,55,0.4)]">
+                                    <i class="fas fa-check text-xs text-black font-bold"></i>
+                                </div>
+                                <span class="text-gray-300">Hospedaje en Cabaña</span>
+                            </li>
+                            <li class="flex items-center gap-4 relative z-10">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(212,175,55,0.4)]">
+                                    <i class="fas fa-check text-xs text-black font-bold"></i>
+                                </div>
+                                <span class="text-gray-300">Alimentación Completa</span>
+                            </li>
+                            <li class="flex items-center gap-4 relative z-10">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(212,175,55,0.4)]">
+                                    <i class="fas fa-check text-xs text-black font-bold"></i>
+                                </div>
+                                <span class="text-gray-300">Kit de Bienvenida Premium</span>
+                            </li>
+                             <li class="flex items-center gap-4 relative z-10">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(212,175,55,0.4)]">
+                                    <i class="fas fa-check text-xs text-black font-bold"></i>
+                                </div>
+                                <span class="text-gray-300">Hidratación y Cafetería</span>
+                            </li>
+                        </ul>
+
+                        <a href="{{ route('registration') }}"
+                            class="block w-full py-4 bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 rounded-xl shadow-[0_4px_20px_rgba(212,175,55,0.4)] hover:shadow-[0_4px_30px_rgba(212,175,55,0.6)] hover:scale-[1.02] transition-all duration-300 font-black text-black uppercase tracking-wider text-base relative z-10">
+                            Inscribirme Ahora
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
