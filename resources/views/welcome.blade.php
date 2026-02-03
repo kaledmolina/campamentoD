@@ -186,18 +186,17 @@
             </a>
 
             <!-- Desktop Menu -->
-            <div
-                class="hidden md:flex space-x-1 items-center bg-black/20 backdrop-blur-md px-2 py-1.5 rounded-full border border-gold-800/30">
+            <div class="hidden md:flex items-center gap-8">
                 <a href="#inicio"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Inicio</a>
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Inicio</a>
                 <a href="#invitados"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Invitados</a>
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Invitados</a>
                 <a href="#cronograma"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Agenda</a>
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Agenda</a>
                 <a href="#inversion"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Inversión</a>
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Inversión</a>
                 <a href="/consulta"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Pagos</a>
+                    class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Pagos</a>
             </div>
 
             <!-- CTA Button -->
