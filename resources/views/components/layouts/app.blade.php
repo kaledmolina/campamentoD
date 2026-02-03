@@ -311,7 +311,7 @@
                         <a href="https://www.instagram.com/conquistadoresd27" target="_blank"
                             class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-prestige-100/60 hover:bg-pink-600 hover:text-white transition-all duration-300"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@conquistadorespentecostawy8tm" target="_blank"
+                        <a href="https://www.youtube.com/@conquistadorespentecosta-wy8tm" target="_blank"
                             class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-prestige-100/60 hover:bg-red-600 hover:text-white transition-all duration-300"><i
                                 class="fab fa-youtube"></i></a>
                         <a href="https://whatsapp.com/channel/0029Vb29KYMDDmFP0H0gWs2x" target="_blank"
