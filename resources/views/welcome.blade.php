@@ -32,15 +32,22 @@
                     },
                     colors: {
                         gold: {
+                            50: '#FCF9EE',
+                            100: '#F9F1D8',
+                            200: '#F0E6D2',
+                            300: '#EEDC82',
+                            400: '#D4AF37', // Gold Standard
+                            500: '#C5A028',
                             600: '#A3841F',
-                            700: '#8B6508', // Dark Gold
+                            700: '#8B6508',
                             800: '#634706',
                             900: '#423406',
                         },
-                        brown: {
-                            900: '#2A1B0D', // Very dark brown for text
-                            800: '#3E2723',
-                            700: '#5D4037',
+                        // New Premium Dark Background Palette
+                        'rich-dark': {
+                            900: '#1a0f05', // Deepest Brown/Black
+                            800: '#2c1a0b', // Dark Coffee
+                            700: '#3e2510', // Rich Brown
                         }
                     },
                     animation: {
@@ -71,7 +78,7 @@
             overflow-x: hidden;
         }
 
-        /* Ruido de fondo sutil para textura (Versión Light) */
+        /* Ruido de fondo sutil para textura (Dark Version) */
         .bg-noise {
             position: fixed;
             top: 0;
@@ -80,19 +87,19 @@
             height: 100vh;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.03;
-            /* Más sutil en fondo claro */
+            opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            mix-blend-mode: multiply;
         }
 
-        /* Glassmorphism Premium (Light) */
+        /* Glassmorphism Premium (Dark Gold) */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.65);
+            background: rgba(44, 26, 11, 0.4);
+            /* Dark Brown tint */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 32px 0 rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            /* Subtle Gold Border */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
         .glass-card-hover {
@@ -100,51 +107,56 @@
         }
 
         .glass-card-hover:hover {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(44, 26, 11, 0.6);
             border-color: rgba(212, 175, 55, 0.6);
             transform: translateY(-5px);
             box-shadow: 0 15px 40px -10px rgba(212, 175, 55, 0.25);
         }
 
-        /* Textos Dorados Premium (Darker for Contrast) */
         .text-gold-gradient {
-            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #8B6508 100%);
+            background: linear-gradient(to right, #F5D061, #D4AF37, #F5D061);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
         }
 
-        /* Texto Manuscrito */
-        .text-handwritten {
-            font-family: 'Cinzel', serif;
-            /* Opcional: podrías importar una fuente handwritten real */
-            font-style: italic;
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(212, 175, 55, 0.3);
+            color: transparent;
         }
 
-        /* Scrollbar */
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #F0E6D2;
+            background: #1a0f05;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #D4AF37;
+            background: #8B6508;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #B8860B;
+            background: #D4AF37;
         }
 
         .nav-scrolled {
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
+            background: rgba(26, 15, 5, 0.9) !important;
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             padding-top: 15px !important;
             padding-bottom: 15px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         /* Efecto de luz ambiental (Warm) */
@@ -160,44 +172,45 @@
 </head>
 
 <body
-    class="font-montserrat antialiased selection:bg-gold-500 selection:text-white bg-[#FDFBF7] text-gray-800 relative">
+    class="font-montserrat antialiased selection:bg-gold-500 selection:text-white bg-rich-dark-900 text-gray-100 relative">
     <div class="bg-noise"></div>
 
     <!-- NAVIGATION -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-transparent">
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-transparent hover:bg-black/20">
         <div class="container mx-auto px-6 flex justify-between items-center relative z-50">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-2 group">
-                <img src="{{ asset('images/INVESTIDOS.png') }}" alt="Logo"
-                    class="h-10 md:h-14 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_2px_5px_rgba(212,175,55,0.4)]">
+                <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
+                    class="h-10 md:h-14 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_10px_rgba(212,175,55,0.5)]">
             </a>
 
             <!-- Desktop Menu -->
             <div
-                class="hidden md:flex space-x-1 items-center bg-white/70 backdrop-blur-md px-2 py-1.5 rounded-full border border-gold-200 shadow-xl shadow-gold-500/10">
+                class="hidden md:flex space-x-1 items-center bg-black/20 backdrop-blur-md px-2 py-1.5 rounded-full border border-gold-800/30">
                 <a href="#inicio"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-gold-700 hover:bg-gold-50 transition-all duration-300">Inicio</a>
+                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Inicio</a>
                 <a href="#invitados"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-gold-700 hover:bg-gold-50 transition-all duration-300">Invitados</a>
+                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Invitados</a>
                 <a href="#cronograma"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-gold-700 hover:bg-gold-50 transition-all duration-300">Agenda</a>
+                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Agenda</a>
                 <a href="#inversion"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-gold-700 hover:bg-gold-50 transition-all duration-300">Inversión</a>
+                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Inversión</a>
                 <a href="/consulta"
-                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-gold-700 hover:bg-gold-50 transition-all duration-300">Pagos</a>
+                    class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300">Pagos</a>
             </div>
 
             <!-- CTA Button -->
             <div class="flex items-center gap-4">
                 <a href="/registro"
-                    class="hidden md:inline-flex items-center justify-center bg-gradient-to-r from-gold-400 to-gold-600 text-white font-black text-xs py-3 px-8 rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] transform hover:-translate-y-1 transition duration-300 tracking-wider">
+                    class="hidden md:inline-flex items-center justify-center bg-gradient-to-r from-gold-600 to-gold-500 text-white font-black text-xs py-3 px-8 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] transform hover:-translate-y-1 transition duration-300 tracking-wider">
                     INSCRIBIRME
                     <i class="fas fa-arrow-right ml-2 text-xs"></i>
                 </a>
 
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn"
-                    class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/80 border border-gold-300 text-gold-600 shadow-md">
+                    class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-gold-500/50 text-gold-400 shadow-md">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
@@ -206,25 +219,25 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="fixed inset-0 z-[60] bg-[#FDFBF7]/95 backdrop-blur-xl transform translate-x-full transition-transform duration-500 flex flex-col items-center justify-center space-y-8">
+        class="fixed inset-0 z-[60] bg-[#0a0502]/95 backdrop-blur-xl transform translate-x-full transition-transform duration-500 flex flex-col items-center justify-center space-y-8">
         <button id="close-menu-btn"
-            class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white flex shadow-md text-gray-500 hover:text-gold-600">
+            class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 flex shadow-md text-gray-400 hover:text-gold-400 border border-white/5">
             <i class="fas fa-times text-xl"></i>
         </button>
 
         <a href="#inicio" onclick="toggleMenu()"
-            class="mobile-link text-3xl font-cinzel text-gray-800 hover:text-gold-600 transition-colors">Inicio</a>
+            class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Inicio</a>
         <a href="#invitados" onclick="toggleMenu()"
-            class="mobile-link text-3xl font-cinzel text-gray-800 hover:text-gold-600 transition-colors">Invitados</a>
+            class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Invitados</a>
         <a href="#cronograma" onclick="toggleMenu()"
-            class="mobile-link text-3xl font-cinzel text-gray-800 hover:text-gold-600 transition-colors">Agenda</a>
+            class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Agenda</a>
         <a href="#inversion" onclick="toggleMenu()"
-            class="mobile-link text-3xl font-cinzel text-gray-800 hover:text-gold-600 transition-colors">Inversión</a>
+            class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Inversión</a>
         <a href="{{ route('consultation') }}" onclick="toggleMenu()"
-            class="mobile-link text-3xl font-cinzel text-gray-800 hover:text-gold-600 transition-colors">Consulta</a>
+            class="mobile-link text-3xl font-cinzel text-white hover:text-gold-400 transition-colors">Consulta</a>
 
         <a href="{{ route('registration') }}" onclick="toggleMenu()"
-            class="mt-8 bg-gold-500 text-white font-bold py-4 px-10 rounded-full shadow-[0_10px_20px_rgba(212,175,55,0.3)] tracking-widest uppercase">
+            class="mt-8 bg-gold-500 text-black font-bold py-4 px-10 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.5)] tracking-widest uppercase hover:bg-gold-400">
             Inscribirme
         </a>
     </div>
@@ -234,10 +247,10 @@
         <!-- Dynamic Background -->
         <div class="absolute inset-0 z-0">
             <img src="{{ asset('images/fondowebsite.png') }}"
-                class="w-full h-full object-cover opacity-90 scale-105 animate-pulse-slow" alt="Fondo">
-            <!-- Light/Warm Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-b from-[#F9F1D8]/40 via-transparent to-[#FDFBF7]"></div>
-            <div class="absolute inset-0 bg-gold-100/20 mix-blend-overlay"></div>
+                class="w-full h-full object-cover opacity-80 scale-105 animate-pulse-slow" alt="Fondo">
+            <!-- Dark Overlay for Readability -->
+            <div class="absolute inset-0 bg-gradient-to-b from-rich-dark-900/80 via-transparent to-rich-dark-900"></div>
+            <div class="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
         </div>
 
         <!-- Glow Effects -->
@@ -298,11 +311,11 @@
         </div>
     </header>
 
-    <!-- INTRO & VIDEO WRAPPER (Light Warm Background) -->
-    <div class="relative bg-gradient-to-b from-[#FDFBF7] to-[#F9F1D8] py-24 overflow-hidden">
+    <!-- INTRO & VIDEO WRAPPER (Dark Luxury Background) -->
+    <div class="relative bg-gradient-to-b from-rich-dark-900 to-[#1a0f05] py-24 overflow-hidden">
         <!-- Lighting Background -->
-        <div class="ambient-light bg-gold-400/20 top-0 left-0 w-[500px] h-[500px]"></div>
-        <div class="ambient-light bg-gold-600/10 bottom-0 right-0 w-[600px] h-[600px]"></div>
+        <div class="ambient-light bg-gold-600/10 top-0 left-0 w-[500px] h-[500px]"></div>
+        <div class="ambient-light bg-gold-500/5 bottom-0 right-0 w-[600px] h-[600px]"></div>
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16 max-w-7xl mx-auto">
@@ -310,17 +323,17 @@
                 <!-- Text Content -->
                 <div class="lg:w-1/2 text-left" data-aos="fade-right">
                     <div
-                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gold-500/30 bg-gold-100 text-gold-700 text-xs font-bold uppercase tracking-wider mb-6">
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gold-500/30 bg-gold-900/20 text-gold-400 text-xs font-bold uppercase tracking-wider mb-6">
                         <i class="fas fa-fire-alt"></i> Manifiesto
                     </div>
 
-                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-cinzel text-brown-900 mb-8 leading-tight">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-cinzel text-white mb-8 leading-tight">
                         ¿Qué es <br>
                         <span class="text-gold-gradient font-bold drop-shadow-sm">INVESTIDOS?</span>
                     </h2>
 
-                    <p class="text-lg text-gray-700 leading-relaxed mb-8 font-light border-l border-gold-400 pl-6">
-                        No es solo un evento, es una <strong class="text-brown-800">convocatoria divina</strong>.
+                    <p class="text-lg text-gray-300 leading-relaxed mb-8 font-light border-l border-gold-600 pl-6">
+                        No es solo un evento, es una <strong class="text-gold-100">convocatoria divina</strong>.
                         INVESTIDOS 2026 es el tiempo kairos en el que la juventud del Distrito 27 se reúne para recibir
                         el poder y la investidura de Dios. Una experiencia inmersiva de tres días diseñada para
                         transformar tu eternidad.
@@ -330,10 +343,10 @@
                 <!-- Video Card -->
                 <div class="lg:w-1/2 w-full" data-aos="fade-left">
                     <div
-                        class="relative rounded-2xl overflow-hidden border border-gold-200 shadow-2xl shadow-gold-500/20 group bg-white">
+                        class="relative rounded-2xl overflow-hidden border border-gold-500/20 shadow-2xl shadow-black/50 group bg-black">
                         <!-- Poster Overlay Effect -->
                         <div
-                            class="absolute inset-0 bg-gold-900/10 group-hover:bg-transparent transition-all z-10 pointer-events-none">
+                            class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all z-10 pointer-events-none">
                         </div>
 
                         <video class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700"
@@ -344,10 +357,10 @@
 
                         <!-- Decorative borders -->
                         <div
-                            class="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-gold-400 rounded-tl-2xl pointer-events-none">
+                            class="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-gold-500/50 rounded-tl-2xl pointer-events-none">
                         </div>
                         <div
-                            class="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-gold-400 rounded-br-2xl pointer-events-none">
+                            class="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-gold-500/50 rounded-br-2xl pointer-events-none">
                         </div>
                     </div>
                 </div>
@@ -356,34 +369,34 @@
     </div>
 
     <!-- BANNER PARALLAX -->
-    <div class="relative py-40 bg-fixed bg-center bg-cover border-y border-gold-300"
+    <div class="relative py-40 bg-fixed bg-center bg-cover border-y border-gold-900/30"
         style="background-image: url('{{ asset('images/investidobanner.png') }}');">
-        <div class="absolute inset-0 bg-[#3E2723]/60 backdrop-blur-[1px]"></div>
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-[1px]"></div>
 
         <div class="relative container mx-auto text-center px-4 max-w-4xl z-10">
-            <i class="fas fa-quote-left text-4xl text-gold-200/50 mb-4 block"></i>
+            <i class="fas fa-quote-left text-4xl text-gold-500/30 mb-4 block"></i>
             <h2 class="text-2xl md:text-4xl lg:text-5xl font-cinzel text-white mb-6 leading-snug tracking-wide text-shadow-md"
                 data-aos="zoom-in">
                 "Pero quedaos vosotros en la ciudad de Jerusalén, hasta que seáis <span
-                    class="text-gold-300 italic">investidos de poder</span> desde lo alto..."
+                    class="text-gold-400 italic">investidos de poder</span> desde lo alto..."
             </h2>
-            <div class="h-[1px] w-20 bg-gold-400 mx-auto mb-4"></div>
-            <p class="text-gold-100 text-lg uppercase tracking-[0.3em]" data-aos="fade-up">Lucas 24:49</p>
+            <div class="h-[1px] w-20 bg-gold-600 mx-auto mb-4"></div>
+            <p class="text-gold-200/60 text-lg uppercase tracking-[0.3em]" data-aos="fade-up">Lucas 24:49</p>
         </div>
     </div>
 
-    <!-- INVITADOS (Light & Elegant) -->
-    <section id="invitados" class="py-24 relative bg-[#F9F1D8]">
+    <!-- INVITADOS (Dark & Elegant) -->
+    <section id="invitados" class="py-24 relative bg-[#0a0502]">
         <!-- Ambient Gloom -->
         <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-white/80 via-[#F9F1D8] to-[#F9F1D8]">
+            class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-gold-900/10 via-[#0a0502] to-[#0a0502]">
         </div>
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-20">
                 <span class="text-gold-600 text-xs font-bold uppercase tracking-[0.3em]">Nuestros Invitados</span>
-                <h2 class="text-4xl md:text-6xl font-cinzel text-brown-900 mt-3 mb-4">Expositores</h2>
-                <p class="text-gray-600 max-w-xl mx-auto font-light">Instrumentos escogidos por Dios para impartir una
+                <h2 class="text-4xl md:text-6xl font-cinzel text-white mt-3 mb-4">Expositores</h2>
+                <p class="text-gray-400 max-w-xl mx-auto font-light">Instrumentos escogidos por Dios para impartir una
                     palabra que marcará a esta generación.</p>
             </div>
 
@@ -506,24 +519,24 @@
         </div>
     </section>
 
-    <!-- CRONOGRAMA (Light Gold/Parchment Style) -->
-    <section id="cronograma" class="py-24 relative bg-[#FDFBF7] overflow-hidden">
+    <!-- CRONOGRAMA (Neon Line Style) -->
+    <section id="cronograma" class="py-24 relative bg-rich-dark-900 overflow-hidden">
         <div
-            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-100 via-[#FDFBF7] to-[#FDFBF7]">
+            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-900/20 via-rich-dark-900 to-rich-dark-900">
         </div>
 
         <div class="container mx-auto px-4 max-w-5xl relative z-10">
             <div class="flex flex-col items-center mb-20 text-center">
                 <i class="fas fa-hourglass-half text-3xl text-gold-500 mb-4"></i>
-                <h2 class="text-4xl md:text-5xl font-cinzel text-brown-900">Cronograma</h2>
-                <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-gold-400 to-transparent mt-6 mb-2"></div>
-                <p class="text-gray-500 text-sm italic">Sujeto a la dirección del Espíritu Santo</p>
+                <h2 class="text-4xl md:text-5xl font-cinzel text-white">Cronograma</h2>
+                <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-gold-500 to-transparent mt-6 mb-2"></div>
+                <p class="text-gray-400 text-sm italic">Sujeto a la dirección del Espíritu Santo</p>
             </div>
 
             <div class="relative">
-                <!-- Glowing Central Line (Gold) -->
+                <!-- Glowing Central Line -->
                 <div
-                    class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-[2px] bg-gradient-to-b from-transparent via-gold-400 to-transparent shadow-[0_0_15px_rgba(212,175,55,0.3)] opacity-60">
+                    class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-[2px] bg-gradient-to-b from-transparent via-gold-500 to-transparent shadow-[0_0_15px_rgba(212,175,55,0.5)] opacity-50">
                 </div>
 
                 <div class="space-y-16">
@@ -531,55 +544,52 @@
                     <!-- Sábado -->
                     <div class="relative flex flex-col md:flex-row items-center w-full group">
                         <div class="md:w-1/2 md:pr-12 md:text-right pl-20 md:pl-0 w-full" data-aos="fade-right">
-                            <h3 class="text-2xl font-cinzel text-gray-800 group-hover:text-gold-600 transition">Sábado
-                                16
+                            <h3 class="text-2xl font-cinzel text-white group-hover:text-gold-400 transition">Sábado 16
                                 Mayo</h3>
                             <span
                                 class="text-gold-600 font-bold text-sm tracking-wider uppercase mb-2 block">Apertura</span>
-                            <p class="text-gray-600 font-light">Registro de delegaciones y servicio de apertura.</p>
+                            <p class="text-gray-400 font-light">Registro de delegaciones y servicio de apertura.</p>
                         </div>
 
                         <div
-                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
+                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
                         </div>
 
-                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-20 text-6xl text-gold-300 text-left font-black"
+                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-20 text-6xl text-gold-500/20 text-left font-black"
                             data-aos="fade-left">01</div>
                     </div>
 
                     <!-- Domingo AM -->
                     <div class="relative flex flex-col md:flex-row items-center w-full group">
-                        <div class="md:w-1/2 md:pr-12 hidden md:block opacity-20 text-6xl text-gold-300 text-right font-black"
+                        <div class="md:w-1/2 md:pr-12 hidden md:block opacity-20 text-6xl text-gold-500/20 text-right font-black"
                             data-aos="fade-right">02</div>
 
                         <div
-                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
+                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
                         </div>
 
                         <div class="md:w-1/2 md:pl-12 pl-20 w-full" data-aos="fade-left">
-                            <h3 class="text-2xl font-cinzel text-gray-800 group-hover:text-gold-600 transition">Domingo
-                                -
+                            <h3 class="text-2xl font-cinzel text-white group-hover:text-gold-400 transition">Domingo -
                                 8:00 AM</h3>
                             <span class="text-gold-600 font-bold text-sm tracking-wider uppercase mb-2 block">Mañana de
                                 Gloria</span>
-                            <p class="text-gray-600 font-light">Devocional General, Culto de avivamiento y taller.</p>
+                            <p class="text-gray-400 font-light">Devocional General, Culto de avivamiento y taller.</p>
                         </div>
                     </div>
 
                     <!-- Domingo PM -->
                     <div class="relative flex flex-col md:flex-row items-center w-full group">
                         <div class="md:w-1/2 md:pr-12 md:text-right pl-20 md:pl-0 w-full" data-aos="fade-right">
-                            <h3 class="text-2xl font-cinzel text-gray-800 group-hover:text-gold-600 transition">Domingo
-                                -
+                            <h3 class="text-2xl font-cinzel text-white group-hover:text-gold-400 transition">Domingo -
                                 2:00 PM</h3>
                             <span
                                 class="text-gold-600 font-bold text-sm tracking-wider uppercase mb-2 block">Actividades</span>
-                            <p class="text-gray-600 font-light">Esparcimiento, desafíos dirigidos y campeonatos.</p>
+                            <p class="text-gray-400 font-light">Esparcimiento, desafíos dirigidos y campeonatos.</p>
                         </div>
                         <div
-                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
+                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
                         </div>
-                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-20 text-6xl text-gold-300 text-left font-black"
+                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-20 text-6xl text-gold-500/20 text-left font-black"
                             data-aos="fade-left">03</div>
                     </div>
 
@@ -594,11 +604,11 @@
                         </div>
 
                         <div class="md:w-1/2 md:pl-12 pl-20 w-full" data-aos="fade-left">
-                            <h3 class="text-3xl font-cinzel text-brown-900 font-bold text-gold-gradient">NOCHE DE
+                            <h3 class="text-3xl font-cinzel text-white font-bold text-gold-gradient">NOCHE DE
                                 INVESTIDURA</h3>
-                            <span class="text-gold-600 font-bold text-sm tracking-wider uppercase mb-2 block">Domingo
+                            <span class="text-gold-500 font-bold text-sm tracking-wider uppercase mb-2 block">Domingo
                                 - 7:00 PM</span>
-                            <p class="text-gray-700 font-light">Adoración, culto de restauración y renovación
+                            <p class="text-gray-300 font-light">Adoración, culto de restauración y renovación
                                 espiritual.</p>
                         </div>
                     </div>
@@ -606,16 +616,16 @@
                     <!-- Lunes AM -->
                     <div class="relative flex flex-col md:flex-row items-center w-full group">
                         <div class="md:w-1/2 md:pr-12 md:text-right pl-20 md:pl-0 w-full" data-aos="fade-right">
-                            <h3 class="text-2xl font-cinzel text-gray-800 group-hover:text-gold-600 transition">Lunes -
+                            <h3 class="text-2xl font-cinzel text-white group-hover:text-gold-400 transition">Lunes -
                                 8:00 AM</h3>
                             <span class="text-gold-600 font-bold text-sm tracking-wider uppercase mb-2 block">Cierre y
                                 Santa Cena</span>
-                            <p class="text-gray-600 font-light">Adoración y Servicio de clausura.</p>
+                            <p class="text-gray-400 font-light">Adoración y Servicio de clausura.</p>
                         </div>
                         <div
-                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
+                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
                         </div>
-                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-20 text-6xl text-gold-300 text-left font-black"
+                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-20 text-6xl text-gold-500/20 text-left font-black"
                             data-aos="fade-left">04</div>
                     </div>
 
