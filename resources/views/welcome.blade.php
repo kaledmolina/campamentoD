@@ -289,6 +289,20 @@
         </div>
     </section>
 
+    <!-- VIDEO OFICIAL -->
+    <section class="py-12 bg-[#2a1205]">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="relative w-full rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.2)] border border-gold-500/30 group"
+                data-aos="zoom-in">
+                <video class="w-full h-auto" controls preload="metadata"
+                    poster="{{ asset('images/investidobanner.png') }}">
+                    <source src="{{ asset('images/video-caamp.mp4') }}" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
+        </div>
+    </section>
+
     <!-- BANNER PARALLAX -->
     <div class="relative py-32 bg-fixed bg-center bg-cover"
         style="background-image: url('{{ asset('images/investidobanner.png') }}');">

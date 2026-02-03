@@ -109,6 +109,11 @@ Also, enhance the visual presentation of these cards.
     -   **Conquistadores Distrito 27** (`conquistadores.png`)
 -   Applied `object-cover`, transition effects, and removed generic background icons.
 
+### [Video Section]
+#### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php)
+-   Added new section displaying `video-caamp.mp4` after the Introduction.
+-   Styled with gold borders, shadow effects, and `investidobanner.png` as poster.
+
 ## Verification Plan
 ### Manual Verification
 -   **Visual Check:** Open the landing page.
