@@ -105,6 +105,8 @@ Also, enhance the visual presentation of these cards.
     -   **Pastor Jhon Fabio García** (`jhonfabio.png`)
     -   **Pastor Michael Alvarez** (`michaelalvarez.png`)
     -   **Adorador Juan Pablo M.** (`juanpablo.png`)
+    -   **Coro Distrito 27** (`coro.png`)
+    -   **Conquistadores Distrito 27** (`conquistadores.png`)
 -   Applied `object-cover`, transition effects, and removed generic background icons.
 
 ## Verification Plan
