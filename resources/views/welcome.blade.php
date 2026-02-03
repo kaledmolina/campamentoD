@@ -384,7 +384,7 @@
 
     <!-- BANNER PARALLAX -->
     <div class="relative py-48 bg-fixed bg-center bg-cover border-y border-white/5"
-        style="background-image: url('{{ asset('images/investidobanner.png') }}');">
+        style="background-image: url('{{ asset('images/fondowebsite.png') }}');">
         <div class="absolute inset-0 bg-prestige-950/80 mix-blend-multiply"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-prestige-950 via-transparent to-prestige-950"></div>
 
@@ -471,7 +471,7 @@
                             class="h-1 w-12 bg-gold-500 mb-4 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
                         </div>
                         <p class="text-gold-400 text-xs font-bold uppercase tracking-[0.3em] mb-2">Adoración</p>
-                        <h3 class="text-4xl font-cinzel text-white leading-none">Juan Pablo <br> M.</h3>
+                        <h3 class="text-4xl font-cinzel text-white leading-none">Juan Pablo <br>Murillo</h3>
                     </div>
                 </div>
 
