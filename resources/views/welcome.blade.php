@@ -45,9 +45,9 @@
                         },
                         // New Premium Dark Background Palette
                         'rich-dark': {
-                            900: '#1e1208', // Slightly Lighter Dark Brown (Was #1a0f05)
-                            800: '#2c1a0b', // Dark Coffee
-                            700: '#3e2510', // Rich Brown
+                            900: '#977151ff', // Slightly Lighter Dark Brown (Was #1a0f05)
+                            800: '#a3622dff', // Dark Coffee
+                            700: '#cc7a37ff', // Rich Brown
                         }
                     },
                     animation: {
