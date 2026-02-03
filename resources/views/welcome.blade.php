@@ -635,27 +635,27 @@
     </section>
 
     <!-- INVERSION -->
-    <section id="inversion" class="py-24 relative bg-[#F9F1D8] overflow-hidden">
+    <section id="inversion" class="py-24 relative bg-[#0a0502] overflow-hidden">
         <!-- Background Glows -->
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/40 rounded-full blur-[100px]"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold-200/20 rounded-full blur-[100px]"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-600/5 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-rich-dark-800/20 rounded-full blur-[100px]"></div>
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
-                <span class="text-gold-600 uppercase tracking-widest text-sm font-bold">Reserva tu lugar</span>
-                <h2 class="text-4xl md:text-6xl font-cinzel text-brown-900 mt-2">Planes de Inversión</h2>
+                <span class="text-gold-600/60 uppercase tracking-widest text-sm font-bold">Reserva tu lugar</span>
+                <h2 class="text-4xl md:text-6xl font-cinzel text-white mt-2">Planes de Inversión</h2>
             </div>
 
             <div class="flex flex-col lg:flex-row justify-center items-center gap-8 max-w-5xl mx-auto">
 
                 <!-- Plan Parcial -->
-                <div class="w-full lg:w-5/12 glass-panel !bg-white/60 rounded-3xl p-8 hover:bg-white/80 transition duration-500 relative group"
+                <div class="w-full lg:w-5/12 glass-panel rounded-3xl p-8 hover:bg-white/5 transition duration-500 relative group"
                     data-aos="fade-up">
                     <div class="text-center mb-8">
-                        <h3 class="text-xl font-montserrat text-gray-700 uppercase tracking-widest">Estadía Parcial</h3>
+                        <h3 class="text-xl font-montserrat text-gray-300 uppercase tracking-widest">Estadía Parcial</h3>
                         <div class="flex justify-center items-baseline gap-1 mt-4">
                             <span class="text-2xl text-gray-500">$</span>
-                            <span class="text-5xl font-bold text-brown-900 tracking-tighter">
+                            <span class="text-5xl font-bold text-white tracking-tighter">
                                 @if(class_exists('App\Models\GlobalSetting'))
                                     {{ number_format(\App\Models\GlobalSetting::get('partial_stay_cost', 120000), 0) }}
                                 @else
@@ -666,19 +666,19 @@
                         <p class="text-sm text-gray-500 mt-2 uppercase">Un solo día</p>
                     </div>
 
-                    <ul class="space-y-4 mb-8 text-gray-600 text-sm">
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-gold-600"></i> Entrada a
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-gold-500"></i> Entrada a
                             conferencias</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-gold-600"></i> Material de apoyo
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-gold-500"></i> Material de apoyo
                         </li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-gold-600"></i> Almuerzo y cena
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-gold-500"></i> Almuerzo y cena
                             (1 día)</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-gold-600"></i> Tarde de
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-gold-500"></i> Tarde de
                             esparcimiento</li>
                     </ul>
 
                     <a href="{{ route('registration') }}"
-                        class="block w-full py-3 border border-gold-300 rounded-xl text-center text-gold-800 hover:text-white hover:bg-gold-500 hover:border-gold-500 transition uppercase text-xs tracking-widest font-bold">
+                        class="block w-full py-3 border border-gold-700/50 rounded-xl text-center text-gold-300 hover:text-white hover:bg-gold-500/20 hover:border-gold-500 transition uppercase text-xs tracking-widest font-bold">
                         Seleccionar
                     </a>
                 </div>
@@ -687,27 +687,27 @@
                 <div class="w-full lg:w-6/12 relative group" data-aos="fade-up" data-aos-delay="100">
                     <!-- Glow Border -->
                     <div
-                        class="absolute -inset-[1px] bg-gradient-to-b from-gold-400 to-transparent rounded-[26px] opacity-60 blur-sm group-hover:opacity-100 transition duration-500">
+                        class="absolute -inset-[1px] bg-gradient-to-b from-gold-400 to-transparent rounded-[26px] opacity-20 blur-sm group-hover:opacity-100 transition duration-500">
                     </div>
 
                     <div
-                        class="relative bg-white border border-gold-200 rounded-3xl p-10 overflow-hidden h-full shadow-2xl shadow-gold-900/10">
+                        class="relative bg-[#100a05] border border-gold-500/20 rounded-3xl p-10 overflow-hidden h-full shadow-2xl shadow-gold-900/10">
                         <!-- Shine effect -->
                         <div
-                            class="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-gold-200/50 blur-3xl rounded-full">
+                            class="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-gold-500/10 blur-3xl rounded-full">
                         </div>
 
                         <div
-                            class="absolute top-0 left-1/2 -translate-x-1/2 bg-gold-500 text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1 rounded-b-lg shadow-md">
+                            class="absolute top-0 left-1/2 -translate-x-1/2 bg-gold-500 text-black text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1 rounded-b-lg shadow-md">
                             Recomendado
                         </div>
 
                         <div class="text-center mb-8 mt-4">
-                            <h3 class="text-2xl font-cinzel text-gold-600 uppercase tracking-widest">Investidura Total
+                            <h3 class="text-2xl font-cinzel text-gold-400 uppercase tracking-widest">Investidura Total
                             </h3>
                             <div class="flex justify-center items-baseline gap-1 mt-4">
-                                <span class="text-3xl text-gold-500">$</span>
-                                <span class="text-7xl font-bold text-brown-900 tracking-tighter drop-shadow-sm">
+                                <span class="text-3xl text-gold-600">$</span>
+                                <span class="text-7xl font-bold text-white tracking-tighter drop-shadow-sm">
                                     @if(class_exists('App\Models\GlobalSetting'))
                                         {{ number_format(\App\Models\GlobalSetting::get('default_total_cost', 300000), 0) }}
                                     @else
@@ -719,43 +719,43 @@
                             </p>
                         </div>
 
-                        <div class="space-y-5 mb-10 pl-4 border-l-2 border-gold-100 ml-4">
+                        <div class="space-y-5 mb-10 pl-4 border-l border-gold-500/20 ml-4">
                             <div class="flex items-start gap-4">
                                 <div
-                                    class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fas fa-check text-xs text-gold-600"></i>
+                                    class="w-6 h-6 rounded-full bg-gold-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fas fa-check text-xs text-gold-400"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-brown-900 font-bold text-sm">Acceso Total 3 Días</h4>
+                                    <h4 class="text-white font-bold text-sm">Acceso Total 3 Días</h4>
                                     <p class="text-gray-500 text-xs">Todas las plenarias y talleres.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
                                 <div
-                                    class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fas fa-check text-xs text-gold-600"></i>
+                                    class="w-6 h-6 rounded-full bg-gold-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fas fa-check text-xs text-gold-400"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-brown-900 font-bold text-sm">Hospedaje en Cabaña</h4>
+                                    <h4 class="text-white font-bold text-sm">Hospedaje en Cabaña</h4>
                                     <p class="text-gray-500 text-xs">Alojamiento cómodo incluido.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
                                 <div
-                                    class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fas fa-check text-xs text-gold-600"></i>
+                                    class="w-6 h-6 rounded-full bg-gold-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fas fa-check text-xs text-gold-400"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-brown-900 font-bold text-sm">Alimentación Completa</h4>
+                                    <h4 class="text-white font-bold text-sm">Alimentación Completa</h4>
                                     <p class="text-gray-500 text-xs">Desde el sábado hasta el lunes.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
                                 <div
-                                    class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fas fa-check text-xs text-gold-600"></i>
+                                    class="w-6 h-6 rounded-full bg-gold-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fas fa-check text-xs text-gold-400"></i>
                                 </div>
-                                <span class="text-gray-700 text-sm font-medium">Kit de Bienvenida Premium</span>
+                                <span class="text-gray-300 text-sm font-medium">Kit de Bienvenida Premium</span>
                             </div>
                         </div>
 
