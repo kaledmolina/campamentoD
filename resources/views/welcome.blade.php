@@ -180,13 +180,13 @@
         class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-transparent hover:bg-black/20">
         <div class="container mx-auto px-6 flex justify-between items-center relative z-50">
             <!-- Logo -->
-            <a href="#" class="flex items-center gap-2 group">
+            <a href="#" class="flex items-center gap-2 group md:absolute md:left-0">
                 <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
-                    class="h-10 md:h-14 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_10px_rgba(212,175,55,0.5)]">
+                    class="h-10 md:h-20 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_10px_rgba(212,175,55,0.5)]">
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-8">
+            <div class="hidden md:flex items-center gap-8 mx-auto">
                 <a href="#inicio"
                     class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors duration-300">Inicio</a>
                 <a href="#invitados"
@@ -519,9 +519,9 @@
     </section>
 
     <!-- Agenda (Neon Line Style) -->
-    <section id="Agenda" class="py-24 relative bg-rich-dark-900 overflow-hidden">
+    <section id="Agenda" class="py-24 relative bg-[#0f0803] overflow-hidden">
         <div
-            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-900/20 via-rich-dark-900 to-rich-dark-900">
+            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-900/10 via-[#0f0803] to-[#0f0803]">
         </div>
 
         <div class="container mx-auto px-4 max-w-5xl relative z-10">
@@ -551,20 +551,20 @@
                         </div>
 
                         <div
-                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
+                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#0f0803] border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
                         </div>
 
-                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-20 text-6xl text-gold-500/20 text-left font-black"
+                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-30 text-6xl text-gold-500/10 text-left font-black"
                             data-aos="fade-left">01</div>
                     </div>
 
                     <!-- Domingo AM -->
                     <div class="relative flex flex-col md:flex-row items-center w-full group">
-                        <div class="md:w-1/2 md:pr-12 hidden md:block opacity-20 text-6xl text-gold-500/20 text-right font-black"
+                        <div class="md:w-1/2 md:pr-12 hidden md:block opacity-30 text-6xl text-gold-500/10 text-right font-black"
                             data-aos="fade-right">02</div>
 
                         <div
-                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
+                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#0f0803] border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
                         </div>
 
                         <div class="md:w-1/2 md:pl-12 pl-20 w-full" data-aos="fade-left">
@@ -586,9 +586,9 @@
                             <p class="text-gray-400 font-light">Esparcimiento, desafíos dirigidos y campeonatos.</p>
                         </div>
                         <div
-                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
+                            class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#0f0803] border border-gold-500 rotate-45 z-10 group-hover:bg-gold-500 group-hover:shadow-[0_0_15px_rgba(212,175,55,1)] transition-all duration-300">
                         </div>
-                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-20 text-6xl text-gold-500/20 text-left font-black"
+                        <div class="md:w-1/2 md:pl-12 hidden md:block opacity-30 text-6xl text-gold-500/10 text-left font-black"
                             data-aos="fade-left">03</div>
                     </div>
 
