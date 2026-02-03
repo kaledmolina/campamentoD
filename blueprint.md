@@ -99,6 +99,14 @@ Also, enhance the visual presentation of these cards.
 #### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php) & [app.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/components/layouts/app.blade.php)
 -   Changed copyright text from "**Misión Juvenil**" to "**Conquistadores Pentecostales distrito 27**".
 
+### [Guest Images]
+#### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php)
+-   Replaced icons with actual photos for:
+    -   **Pastor Jhon Fabio García** (`jhonfabio.png`)
+    -   **Pastor Michael Alvarez** (`michaelalvarez.png`)
+    -   **Adorador Juan Pablo M.** (`juanpablo.png`)
+-   Applied `object-cover`, transition effects, and removed generic background icons.
+
 ## Verification Plan
 ### Manual Verification
 -   **Visual Check:** Open the landing page.

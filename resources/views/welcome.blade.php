@@ -332,14 +332,11 @@
                             bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
-                        <i
-                            class="fas fa-user-tie text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
-                        <div
-                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
-                        </div>
+                        <img src="{{ asset('images/jhonfabio.png') }}" alt="Pastor Jhon Fabio García" 
+                             class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
                     </div>
                     <div
                         class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
@@ -359,14 +356,11 @@
                             bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="100">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
-                        <i
-                            class="fas fa-user-tie text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
-                        <div
-                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
-                        </div>
+                        <img src="{{ asset('images/michaelalvarez.png') }}" alt="Pastor Michael Alvarez" 
+                             class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
                     </div>
                     <div
                         class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
@@ -386,14 +380,11 @@
                             bg-gradient-to-br from-[#8D6E63] to-[#3E2723] border border-transparent hover:border-gold-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2"
                     data-aos="flip-left" data-aos-delay="200">
                     <div class="absolute inset-0 bg-gray-900 flex items-center justify-center overflow-hidden">
-                        <i
-                            class="fas fa-microphone text-7xl text-gray-700 group-hover:text-gold-500 transition duration-700 transform group-hover:scale-110"></i>
-                        <div
-                            class="absolute w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition duration-500">
-                        </div>
+                        <img src="{{ asset('images/juanpablo.png') }}" alt="Adorador Juan Pablo M." 
+                             class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition duration-700 transform group-hover:scale-110">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-80 transition duration-500">
                     </div>
                     <div
                         class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">
