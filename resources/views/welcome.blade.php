@@ -177,9 +177,9 @@
         class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-white/5 bg-gradient-to-b from-prestige-950/90 to-transparent">
         <div class="container mx-auto px-8 flex justify-between items-center relative z-50">
             <!-- Logo Grande -->
-            <a href="#" class="flex items-center gap-2 group md:absolute md:left-0">
+            <a href="/" class="flex items-center gap-2 group md:absolute md:left-0">
                 <img src="{{ asset('images/InvestidoBlanco.png') }}" alt="Logo"
-                    class="h-12 md:h-20 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+                    class="h-16 md:h-32 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
             </a>
 
             <!-- Desktop Menu -->
