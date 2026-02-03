@@ -95,6 +95,10 @@ Also, enhance the visual presentation of these cards.
 #### [NEW] [Migration](file:///home/administrador/proyectos/campamentoD/database/migrations/2026_02_03_101302_update_partial_stay_cost_in_global_settings.php)
 -   Created migration to update `partial_stay_cost` in `global_settings` table (Not executed).
 
+### [Footer Update]
+#### [MODIFY] [welcome.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/welcome.blade.php) & [app.blade.php](file:///home/administrador/proyectos/campamentoD/resources/views/components/layouts/app.blade.php)
+-   Changed copyright text from "**Misión Juvenil**" to "**Conquistadores Pentecostales distrito 27**".
+
 ## Verification Plan
 ### Manual Verification
 -   **Visual Check:** Open the landing page.

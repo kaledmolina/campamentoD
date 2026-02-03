@@ -761,7 +761,7 @@
             </div>
 
             <div class="border-t border-gray-900 mt-12 pt-8 text-center text-gray-600 text-xs">
-                &copy; 2026 Misión Juvenil. Todos los derechos reservados. <br>
+                &copy; 2026 Conquistadores Pentecostales distrito 27. Todos los derechos reservados. <br>
                 Desarrollado por <a href="https://wa.me/573004200048" target="_blank"
                     class="text-gold-500 hover:text-white transition">Kaled Molina</a>
             </div>
