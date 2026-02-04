@@ -358,9 +358,9 @@
                         class="text-xl text-prestige-100/80 leading-relaxed mb-10 font-light border-l-4 border-gold-500/40 pl-8">
                         No es solo un evento, es una <strong class="text-gold-200 font-medium">convocatoria
                             divina</strong>.
-                        INVESTIDOS 2026 es el tiempo kairos en el que la juventud del Distrito 27 se reúne para recibir
-                        el poder y la investidura de Dios. Una experiencia inmersiva de tres días diseñada para
-                        transformar tu eternidad.
+                        INVESTIDOS 2026 es el tiempo en el que la juventud del Distrito 27 se reúne para recibir el
+                        poder y la investidura de Dios, que transforma vidas y generaciones. Prepárate para tres días
+                        únicos que marcarán tu vida para siempre. ¡Bienvenido!
                     </p>
                 </div>
 
