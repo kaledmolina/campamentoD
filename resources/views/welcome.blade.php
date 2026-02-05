@@ -212,7 +212,7 @@
                 </a>
                 <a href="/consulta"
                     class="text-sm font-bold uppercase tracking-widest text-prestige-100/80 hover:text-gold-400 transition-colors duration-300 relative group">
-                    Pagos
+                    Consulta / Abonos
                     <span
                         class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
@@ -252,7 +252,7 @@
         <a href="#inversion" onclick="toggleMenu()"
             class="mobile-link text-4xl font-cinzel text-prestige-100 hover:text-gold-400 transition-colors">Inversión</a>
         <a href="{{ route('consultation') }}" onclick="toggleMenu()"
-            class="mobile-link text-4xl font-cinzel text-prestige-100 hover:text-gold-400 transition-colors">Consulta</a>
+            class="mobile-link text-4xl font-cinzel text-prestige-100 hover:text-gold-400 transition-colors">Consulta / Abonos</a>
 
         <a href="{{ route('registration') }}" onclick="toggleMenu()"
             class="mt-10 bg-gold-500 text-black font-bold py-5 px-14 rounded shadow-lg text-lg tracking-widest uppercase hover:bg-white hover:text-gold-600 transition-all">

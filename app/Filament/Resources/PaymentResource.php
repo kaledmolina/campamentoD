@@ -274,7 +274,6 @@ class PaymentResource extends Resource
     {
         return [
             'index' => Pages\ListPayments::route('/'),
-            'create' => Pages\CreatePayment::route('/create'),
             'view' => Pages\ViewPayment::route('/{record}'),
         ];
     }
