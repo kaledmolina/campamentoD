@@ -140,6 +140,12 @@
                         </div>
                     </div>
 
+                    <div>
+                        <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Nota / Descripción (Opcional)</label>
+                        <textarea wire:model="notes" class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50 bg-black/20 text-white border border-gray-700 focus:border-green-500" placeholder="Ej: Pago de la primera cuota..."></textarea>
+                        @error('notes') <span class="text-red-500 text-xs mt-1 block"><i class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                    </div>
+
                     <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-4 rounded-lg shadow-[0_0_15px_rgba(34,197,94,0.3)] transition duration-300 hover:scale-[1.02] mt-4 uppercase tracking-widest">
                         Subir Abono <i class="fas fa-upload ml-2"></i>
                     </button>

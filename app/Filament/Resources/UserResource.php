@@ -328,6 +328,9 @@ class UserResource extends Resource
                     ->label('Edad'),
                 Toggle::make('is_admin')
                     ->label('Es Administrador'),
+                Forms\Components\Textarea::make('notes')
+                    ->label('Notas / Observaciones')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -557,6 +560,10 @@ class UserResource extends Resource
                             ->columnSpan(2)
                             ->visible(fn($record) => $record->age < 18)
                             ->disk('public'),
+                        TextEntry::make('notes')
+                            ->label('Notas / Observaciones')
+                            ->columnSpanFull()
+                            ->markdown(),
                     ]),
                 Section::make('Información Eclesiástica')
                     ->columns(2)

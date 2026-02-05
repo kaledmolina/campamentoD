@@ -22,7 +22,8 @@ class CamperConsultation extends Component
     #[Validate('required|image|max:10240')]
     public $payment_proof;
 
-    public $payment_success = false;
+    #[Validate('nullable|string|max:500')]
+    public $notes = '';
 
     public function search()
     {
@@ -35,7 +36,7 @@ class CamperConsultation extends Component
         if (!$this->camper) {
             $this->addError('document_number_search', 'No se encontró ningún campista con este número de documento.');
         } else {
-            $this->reset(['amount', 'payment_proof', 'payment_success']);
+            $this->reset(['amount', 'payment_proof', 'payment_success', 'notes']);
         }
     }
 
@@ -47,6 +48,7 @@ class CamperConsultation extends Component
         $this->validate([
             'amount' => 'required|numeric|min:1000',
             'payment_proof' => 'required|image|max:10240',
+            'notes' => 'nullable|string|max:500',
         ]);
 
         $proofPath = $this->payment_proof->store('payments', 'public');
@@ -56,7 +58,7 @@ class CamperConsultation extends Component
             'amount' => $this->amount,
             'proof_path' => $proofPath,
             'status' => 'pending',
-            'notes' => 'Abono registrado desde la web',
+            'notes' => $this->notes,
         ]);
 
         $this->payment_success = true;
