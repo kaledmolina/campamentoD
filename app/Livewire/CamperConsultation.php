@@ -25,6 +25,8 @@ class CamperConsultation extends Component
     #[Validate('nullable|string|max:500')]
     public $notes = '';
 
+    public $payment_success = false;
+
     public function search()
     {
         $this->validate([
