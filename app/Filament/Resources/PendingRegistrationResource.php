@@ -68,9 +68,7 @@ class PendingRegistrationResource extends Resource
                     ->money('COP')
                     ->sortable()
                     ->label('Monto Abono'),
-                TextColumn::make('user.target_cost')
-                    ->money('COP')
-                    ->label('Costo Total'),
+
                 ImageColumn::make('proof_path')
                     ->label('Comprobante')
                     ->disk('public')
@@ -80,6 +78,18 @@ class PendingRegistrationResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->label('Fecha Registro'),
+                TextColumn::make('user.coupon_code')
+                    ->label('Cupón')
+                    ->badge()
+                    ->color('warning')
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('user.target_cost')
+                    ->money('COP')
+                    ->label('Costo Total')
+                    ->sortable()
+                    ->description(fn(Payment $record) => $record->user->discount_amount > 0 ? 'Descuento aplicado: $' . number_format($record->user->discount_amount) : null)
+                    ->toggleable(),
             ])
             ->filters([
                 //

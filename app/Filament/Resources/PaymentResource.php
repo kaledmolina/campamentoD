@@ -116,6 +116,18 @@ class PaymentResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->label('Fecha'),
+                TextColumn::make('user.coupon_code')
+                    ->label('Cupón')
+                    ->badge()
+                    ->color('warning')
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('user.target_cost')
+                    ->money('COP')
+                    ->label('Costo Total')
+                    ->sortable()
+                    ->description(fn(Payment $record) => $record->user->discount_amount > 0 ? 'Descuento aplicado: $' . number_format($record->user->discount_amount) : null)
+                    ->toggleable(),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
