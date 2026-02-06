@@ -38,6 +38,7 @@ class User extends Authenticatable
         'consent_proof_path',
         'participation_cost',
         'coupon_code',
+        'discount_amount',
         'notes',
     ];
 
