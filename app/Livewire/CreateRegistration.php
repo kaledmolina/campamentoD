@@ -139,8 +139,6 @@ class CreateRegistration extends Component
             return;
         }
 
-        // $proofPath logic moved down 
-
         $consentPath = null;
         if ($this->consent_proof) {
             $consentPath = $this->consent_proof->store('consents', 'public');
@@ -168,16 +166,10 @@ class CreateRegistration extends Component
         $participationCost = $baseCost;
         $discountAmount = 0;
 
-        // Apply Discount if exists
+        // Calculate Discount logic (WITHOUT side effects yet)
         if ($this->appliedDiscount > 0) {
             $discountAmount = ($baseCost * $this->appliedDiscount) / 100;
             $participationCost = $baseCost - $discountAmount;
-
-            // Increment Coupon Usage
-            $coupon = \App\Models\Coupon::where('code', $this->discountCode)->first();
-            if ($coupon) {
-                $coupon->increment('used_count');
-            }
         }
 
         // Validation for payment proof (Manual)
@@ -193,52 +185,77 @@ class CreateRegistration extends Component
             $proofPath = $this->payment_proof->store('payments', 'public');
         }
 
-        // Create Camper User
-        $user = User::create([
-            'name' => $this->name,
-            'last_name' => $this->last_name,
-            'email' => $this->email,
-            'password' => null, // No password for campers
-            'document_type' => $this->document_type,
-            'document_number' => $this->document_number,
-            'document_issue_date' => $this->document_issue_date,
-            'gender' => $this->gender,
-            'birth_date' => $this->birth_date,
-            'eps' => $this->eps,
-            'zone' => $finalZone,
-            'congregacion' => $this->congregacion,
-            'phone' => $this->phone,
-            'age' => $this->age,
-            'consent_proof_path' => $consentPath,
-            'pastor_letter_path' => $pastorLetterPath,
-            'registration_type' => $this->registration_type,
-            'participation_cost' => $baseCost, // Save BASE cost (e.g., 300k) so model logic works (Base - Discount)
-            'discount_amount' => $discountAmount,
-            'coupon_code' => $this->discountCode ?: null,
-        ]);
+        try {
+            \Illuminate\Support\Facades\DB::transaction(function () use ($finalZone, $consentPath, $pastorLetterPath, $baseCost, $discountAmount, $proofPath, $participationCost) {
 
-        // Create Initial Payment ONLY if there is a cost
-        if ($participationCost > 0) {
-            $registrationFee = GlobalSetting::get('registration_fee', 30000); // Default 30k
+                // 1. Process Coupon Usage (Inside Transaction)
+                if ($this->appliedDiscount > 0 && !empty($this->discountCode)) {
+                    $coupon = \App\Models\Coupon::where('code', $this->discountCode)
+                        ->lockForUpdate() // Prevent race conditions
+                        ->first();
 
-            // If the remaining cost is LESS than the standard fee (e.g. 90% discount), 
-            // only charge what is left.
-            $amountToCharge = min($registrationFee, $participationCost);
+                    if ($coupon) {
+                        // Double check validity inside the lock context
+                        if ($coupon->isValid()) {
+                            $coupon->increment('used_count');
+                        } else {
+                            // If coupon became invalid between form fill and submit
+                            throw new \Exception('El cupón ya no es válido o ha alcanzado su límite de uso.');
+                        }
+                    }
+                }
 
-            \Illuminate\Support\Facades\Auth::login($user);
+                // 2. Create Camper User
+                $user = User::create([
+                    'name' => $this->name,
+                    'last_name' => $this->last_name,
+                    'email' => $this->email,
+                    'password' => null, // No password for campers
+                    'document_type' => $this->document_type,
+                    'document_number' => $this->document_number,
+                    'document_issue_date' => $this->document_issue_date,
+                    'gender' => $this->gender,
+                    'birth_date' => $this->birth_date,
+                    'eps' => $this->eps,
+                    'zone' => $finalZone,
+                    'congregacion' => $this->congregacion,
+                    'phone' => $this->phone,
+                    'age' => $this->age,
+                    'consent_proof_path' => $consentPath,
+                    'pastor_letter_path' => $pastorLetterPath,
+                    'registration_type' => $this->registration_type,
+                    'participation_cost' => $baseCost,
+                    'discount_amount' => $discountAmount,
+                    'coupon_code' => $this->discountCode ?: null,
+                ]);
 
-            Payment::create([
-                'user_id' => $user->id,
-                'amount' => $amountToCharge,
-                'proof_path' => $proofPath,
-                'status' => 'pending',
-                'type' => 'registration',
-                'notes' => 'Inscripción inicial (Tarifa Global)',
-            ]);
+                // 3. Create Initial Payment ONLY if there is a cost
+                if ($participationCost > 0) {
+                    $registrationFee = GlobalSetting::get('registration_fee', 30000); // Default 30k
+
+                    // If the remaining cost is LESS than the standard fee (e.g. 90% discount), 
+                    // only charge what is left.
+                    $amountToCharge = min($registrationFee, $participationCost);
+
+                    \Illuminate\Support\Facades\Auth::login($user);
+
+                    Payment::create([
+                        'user_id' => $user->id,
+                        'amount' => $amountToCharge,
+                        'proof_path' => $proofPath,
+                        'status' => 'pending',
+                        'type' => 'registration',
+                        'notes' => 'Inscripción inicial (Tarifa Global)',
+                    ]);
+                }
+            });
+
+            $this->registration_success = true;
+            $this->reset(['name', 'last_name', 'email', 'document_type', 'document_number', 'document_issue_date', 'gender', 'birth_date', 'eps', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof', 'pastor_letter', 'registration_type', 'discountCode', 'appliedDiscount', 'discountMessage', 'registration_step']);
+
+        } catch (\Exception $e) {
+            $this->addError('discountCode', 'Error al procesar el registro: ' . $e->getMessage());
         }
-
-        $this->registration_success = true;
-        $this->reset(['name', 'last_name', 'email', 'document_type', 'document_number', 'document_issue_date', 'gender', 'birth_date', 'eps', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof', 'pastor_letter', 'registration_type']);
     }
 
     public function render()
