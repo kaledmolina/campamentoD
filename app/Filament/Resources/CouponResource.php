@@ -73,9 +73,9 @@ class CouponResource extends Resource
                     ->label('Descuento')
                     ->suffix('%')
                     ->sortable(),
-                TextColumn::make('used_count')
+                TextColumn::make('usage_count')
                     ->label('Usados')
-                    ->sortable(),
+                    ->state(fn(Coupon $record): int => \App\Models\User::where('coupon_code', $record->code)->count()),
                 TextColumn::make('max_uses')
                     ->label('Límite'),
                 IconColumn::make('is_active')
