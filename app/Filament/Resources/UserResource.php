@@ -535,7 +535,8 @@ class UserResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->recordUrl(fn(User $record): string => UserResource::getUrl('view', ['record' => $record]));
+            ->recordUrl(fn(User $record): string => UserResource::getUrl('view', ['record' => $record]))
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function infolist(Infolist $infolist): Infolist

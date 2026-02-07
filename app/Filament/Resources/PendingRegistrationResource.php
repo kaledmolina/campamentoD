@@ -125,7 +125,8 @@ class PendingRegistrationResource extends Resource
             ])
             ->bulkActions([
                 // No bulk delete for approvals usually
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function infolist(\Filament\Infolists\Infolist $infolist): \Filament\Infolists\Infolist

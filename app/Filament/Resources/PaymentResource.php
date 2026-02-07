@@ -212,7 +212,8 @@ class PaymentResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->recordUrl(fn(Payment $record): string => PaymentResource::getUrl('view', ['record' => $record]));
+            ->recordUrl(fn(Payment $record): string => PaymentResource::getUrl('view', ['record' => $record]))
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function infolist(Infolist $infolist): Infolist

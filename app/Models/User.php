@@ -98,6 +98,14 @@ class User extends Authenticatable
             // Delete related payments
             $user->payments()->delete();
 
+            // Decrement coupon usage if applicable
+            if ($user->coupon_code) {
+                $coupon = Coupon::where('code', $user->coupon_code)->first();
+                if ($coupon) {
+                    $coupon->decrement('used_count');
+                }
+            }
+
             // Delete uploaded files
             if ($user->consent_proof_path) {
                 \Illuminate\Support\Facades\Storage::disk('public')->delete($user->consent_proof_path);
