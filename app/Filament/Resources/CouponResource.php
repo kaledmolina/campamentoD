@@ -14,6 +14,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ToggleColumn;
 
 class CouponResource extends Resource
 {
@@ -59,8 +60,7 @@ class CouponResource extends Resource
                 Toggle::make('is_active')
                     ->label('Activo')
                     ->default(true)
-                    ->columnSpanFull()
-                    ->disabled(),
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -82,9 +82,8 @@ class CouponResource extends Resource
                     ->state(fn(Coupon $record): int => \App\Models\User::where('coupon_code', $record->code)->count()),
                 TextColumn::make('max_uses')
                     ->label('Límite'),
-                IconColumn::make('is_active')
-                    ->label('Activo')
-                    ->boolean(),
+                ToggleColumn::make('is_active')
+                    ->label('Activo'),
                 TextColumn::make('expires_at')
                     ->label('Expira')
                     ->dateTime()
