@@ -37,14 +37,16 @@ class CouponResource extends Resource
                     ->unique(ignoreRecord: true)
                     ->maxLength(255)
                     ->helperText('Código que el usuario ingresará (ej. DESC50)')
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->disabled(),
                 TextInput::make('percentage')
                     ->label('Porcentaje de Descuento')
                     ->required()
                     ->numeric()
                     ->suffix('%')
                     ->minValue(0)
-                    ->maxValue(100),
+                    ->maxValue(100)
+                    ->disabled(),
                 TextInput::make('max_uses')
                     ->label('Límite de Usos')
                     ->numeric()
@@ -52,11 +54,13 @@ class CouponResource extends Resource
                     ->required()
                     ->helperText('Veces que este cupón puede ser usado en total.'),
                 DateTimePicker::make('expires_at')
-                    ->label('Expira el'),
+                    ->label('Expira el')
+                    ->disabled(),
                 Toggle::make('is_active')
                     ->label('Activo')
                     ->default(true)
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->disabled(),
             ]);
     }
 

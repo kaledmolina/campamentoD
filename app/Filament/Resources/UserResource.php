@@ -527,7 +527,6 @@ class UserResource extends Resource
                         ->openUrlInNewTab(),
                     Tables\Actions\DeleteAction::make(),
                     Tables\Actions\ViewAction::make(),
-                    Tables\Actions\EditAction::make(),
                 ]),
             ])
             ->bulkActions([
@@ -629,12 +628,16 @@ class UserResource extends Resource
         ];
     }
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListUsers::route('/'),
             'view' => Pages\ViewUser::route('/{record}'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

@@ -44,6 +44,11 @@ class PaymentResource extends Resource
         return static::getModel()::where('status', 'pending')->where('type', 'installment')->count() > 0 ? 'warning' : 'gray';
     }
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -236,14 +241,14 @@ class PaymentResource extends Resource
                         ImageEntry::make('proof_path')
                             ->label('Comprobante')
                             ->columnSpanFull()
-                            ->url(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->url($record->proof_path))
+                            ->url(fn($record) => \Illuminate\Support\Facades\Storage::url($record->proof_path))
                             ->openUrlInNewTab(),
                         \Filament\Infolists\Components\Actions::make([
                             \Filament\Infolists\Components\Actions\Action::make('download')
                                 ->label('Descargar Comprobante')
                                 ->icon('heroicon-o-arrow-down-tray')
                                 ->color('primary')
-                                ->url(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->url($record->proof_path))
+                                ->url(fn($record) => \Illuminate\Support\Facades\Storage::url($record->proof_path))
                                 ->openUrlInNewTab(),
                         ])->columnSpanFull(),
                         TextEntry::make('notes')->label('Notas')->columnSpanFull(),
