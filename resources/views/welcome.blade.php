@@ -534,7 +534,7 @@
                         <div class="md:w-1/2 md:pr-20 md:text-right pl-20 md:pl-0 w-full" data-aos="fade-right">
                             <h3
                                 class="text-3xl font-cinzel text-prestige-100 group-hover:text-gold-300 transition duration-300">
-                                Sábado 16 Mayo</h3>
+                                Sábado 6 Junio</h3>
                             <span
                                 class="text-gold-500 font-bold text-xs tracking-[0.3em] uppercase mb-4 block">Apertura</span>
                             <p class="text-prestige-100/60 font-light text-base leading-relaxed">Registro de
@@ -840,7 +840,7 @@
         });
 
         // Countdown Logic
-        const targetDate = new Date("2026-05-16T08:00:00-05:00").getTime();
+        const targetDate = new Date("2026-06-06T08:00:00-05:00").getTime();
         const countdownInterval = setInterval(function () {
             const now = new Date().getTime();
             const distance = targetDate - now;
