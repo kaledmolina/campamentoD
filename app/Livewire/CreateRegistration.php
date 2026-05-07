@@ -58,7 +58,6 @@ class CreateRegistration extends Component
     #[Validate('mimes:jpg,jpeg,png,webp,pdf|max:10240')] // 10MB max, required logic handled manually
     public $payment_proof;
 
-    #[Validate('nullable|numeric|min:30000')]
     public $payment_amount = '';
 
     #[Validate('nullable|mimes:jpg,jpeg,png,webp,pdf|max:10240')] // 10MB max
@@ -179,12 +178,18 @@ class CreateRegistration extends Component
         // Only require proof if they actually have to pay something now
         // If discount is 100%, participationCost is 0, so no proof needed.
         if ($participationCost > 0) {
+            $minPayment = min(30000, $participationCost);
+
             if (!$this->payment_proof) {
                 $this->addError('payment_proof', 'El comprobante de pago es obligatorio.');
                 return;
             }
             if (!$this->payment_amount) {
                 $this->addError('payment_amount', 'El valor consignado es obligatorio.');
+                return;
+            }
+            if ($this->payment_amount < $minPayment) {
+                $this->addError('payment_amount', 'El abono mínimo es de $' . number_format($minPayment));
                 return;
             }
         }
