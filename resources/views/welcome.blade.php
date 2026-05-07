@@ -429,7 +429,7 @@
                 <!-- Card Template -->
                 <div class="group relative h-[600px] overflow-hidden cursor-pointer bg-prestige-900 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-gold-500/30"
                     data-aos="fade-up">
-                    <img src="{{ asset('images/jhonfabio.png') }}" alt="Pastor Jhon Fabio"
+                    <img src="{{ asset('images/victorvergara.png') }}" onerror="this.src='{{ asset('images/jhonfabio.png') }}'" alt="Victor Vergara"
                         class="w-full h-full object-cover grayscale-[0.3] sepia-[0.3] group-hover:grayscale-0 group-hover:sepia-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out">
 
                     <div
@@ -441,13 +441,13 @@
                             class="h-1 w-12 bg-gold-500 mb-4 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
                         </div>
                         <p class="text-gold-400 text-xs font-bold uppercase tracking-[0.3em] mb-2">Expositor</p>
-                        <h3 class="text-4xl font-cinzel text-white leading-none">Jhon Fabio <br> García</h3>
+                        <h3 class="text-4xl font-cinzel text-white leading-none">Victor <br> Vergara</h3>
                     </div>
                 </div>
 
                 <div class="group relative h-[600px] overflow-hidden cursor-pointer bg-prestige-900 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-gold-500/30"
                     data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('images/michaelalvarez.png') }}" alt="Pastor Michael Alvarez"
+                    <img src="{{ asset('images/isaigarcia.png') }}" onerror="this.src='{{ asset('images/michaelalvarez.png') }}'" alt="Isaí Garcia"
                         class="w-full h-full object-cover grayscale-[0.3] sepia-[0.3] group-hover:grayscale-0 group-hover:sepia-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out">
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-prestige-950 via-prestige-950/20 to-transparent opacity-90">
@@ -457,7 +457,7 @@
                             class="h-1 w-12 bg-gold-500 mb-4 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
                         </div>
                         <p class="text-gold-400 text-xs font-bold uppercase tracking-[0.3em] mb-2">Expositor</p>
-                        <h3 class="text-4xl font-cinzel text-white leading-none">Michael <br> Alvarez</h3>
+                        <h3 class="text-4xl font-cinzel text-white leading-none">Isaí <br> Garcia</h3>
                     </div>
                 </div>
 
@@ -476,9 +476,25 @@
                         <h3 class="text-4xl font-cinzel text-white leading-none">Juan Pablo <br>Murillo</h3>
                     </div>
                 </div>
-
+                
                 <div class="group relative h-[600px] overflow-hidden cursor-pointer bg-prestige-900 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-gold-500/30"
                     data-aos="fade-up" data-aos-delay="300">
+                    <img src="{{ asset('images/alexandertuberquia.png') }}" onerror="this.src='{{ asset('images/juanpablo.png') }}'" alt="Alexander Tuberquia"
+                        class="w-full h-full object-cover grayscale-[0.3] sepia-[0.3] group-hover:grayscale-0 group-hover:sepia-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-prestige-950 via-prestige-950/20 to-transparent opacity-90">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-10">
+                        <div
+                            class="h-1 w-12 bg-gold-500 mb-4 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
+                        </div>
+                        <p class="text-gold-400 text-xs font-bold uppercase tracking-[0.3em] mb-2">Adoración</p>
+                        <h3 class="text-4xl font-cinzel text-white leading-none">Alexander <br>Tuberquia</h3>
+                    </div>
+                </div>
+
+                <div class="group relative h-[600px] overflow-hidden cursor-pointer bg-prestige-900 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-gold-500/30"
+                    data-aos="fade-up" data-aos-delay="400">
                     <img src="{{ asset('images/coro.png') }}" alt="Coro"
                         class="w-full h-full object-cover grayscale-[0.3] sepia-[0.3] group-hover:grayscale-0 group-hover:sepia-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out">
                     <div
@@ -493,8 +509,8 @@
                     </div>
                 </div>
 
-                <div class="group relative h-[600px] overflow-hidden cursor-pointer md:col-span-2 lg:col-span-2 bg-prestige-900 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-gold-500/30"
-                    data-aos="fade-up" data-aos-delay="400">
+                <div class="group relative h-[600px] overflow-hidden cursor-pointer bg-prestige-900 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-gold-500/30"
+                    data-aos="fade-up" data-aos-delay="500">
                     <img src="{{ asset('images/conquistadores.png') }}" alt="Conquistadores"
                         class="w-full h-full object-cover object-top grayscale-[0.3] sepia-[0.3] group-hover:grayscale-0 group-hover:sepia-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out">
                     <div
