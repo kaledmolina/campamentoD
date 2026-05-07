@@ -525,6 +525,7 @@ class UserResource extends Resource
                         ->icon('heroicon-o-arrow-down-tray')
                         ->url(fn(User $record): string => \Illuminate\Support\Facades\URL::signedRoute('ticket.show', ['user' => $record]))
                         ->openUrlInNewTab(),
+                    Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
                     Tables\Actions\ViewAction::make(),
                 ]),
@@ -638,6 +639,7 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'view' => Pages\ViewUser::route('/{record}'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

@@ -532,6 +532,14 @@
                             <p class="text-xs text-gold-500 italic">Formatos permitidos: JPG, PNG, PDF (Máx 10MB)</p>
                         </div>
 
+                        <div class="mb-4">
+                            <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Valor Consignado *</label>
+                            <input wire:model="payment_amount" type="number" min="30000"
+                                class="w-full py-3 px-4 rounded-lg focus:outline-none transition-all placeholder-gray-500/50 bg-black/20 text-gray-200 border border-gray-600 focus:border-gold-500"
+                                placeholder="Ej: 30000">
+                            @error('payment_amount') <span class="text-red-500 text-xs mt-1 block"><i class="fas fa-exclamation-circle"></i> {{ $message }}</span> @enderror
+                        </div>
+
                         <label class="block text-prestige-100/60 text-xs font-bold mb-2 uppercase tracking-wide">Subir Comprobante
                             *</label>
                         <input wire:model="payment_proof" type="file"

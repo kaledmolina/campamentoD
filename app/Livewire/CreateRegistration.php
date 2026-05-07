@@ -58,6 +58,9 @@ class CreateRegistration extends Component
     #[Validate('mimes:jpg,jpeg,png,webp,pdf|max:10240')] // 10MB max, required logic handled manually
     public $payment_proof;
 
+    #[Validate('nullable|numeric|min:30000')]
+    public $payment_amount = '';
+
     #[Validate('nullable|mimes:jpg,jpeg,png,webp,pdf|max:10240')] // 10MB max
     public $consent_proof;
 
@@ -175,9 +178,15 @@ class CreateRegistration extends Component
         // Validation for payment proof (Manual)
         // Only require proof if they actually have to pay something now
         // If discount is 100%, participationCost is 0, so no proof needed.
-        if ($participationCost > 0 && !$this->payment_proof) {
-            $this->addError('payment_proof', 'El comprobante de pago es obligatorio.');
-            return;
+        if ($participationCost > 0) {
+            if (!$this->payment_proof) {
+                $this->addError('payment_proof', 'El comprobante de pago es obligatorio.');
+                return;
+            }
+            if (!$this->payment_amount) {
+                $this->addError('payment_amount', 'El valor consignado es obligatorio.');
+                return;
+            }
         }
 
         $proofPath = null;
@@ -237,6 +246,10 @@ class CreateRegistration extends Component
                     // only charge what is left.
                     $amountToCharge = min($registrationFee, $participationCost);
 
+                    if (!empty($this->payment_amount) && $this->payment_amount > 0) {
+                        $amountToCharge = $this->payment_amount;
+                    }
+
                     \Illuminate\Support\Facades\Auth::login($user);
 
                     Payment::create([
@@ -251,7 +264,7 @@ class CreateRegistration extends Component
             });
 
             $this->registration_success = true;
-            $this->reset(['name', 'last_name', 'email', 'document_type', 'document_number', 'document_issue_date', 'gender', 'birth_date', 'eps', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'consent_proof', 'pastor_letter', 'registration_type', 'discountCode', 'appliedDiscount', 'discountMessage', 'registration_step']);
+            $this->reset(['name', 'last_name', 'email', 'document_type', 'document_number', 'document_issue_date', 'gender', 'birth_date', 'eps', 'zone', 'other_zone', 'congregacion', 'phone', 'age', 'payment_proof', 'payment_amount', 'consent_proof', 'pastor_letter', 'registration_type', 'discountCode', 'appliedDiscount', 'discountMessage', 'registration_step']);
 
         } catch (\Exception $e) {
             $this->addError('discountCode', 'Error al procesar el registro: ' . $e->getMessage());
