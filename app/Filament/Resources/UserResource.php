@@ -166,6 +166,7 @@ class UserResource extends Resource
                 'Leticia',
                 'Pueblo Búho',
                 'Carrizal',
+                'El Poblado',
             ],
             'Zona Medio Sinú' => [
                 'Central Cereté',
