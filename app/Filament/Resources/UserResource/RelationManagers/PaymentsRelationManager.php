@@ -52,18 +52,26 @@ class PaymentsRelationManager extends RelationManager
                         'registration' => 'Inscripción',
                         'abono' => 'Abono',
                         default => $state,
-                    }),
+                    })
+                    ->visibleFrom('md')
+                    ->toggleable(),
                 Tables\Columns\ImageColumn::make('proof_path')
                     ->label('Comprobante')
                     ->disk('public')
-                    ->visibility('private'),
+                    ->visibility('private')
+                    ->visibleFrom('md')
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->label('Fecha')
-                    ->sortable(),
+                    ->sortable()
+                    ->visibleFrom('md')
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('notes')
                     ->label('Notas')
-                    ->limit(30),
+                    ->limit(30)
+                    ->visibleFrom('md')
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -85,18 +93,34 @@ class PaymentsRelationManager extends RelationManager
                         ->icon('heroicon-o-check')
                         ->color('success')
                         ->requiresConfirmation()
+                        ->modalHeading('¿Aprobar Abono?')
+                        ->modalDescription('¿Está seguro de que desea aprobar este abono? El monto se reflejará en el saldo pagado por el campista.')
+                        ->modalSubmitActionLabel('Sí, aprobar')
                         ->visible(fn($record) => $record->status === 'pending')
                         ->action(function ($record) {
-                            $record->update(['status' => 'approved']);
+                            $record->update([
+                                'status' => 'approved',
+                                'reviewed_by' => auth()->id(),
+                            ]);
                         }),
                     Tables\Actions\Action::make('reject')
                         ->label('Rechazar')
                         ->icon('heroicon-o-x-mark')
                         ->color('danger')
                         ->requiresConfirmation()
+                        ->modalHeading('¿Rechazar Abono?')
+                        ->modalDescription('Por favor, indique el motivo por el cual rechaza este abono. El campista podrá ver esta nota.')
+                        ->modalSubmitActionLabel('Sí, rechazar')
+                        ->form([
+                            Forms\Components\Textarea::make('notes')->label('Motivo del rechazo')->required(),
+                        ])
                         ->visible(fn($record) => $record->status === 'pending')
-                        ->action(function ($record) {
-                            $record->update(['status' => 'rejected']);
+                        ->action(function ($record, array $data) {
+                            $record->update([
+                                'status' => 'rejected',
+                                'reviewed_by' => auth()->id(),
+                                'notes' => $data['notes'],
+                            ]);
                         }),
                 ]),
             ])

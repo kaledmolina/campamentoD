@@ -97,9 +97,12 @@ class PaymentResource extends Resource
                 TextColumn::make('user.name')
                     ->searchable()
                     ->sortable()
+                    ->wrap()
                     ->label('Campista'),
                 TextColumn::make('user.document_number')
                     ->searchable()
+                    ->visibleFrom('md')
+                    ->toggleable()
                     ->label('Documento'),
                 TextColumn::make('amount')
                     ->money('COP')
@@ -116,23 +119,29 @@ class PaymentResource extends Resource
                 ImageColumn::make('proof_path')
                     ->label('Comprobante')
                     ->disk('public')
+                    ->visibleFrom('md')
+                    ->toggleable()
                     ->openUrlInNewTab(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
+                    ->visibleFrom('md')
+                    ->toggleable()
                     ->label('Fecha'),
                 TextColumn::make('user.coupon_code')
                     ->label('Cupón')
                     ->badge()
                     ->color('warning')
                     ->searchable()
-                    ->toggleable(),
+                    ->visibleFrom('md')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('user.target_cost')
                     ->money('COP')
                     ->label('Costo Total')
                     ->sortable()
+                    ->visibleFrom('md')
                     ->description(fn(Payment $record) => $record->user->discount_amount > 0 ? 'Descuento aplicado: $' . number_format($record->user->discount_amount) : null)
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
@@ -194,6 +203,9 @@ class PaymentResource extends Resource
                         ->icon('heroicon-o-check')
                         ->color('success')
                         ->requiresConfirmation()
+                        ->modalHeading('¿Aprobar Abono?')
+                        ->modalDescription('¿Está seguro de que desea aprobar este abono? El monto se reflejará en el saldo pagado por el campista.')
+                        ->modalSubmitActionLabel('Sí, aprobar')
                         ->visible(fn(Payment $record) => $record->status === 'pending')
                         ->action(function (Payment $record) {
                             $record->update([
@@ -205,10 +217,13 @@ class PaymentResource extends Resource
                         ->label('Rechazar')
                         ->icon('heroicon-o-x-mark')
                         ->color('danger')
+                        ->requiresConfirmation()
+                        ->modalHeading('¿Rechazar Abono?')
+                        ->modalDescription('Por favor, indique el motivo por el cual rechaza este abono. El campista podrá ver esta nota.')
+                        ->modalSubmitActionLabel('Sí, rechazar')
                         ->form([
                             Textarea::make('notes')->label('Motivo del rechazo')->required(),
                         ])
-                        ->requiresConfirmation()
                         ->visible(fn(Payment $record) => $record->status === 'pending')
                         ->action(function (Payment $record, array $data) {
                             $record->update([
