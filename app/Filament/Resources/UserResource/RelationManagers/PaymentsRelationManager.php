@@ -72,26 +72,33 @@ class PaymentsRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\Action::make('approve')
-                    ->label('Aprobar')
-                    ->icon('heroicon-o-check')
-                    ->color('success')
-                    ->requiresConfirmation()
-                    ->visible(fn($record) => $record->status === 'pending')
-                    ->action(function ($record) {
-                        $record->update(['status' => 'approved']);
-                    }),
-                Tables\Actions\Action::make('reject')
-                    ->label('Rechazar')
-                    ->icon('heroicon-o-x-mark')
-                    ->color('danger')
-                    ->requiresConfirmation()
-                    ->visible(fn($record) => $record->status === 'pending')
-                    ->action(function ($record) {
-                        $record->update(['status' => 'rejected']);
-                    }),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\Action::make('download')
+                        ->label('Descargar Comprobante')
+                        ->icon('heroicon-o-arrow-down-tray')
+                        ->color('primary')
+                        ->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path)),
+                    Tables\Actions\Action::make('approve')
+                        ->label('Aprobar')
+                        ->icon('heroicon-o-check')
+                        ->color('success')
+                        ->requiresConfirmation()
+                        ->visible(fn($record) => $record->status === 'pending')
+                        ->action(function ($record) {
+                            $record->update(['status' => 'approved']);
+                        }),
+                    Tables\Actions\Action::make('reject')
+                        ->label('Rechazar')
+                        ->icon('heroicon-o-x-mark')
+                        ->color('danger')
+                        ->requiresConfirmation()
+                        ->visible(fn($record) => $record->status === 'pending')
+                        ->action(function ($record) {
+                            $record->update(['status' => 'rejected']);
+                        }),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -28,14 +28,14 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-En la vista de "Detalles del Abono" (tanto en `PaymentResource` como en `PendingRegistrationResource`), el botón actual de "Descargar Comprobante" utiliza el método `->url(...)` con `->openUrlInNewTab()`, lo cual provoca que los navegadores abran el archivo (imagen o PDF) en una nueva pestaña en lugar de descargarlo al dispositivo del usuario. El objetivo es habilitar la descarga real y directa del archivo.
+1. En la vista de "Detalles del Abono", el botón actual de "Descargar Comprobante" utiliza el método `->url(...)` con `->openUrlInNewTab()`, lo cual provoca que los navegadores abran el archivo en una nueva pestaña en lugar de descargarlo al dispositivo del usuario. El objetivo es habilitar la descarga real y directa del archivo.
+2. En las tablas de abonos e inscripciones pendientes (`PaymentResource`, `PendingRegistrationResource`, `PaymentsRelationManager`), agregar el botón de acción para descargar el comprobante directamente desde la tabla y agruparlo junto con las demás acciones existentes mediante `ActionGroup`.
 
 ### Pasos de Implementación
-1. **Modificar `PaymentResource.php`:**
-   - En la sección `infolist`, localizar el componente `Action::make('download')` dentro de `Detalles del Abono`.
-   - Reemplazar `->url(...)` y `->openUrlInNewTab()` por `->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path))`.
-2. **Modificar `PendingRegistrationResource.php`:**
-   - En la sección `infolist`, localizar el componente `Action::make('download')` dentro de `Detalles del Abono`.
-   - Reemplazar `->url(...)` y `->openUrlInNewTab()` por `->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path))`.
+1. **Modificar Infolists (`PaymentResource.php` y `PendingRegistrationResource.php`):**
+   - Reemplazar `->url(...)` y `->openUrlInNewTab()` por `->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path))` en el botón de descarga.
+2. **Modificar Tablas (`PaymentResource.php`, `PendingRegistrationResource.php`, `PaymentsRelationManager.php`):**
+   - Envolver las acciones de cada tabla dentro de `Tables\Actions\ActionGroup::make([ ... ])`.
+   - Agregar la acción `Action::make('download')` con su respectivo icono `heroicon-o-arrow-down-tray` y el método `->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path))`.
 3. **Verificación:**
    - Comprobar mediante la revisión de código y diagnósticos del IDE que no existan errores de sintaxis ni de uso de métodos en Filament.

@@ -182,35 +182,42 @@ class PaymentResource extends Resource
                     ->searchable(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Action::make('approve')
-                    ->label('Aprobar')
-                    ->icon('heroicon-o-check')
-                    ->color('success')
-                    ->requiresConfirmation()
-                    ->visible(fn(Payment $record) => $record->status === 'pending')
-                    ->action(function (Payment $record) {
-                        $record->update([
-                            'status' => 'approved',
-                            'reviewed_by' => Auth::id(),
-                        ]);
-                    }),
-                Action::make('reject')
-                    ->label('Rechazar')
-                    ->icon('heroicon-o-x-mark')
-                    ->color('danger')
-                    ->form([
-                        Textarea::make('notes')->label('Motivo del rechazo')->required(),
-                    ])
-                    ->requiresConfirmation()
-                    ->visible(fn(Payment $record) => $record->status === 'pending')
-                    ->action(function (Payment $record, array $data) {
-                        $record->update([
-                            'status' => 'rejected',
-                            'reviewed_by' => Auth::id(),
-                            'notes' => $data['notes'],
-                        ]);
-                    }),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Action::make('download')
+                        ->label('Descargar Comprobante')
+                        ->icon('heroicon-o-arrow-down-tray')
+                        ->color('primary')
+                        ->action(fn(Payment $record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path)),
+                    Action::make('approve')
+                        ->label('Aprobar')
+                        ->icon('heroicon-o-check')
+                        ->color('success')
+                        ->requiresConfirmation()
+                        ->visible(fn(Payment $record) => $record->status === 'pending')
+                        ->action(function (Payment $record) {
+                            $record->update([
+                                'status' => 'approved',
+                                'reviewed_by' => Auth::id(),
+                            ]);
+                        }),
+                    Action::make('reject')
+                        ->label('Rechazar')
+                        ->icon('heroicon-o-x-mark')
+                        ->color('danger')
+                        ->form([
+                            Textarea::make('notes')->label('Motivo del rechazo')->required(),
+                        ])
+                        ->requiresConfirmation()
+                        ->visible(fn(Payment $record) => $record->status === 'pending')
+                        ->action(function (Payment $record, array $data) {
+                            $record->update([
+                                'status' => 'rejected',
+                                'reviewed_by' => Auth::id(),
+                                'notes' => $data['notes'],
+                            ]);
+                        }),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
