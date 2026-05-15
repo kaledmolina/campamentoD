@@ -67,6 +67,42 @@ class PendingRegistrationResource extends Resource
                     ->visibleFrom('md')
                     ->toggleable()
                     ->label('Documento'),
+                TextColumn::make('user.zone')
+                    ->label('Zona')
+                    ->sortable()
+                    ->searchable()
+                    ->visibleFrom('md')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('user.congregacion')
+                    ->label('Congregación')
+                    ->sortable()
+                    ->searchable()
+                    ->visibleFrom('md')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('user.phone')
+                    ->label('Celular')
+                    ->searchable()
+                    ->visibleFrom('md')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('user.email')
+                    ->label('Correo')
+                    ->searchable()
+                    ->visibleFrom('md')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('user.registration_type')
+                    ->label('Plan')
+                    ->badge()
+                    ->colors([
+                        'warning' => 'partial',
+                        'success' => 'total',
+                    ])
+                    ->formatStateUsing(fn(?string $state): ?string => match ($state) {
+                        'partial' => 'Parcial',
+                        'total' => 'Total',
+                        default => $state,
+                    })
+                    ->visibleFrom('md')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('amount')
                     ->money('COP')
                     ->sortable()
