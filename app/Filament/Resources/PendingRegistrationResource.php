@@ -156,8 +156,7 @@ class PendingRegistrationResource extends Resource
                                 ->label('Descargar Comprobante')
                                 ->icon('heroicon-o-arrow-down-tray')
                                 ->color('primary')
-                                ->url(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->url($record->proof_path))
-                                ->openUrlInNewTab(),
+                                ->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path)),
                         ])->columnSpanFull(),
                         \Filament\Infolists\Components\TextEntry::make('notes')->label('Notas')->columnSpanFull(),
                     ])->columns(2),
