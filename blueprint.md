@@ -30,12 +30,15 @@ La plataforma cuenta con dos componentes principales:
 ### Objetivo
 1. En la vista de "Detalles del Abono", el botón actual de "Descargar Comprobante" utiliza el método `->url(...)` con `->openUrlInNewTab()`, lo cual provoca que los navegadores abran el archivo en una nueva pestaña en lugar de descargarlo al dispositivo del usuario. El objetivo es habilitar la descarga real y directa del archivo.
 2. En las tablas de abonos e inscripciones pendientes (`PaymentResource`, `PendingRegistrationResource`, `PaymentsRelationManager`), agregar el botón de acción para descargar el comprobante directamente desde la tabla y agruparlo junto con las demás acciones existentes mediante `ActionGroup`.
+3. Configurar modales explícitos de confirmación con títulos y descripciones claras al aprobar o rechazar un pago, y optimizar las tablas para dispositivos móviles ocultando columnas secundarias por defecto.
 
 ### Pasos de Implementación
 1. **Modificar Infolists (`PaymentResource.php` y `PendingRegistrationResource.php`):**
    - Reemplazar `->url(...)` y `->openUrlInNewTab()` por `->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path))` en el botón de descarga.
-2. **Modificar Tablas (`PaymentResource.php`, `PendingRegistrationResource.php`, `PaymentsRelationManager.php`):**
-   - Envolver las acciones de cada tabla dentro de `Tables\Actions\ActionGroup::make([ ... ])`.
-   - Agregar la acción `Action::make('download')` con su respectivo icono `heroicon-o-arrow-down-tray` y el método `->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path))`.
+2. **Modificar Tablas y Acciones (`PaymentResource.php`, `PendingRegistrationResource.php`, `PaymentsRelationManager.php`):**
+   - Envolver las acciones de cada tabla dentro de `Tables\Actions\ActionGroup::make([ ... ])` y agregar `Action::make('download')`.
+   - Configurar `modalHeading`, `modalDescription` y `modalSubmitActionLabel` en las acciones `approve` y `reject`.
+   - Agregar el formulario de motivo de rechazo en `PaymentsRelationManager.php` para mantener consistencia.
+   - Configurar las columnas secundarias con `visibleFrom('md')` y `wrap()` en el nombre del campista para una visualización perfecta en móviles sin scroll horizontal.
 3. **Verificación:**
    - Comprobar mediante la revisión de código y diagnósticos del IDE que no existan errores de sintaxis ni de uso de métodos en Filament.
