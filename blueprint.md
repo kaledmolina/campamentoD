@@ -28,11 +28,14 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Restaurar las 26 columnas detalladas originales en el Reporte de Campistas (`ExcelReports.php`) tras confirmarse que los archivos se generaban correctamente (el usuario había abierto un archivo anterior por error). Se mantendrá la optimización avanzada de cursores O(1) (`cursor()`) y la exclusión de administradores (`where('is_admin', false)`) para garantizar la máxima robustez y detalle informativo.
+Implementar un sistema de control para habilitar o cerrar las inscripciones del campamento directamente desde el panel de administración de Filament (`GlobalSettingResource`), reflejando automáticamente un diseño premium de "Inscripciones Cerradas" en el formulario web (`create-registration.blade.php`).
 
 ### Pasos de Implementación
-1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Restaurar el array de 26 encabezados detallados (ID, Nombres, Apellidos, Email, Tipo Doc, No. Documento, Fechas, Finanzas, Permisos, Notas, etc.).
-   - Restaurar el cálculo completo de finanzas (`$baseCost`, `$discount`, `$targetCost`, `$totalPaid`, `$balance`) y el formateo robusto de fechas (`$docIssueDate`, `$birthDate`, `$createdAt`, `$updatedAt`) dentro del bucle `cursor()`.
-2. **Verificación:**
-   - Confirmar que el archivo descargado contiene exitosamente las 26 columnas con toda la información financiera y personal detallada de los campistas.
+1. **Modificar `GlobalSettingResource.php` (`app/Filament/Resources/GlobalSettingResource.php`):**
+   - Añadir la opción `registrations_enabled` al select de configuración con la etiqueta "Estado de las Inscripciones (1 = Abiertas, 0 = Cerradas)".
+   - Configurar dinámicamente el prefijo, la etiqueta y el texto de ayuda del campo `value` dependiendo de si se está editando un costo monetario o el estado de inscripción.
+   - Formatear la columna en la tabla de Filament para mostrar visualmente `🟢 ABIERTAS (1)` o `🔴 CERRADAS (0)`.
+2. **Modificar `create-registration.blade.php` (`resources/views/livewire/create-registration.blade.php`):**
+   - Incorporar la condición `@if ($registrationsEnabled == 0)` al inicio del formulario para mostrar una tarjeta premium de "Inscripciones Cerradas" con botones para consultar el estado, ocultando el resto del formulario.
+3. **Verificación:**
+   - Crear o editar la configuración `registrations_enabled` a `0` en Filament y verificar que la web muestra el mensaje de cierre con un diseño espectacular.

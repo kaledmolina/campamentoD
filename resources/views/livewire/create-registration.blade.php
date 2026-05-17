@@ -9,7 +9,34 @@
         <p class="text-center text-gold-500 uppercase tracking-widest text-sm mb-8">Campamento Distrital Juvenil 2026
         </p>
 
-        @if ($registration_success)
+        @if ($registrationsEnabled == 0)
+            <!-- Tarjeta Premium de Inscripciones Cerradas -->
+            <div class="bg-red-950/40 border border-red-500/50 text-red-200 px-8 py-16 rounded-2xl relative mb-6 text-center shadow-[0_0_30px_rgba(239,68,68,0.2)] animate-fade-in backdrop-blur-md overflow-hidden">
+                <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-red-500/10 blur-3xl"></div>
+                <div class="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-red-500/10 blur-3xl"></div>
+                
+                <div class="mb-6 relative z-10">
+                    <div class="inline-flex h-24 w-24 items-center justify-center rounded-2xl bg-red-500/20 text-red-400 border border-red-500/30 shadow-inner mb-4">
+                        <i class="fas fa-lock text-5xl animate-pulse"></i>
+                    </div>
+                </div>
+                <strong class="font-cinzel font-bold text-4xl block mb-4 text-white tracking-wider relative z-10">Inscripciones Cerradas</strong>
+                <div class="h-1 w-24 bg-gradient-to-r from-transparent via-red-500 to-transparent mx-auto mb-6"></div>
+                <p class="text-lg text-prestige-100/80 max-w-lg mx-auto leading-relaxed relative z-10">
+                    Las inscripciones para el <span class="text-gold-400 font-semibold">Campamento Distrital Juvenil 2026</span> han finalizado oficialmente. Agradecemos a todos los jóvenes que aseguraron su cupo.
+                </p>
+                <div class="mt-8 p-4 bg-black/30 rounded-xl border border-white/5 max-w-md mx-auto relative z-10 text-left">
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        <i class="fas fa-info-circle text-gold-500 mr-2"></i>Si ya realizaste tu inscripción y deseas verificar el estado de tu cupo o revisar tus abonos, puedes acceder a la plataforma de consulta en línea.
+                    </p>
+                </div>
+                <div class="mt-8 relative z-10">
+                    <a href="{{ route('consultation') }}" class="inline-block bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-black font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 uppercase tracking-widest shadow-[0_0_25px_rgba(212,175,55,0.4)]">
+                        Consultar Mi Estado
+                    </a>
+                </div>
+            </div>
+        @elseif ($registration_success)
             <div
                 class="bg-green-900/20 border border-green-500/50 text-green-200 px-8 py-12 rounded-lg relative mb-6 text-center shadow-[0_0_15px_rgba(34,197,94,0.3)] animate-fade-in backdrop-blur-sm">
                 <div class="mb-6">
