@@ -46,10 +46,12 @@ class ExcelReports extends Page
         $users = User::with('payments')->orderBy('id', 'desc')->get();
 
         foreach ($users as $user) {
-            // Cálculo de sumatorias y saldos completamente en memoria sin tocar la base de datos
-            $baseCost = $user->participation_cost !== null ? $user->participation_cost : $defaultTotalCost;
-            $targetCost = $baseCost - ($user->discount_amount ?? 0);
-            $totalPaid = $user->payments->where('status', 'approved')->sum('amount');
+            // Cálculo de sumatorias y saldos completamente en memoria asegurando tipos numéricos (float)
+            $partCost = is_numeric($user->participation_cost) ? (float) $user->participation_cost : null;
+            $baseCost = $partCost !== null ? $partCost : (float) $defaultTotalCost;
+            $discount = is_numeric($user->discount_amount) ? (float) $user->discount_amount : 0.0;
+            $targetCost = $baseCost - $discount;
+            $totalPaid = (float) $user->payments->where('status', 'approved')->sum('amount');
             $balance = $targetCost - $totalPaid;
 
             // Formateo robusto de fechas para evitar errores fatales si la base de datos devuelve strings
@@ -87,7 +89,7 @@ class ExcelReports extends Page
                 $user->registration_type === 'total' ? 'Investidura Total' : 'Estadía Parcial',
                 number_format($baseCost, 2, ',', '.'),
                 $user->coupon_code ?? 'N/A',
-                number_format($user->discount_amount ?? 0, 2, ',', '.'),
+                number_format($discount, 2, ',', '.'),
                 number_format($targetCost, 2, ',', '.'),
                 number_format($totalPaid, 2, ',', '.'),
                 number_format($balance, 2, ',', '.'),
@@ -147,7 +149,7 @@ class ExcelReports extends Page
                 $camper ? ($camper->name . ' ' . $camper->last_name) : 'Usuario Eliminado',
                 $camper ? $camper->zone : 'N/A',
                 $camper ? $camper->congregacion : 'N/A',
-                number_format($payment->amount, 2, ',', '.'),
+                number_format((float) $payment->amount, 2, ',', '.'),
                 strtoupper($payment->status),
                 strtoupper($payment->type),
                 $reviewer ? ($reviewer->name . ' ' . $reviewer->last_name) : 'N/A',

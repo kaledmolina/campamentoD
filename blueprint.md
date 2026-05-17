@@ -28,12 +28,12 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Solucionar el error fatal en `ExcelReports.php` que provocaba la descarga de un Excel vacío en el Reporte de Campistas. Este error ocurría porque los campos de fecha personalizados (`document_issue_date`, `birth_date`) se devolvían como cadenas de texto (`string`) desde la base de datos en lugar de objetos `Carbon`, provocando un fallo fatal al intentar llamar al método `->format()` sobre un string.
+Solucionar el error fatal en `ExcelReports.php` que ocasiona que el reporte de campistas se descargue en blanco. Este error se produce cuando la base de datos almacena cadenas vacías (`""`) en campos numéricos opcionales como `participation_cost` o `discount_amount`, lo que provoca fallos en PHP 8 al intentar realizar operaciones matemáticas (`string - int`) o al pasarlos a `number_format()`.
 
 ### Pasos de Implementación
 1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Implementar validación robusta con `instanceof \DateTimeInterface` para cada campo de fecha (`document_issue_date`, `birth_date`, `created_at`, `updated_at`).
-   - Si el valor es un objeto de fecha, aplicar `->format()`. Si es una cadena de texto, utilizar la cadena directamente. Si es nulo o vacío, asignar `'N/A'`.
-   - Aplicar esta misma protección robusta en `exportPayments()` para garantizar estabilidad absoluta en ambos reportes.
+   - Implementar validación estricta con `is_numeric()` y conversión explícita a `(float)` para `participation_cost` y `discount_amount`.
+   - Garantizar que `$baseCost`, `$targetCost`, `$totalPaid` y `$balance` sean siempre valores de tipo `float` puros antes de pasarlos a `number_format()`.
+   - Mantener intactas las 26 columnas asegurando que ninguna pueda arrojar un error fatal de tipos en PHP 8.
 2. **Verificación:**
-   - Confirmar que el reporte de campistas se genera y descarga exitosamente con todos los datos y sin errores de ejecución en PHP.
+   - Confirmar que el reporte de campistas se genera exitosamente con todas las filas y columnas correctamente calculadas.
