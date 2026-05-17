@@ -28,10 +28,13 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Eliminar la restricción de edad mínima en el formulario de inscripción pública (`CreateRegistration.php`), permitiendo que niños menores de 5 años (edades 0 a 4) puedan ser registrados en el campamento por sus padres o tutores legales.
+Solucionar el problema de descarga de archivos Excel vacíos (0 bytes o sin filas) en el Reporte de Campistas (`ExcelReports.php`). Este problema ocurre porque el cálculo dinámico de atributos financieros (`target_cost`, `total_paid`, `balance`) ejecutaba consultas N+1 a la base de datos por cada campista, provocando una demora en el flujo de datos que causaba que el gestor de descargas AJAX de Livewire v3 cerrara prematuramente el stream.
 
 ### Pasos de Implementación
-1. **Modificar `CreateRegistration.php` (`app/Livewire/CreateRegistration.php`):**
-   - Cambiar la regla de validación del atributo `$age` de `#[Validate('required|numeric|min:5|max:100')]` a `#[Validate('required|numeric|min:0|max:100')]`.
+1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
+   - Eager load de las relaciones necesarias (`User::with('payments')` y `Payment::with(['user', 'reviewer'])`).
+   - Obtener la configuración global (`default_total_cost`) una única vez antes de procesar los registros para eliminar las consultas repetitivas a la tabla `global_settings`.
+   - Realizar el cálculo de costos y saldos completamente en memoria usando las colecciones cargadas.
+   - Reemplazar `chunk()` por `get()` para asegurar que todo el contenido del CSV se envíe en un único flujo continuo sin interrupciones de búfer en Livewire.
 2. **Verificación:**
-   - Confirmar que el formulario acepta edades menores a 5 años sin lanzar errores de validación de Livewire.
+   - Comprobar que al hacer clic en el botón de descarga, el archivo Excel se genera instantáneamente con todas las filas de campistas y abonos correctamente pobladas.
