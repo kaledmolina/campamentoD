@@ -28,12 +28,11 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Solucionar el problema de descarga de archivos en blanco en el Reporte de Campistas (`ExcelReports.php`). Este problema ocurre porque el método `get()` carga la totalidad de los usuarios y sus relaciones en memoria de forma simultánea, lo que excede el `memory_limit` de PHP en servidores con restricciones de recursos, provocando que el proceso se detenga silenciosamente y entregue un archivo vacío.
+Simplificar y optimizar el Reporte de Campistas (`ExcelReports.php`) para incluir únicamente las columnas esenciales e informativas solicitadas por el usuario: ID, Nombre Completo, Tipo Doc., No. Documento, Zona / Distrito, Congregación, Teléfono, Email, Edad, Género, EPS y Total Abonado ($). Esto elimina la sobrecarga de campos innecesarios y garantiza una lectura limpia y directa en Excel.
 
 ### Pasos de Implementación
 1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Reemplazar `User::with('payments')->get()` por `User::with('payments')->chunk(100, function ($users) use ($handle, $defaultTotalCost) { ... })`.
-   - Reemplazar `Payment::with(['user', 'reviewer'])->get()` por `Payment::with(['user', 'reviewer'])->chunk(100, function ($payments) use ($handle) { ... })`.
-   - Al escribir en un archivo físico en disco (`fopen`), el uso de `chunk()` mantiene el consumo de memoria RAM cercano a cero sin interferir con la conexión HTTP de Livewire.
+   - Actualizar los encabezados de `exportCampers()` al nuevo listado de 12 columnas.
+   - Ajustar el bucle `chunk()` para calcular únicamente `$totalPaid` y exportar exactamente los 12 valores correspondientes por campista.
 2. **Verificación:**
-   - Confirmar que el archivo descargado contiene exitosamente todas las filas de la base de datos sin agotar la memoria del servidor.
+   - Confirmar que el archivo descargado contiene la estructura exacta solicitada y se visualiza de forma prístina en Excel.
