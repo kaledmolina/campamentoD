@@ -255,8 +255,6 @@ class CreateRegistration extends Component
                         $amountToCharge = $this->payment_amount;
                     }
 
-                    \Illuminate\Support\Facades\Auth::login($user);
-
                     Payment::create([
                         'user_id' => $user->id,
                         'amount' => $amountToCharge,

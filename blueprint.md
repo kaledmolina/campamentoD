@@ -28,18 +28,12 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-1. En la vista de "Detalles del Abono", el botón actual de "Descargar Comprobante" utiliza el método `->url(...)` con `->openUrlInNewTab()`, lo cual provoca que los navegadores abran el archivo en una nueva pestaña en lugar de descargarlo al dispositivo del usuario. El objetivo es habilitar la descarga real y directa del archivo.
-2. En las tablas de abonos e inscripciones pendientes (`PaymentResource`, `PendingRegistrationResource`, `PaymentsRelationManager`), agregar el botón de acción para descargar el comprobante directamente desde la tabla y agruparlo junto con las demás acciones existentes mediante `ActionGroup`.
-3. Configurar modales explícitos de confirmación con títulos y descripciones claras al aprobar o rechazar un pago, optimizar las tablas para dispositivos móviles ocultando columnas secundarias por defecto, y enriquecer el filtro de columnas disponibles para alternar (`toggleable`) con más información del campista (zona, congregación, teléfono, correo, plan).
+Permitir que cualquier usuario (visitantes, líderes juveniles, padres) pueda registrar uno o múltiples campistas de forma continua sin necesidad de estar autenticado y sin que el sistema inicie sesión automáticamente tras cada registro. Esto mantiene la sesión limpia para registrar múltiples personas y asegura que los logs de auditoría (`ActivityLog`) registren correctamente la creación del campista y de su abono inicial.
 
 ### Pasos de Implementación
-1. **Modificar Infolists (`PaymentResource.php` y `PendingRegistrationResource.php`):**
-   - Reemplazar `->url(...)` y `->openUrlInNewTab()` por `->action(fn($record) => \Illuminate\Support\Facades\Storage::disk('public')->download($record->proof_path))` en el botón de descarga.
-2. **Modificar Tablas y Acciones (`PaymentResource.php`, `PendingRegistrationResource.php`, `PaymentsRelationManager.php`):**
-   - Envolver las acciones de cada tabla dentro de `Tables\Actions\ActionGroup::make([ ... ])` y agregar `Action::make('download')`.
-   - Configurar `modalHeading`, `modalDescription` y `modalSubmitActionLabel` en las acciones `approve` y `reject`.
-   - Agregar el formulario de motivo de rechazo en `PaymentsRelationManager.php` para mantener consistencia.
-   - Configurar las columnas secundarias con `visibleFrom('md')` y `wrap()` en el nombre del campista para una visualización perfecta en móviles sin scroll horizontal.
-   - Añadir al esquema de las tablas las columnas `user.zone`, `user.congregacion`, `user.phone`, `user.email` y `user.registration_type` configuradas como `toggleable(isToggledHiddenByDefault: true)` y `visibleFrom('md')`.
+1. **Modificar `CreateRegistration.php` (`app/Livewire/CreateRegistration.php`):**
+   - Eliminar la llamada a `\Illuminate\Support\Facades\Auth::login($user)` durante el proceso de registro para evitar que el usuario quede autenticado automáticamente tras inscribir a un campista.
+2. **Modificar `AuditObserver.php` (`app/Observers/AuditObserver.php`):**
+   - Ampliar la lógica de atribución de logs cuando no hay un usuario autenticado (`$userId` es null): si se está creando un `Payment`, asignar `$userId = $model->user_id` para que el abono quede correctamente auditado a nombre del campista respectivo.
 3. **Verificación:**
-   - Comprobar mediante la revisión de código y diagnósticos del IDE que no existan errores de sintaxis ni de uso de métodos en Filament.
+   - Confirmar que un usuario no autenticado puede completar múltiples registros consecutivamente sin que se inicie sesión y que las tablas de auditoría reflejen correctamente la autoría de los registros y pagos.

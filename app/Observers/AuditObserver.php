@@ -34,18 +34,22 @@ class AuditObserver
 
     protected function log(Model $model, string $action, string $description): void
     {
-        // Only log if user is authenticated (admin panel actions)
-        // Or strictly strictly if Auth::check(). 
-        // Campers registering might trigger this too if we track User creation.
-        // If we want to track WHO did it, we check Auth::id().
-        // If it's a public registration, Auth::id() is null. We might want to record that too as 'System' or null.
+        // Verificar si hay un usuario autenticado y si realmente existe en la base de datos.
+        // Auth::id() puede devolver un ID de una sesión obsoleta (ej. tras un reset de BD),
+        // mientras que Auth::user() realiza la consulta y devuelve null si el registro fue eliminado.
+        $user = Auth::user();
+        $userId = $user ? $user->id : null;
 
-        $userId = Auth::id();
-
-        // If no user is logged in (e.g. registration) and we are creating a User,
-        // attribute the action to the new user themselves.
+        // Si no hay un usuario logueado válido (ej. registro público de campista) y estamos creando un User,
+        // atribuimos la acción al propio usuario que se acaba de crear.
         if (!$userId && $model instanceof \App\Models\User && $action === 'created') {
             $userId = $model->id;
+        }
+
+        // Si se está creando un abono/pago desde el portal público sin autenticación,
+        // asociamos el registro de actividad al campista dueño del pago.
+        if (!$userId && $model instanceof \App\Models\Payment && $action === 'created') {
+            $userId = $model->user_id;
         }
 
         ActivityLog::create([
