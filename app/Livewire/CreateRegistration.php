@@ -276,6 +276,10 @@ class CreateRegistration extends Component
 
     public function render()
     {
-        return view('livewire.create-registration');
+        $registrationsEnabled = GlobalSetting::get('registrations_enabled', 1);
+
+        return view('livewire.create-registration', [
+            'registrationsEnabled' => $registrationsEnabled,
+        ]);
     }
 }
