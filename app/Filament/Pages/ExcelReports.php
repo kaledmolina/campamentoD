@@ -33,32 +33,74 @@ class ExcelReports extends Page
             // Agregar BOM UTF-8 para que Excel reconozca tildes y caracteres especiales nativamente
             fwrite($handle, "\xEF\xBB\xBF");
 
-            // Encabezados limpios y optimizados solicitados por el usuario
+            // Encabezados detallados originales (26 columnas en total)
             fputcsv($handle, [
-                'ID', 'Nombre Completo', 'Tipo Doc.', 'No. Documento',
-                'Zona / Distrito', 'Congregación', 'Teléfono', 'Email',
-                'Edad', 'Género', 'EPS', 'Total Abonado ($)'
+                'ID', 'Nombres', 'Apellidos', 'Email', 'Tipo Doc.', 'No. Documento',
+                'Fecha Exp. Doc', 'Zona / Distrito', 'Congregación', 'Teléfono',
+                'Edad', 'Género', 'Fecha Nacimiento', 'EPS', 'Tipo Inscripción',
+                'Costo Base ($)', 'Cupón Aplicado', 'Descuento ($)', 'Costo Neto ($)',
+                'Total Pagado ($)', 'Saldo Pendiente ($)', 'Tiene Carta Pastoral',
+                'Tiene Permiso Menor', 'Notas / Observaciones', 'Fecha de Registro', 'Última Actualización'
             ], ';');
+
+            // Obtener la configuración global una sola vez antes de procesar para evitar consultas N+1
+            $defaultTotalCost = \App\Models\GlobalSetting::get('default_total_cost', 300000);
 
             // Procesar mediante cursores O(1) para garantizar cero desbordamiento de memoria RAM
             // Filtrar explícitamente por campistas (is_admin = false)
             foreach (User::where('is_admin', false)->with('payments')->orderBy('id', 'desc')->cursor() as $user) {
-                // Cálculo sumatorio del total abonado (pagos aprobados)
+                // Cálculo de sumatorias y saldos completamente en memoria asegurando tipos numéricos (float)
+                $partCost = is_numeric($user->participation_cost) ? (float) $user->participation_cost : null;
+                $baseCost = $partCost !== null ? $partCost : (float) $defaultTotalCost;
+                $discount = is_numeric($user->discount_amount) ? (float) $user->discount_amount : 0.0;
+                $targetCost = $baseCost - $discount;
                 $totalPaid = (float) $user->payments->where('status', 'approved')->sum('amount');
+                $balance = $targetCost - $totalPaid;
+
+                // Formateo robusto de fechas para evitar errores fatales si la base de datos devuelve strings
+                $docIssueDate = $user->document_issue_date instanceof \DateTimeInterface 
+                    ? $user->document_issue_date->format('Y-m-d') 
+                    : ($user->document_issue_date ? (string) $user->document_issue_date : 'N/A');
+
+                $birthDate = $user->birth_date instanceof \DateTimeInterface 
+                    ? $user->birth_date->format('Y-m-d') 
+                    : ($user->birth_date ? (string) $user->birth_date : 'N/A');
+
+                $createdAt = $user->created_at instanceof \DateTimeInterface 
+                    ? $user->created_at->format('Y-m-d H:i:s') 
+                    : ($user->created_at ? (string) $user->created_at : 'N/A');
+
+                $updatedAt = $user->updated_at instanceof \DateTimeInterface 
+                    ? $user->updated_at->format('Y-m-d H:i:s') 
+                    : ($user->updated_at ? (string) $user->updated_at : 'N/A');
 
                 fputcsv($handle, [
                     $user->id,
-                    trim($user->name . ' ' . $user->last_name),
+                    $user->name,
+                    $user->last_name,
+                    $user->email,
                     $user->document_type,
                     $user->document_number,
+                    $docIssueDate,
                     $user->zone,
                     $user->congregacion,
                     $user->phone,
-                    $user->email,
                     $user->age,
                     $user->gender === 'M' ? 'Masculino' : ($user->gender === 'F' ? 'Femenino' : $user->gender),
+                    $birthDate,
                     $user->eps,
-                    number_format($totalPaid, 2, ',', '.')
+                    $user->registration_type === 'total' ? 'Investidura Total' : 'Estadía Parcial',
+                    number_format($baseCost, 2, ',', '.'),
+                    $user->coupon_code ?? 'N/A',
+                    number_format($discount, 2, ',', '.'),
+                    number_format($targetCost, 2, ',', '.'),
+                    number_format($totalPaid, 2, ',', '.'),
+                    number_format($balance, 2, ',', '.'),
+                    $user->pastor_letter_path ? 'SÍ (Adjunta)' : 'NO',
+                    $user->consent_proof_path ? 'SÍ (Adjunto)' : 'NO',
+                    $user->notes ?? 'N/A',
+                    $createdAt,
+                    $updatedAt
                 ], ';');
             }
 
