@@ -46,64 +46,64 @@ class ExcelReports extends Page
             // Obtener la configuración global una sola vez antes de procesar para evitar consultas N+1
             $defaultTotalCost = \App\Models\GlobalSetting::get('default_total_cost', 300000);
 
-            // Cargar todos los usuarios con sus pagos en memoria
-            $users = User::with('payments')->orderBy('id', 'desc')->get();
+            // Procesar en lotes (chunking) para evitar que PHP exceda el memory_limit al cargar todos los usuarios
+            User::with('payments')->orderBy('id', 'desc')->chunk(100, function ($users) use ($handle, $defaultTotalCost) {
+                foreach ($users as $user) {
+                    // Cálculo de sumatorias y saldos completamente en memoria asegurando tipos numéricos (float)
+                    $partCost = is_numeric($user->participation_cost) ? (float) $user->participation_cost : null;
+                    $baseCost = $partCost !== null ? $partCost : (float) $defaultTotalCost;
+                    $discount = is_numeric($user->discount_amount) ? (float) $user->discount_amount : 0.0;
+                    $targetCost = $baseCost - $discount;
+                    $totalPaid = (float) $user->payments->where('status', 'approved')->sum('amount');
+                    $balance = $targetCost - $totalPaid;
 
-            foreach ($users as $user) {
-                // Cálculo de sumatorias y saldos completamente en memoria asegurando tipos numéricos (float)
-                $partCost = is_numeric($user->participation_cost) ? (float) $user->participation_cost : null;
-                $baseCost = $partCost !== null ? $partCost : (float) $defaultTotalCost;
-                $discount = is_numeric($user->discount_amount) ? (float) $user->discount_amount : 0.0;
-                $targetCost = $baseCost - $discount;
-                $totalPaid = (float) $user->payments->where('status', 'approved')->sum('amount');
-                $balance = $targetCost - $totalPaid;
+                    // Formateo robusto de fechas para evitar errores fatales si la base de datos devuelve strings
+                    $docIssueDate = $user->document_issue_date instanceof \DateTimeInterface 
+                        ? $user->document_issue_date->format('Y-m-d') 
+                        : ($user->document_issue_date ? (string) $user->document_issue_date : 'N/A');
 
-                // Formateo robusto de fechas para evitar errores fatales si la base de datos devuelve strings
-                $docIssueDate = $user->document_issue_date instanceof \DateTimeInterface 
-                    ? $user->document_issue_date->format('Y-m-d') 
-                    : ($user->document_issue_date ? (string) $user->document_issue_date : 'N/A');
+                    $birthDate = $user->birth_date instanceof \DateTimeInterface 
+                        ? $user->birth_date->format('Y-m-d') 
+                        : ($user->birth_date ? (string) $user->birth_date : 'N/A');
 
-                $birthDate = $user->birth_date instanceof \DateTimeInterface 
-                    ? $user->birth_date->format('Y-m-d') 
-                    : ($user->birth_date ? (string) $user->birth_date : 'N/A');
+                    $createdAt = $user->created_at instanceof \DateTimeInterface 
+                        ? $user->created_at->format('Y-m-d H:i:s') 
+                        : ($user->created_at ? (string) $user->created_at : 'N/A');
 
-                $createdAt = $user->created_at instanceof \DateTimeInterface 
-                    ? $user->created_at->format('Y-m-d H:i:s') 
-                    : ($user->created_at ? (string) $user->created_at : 'N/A');
+                    $updatedAt = $user->updated_at instanceof \DateTimeInterface 
+                        ? $user->updated_at->format('Y-m-d H:i:s') 
+                        : ($user->updated_at ? (string) $user->updated_at : 'N/A');
 
-                $updatedAt = $user->updated_at instanceof \DateTimeInterface 
-                    ? $user->updated_at->format('Y-m-d H:i:s') 
-                    : ($user->updated_at ? (string) $user->updated_at : 'N/A');
-
-                fputcsv($handle, [
-                    $user->id,
-                    $user->name,
-                    $user->last_name,
-                    $user->email,
-                    $user->document_type,
-                    $user->document_number,
-                    $docIssueDate,
-                    $user->zone,
-                    $user->congregacion,
-                    $user->phone,
-                    $user->age,
-                    $user->gender === 'M' ? 'Masculino' : ($user->gender === 'F' ? 'Femenino' : $user->gender),
-                    $birthDate,
-                    $user->eps,
-                    $user->registration_type === 'total' ? 'Investidura Total' : 'Estadía Parcial',
-                    number_format($baseCost, 2, ',', '.'),
-                    $user->coupon_code ?? 'N/A',
-                    number_format($discount, 2, ',', '.'),
-                    number_format($targetCost, 2, ',', '.'),
-                    number_format($totalPaid, 2, ',', '.'),
-                    number_format($balance, 2, ',', '.'),
-                    $user->pastor_letter_path ? 'SÍ (Adjunta)' : 'NO',
-                    $user->consent_proof_path ? 'SÍ (Adjunto)' : 'NO',
-                    $user->notes ?? 'N/A',
-                    $createdAt,
-                    $updatedAt
-                ], ';');
-            }
+                    fputcsv($handle, [
+                        $user->id,
+                        $user->name,
+                        $user->last_name,
+                        $user->email,
+                        $user->document_type,
+                        $user->document_number,
+                        $docIssueDate,
+                        $user->zone,
+                        $user->congregacion,
+                        $user->phone,
+                        $user->age,
+                        $user->gender === 'M' ? 'Masculino' : ($user->gender === 'F' ? 'Femenino' : $user->gender),
+                        $birthDate,
+                        $user->eps,
+                        $user->registration_type === 'total' ? 'Investidura Total' : 'Estadía Parcial',
+                        number_format($baseCost, 2, ',', '.'),
+                        $user->coupon_code ?? 'N/A',
+                        number_format($discount, 2, ',', '.'),
+                        number_format($targetCost, 2, ',', '.'),
+                        number_format($totalPaid, 2, ',', '.'),
+                        number_format($balance, 2, ',', '.'),
+                        $user->pastor_letter_path ? 'SÍ (Adjunta)' : 'NO',
+                        $user->consent_proof_path ? 'SÍ (Adjunto)' : 'NO',
+                        $user->notes ?? 'N/A',
+                        $createdAt,
+                        $updatedAt
+                    ], ';');
+                }
+            });
 
             fclose($handle);
 
@@ -146,38 +146,38 @@ class ExcelReports extends Page
                 'Ruta del Comprobante', 'Fecha de Registro del Pago', 'Fecha de Última Revisión'
             ], ';');
 
-            // Cargar abonos con sus relaciones en memoria
-            $payments = Payment::with(['user', 'reviewer'])->orderBy('id', 'desc')->get();
+            // Cargar abonos en lotes (chunking) para optimizar memoria
+            Payment::with(['user', 'reviewer'])->orderBy('id', 'desc')->chunk(100, function ($payments) use ($handle) {
+                foreach ($payments as $payment) {
+                    $camper = $payment->user;
+                    $reviewer = $payment->reviewer;
 
-            foreach ($payments as $payment) {
-                $camper = $payment->user;
-                $reviewer = $payment->reviewer;
+                    $createdAt = $payment->created_at instanceof \DateTimeInterface 
+                        ? $payment->created_at->format('Y-m-d H:i:s') 
+                        : ($payment->created_at ? (string) $payment->created_at : 'N/A');
 
-                $createdAt = $payment->created_at instanceof \DateTimeInterface 
-                    ? $payment->created_at->format('Y-m-d H:i:s') 
-                    : ($payment->created_at ? (string) $payment->created_at : 'N/A');
+                    $updatedAt = $payment->updated_at instanceof \DateTimeInterface 
+                        ? $payment->updated_at->format('Y-m-d H:i:s') 
+                        : ($payment->updated_at ? (string) $payment->updated_at : 'N/A');
 
-                $updatedAt = $payment->updated_at instanceof \DateTimeInterface 
-                    ? $payment->updated_at->format('Y-m-d H:i:s') 
-                    : ($payment->updated_at ? (string) $payment->updated_at : 'N/A');
-
-                fputcsv($handle, [
-                    $payment->id,
-                    $camper ? $camper->id : 'N/A',
-                    $camper ? $camper->document_number : 'N/A',
-                    $camper ? ($camper->name . ' ' . $camper->last_name) : 'Usuario Eliminado',
-                    $camper ? $camper->zone : 'N/A',
-                    $camper ? $camper->congregacion : 'N/A',
-                    number_format((float) $payment->amount, 2, ',', '.'),
-                    strtoupper($payment->status),
-                    strtoupper($payment->type),
-                    $reviewer ? ($reviewer->name . ' ' . $reviewer->last_name) : 'N/A',
-                    $payment->notes ?? 'N/A',
-                    $payment->proof_path ?? 'N/A',
-                    $createdAt,
-                    $updatedAt
-                ], ';');
-            }
+                    fputcsv($handle, [
+                        $payment->id,
+                        $camper ? $camper->id : 'N/A',
+                        $camper ? $camper->document_number : 'N/A',
+                        $camper ? ($camper->name . ' ' . $camper->last_name) : 'Usuario Eliminado',
+                        $camper ? $camper->zone : 'N/A',
+                        $camper ? $camper->congregacion : 'N/A',
+                        number_format((float) $payment->amount, 2, ',', '.'),
+                        strtoupper($payment->status),
+                        strtoupper($payment->type),
+                        $reviewer ? ($reviewer->name . ' ' . $reviewer->last_name) : 'N/A',
+                        $payment->notes ?? 'N/A',
+                        $payment->proof_path ?? 'N/A',
+                        $createdAt,
+                        $updatedAt
+                    ], ';');
+                }
+            });
 
             fclose($handle);
 

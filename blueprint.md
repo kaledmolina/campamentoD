@@ -28,11 +28,12 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Capturar cualquier excepción o error en tiempo de ejecución durante la generación de los reportes Excel (`ExcelReports.php`) y mostrar el mensaje de error exacto, línea y archivo a través de una notificación visual persistente de Filament (`Notification::make()`). Esto permitirá al usuario y al desarrollador diagnosticar con precisión absoluta la causa por la cual el reporte de campistas no se genera correctamente.
+Solucionar el problema de descarga de archivos en blanco en el Reporte de Campistas (`ExcelReports.php`). Este problema ocurre porque el método `get()` carga la totalidad de los usuarios y sus relaciones en memoria de forma simultánea, lo que excede el `memory_limit` de PHP en servidores con restricciones de recursos, provocando que el proceso se detenga silenciosamente y entregue un archivo vacío.
 
 ### Pasos de Implementación
 1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Envolver la totalidad de la lógica de `exportCampers()` y `exportPayments()` dentro de bloques `try { ... } catch (\Throwable $e) { ... }`.
-   - En el bloque `catch`, utilizar `\Filament\Notifications\Notification::make()` configurando el título, el cuerpo del error (`$e->getMessage()`, `$e->getLine()`, `$e->getFile()`), estilo `danger()` y `persistent()`.
+   - Reemplazar `User::with('payments')->get()` por `User::with('payments')->chunk(100, function ($users) use ($handle, $defaultTotalCost) { ... })`.
+   - Reemplazar `Payment::with(['user', 'reviewer'])->get()` por `Payment::with(['user', 'reviewer'])->chunk(100, function ($payments) use ($handle) { ... })`.
+   - Al escribir en un archivo físico en disco (`fopen`), el uso de `chunk()` mantiene el consumo de memoria RAM cercano a cero sin interferir con la conexión HTTP de Livewire.
 2. **Verificación:**
-   - Al hacer clic en generar reporte, si ocurre cualquier error, se mostrará inmediatamente una notificación roja en el panel de Filament con los detalles técnicos del fallo.
+   - Confirmar que el archivo descargado contiene exitosamente todas las filas de la base de datos sin agotar la memoria del servidor.
