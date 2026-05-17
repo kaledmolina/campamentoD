@@ -28,12 +28,15 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Permitir que cualquier usuario (visitantes, líderes juveniles, padres) pueda registrar uno o múltiples campistas de forma continua sin necesidad de estar autenticado y sin que el sistema inicie sesión automáticamente tras cada registro. Esto mantiene la sesión limpia para registrar múltiples personas y asegura que los logs de auditoría (`ActivityLog`) registren correctamente la creación del campista y de su abono inicial.
+Añadir una nueva sección en el panel de administración de Filament (`ExcelReports`) dedicada a la descarga de reportes detallados en formato Excel (CSV con BOM UTF-8 para compatibilidad nativa con tildes y formato de tabla en Excel). Se generarán dos reportes completos: uno con toda la información de los campistas (datos personales, eclesiásticos, costos, cupones, saldos, permisos) y otro con toda la información de los abonos/pagos (montos, estados, revisores, fechas, notas).
 
 ### Pasos de Implementación
-1. **Modificar `CreateRegistration.php` (`app/Livewire/CreateRegistration.php`):**
-   - Eliminar la llamada a `\Illuminate\Support\Facades\Auth::login($user)` durante el proceso de registro para evitar que el usuario quede autenticado automáticamente tras inscribir a un campista.
-2. **Modificar `AuditObserver.php` (`app/Observers/AuditObserver.php`):**
-   - Ampliar la lógica de atribución de logs cuando no hay un usuario autenticado (`$userId` es null): si se está creando un `Payment`, asignar `$userId = $model->user_id` para que el abono quede correctamente auditado a nombre del campista respectivo.
+1. **Crear Página de Filament (`ExcelReports.php`):**
+   - Crear el archivo `app/Filament/Pages/ExcelReports.php` extendiendo de `\Filament\Pages\Page`.
+   - Configurar el ícono de navegación (`heroicon-o-document-arrow-down`), grupo ("Reportes y Exportaciones") y título.
+   - Definir los métodos `exportCampers()` y `exportPayments()` utilizando `response()->streamDownload` con chunking de Eloquent y BOM UTF-8 para garantizar un rendimiento óptimo y correcta visualización en Excel.
+2. **Crear Vista Blade (`excel-reports.blade.php`):**
+   - Crear el archivo `resources/views/filament/pages/excel-reports.blade.php`.
+   - Diseñar una interfaz moderna y atractiva con tarjetas estilo Glassmorphism, sombras elevadas, descripciones detalladas de las columnas incluidas en cada reporte y botones interactivos con efecto de resplandor (`wire:click`).
 3. **Verificación:**
-   - Confirmar que un usuario no autenticado puede completar múltiples registros consecutivamente sin que se inicie sesión y que las tablas de auditoría reflejen correctamente la autoría de los registros y pagos.
+   - Comprobar que la página carga correctamente en el panel de Filament y que la descarga de ambos archivos se genera exitosamente con todos los datos detallados.
