@@ -28,15 +28,10 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Añadir una nueva sección en el panel de administración de Filament (`ExcelReports`) dedicada a la descarga de reportes detallados en formato Excel (CSV con BOM UTF-8 para compatibilidad nativa con tildes y formato de tabla en Excel). Se generarán dos reportes completos: uno con toda la información de los campistas (datos personales, eclesiásticos, costos, cupones, saldos, permisos) y otro con toda la información de los abonos/pagos (montos, estados, revisores, fechas, notas).
+Eliminar la restricción de edad mínima en el formulario de inscripción pública (`CreateRegistration.php`), permitiendo que niños menores de 5 años (edades 0 a 4) puedan ser registrados en el campamento por sus padres o tutores legales.
 
 ### Pasos de Implementación
-1. **Crear Página de Filament (`ExcelReports.php`):**
-   - Crear el archivo `app/Filament/Pages/ExcelReports.php` extendiendo de `\Filament\Pages\Page`.
-   - Configurar el ícono de navegación (`heroicon-o-document-arrow-down`), grupo ("Reportes y Exportaciones") y título.
-   - Definir los métodos `exportCampers()` y `exportPayments()` utilizando `response()->streamDownload` con chunking de Eloquent y BOM UTF-8 para garantizar un rendimiento óptimo y correcta visualización en Excel.
-2. **Crear Vista Blade (`excel-reports.blade.php`):**
-   - Crear el archivo `resources/views/filament/pages/excel-reports.blade.php`.
-   - Diseñar una interfaz moderna y atractiva con tarjetas estilo Glassmorphism, sombras elevadas, descripciones detalladas de las columnas incluidas en cada reporte y botones interactivos con efecto de resplandor (`wire:click`).
-3. **Verificación:**
-   - Comprobar que la página carga correctamente en el panel de Filament y que la descarga de ambos archivos se genera exitosamente con todos los datos detallados.
+1. **Modificar `CreateRegistration.php` (`app/Livewire/CreateRegistration.php`):**
+   - Cambiar la regla de validación del atributo `$age` de `#[Validate('required|numeric|min:5|max:100')]` a `#[Validate('required|numeric|min:0|max:100')]`.
+2. **Verificación:**
+   - Confirmar que el formulario acepta edades menores a 5 años sin lanzar errores de validación de Livewire.

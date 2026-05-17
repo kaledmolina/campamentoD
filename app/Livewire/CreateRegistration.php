@@ -52,7 +52,7 @@ class CreateRegistration extends Component
     #[Validate('required|min:3')]
     public $eps = '';
 
-    #[Validate('required|numeric|min:5|max:100')]
+    #[Validate('required|numeric|min:0|max:100')]
     public $age = '';
 
     #[Validate('mimes:jpg,jpeg,png,webp,pdf|max:10240')] // 10MB max, required logic handled manually
