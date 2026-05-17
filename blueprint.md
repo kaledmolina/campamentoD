@@ -28,12 +28,11 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Solucionar el error fatal en `ExcelReports.php` que ocasiona que el reporte de campistas se descargue en blanco. Este error se produce cuando la base de datos almacena cadenas vacías (`""`) en campos numéricos opcionales como `participation_cost` o `discount_amount`, lo que provoca fallos en PHP 8 al intentar realizar operaciones matemáticas (`string - int`) o al pasarlos a `number_format()`.
+Capturar cualquier excepción o error en tiempo de ejecución durante la generación de los reportes Excel (`ExcelReports.php`) y mostrar el mensaje de error exacto, línea y archivo a través de una notificación visual persistente de Filament (`Notification::make()`). Esto permitirá al usuario y al desarrollador diagnosticar con precisión absoluta la causa por la cual el reporte de campistas no se genera correctamente.
 
 ### Pasos de Implementación
 1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Implementar validación estricta con `is_numeric()` y conversión explícita a `(float)` para `participation_cost` y `discount_amount`.
-   - Garantizar que `$baseCost`, `$targetCost`, `$totalPaid` y `$balance` sean siempre valores de tipo `float` puros antes de pasarlos a `number_format()`.
-   - Mantener intactas las 26 columnas asegurando que ninguna pueda arrojar un error fatal de tipos en PHP 8.
+   - Envolver la totalidad de la lógica de `exportCampers()` y `exportPayments()` dentro de bloques `try { ... } catch (\Throwable $e) { ... }`.
+   - En el bloque `catch`, utilizar `\Filament\Notifications\Notification::make()` configurando el título, el cuerpo del error (`$e->getMessage()`, `$e->getLine()`, `$e->getFile()`), estilo `danger()` y `persistent()`.
 2. **Verificación:**
-   - Confirmar que el reporte de campistas se genera exitosamente con todas las filas y columnas correctamente calculadas.
+   - Al hacer clic en generar reporte, si ocurre cualquier error, se mostrará inmediatamente una notificación roja en el panel de Filament con los detalles técnicos del fallo.
