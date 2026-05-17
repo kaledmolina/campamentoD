@@ -28,11 +28,12 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Simplificar y optimizar el Reporte de Campistas (`ExcelReports.php`) para incluir únicamente las columnas esenciales e informativas solicitadas por el usuario: ID, Nombre Completo, Tipo Doc., No. Documento, Zona / Distrito, Congregación, Teléfono, Email, Edad, Género, EPS y Total Abonado ($). Esto elimina la sobrecarga de campos innecesarios y garantiza una lectura limpia y directa en Excel.
+Solucionar definitivamente la descarga del archivo en blanco en el Reporte de Campistas (`ExcelReports.php`). Este problema ocurre porque el desbordamiento de memoria o tiempo de ejecución en colecciones grandes de Eloquent provoca un cierre fatal de PHP que no puede ser capturado por bloques `try...catch`, dejando el búfer de descarga vacío. Para solucionarlo, se implementará el uso de generadores (`cursor()`) con complejidad espacial O(1) y se filtrará explícitamente por campistas (`where('is_admin', false)`).
 
 ### Pasos de Implementación
 1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Actualizar los encabezados de `exportCampers()` al nuevo listado de 12 columnas.
-   - Ajustar el bucle `chunk()` para calcular únicamente `$totalPaid` y exportar exactamente los 12 valores correspondientes por campista.
+   - Reemplazar `User::with('payments')->chunk(100, ...)` por un bucle `foreach (User::where('is_admin', false)->with('payments')->orderBy('id', 'desc')->cursor() as $user)`.
+   - El uso de `cursor()` utiliza un generador de PHP (`yield`) que hidrata exactamente un modelo de Eloquent a la vez en memoria RAM, garantizando un consumo de memoria O(1) (constante) sin importar la cantidad de registros.
+   - Aplicar esta misma optimización con `cursor()` en `exportPayments()` para máxima estabilidad y rendimiento en ambos reportes.
 2. **Verificación:**
-   - Confirmar que el archivo descargado contiene la estructura exacta solicitada y se visualiza de forma prístina en Excel.
+   - Confirmar que el archivo se genera y descarga exitosamente con todos los campistas inscritos y sin agotar la memoria del servidor.

@@ -40,28 +40,27 @@ class ExcelReports extends Page
                 'Edad', 'Género', 'EPS', 'Total Abonado ($)'
             ], ';');
 
-            // Procesar en lotes (chunking) para evitar que PHP exceda el memory_limit al cargar todos los usuarios
-            User::with('payments')->orderBy('id', 'desc')->chunk(100, function ($users) use ($handle) {
-                foreach ($users as $user) {
-                    // Cálculo sumatorio del total abonado (pagos aprobados)
-                    $totalPaid = (float) $user->payments->where('status', 'approved')->sum('amount');
+            // Procesar mediante cursores O(1) para garantizar cero desbordamiento de memoria RAM
+            // Filtrar explícitamente por campistas (is_admin = false)
+            foreach (User::where('is_admin', false)->with('payments')->orderBy('id', 'desc')->cursor() as $user) {
+                // Cálculo sumatorio del total abonado (pagos aprobados)
+                $totalPaid = (float) $user->payments->where('status', 'approved')->sum('amount');
 
-                    fputcsv($handle, [
-                        $user->id,
-                        trim($user->name . ' ' . $user->last_name),
-                        $user->document_type,
-                        $user->document_number,
-                        $user->zone,
-                        $user->congregacion,
-                        $user->phone,
-                        $user->email,
-                        $user->age,
-                        $user->gender === 'M' ? 'Masculino' : ($user->gender === 'F' ? 'Femenino' : $user->gender),
-                        $user->eps,
-                        number_format($totalPaid, 2, ',', '.')
-                    ], ';');
-                }
-            });
+                fputcsv($handle, [
+                    $user->id,
+                    trim($user->name . ' ' . $user->last_name),
+                    $user->document_type,
+                    $user->document_number,
+                    $user->zone,
+                    $user->congregacion,
+                    $user->phone,
+                    $user->email,
+                    $user->age,
+                    $user->gender === 'M' ? 'Masculino' : ($user->gender === 'F' ? 'Femenino' : $user->gender),
+                    $user->eps,
+                    number_format($totalPaid, 2, ',', '.')
+                ], ';');
+            }
 
             fclose($handle);
 
@@ -104,38 +103,36 @@ class ExcelReports extends Page
                 'Ruta del Comprobante', 'Fecha de Registro del Pago', 'Fecha de Última Revisión'
             ], ';');
 
-            // Cargar abonos en lotes (chunking) para optimizar memoria
-            Payment::with(['user', 'reviewer'])->orderBy('id', 'desc')->chunk(100, function ($payments) use ($handle) {
-                foreach ($payments as $payment) {
-                    $camper = $payment->user;
-                    $reviewer = $payment->reviewer;
+            // Procesar mediante cursores O(1) para optimizar memoria al máximo
+            foreach (Payment::with(['user', 'reviewer'])->orderBy('id', 'desc')->cursor() as $payment) {
+                $camper = $payment->user;
+                $reviewer = $payment->reviewer;
 
-                    $createdAt = $payment->created_at instanceof \DateTimeInterface 
-                        ? $payment->created_at->format('Y-m-d H:i:s') 
-                        : ($payment->created_at ? (string) $payment->created_at : 'N/A');
+                $createdAt = $payment->created_at instanceof \DateTimeInterface 
+                    ? $payment->created_at->format('Y-m-d H:i:s') 
+                    : ($payment->created_at ? (string) $payment->created_at : 'N/A');
 
-                    $updatedAt = $payment->updated_at instanceof \DateTimeInterface 
-                        ? $payment->updated_at->format('Y-m-d H:i:s') 
-                        : ($payment->updated_at ? (string) $payment->updated_at : 'N/A');
+                $updatedAt = $payment->updated_at instanceof \DateTimeInterface 
+                    ? $payment->updated_at->format('Y-m-d H:i:s') 
+                    : ($payment->updated_at ? (string) $payment->updated_at : 'N/A');
 
-                    fputcsv($handle, [
-                        $payment->id,
-                        $camper ? $camper->id : 'N/A',
-                        $camper ? $camper->document_number : 'N/A',
-                        $camper ? ($camper->name . ' ' . $camper->last_name) : 'Usuario Eliminado',
-                        $camper ? $camper->zone : 'N/A',
-                        $camper ? $camper->congregacion : 'N/A',
-                        number_format((float) $payment->amount, 2, ',', '.'),
-                        strtoupper($payment->status),
-                        strtoupper($payment->type),
-                        $reviewer ? ($reviewer->name . ' ' . $reviewer->last_name) : 'N/A',
-                        $payment->notes ?? 'N/A',
-                        $payment->proof_path ?? 'N/A',
-                        $createdAt,
-                        $updatedAt
-                    ], ';');
-                }
-            });
+                fputcsv($handle, [
+                    $payment->id,
+                    $camper ? $camper->id : 'N/A',
+                    $camper ? $camper->document_number : 'N/A',
+                    $camper ? ($camper->name . ' ' . $camper->last_name) : 'Usuario Eliminado',
+                    $camper ? $camper->zone : 'N/A',
+                    $camper ? $camper->congregacion : 'N/A',
+                    number_format((float) $payment->amount, 2, ',', '.'),
+                    strtoupper($payment->status),
+                    strtoupper($payment->type),
+                    $reviewer ? ($reviewer->name . ' ' . $reviewer->last_name) : 'N/A',
+                    $payment->notes ?? 'N/A',
+                    $payment->proof_path ?? 'N/A',
+                    $createdAt,
+                    $updatedAt
+                ], ';');
+            }
 
             fclose($handle);
 
