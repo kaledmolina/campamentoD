@@ -42,12 +42,19 @@
             <button 
                 wire:click="exportCampers" 
                 type="button" 
-                class="w-full group flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 py-4 px-6 text-base font-bold text-white shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all duration-300 hover:from-amber-400 hover:to-amber-500 hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                class="w-full group flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 py-4 px-6 text-base font-bold text-white shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all duration-300 hover:from-amber-400 hover:to-amber-500 hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                wire:loading.attr="disabled"
+                wire:target="exportCampers"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5">
+                <svg wire:loading.remove wire:target="exportCampers" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                 </svg>
-                <span>Generar y Descargar Excel (Campistas)</span>
+                <svg wire:loading wire:target="exportCampers" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span wire:loading.remove wire:target="exportCampers">Generar y Descargar Excel (Campistas)</span>
+                <span wire:loading wire:target="exportCampers">Generando Reporte... ¡Por favor espera!</span>
             </button>
         </div>
 
@@ -92,12 +99,19 @@
             <button 
                 wire:click="exportPayments" 
                 type="button" 
-                class="w-full group flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 py-4 px-6 text-base font-bold text-white shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.6)] focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                class="w-full group flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 py-4 px-6 text-base font-bold text-white shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 hover:from-emerald-400 hover:to-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.6)] focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                wire:loading.attr="disabled"
+                wire:target="exportPayments"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5">
+                <svg wire:loading.remove wire:target="exportPayments" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                 </svg>
-                <span>Generar y Descargar Excel (Abonos)</span>
+                <svg wire:loading wire:target="exportPayments" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span wire:loading.remove wire:target="exportPayments">Generar y Descargar Excel (Abonos)</span>
+                <span wire:loading wire:target="exportPayments">Generando Reporte... ¡Por favor espera!</span>
             </button>
         </div>
 

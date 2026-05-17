@@ -28,13 +28,15 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Solucionar el problema de descarga de archivos Excel vacíos (0 bytes o sin filas) en el Reporte de Campistas (`ExcelReports.php`). Este problema ocurre porque el cálculo dinámico de atributos financieros (`target_cost`, `total_paid`, `balance`) ejecutaba consultas N+1 a la base de datos por cada campista, provocando una demora en el flujo de datos que causaba que el gestor de descargas AJAX de Livewire v3 cerrara prematuramente el stream.
+Resolver definitivamente la descarga de archivos vacíos en Livewire v3 reemplazando `response()->streamDownload` (cuyo búfer directo en `php://output` corrompe la respuesta JSON de Livewire) por la generación de un archivo físico temporal en `storage/app/public/reports` y retornando `response()->download(...)`. Además, implementar animaciones de carga visuales (`wire:loading`) en los botones de descarga para informar al usuario mientras se genera el archivo.
 
 ### Pasos de Implementación
 1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Eager load de las relaciones necesarias (`User::with('payments')` y `Payment::with(['user', 'reviewer'])`).
-   - Obtener la configuración global (`default_total_cost`) una única vez antes de procesar los registros para eliminar las consultas repetitivas a la tabla `global_settings`.
-   - Realizar el cálculo de costos y saldos completamente en memoria usando las colecciones cargadas.
-   - Reemplazar `chunk()` por `get()` para asegurar que todo el contenido del CSV se envíe en un único flujo continuo sin interrupciones de búfer en Livewire.
-2. **Verificación:**
-   - Comprobar que al hacer clic en el botón de descarga, el archivo Excel se genera instantáneamente con todas las filas de campistas y abonos correctamente pobladas.
+   - Crear el directorio `storage/app/public/reports` si no existe usando `Storage::disk('public')->makeDirectory('reports')`.
+   - Generar y escribir el archivo CSV (`fopen`, `fwrite` con BOM UTF-8, `fputcsv`) directamente en la ruta del servidor (`storage_path('app/public/reports/...')`).
+   - Retornar `return response()->download($filePath);` para que Livewire gestione correctamente la descarga binaria.
+2. **Modificar Vista Blade (`excel-reports.blade.php`):**
+   - Añadir directivas `wire:loading`, `wire:loading.remove` y `wire:target` en los botones de Campistas y Abonos.
+   - Incorporar un ícono SVG giratorio (`animate-spin`) y texto dinámico ("Generando Reporte... ¡Por favor espera!").
+3. **Verificación:**
+   - Confirmar que al hacer clic se muestra la animación de carga y que el archivo descargado contiene toda la información de la base de datos sin estar vacío.
