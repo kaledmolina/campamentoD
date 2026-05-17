@@ -52,6 +52,23 @@ class ExcelReports extends Page
             $totalPaid = $user->payments->where('status', 'approved')->sum('amount');
             $balance = $targetCost - $totalPaid;
 
+            // Formateo robusto de fechas para evitar errores fatales si la base de datos devuelve strings
+            $docIssueDate = $user->document_issue_date instanceof \DateTimeInterface 
+                ? $user->document_issue_date->format('Y-m-d') 
+                : ($user->document_issue_date ? (string) $user->document_issue_date : 'N/A');
+
+            $birthDate = $user->birth_date instanceof \DateTimeInterface 
+                ? $user->birth_date->format('Y-m-d') 
+                : ($user->birth_date ? (string) $user->birth_date : 'N/A');
+
+            $createdAt = $user->created_at instanceof \DateTimeInterface 
+                ? $user->created_at->format('Y-m-d H:i:s') 
+                : ($user->created_at ? (string) $user->created_at : 'N/A');
+
+            $updatedAt = $user->updated_at instanceof \DateTimeInterface 
+                ? $user->updated_at->format('Y-m-d H:i:s') 
+                : ($user->updated_at ? (string) $user->updated_at : 'N/A');
+
             fputcsv($handle, [
                 $user->id,
                 $user->name,
@@ -59,13 +76,13 @@ class ExcelReports extends Page
                 $user->email,
                 $user->document_type,
                 $user->document_number,
-                $user->document_issue_date ? $user->document_issue_date->format('Y-m-d') : 'N/A',
+                $docIssueDate,
                 $user->zone,
                 $user->congregacion,
                 $user->phone,
                 $user->age,
                 $user->gender === 'M' ? 'Masculino' : ($user->gender === 'F' ? 'Femenino' : $user->gender),
-                $user->birth_date ? $user->birth_date->format('Y-m-d') : 'N/A',
+                $birthDate,
                 $user->eps,
                 $user->registration_type === 'total' ? 'Investidura Total' : 'Estadía Parcial',
                 number_format($baseCost, 2, ',', '.'),
@@ -77,8 +94,8 @@ class ExcelReports extends Page
                 $user->pastor_letter_path ? 'SÍ (Adjunta)' : 'NO',
                 $user->consent_proof_path ? 'SÍ (Adjunto)' : 'NO',
                 $user->notes ?? 'N/A',
-                $user->created_at ? $user->created_at->format('Y-m-d H:i:s') : 'N/A',
-                $user->updated_at ? $user->updated_at->format('Y-m-d H:i:s') : 'N/A'
+                $createdAt,
+                $updatedAt
             ], ';');
         }
 
@@ -115,6 +132,14 @@ class ExcelReports extends Page
             $camper = $payment->user;
             $reviewer = $payment->reviewer;
 
+            $createdAt = $payment->created_at instanceof \DateTimeInterface 
+                ? $payment->created_at->format('Y-m-d H:i:s') 
+                : ($payment->created_at ? (string) $payment->created_at : 'N/A');
+
+            $updatedAt = $payment->updated_at instanceof \DateTimeInterface 
+                ? $payment->updated_at->format('Y-m-d H:i:s') 
+                : ($payment->updated_at ? (string) $payment->updated_at : 'N/A');
+
             fputcsv($handle, [
                 $payment->id,
                 $camper ? $camper->id : 'N/A',
@@ -128,8 +153,8 @@ class ExcelReports extends Page
                 $reviewer ? ($reviewer->name . ' ' . $reviewer->last_name) : 'N/A',
                 $payment->notes ?? 'N/A',
                 $payment->proof_path ?? 'N/A',
-                $payment->created_at ? $payment->created_at->format('Y-m-d H:i:s') : 'N/A',
-                $payment->updated_at ? $payment->updated_at->format('Y-m-d H:i:s') : 'N/A'
+                $createdAt,
+                $updatedAt
             ], ';');
         }
 

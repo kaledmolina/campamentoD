@@ -28,15 +28,12 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Resolver definitivamente la descarga de archivos vacíos en Livewire v3 reemplazando `response()->streamDownload` (cuyo búfer directo en `php://output` corrompe la respuesta JSON de Livewire) por la generación de un archivo físico temporal en `storage/app/public/reports` y retornando `response()->download(...)`. Además, implementar animaciones de carga visuales (`wire:loading`) en los botones de descarga para informar al usuario mientras se genera el archivo.
+Solucionar el error fatal en `ExcelReports.php` que provocaba la descarga de un Excel vacío en el Reporte de Campistas. Este error ocurría porque los campos de fecha personalizados (`document_issue_date`, `birth_date`) se devolvían como cadenas de texto (`string`) desde la base de datos en lugar de objetos `Carbon`, provocando un fallo fatal al intentar llamar al método `->format()` sobre un string.
 
 ### Pasos de Implementación
 1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Crear el directorio `storage/app/public/reports` si no existe usando `Storage::disk('public')->makeDirectory('reports')`.
-   - Generar y escribir el archivo CSV (`fopen`, `fwrite` con BOM UTF-8, `fputcsv`) directamente en la ruta del servidor (`storage_path('app/public/reports/...')`).
-   - Retornar `return response()->download($filePath);` para que Livewire gestione correctamente la descarga binaria.
-2. **Modificar Vista Blade (`excel-reports.blade.php`):**
-   - Añadir directivas `wire:loading`, `wire:loading.remove` y `wire:target` en los botones de Campistas y Abonos.
-   - Incorporar un ícono SVG giratorio (`animate-spin`) y texto dinámico ("Generando Reporte... ¡Por favor espera!").
-3. **Verificación:**
-   - Confirmar que al hacer clic se muestra la animación de carga y que el archivo descargado contiene toda la información de la base de datos sin estar vacío.
+   - Implementar validación robusta con `instanceof \DateTimeInterface` para cada campo de fecha (`document_issue_date`, `birth_date`, `created_at`, `updated_at`).
+   - Si el valor es un objeto de fecha, aplicar `->format()`. Si es una cadena de texto, utilizar la cadena directamente. Si es nulo o vacío, asignar `'N/A'`.
+   - Aplicar esta misma protección robusta en `exportPayments()` para garantizar estabilidad absoluta en ambos reportes.
+2. **Verificación:**
+   - Confirmar que el reporte de campistas se genera y descarga exitosamente con todos los datos y sin errores de ejecución en PHP.
