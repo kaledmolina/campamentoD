@@ -16,6 +16,8 @@ class ExcelReports extends Page
 
     protected static string $view = 'filament.pages.excel-reports';
 
+    public $selectedZone = '';
+
     public function exportCampers()
     {
         try {
@@ -183,6 +185,118 @@ class ExcelReports extends Page
         } catch (\Throwable $e) {
             \Filament\Notifications\Notification::make()
                 ->title('Error al generar Reporte de Abonos')
+                ->body($e->getMessage() . ' (Línea ' . $e->getLine() . ' en ' . basename($e->getFile()) . ')')
+                ->danger()
+                ->persistent()
+                ->send();
+
+            return null;
+        }
+    }
+
+    public function getZones()
+    {
+        $dbZones = User::whereNotNull('zone')
+            ->where('zone', '<>', '')
+            ->distinct()
+            ->orderBy('zone', 'asc')
+            ->pluck('zone')
+            ->toArray();
+
+        if (empty($dbZones)) {
+            return [
+                'Zona Monteria',
+                'Zona Alto San Jorge',
+                'Zona Planeta Rica',
+                'Zona La Mojana',
+                'Zona Alto Sinu',
+                'Zona Bajo Sinu',
+                'Zona Medio Sinu',
+                'Zona San Marcos',
+                'Zona Sahagun',
+                'Zona Franja del Mar',
+            ];
+        }
+
+        return $dbZones;
+    }
+
+    public function exportReceiptsByZone()
+    {
+        if (empty($this->selectedZone)) {
+            \Filament\Notifications\Notification::make()
+                ->title('Debe seleccionar una zona')
+                ->warning()
+                ->send();
+            return null;
+        }
+
+        try {
+            $payments = Payment::whereHas('user', function ($query) {
+                $query->where('zone', $this->selectedZone);
+            })->whereNotNull('proof_path')
+              ->where('proof_path', '<>', '')
+              ->with('user')
+              ->get();
+
+            if ($payments->isEmpty()) {
+                \Filament\Notifications\Notification::make()
+                    ->title('No hay comprobantes')
+                    ->body('No se encontraron comprobantes de pago subidos para la ' . $this->selectedZone)
+                    ->warning()
+                    ->send();
+                return null;
+            }
+
+            // Asegurar que el directorio de reportes exista
+            \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('reports');
+
+            $zip = new \ZipArchive();
+            $zipFileName = 'Comprobantes_' . str_replace(' ', '_', $this->selectedZone) . '_' . date('Y_m_d_His') . '.zip';
+            $zipFilePath = storage_path('app/public/reports/' . $zipFileName);
+
+            if ($zip->open($zipFilePath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) !== true) {
+                throw new \Exception("No se pudo crear el archivo ZIP temporal en la ruta: " . $zipFilePath);
+            }
+
+            $addedFiles = 0;
+            foreach ($payments as $payment) {
+                $path = $payment->proof_path;
+                if (\Illuminate\Support\Facades\Storage::disk('public')->exists($path)) {
+                    $fileContent = \Illuminate\Support\Facades\Storage::disk('public')->get($path);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    
+                    // Limpiar el nombre del campista para el nombre de archivo dentro del ZIP
+                    $cleanFirstName = preg_replace('/[^A-Za-z0-9_\-]/', '', str_replace(' ', '_', $payment->user->name));
+                    $cleanLastName = preg_replace('/[^A-Za-z0-9_\-]/', '', str_replace(' ', '_', $payment->user->last_name));
+                    $fullName = $cleanFirstName . '_' . $cleanLastName;
+                    
+                    $zipEntryName = $payment->user->document_number . '_' . $fullName . '_Pago_' . $payment->id . '.' . $extension;
+                    
+                    $zip->addFromString($zipEntryName, $fileContent);
+                    $addedFiles++;
+                }
+            }
+
+            $zip->close();
+
+            if ($addedFiles === 0) {
+                if (file_exists($zipFilePath)) {
+                    @unlink($zipFilePath);
+                }
+                \Filament\Notifications\Notification::make()
+                    ->title('Archivos no encontrados')
+                    ->body('Los registros existen en la base de datos, pero no se encontraron los archivos físicos en el servidor.')
+                    ->danger()
+                    ->send();
+                return null;
+            }
+
+            return response()->download($zipFilePath)->deleteFileAfterSend(true);
+
+        } catch (\Throwable $e) {
+            \Filament\Notifications\Notification::make()
+                ->title('Error al generar ZIP de Comprobantes')
                 ->body($e->getMessage() . ' (Línea ' . $e->getLine() . ' en ' . basename($e->getFile()) . ')')
                 ->danger()
                 ->persistent()

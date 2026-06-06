@@ -20,22 +20,24 @@ La plataforma cuenta con dos componentes principales:
   - **Navegación & Footer:** Barra de navegación fija estilo "Pill" con cambio de fondo al hacer scroll, y pie de página con derechos de autor actualizados.
 
 ### Backend y Gestión (Filament & Livewire)
-- **Inscripciones y Usuarios (`UserResource`):** Gestión completa de campistas, validación de menores de edad con consentimiento de padres, cartas pastorales, asignación de congregaciones por zonas (incluyendo "Centro Alegre" en Planeta Rica y "El Poblado" en Montería).
+- **Inscripciones y Usuarios (`UserResource`):** Gestión completa de campistas, validación de menores de edad con consentimiento de padres, cartas pastorales, asignación de congregaciones por zonas.
 - **Gestión de Abonos (`PaymentResource` & `PendingRegistrationResource`):** Control de pagos e inscripciones pendientes, con flujos de aprobación/rechazo (con notas de motivo), cálculo automático de saldos pendientes y visualización de comprobantes.
 - **Cupones y Descuentos:** Creación y validación de cupones aplicables a los costos totales de los campistas.
 - **Tickets y Reportes:** Generación de tickets de entrada con códigos QR/firmados y reportes exportables para control de asistencia y pagos.
+- **Control de Inscripciones Abiertas/Cerradas:** Habilitación o cierre de inscripciones dinámicamente mediante `GlobalSettingResource` y vista de cierre premium en `create-registration.blade.php`.
 
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Implementar un sistema de control para habilitar o cerrar las inscripciones del campamento directamente desde el panel de administración de Filament (`GlobalSettingResource`), reflejando automáticamente un diseño premium de "Inscripciones Cerradas" en el formulario web (`create-registration.blade.php`).
+Implementar una opción en el recurso "Reportes y Exportaciones" (`ExcelReports.php`) para descargar todos los comprobantes de pago de una zona específica empaquetados en un archivo comprimido ZIP.
 
 ### Pasos de Implementación
-1. **Modificar `GlobalSettingResource.php` (`app/Filament/Resources/GlobalSettingResource.php`):**
-   - Añadir la opción `registrations_enabled` al select de configuración con la etiqueta "Estado de las Inscripciones (1 = Abiertas, 0 = Cerradas)".
-   - Configurar dinámicamente el prefijo, la etiqueta y el texto de ayuda del campo `value` dependiendo de si se está editando un costo monetario o el estado de inscripción.
-   - Formatear la columna en la tabla de Filament para mostrar visualmente `🟢 ABIERTAS (1)` o `🔴 CERRADAS (0)`.
-2. **Modificar `create-registration.blade.php` (`resources/views/livewire/create-registration.blade.php`):**
-   - Incorporar la condición `@if ($registrationsEnabled == 0)` al inicio del formulario para mostrar una tarjeta premium de "Inscripciones Cerradas" con botones para consultar el estado, ocultando el resto del formulario.
+1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
+   - Definir la propiedad `$selectedZone` y el método `exportReceiptsByZone()`.
+   - Recuperar los pagos asociados a usuarios de la zona elegida y empaquetar sus comprobantes físicos en un archivo ZIP dinámico.
+   - Enviar la descarga del ZIP y eliminar el archivo temporal.
+2. **Modificar `excel-reports.blade.php` (`resources/views/filament/pages/excel-reports.blade.php`):**
+   - Ajustar el grid a 3 columnas.
+   - Agregar una tarjeta premium de color Violet/Indigo con un dropdown de selección de zonas y botón de descarga.
 3. **Verificación:**
-   - Crear o editar la configuración `registrations_enabled` a `0` en Filament y verificar que la web muestra el mensaje de cierre con un diseño espectacular.
+   - Validar la correcta descarga y nombramiento de los comprobantes dentro de la carpeta comprimida.

@@ -1,5 +1,5 @@
 <x-filament-panels::page>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-4">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 py-4">
         
         <!-- Tarjeta Reporte de Campistas -->
         <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-500/10 via-amber-700/5 to-amber-900/20 p-8 border border-amber-500/30 backdrop-blur-md shadow-[0_10px_30px_rgba(212,175,55,0.15)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(212,175,55,0.25)] hover:border-amber-500/50 flex flex-col justify-between">
@@ -112,6 +112,62 @@
                 </svg>
                 <span wire:loading.remove wire:target="exportPayments">Generar y Descargar Excel (Abonos)</span>
                 <span wire:loading wire:target="exportPayments">Generando Reporte... ¡Por favor espera!</span>
+            </button>
+        </div>
+
+        <!-- Tarjeta Descarga de Comprobantes por Zona -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-500/10 via-violet-700/5 to-violet-900/20 p-8 border border-violet-500/30 backdrop-blur-md shadow-[0_10px_30px_rgba(139,92,246,0.15)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(139,92,246,0.25)] hover:border-violet-500/50 flex flex-col justify-between">
+            <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-violet-500/10 blur-3xl"></div>
+            
+            <div>
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-violet-500/20 text-violet-400 border border-violet-500/30 shadow-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold tracking-tight text-violet-500 dark:text-violet-400">Comprobantes por Zona</h2>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Archivos de Pago (ZIP)</p>
+                    </div>
+                </div>
+
+                <p class="mb-6 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                    Selecciona una zona eclesiástica específica para empaquetar y descargar de forma masiva todos los comprobantes de pago subidos por los campistas registrados en dicha zona.
+                </p>
+
+                <div class="mb-6">
+                    <label for="selectedZone" class="block text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400 mb-2">Seleccionar Zona:</label>
+                    <select 
+                        id="selectedZone" 
+                        wire:model.live="selectedZone" 
+                        class="w-full rounded-xl bg-black/5 dark:bg-black/30 border border-violet-500/20 text-gray-800 dark:text-gray-100 py-3 px-4 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:outline-none transition duration-300"
+                    >
+                        <option value="">-- Seleccione una zona --</option>
+                        @foreach($this->getZones() as $zone)
+                            <option value="{{ $zone }}">{{ $zone }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <button 
+                wire:click="exportReceiptsByZone" 
+                type="button" 
+                class="w-full group flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-violet-500 to-violet-600 py-4 px-6 text-base font-bold text-white shadow-[0_0_25px_rgba(139,92,246,0.4)] transition-all duration-300 hover:from-violet-400 hover:to-violet-500 hover:shadow-[0_0_35px_rgba(139,92,246,0.6)] focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                wire:loading.attr="disabled"
+                wire:target="exportReceiptsByZone"
+                @if(empty($selectedZone)) disabled @endif
+            >
+                <svg wire:loading.remove wire:target="exportReceiptsByZone" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                <svg wire:loading wire:target="exportReceiptsByZone" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span wire:loading.remove wire:target="exportReceiptsByZone">Descargar ZIP (Comprobantes)</span>
+                <span wire:loading wire:target="exportReceiptsByZone">Empaquetando...</span>
             </button>
         </div>
 
