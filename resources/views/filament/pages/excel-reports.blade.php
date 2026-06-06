@@ -132,20 +132,20 @@
                     </div>
                 </div>
 
-                <p class="mb-6 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                <p class="mb-6 text-sm leading-relaxed text-gray-600 dark:text-gray-200">
                     Selecciona una zona eclesiástica específica para empaquetar y descargar de forma masiva todos los comprobantes de pago subidos por los campistas registrados en dicha zona.
                 </p>
 
                 <div class="mb-6">
-                    <label for="selectedZone" class="block text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400 mb-2">Seleccionar Zona:</label>
+                    <label for="selectedZone" class="block text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300 mb-2">Seleccionar Zona:</label>
                     <select 
                         id="selectedZone" 
                         wire:model.live="selectedZone" 
-                        class="w-full rounded-xl bg-black/5 dark:bg-black/30 border border-violet-500/20 text-gray-800 dark:text-gray-100 py-3 px-4 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:outline-none transition duration-300"
+                        class="w-full rounded-xl bg-white dark:bg-gray-800 border border-violet-500/30 dark:border-violet-700 text-gray-900 dark:text-gray-100 py-3 px-4 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:outline-none transition duration-300"
                     >
-                        <option value="">-- Seleccione una zona --</option>
+                        <option value="" class="bg-white dark:bg-gray-800 text-gray-500">-- Seleccione una zona --</option>
                         @foreach($this->getZones() as $zone)
-                            <option value="{{ $zone }}">{{ $zone }}</option>
+                            <option value="{{ $zone }}" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">{{ $zone }}</option>
                         @endforeach
                     </select>
                 </div>
