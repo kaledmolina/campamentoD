@@ -17,6 +17,7 @@ class ExcelReports extends Page
     protected static string $view = 'filament.pages.excel-reports';
 
     public $selectedZone = '';
+    public $selectedStatus = 'all';
 
     public function exportCampers()
     {
@@ -232,17 +233,28 @@ class ExcelReports extends Page
         }
 
         try {
-            $payments = Payment::whereHas('user', function ($query) {
+            $query = Payment::whereHas('user', function ($query) {
                 $query->where('zone', $this->selectedZone);
             })->whereNotNull('proof_path')
               ->where('proof_path', '<>', '')
-              ->with('user')
-              ->get();
+              ->with('user');
+
+            if ($this->selectedStatus && $this->selectedStatus !== 'all') {
+                $query->where('status', $this->selectedStatus);
+            }
+
+            $payments = $query->get();
 
             if ($payments->isEmpty()) {
+                $statusText = match ($this->selectedStatus) {
+                    'approved' => 'aprobados',
+                    'rejected' => 'rechazados',
+                    'pending' => 'pendientes',
+                    default => '',
+                };
                 \Filament\Notifications\Notification::make()
                     ->title('No hay comprobantes')
-                    ->body('No se encontraron comprobantes de pago subidos para la ' . $this->selectedZone)
+                    ->body('No se encontraron comprobantes de pago ' . ($statusText ? $statusText . ' ' : '') . 'subidos para la ' . $this->selectedZone)
                     ->warning()
                     ->send();
                 return null;
@@ -252,7 +264,8 @@ class ExcelReports extends Page
             \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('reports');
 
             $zip = new \ZipArchive();
-            $zipFileName = 'Comprobantes_' . str_replace(' ', '_', $this->selectedZone) . '_' . date('Y_m_d_His') . '.zip';
+            $statusSuffix = $this->selectedStatus !== 'all' ? '_' . strtoupper($this->selectedStatus) : '';
+            $zipFileName = 'Comprobantes_' . str_replace(' ', '_', $this->selectedZone) . $statusSuffix . '_' . date('Y_m_d_His') . '.zip';
             $zipFilePath = storage_path('app/public/reports/' . $zipFileName);
 
             if ($zip->open($zipFilePath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) !== true) {

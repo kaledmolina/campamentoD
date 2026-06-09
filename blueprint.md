@@ -29,11 +29,14 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Corregir la excepción de base de datos `SQLSTATE[42S22]: Column not found: 1054 Unknown column 'balance' in 'WHERE'` que ocurre al filtrar o intentar ordenar por el campo calculado `balance` o `total_paid` en la lista de campistas de Filament.
+Habilitar una opción en la descarga de comprobantes por zona para que el administrador pueda seleccionar si desea descargar todos los comprobantes, o únicamente los aprobados, rechazados, o pendientes de aprobación/rechazo.
 
 ### Pasos de Implementación
-1. **Modificar `UserResource.php` (`app/Filament/Resources/UserResource.php`):**
-   - Actualizar el filtro `payment_status` para que use consultas SQL directas (`whereRaw`) con subconsultas para calcular y comparar el saldo (`balance`) del campista en base a sus pagos aprobados y el costo total de participación.
-   - Actualizar el ordenamiento (`sortable()`) de las columnas `total_paid` y `balance` para que usen consultas personalizadas (`orderBy` y `orderByRaw`) mediante subconsultas SQL, evitando así que Laravel intente ordenar por columnas inexistentes en la tabla física.
-2. **Verificación:**
-   - Validar que los filtros de estado de pago (Paz y Salvo, Con Deuda) y el ordenamiento por "Abonado" y "Pendiente" funcionen correctamente y sin generar errores de base de datos.
+1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
+   - Declarar una nueva propiedad pública `$selectedStatus` con valor inicial `'all'`.
+   - Modificar el método `exportReceiptsByZone()` para que aplique la condición `->where('status', $this->selectedStatus)` si el estado seleccionado no es `'all'`.
+   - Incluir el estado en el nombre del archivo ZIP de descarga para mayor claridad.
+2. **Modificar `excel-reports.blade.php` (`resources/views/filament/pages/excel-reports.blade.php`):**
+   - Agregar una vista de selección (dropdown) para el estado del comprobante (`selectedStatus`) justo debajo del selector de zona, utilizando la estética de Glassmorphism existente.
+3. **Verificación:**
+   - Probar la descarga con diferentes filtros de estado para comprobar la correcta generación del archivo ZIP con los registros correspondientes.

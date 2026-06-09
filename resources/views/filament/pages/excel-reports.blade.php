@@ -136,18 +136,33 @@
                     Selecciona una zona eclesiástica específica para empaquetar y descargar de forma masiva todos los comprobantes de pago subidos por los campistas registrados en dicha zona.
                 </p>
 
-                <div class="mb-6">
-                    <label for="selectedZone" class="block text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300 mb-2">Seleccionar Zona:</label>
-                    <select 
-                        id="selectedZone" 
-                        wire:model.live="selectedZone" 
-                        class="w-full rounded-xl bg-white dark:bg-gray-800 border border-violet-500/30 dark:border-violet-700 text-gray-900 dark:text-gray-100 py-3 px-4 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:outline-none transition duration-300"
-                    >
-                        <option value="" class="bg-white dark:bg-gray-800 text-gray-500">-- Seleccione una zona --</option>
-                        @foreach($this->getZones() as $zone)
-                            <option value="{{ $zone }}" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">{{ $zone }}</option>
-                        @endforeach
-                    </select>
+                <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="selectedZone" class="block text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300 mb-2">Seleccionar Zona:</label>
+                        <select 
+                            id="selectedZone" 
+                            wire:model.live="selectedZone" 
+                            class="w-full rounded-xl bg-white dark:bg-gray-800 border border-violet-500/30 dark:border-violet-700 text-gray-900 dark:text-gray-100 py-3 px-4 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:outline-none transition duration-300"
+                        >
+                            <option value="" class="bg-white dark:bg-gray-800 text-gray-500">-- Seleccione una zona --</option>
+                            @foreach($this->getZones() as $zone)
+                                <option value="{{ $zone }}" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">{{ $zone }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="selectedStatus" class="block text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300 mb-2">Estado del Pago:</label>
+                        <select 
+                            id="selectedStatus" 
+                            wire:model.live="selectedStatus" 
+                            class="w-full rounded-xl bg-white dark:bg-gray-800 border border-violet-500/30 dark:border-violet-700 text-gray-900 dark:text-gray-100 py-3 px-4 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:outline-none transition duration-300"
+                        >
+                            <option value="all" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">Todos los Estados</option>
+                            <option value="approved" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">Aprobados</option>
+                            <option value="rejected" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">Rechazados</option>
+                            <option value="pending" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">Pendientes</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
