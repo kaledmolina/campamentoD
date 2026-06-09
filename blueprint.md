@@ -29,15 +29,11 @@ La plataforma cuenta con dos componentes principales:
 ## 3. Plan for Current Requested Change
 
 ### Objetivo
-Implementar una opción en el recurso "Reportes y Exportaciones" (`ExcelReports.php`) para descargar todos los comprobantes de pago de una zona específica empaquetados en un archivo comprimido ZIP.
+Corregir la excepción de base de datos `SQLSTATE[42S22]: Column not found: 1054 Unknown column 'balance' in 'WHERE'` que ocurre al filtrar o intentar ordenar por el campo calculado `balance` o `total_paid` en la lista de campistas de Filament.
 
 ### Pasos de Implementación
-1. **Modificar `ExcelReports.php` (`app/Filament/Pages/ExcelReports.php`):**
-   - Definir la propiedad `$selectedZone` y el método `exportReceiptsByZone()`.
-   - Recuperar los pagos asociados a usuarios de la zona elegida y empaquetar sus comprobantes físicos en un archivo ZIP dinámico.
-   - Enviar la descarga del ZIP y eliminar el archivo temporal.
-2. **Modificar `excel-reports.blade.php` (`resources/views/filament/pages/excel-reports.blade.php`):**
-   - Ajustar el grid a 3 columnas.
-   - Agregar una tarjeta premium de color Violet/Indigo con un dropdown de selección de zonas y botón de descarga.
-3. **Verificación:**
-   - Validar la correcta descarga y nombramiento de los comprobantes dentro de la carpeta comprimida.
+1. **Modificar `UserResource.php` (`app/Filament/Resources/UserResource.php`):**
+   - Actualizar el filtro `payment_status` para que use consultas SQL directas (`whereRaw`) con subconsultas para calcular y comparar el saldo (`balance`) del campista en base a sus pagos aprobados y el costo total de participación.
+   - Actualizar el ordenamiento (`sortable()`) de las columnas `total_paid` y `balance` para que usen consultas personalizadas (`orderBy` y `orderByRaw`) mediante subconsultas SQL, evitando así que Laravel intente ordenar por columnas inexistentes en la tabla física.
+2. **Verificación:**
+   - Validar que los filtros de estado de pago (Paz y Salvo, Con Deuda) y el ordenamiento por "Abonado" y "Pendiente" funcionen correctamente y sin generar errores de base de datos.

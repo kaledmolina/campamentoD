@@ -411,12 +411,25 @@ class UserResource extends Resource
                 TextColumn::make('total_paid')
                     ->label('Abonado')
                     ->money('COP')
-                    ->sortable()
+                    ->sortable(query: function (Builder $query, string $direction): Builder {
+                        return $query->orderBy(
+                            fn ($q) => $q->selectRaw('coalesce(sum(amount), 0)')
+                                ->from('payments')
+                                ->whereColumn('payments.user_id', 'users.id')
+                                ->where('payments.status', 'approved'),
+                            $direction
+                        );
+                    })
                     ->toggleable(),
                 TextColumn::make('balance')
                     ->label('Pendiente')
                     ->money('COP')
-                    ->sortable()
+                    ->sortable(query: function (Builder $query, string $direction): Builder {
+                        $defaultCost = \App\Models\GlobalSetting::get('default_total_cost', 300000);
+                        return $query->orderByRaw(
+                            "((coalesce(users.participation_cost, {$defaultCost}) - coalesce(users.discount_amount, 0)) - (select coalesce(sum(amount), 0) from payments where payments.user_id = users.id and payments.status = 'approved')) {$direction}"
+                        );
+                    })
                     ->color(fn($state) => $state > 0 ? 'danger' : 'success')
                     ->toggleable(),
                 // Extra columns hidden by default
@@ -478,9 +491,13 @@ class UserResource extends Resource
                     ])
                     ->query(function (Builder $query, array $data) {
                         return $query->when($data['value'], function (Builder $query, $value) {
+                            $defaultCost = \App\Models\GlobalSetting::get('default_total_cost', 300000);
+                            $paymentsSubquery = "(select coalesce(sum(amount), 0) from payments where payments.user_id = users.id and payments.status = 'approved')";
+                            $targetCostExpression = "(coalesce(users.participation_cost, {$defaultCost}) - coalesce(users.discount_amount, 0))";
+
                             match ($value) {
-                                'paid' => $query->where('balance', '<=', 0),
-                                'debt' => $query->where('balance', '>', 0),
+                                'paid' => $query->whereRaw("{$targetCostExpression} <= {$paymentsSubquery}"),
+                                'debt' => $query->whereRaw("{$targetCostExpression} > {$paymentsSubquery}"),
                                 'no_payment' => $query->doesntHave('payments'),
                             };
                         });
